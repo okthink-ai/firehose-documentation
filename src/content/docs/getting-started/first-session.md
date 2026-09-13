@@ -1,21 +1,36 @@
 ---
 title: "Start your first session"
-description: "Use a tiny example project to start an agent session and check its first answer."
+description: "Choose an existing project or a tiny practice project, start an agent, and check its answer."
 verified: "2026-09-13"
-evidence: ["launch", "settings", "chat", "diff", "example"]
+evidence: ["launch", "settings", "chat", "diff", "example", "permissions", "project-creation"]
 ---
 
-Start an agent in a small project and ask it to explain a function. You’ll finish with a concrete answer you can check against the code.
+Start an agent and ask it to explain a small piece of code. You’ll finish with an answer you can check against the file.
 
 ## Before you begin
 
-Have Firehose connected to your server, an available agent provider, and a Git repository on that server. For the example below, you also need Node.js and Git on the server machine.
+[Connect to your Firehose server](/getting-started/connect/) and have an available agent provider on that machine. A provider is the agent system, such as Claude or Codex, that handles your requests.
 
-If you already have a repository, you can use it and adapt the request to a real file. Otherwise, set up this tiny example.
+**Already have a Git repository on the server?** [Skip to choosing your workspace](#2-choose-where-the-agent-works). Adapt the example request to a small file you know. The practice route below also needs Git and Node.js on the server.
 
-## 1. Prepare the example project
+## 1. Prepare a practice project
 
-On the machine running Firehose, create a new, empty folder named `hello-firehose` inside your usual projects directory. Save this as `greeting.mjs`:
+In Firehose:
+
+1. Select **New session** in the sidebar header.
+2. At **Pick a project**, select **New git project**.
+3. Choose a configured parent directory under **Location** and enter `hello-firehose` as the project name.
+4. Select **Create**.
+
+**Expected result:** Firehose creates a Git repository with a README and attempts an initial commit. It does not add the greeting example for you.
+
+If no project directory is configured, open **Settings → Project directories**, add your projects directory, and select **Save**. These are paths on the server. Preserve existing entries.
+
+If the name already exists, choose that project or use another name. If creation reports no initial commit, configure your usual Git name and email on the server, then commit the README before using branch or worktree workflows.
+
+### Add the example file
+
+On the server machine, save [greeting.mjs](/examples/hello-firehose/greeting.mjs) inside `hello-firehose`. If your browser downloaded it to another computer, copy it to the server’s project directory. Its contents are:
 
 ```js
 export function greet(name) {
@@ -23,33 +38,37 @@ export function greet(name) {
 }
 ```
 
-In a terminal inside that folder, run:
+In a terminal inside that directory on the server, run:
 
 ```sh
-git init
 git add greeting.mjs
 git commit -m "Add greeting example"
 node --input-type=module -e "import { greet } from './greeting.mjs'; console.log(greet(' Ada '));"
 ```
 
-The last command should print `Hello, Ada!`. If Git asks for your identity, configure your usual Git name and email before committing. A [copy of the example](/examples/hello-firehose/greeting.mjs) is available to save locally.
-
-In Firehose, open **Settings → Project directories**. Make sure the parent directory containing `hello-firehose` is in the comma-separated list, then select **Save**. Preserve other directories you already use.
+**Expected result:** the command prints `Hello, Ada!`. Keep this baseline committed so later changes are easy to identify.
 
 ## 2. Choose where the agent works
 
-1. Select **New session** in the sidebar header.
-2. At **Pick a project**, choose `hello-firehose`.
-3. Select **Next: Choose a workspace**.
-4. Choose **Current checkout** to use the directory you just prepared.
-5. At **Choose an agent**, select a provider and an available model. Review the session’s autonomy settings.
-6. Select **Start session**.
+1. Open **New session** and choose your repository at **Pick a project**.
+2. Select **Next: Choose a workspace**.
+3. Choose **Current checkout** to use that directory. For a separate task directory, see [workspace choices](/guides/workspaces/).
+4. At **Choose an agent**, choose a provider and an available model.
+5. Check the permission controls described below, then select **Start session**.
 
-The session should open. If you see **Loading models**, wait for the selected provider’s model list. If the project is missing or starting fails, use the [troubleshooting guide](/troubleshooting/common-problems/).
+### Check what the agent can do
+
+The wizard starts with autonomy enabled. For Claude, the checkbox is **--dangerously-skip-permissions**. For Codex, **Full Auto** enables actions without approval requests and removes the workspace sandbox restrictions.
+
+Turning Codex’s **Full Auto** off uses workspace restrictions and the provider’s on-request approval policy. It does not mean every command asks for approval. Claude and other providers have different controls; read [agent permissions](/reference/agent-permissions/) for the exact distinctions.
+
+A request such as “Do not change files” expresses your task’s constraints; it does not change these permission settings.
+
+**Expected result:** your session opens in the selected workspace. If the button says **Loading models**, wait for that provider’s list. If a model is unavailable or launch fails, follow [startup troubleshooting](/troubleshooting/common-problems/#start-session-is-unavailable-or-fails).
 
 ## 3. Give it a clear request
 
-Send this in the session’s chat input:
+Send this in **Chat**. For your own repository, replace the filename and question with a small example you can verify:
 
 ```text
 Read greeting.mjs and explain what greet does.
@@ -62,8 +81,15 @@ Follow the response in **Chat**. If the agent asks for information, answer in th
 
 ## 4. Check the answer
 
-The function trims spaces from the name and adds a greeting. For `" Ada "`, the result is `"Hello, Ada!"`. For an empty string, it is `"Hello, !"`.
+The function trims spaces from the name and adds a greeting:
 
-The agent may phrase its answer differently. Check these results and its explanation against `greeting.mjs`. Open **Diff → Changes** to check that the task left no file changes.
+| Input | Expected result |
+| --- | --- |
+| `" Ada "` | `"Hello, Ada!"` |
+| `""` | `"Hello, !"` |
 
-You’ve now started a session, sent a request, and checked the result. Next, [ask for a small improvement](/guides/make-a-change/) using the same project.
+The agent may phrase its explanation differently. Check its answer against `greeting.mjs`.
+
+Open **Diff → Changes**, then **Diff filters → Compare → Working changes** to check for uncommitted edits. With a clean starting repository, you should see none. If you already had edits, compare with that starting state instead of attributing them all to this session.
+
+You’ve started a session, sent a request, and checked its result. Next, [ask for a small improvement](/guides/make-a-change/) using the same project.

@@ -1,33 +1,39 @@
 ---
 title: "Put your agents to work."
-description: "Learn to start an agent, follow its work, answer questions, and review the result in Firehose."
+description: "Start an agent, follow its work, and review the result with practical Firehose guides."
 verified: "2026-09-13"
-evidence: ["launch", "chat", "diff", "questions"]
+evidence: ["launch", "chat", "diff", "questions", "connection"]
+tableOfContents: false
 ---
 
-Start a useful task, follow your agent’s progress, and review the result. These guides walk you through Firehose one step at a time.
+Give a coding agent a task. Follow the conversation, answer its questions, and review the changes—all in one Firehose workspace.
 
-Firehose brings coding agent sessions into one workspace. Choose a project and an agent, give it a task, and keep the conversation and its changes close at hand.
+[Start your first session →](/getting-started/first-session/) · [Check connection requirements](/getting-started/connect/)
 
-## Start here
+**Before you start:** these guides use an existing Firehose server with a configured agent provider. Opening the app connects you to that machine. Ask the person managing your setup for access if you don’t have it yet.
 
-**New to Firehose?** [Connect to Firehose](/getting-started/connect/), then [start your first session](/getting-started/first-session/). You’ll ask an agent to explain a tiny example project and learn how to check its answer.
+## Find your next step
 
-**Already have a session?** [Follow the conversation](/tools/chat/), [answer clarifying questions](/tools/questions/), or [review the changes](/tools/diff/).
+- **[Connect to Firehose](/getting-started/connect/)**
+  Open your setup and find the projects on your server.
+- **[Start a session](/getting-started/first-session/)**
+  Choose a workspace, send a useful request, and check the answer.
+- **[Review the result](/tools/diff/)**
+  Read the changed lines and decide what needs another pass.
 
-## Find your next task
+## Know where the work happens
 
-| I want to… | Start with |
-| --- | --- |
-| Understand unfamiliar code | [Ask for a code walkthrough](/guides/explain-code/) |
-| Give an agent a small coding task | [Make and review a change](/guides/make-a-change/) |
-| Keep tasks in separate directories | [Choose a workspace](/guides/workspaces/) |
-| Get a second look at a change | [Use Smart Review](/tools/smart-review/) |
-| Check in from my phone | [Use Firehose on mobile web](/guides/mobile/) |
-| Get unstuck | [Troubleshoot a problem](/troubleshooting/common-problems/) |
+1. **Your browser**
+   Send requests and read results from your computer or phone.
+2. **Your Firehose server**
+   The machine running Firehose also runs your agent sessions. It needs to be available for you to connect.
+3. **Your project workspace**
+   Files and commands belong to the selected directory on the server. Save example files and run terminal checks there.
 
-## A few words you’ll see
+A **provider** is the agent system you choose when starting a session, such as Claude or Codex. Providers have their own setup, model access, and permission controls.
 
-A **project** is the repository you’re working on. A **workspace** is the directory and branch an agent uses. A **session** is your conversation with that agent. You can have several sessions, so check the project and branch before sending a request.
+## Build confidence, one task at a time
 
-You don’t need to learn everything before starting. The [tool guide](/tools/overview/) explains the main controls, and the [glossary](/reference/glossary/) is here when you need it.
+[Understand unfamiliar code](/guides/explain-code/) before asking for a [small change](/guides/make-a-change/). Use [Questions](/tools/questions/) to clarify decisions, [Smart Review](/tools/smart-review/) for another assessment, and the [finish-task checklist](/guides/finish-a-task/) before closing a session.
+
+If something doesn’t match what you expect, [find your symptom](/troubleshooting/common-problems/). The [tool guide](/tools/overview/) and [glossary](/reference/glossary/) are here when you need them.

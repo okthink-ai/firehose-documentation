@@ -19,6 +19,17 @@ maintainer can assign people when scheduling the work.
 | Deferred | Confirm public repository visibility and contribution URLs | Project owner | Explicit publication request is received and destinations are verified |
 | Deferred | Configure site URL, sitemap, redirects and hosting | Project owner | Hosting is requested; domain and release workflow are agreed and verified |
 
+## Follow up on the critique
+
+The [implementation record](critique-implementation.md) maps delivered changes and bounded follow-up tasks. The permission control capture and server diagnostic endpoint were observed on the running installation; full task outcomes still need the release walkthrough.
+
+| Priority | Work | Owner role | Done when |
+| --- | --- | --- | --- |
+| Next | Exercise provider approvals | Product maintainer | Each documented provider is installed/authenticated and enabled/disabled behavior is observed on a disposable task |
+| Next | Capture review dispatch and Diff comparisons | Documentation maintainer | A fictional sample has committed and working edits plus an actual review finding; desktop/mobile captures show the verified decisions without private data |
+| Next | Exercise close and lifecycle outcomes | Product maintainer | Retain/delete worktree, interrupted turn, reload, browser close, server sleep, and session restoration have recorded outcomes |
+| Next | Test task-based navigation with newcomers | Documentation maintainer | Readers attempt connection, launch, Questions submission and review dispatch without coaching; observations drive revisions |
+
 ## Maintain the content
 
 Review relevant pages with each product change. Use repeated support questions and

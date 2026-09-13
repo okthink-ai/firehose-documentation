@@ -2,7 +2,7 @@
 title: "Projects, agents, and settings"
 description: "Find project discovery and server settings, and choose agent options when starting a session."
 verified: "2026-09-13"
-evidence: ["settings", "launch", "connection"]
+evidence: ["settings", "launch", "connection", "permissions"]
 ---
 
 Find the settings that control which projects you see and where a new session runs.
@@ -25,7 +25,7 @@ The **Choose an agent** step in **New session** lets you select the agent, model
 
 Use the models listed by your installation. The selected provider’s models may need time to load, and a model marked unavailable can prevent the session from starting. Read its explanation and select an available option.
 
-Provider-specific controls differ. Review the displayed autonomy or permission choices before starting, especially whether actions will require your approval. This documentation does not prescribe a universal provider or model setting.
+The wizard initializes autonomy as enabled. Read [Choose agent permissions](/reference/agent-permissions/) for the meanings of Claude’s **--dangerously-skip-permissions**, Codex’s **Full Auto**, and Antigravity’s separate editing and terminal controls. Check the displayed value before starting.
 
 ## Server connection
 

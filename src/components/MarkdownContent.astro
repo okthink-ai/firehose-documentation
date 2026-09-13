@@ -1,0 +1,7 @@
+---
+import DefaultMarkdownContent from '@astrojs/starlight/components/MarkdownContent.astro';
+const home = ['', 'index'].includes(Astro.locals.starlightRoute.entry.id);
+---
+<div class:list={{ 'docs-home': home }}>
+  <DefaultMarkdownContent><slot /></DefaultMarkdownContent>
+</div>

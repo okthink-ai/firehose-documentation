@@ -2,7 +2,7 @@
 title: "Chat and follow-ups"
 description: "Send useful requests, follow an agent\u2019s work, and decide when to send another message."
 verified: "2026-09-13"
-evidence: ["chat"]
+evidence: ["chat", "session-signals"]
 ---
 
 Give your agent a clear task, follow its response, and keep the conversation moving when more information is needed.
@@ -30,6 +30,18 @@ The conversation shows responses and tool activity as the agent works. Read the 
 
 A session that stops showing activity may have finished its turn or need help. Read the response to tell which. A turn ending does not mean every part of your task succeeded.
 
+## Read the session signals
+
+| What you see | What to check next |
+| --- | --- |
+| Animated activity and the current action | Follow the work in Chat; a long command may need time |
+| **Idle** | Read the latest response: the turn may be finished or the agent may need information |
+| **Stopping...** | Firehose has received your stop action; wait for the state to settle before sending another interruption |
+| **Closing...** | A session close is in progress; follow the close or cleanup notice |
+| **Transcript unavailable** | Firehose cannot read the conversation reliably; do not infer that the agent has finished |
+
+Queueing and connection problems are separate from these activity signals. Read delivery notices and check connectivity if updates stop. An idle indicator does not verify that tests passed or the task is complete.
+
 ## Send a follow-up
 
 When the agent has finished, send the next request in the same chat. Refer to the specific result you want to refine:
@@ -43,7 +55,7 @@ When available during an active turn, **Queue after current turn** lets you hold
 
 ## Change direction
 
-If the task needs to stop, use the session’s interrupt control. On mobile, **Interrupt** is available in the session header’s menu. Wait for the interrupted state, then explain what should happen next.
+If the task needs to stop, use the session’s interrupt control. On mobile, **Interrupt** is available in the session header’s menu. Look for **Stopping...**, then check the latest response when the session settles. Explain what should happen next once it is ready for input.
 
 Interruption does not undo file changes or commands that already ran. [Review the diff](/tools/diff/) before asking the agent to continue with a different approach.
 

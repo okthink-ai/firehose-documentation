@@ -13,6 +13,17 @@ You need a running Firehose server and an agent provider configured on that mach
 
 These guides begin with an existing Firehose setup. If you haven’t been given access yet, ask the person managing your setup for the app address and server connection details. A public installation walkthrough is still being verified.
 
+## Check your access
+
+| What you need | Where to get it |
+| --- | --- |
+| The app or direct-server address | The person managing your Firehose setup |
+| A running server with a usable agent provider | Your server operator; you may be that person |
+| Your Git repository on that server | Copy or clone it there using your project’s normal process, or create a [practice project](/getting-started/first-session/#1-prepare-a-practice-project) |
+| For the hosted app: the server’s full Tailscale name and access to its network | Your server operator or network administrator |
+
+If you only have the documentation URL, you still need product access. A public installation walkthrough is not available in these guides yet.
+
 ## Open your existing setup
 
 If you were given a direct Firehose server URL, open that address. A browser served by the server itself uses that server automatically.

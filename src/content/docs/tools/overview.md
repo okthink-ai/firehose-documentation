@@ -1,28 +1,40 @@
 ---
 title: "Find the right tool"
-description: "Find the Firehose controls for starting sessions, chatting, reviewing changes, and answering questions."
+description: "Choose a Firehose control by the result you want, from starting a session to reviewing changes."
 verified: "2026-09-13"
-evidence: ["launch", "chat", "diff", "questions", "review"]
+evidence: ["launch", "chat", "diff", "questions", "review", "review-actions"]
 ---
 
-Find the control you need for the next step of your task. The tools below are Firehose controls; the commands an agent can run also depend on its provider and permissions.
+Find the control you need for your next step. Firehose’s controls organize the work; the commands your agent can run also depend on its provider and permissions.
 
-| Tool | What you provide | What you get | Before you use it |
-| --- | --- | --- | --- |
-| **New session** | Project, workspace, agent, model, and autonomy choices | An agent session in the selected directory | Have a project and configured provider on the server |
-| **Chat** | A request or follow-up message | Agent responses and visible activity | Check which session is selected |
-| **Diff** | A comparison and a file to inspect | Changed lines, file contents, or commit details | Use a session associated with a Git repository |
-| **ask me questions** / **Questions** | A topic, interview depth, and your answers | Clarification questions and a combined answer message | Use a controllable session in the intended worktree |
-| **Smart Review** | A review request and optional areas of focus | Findings you can inspect and act on | Have branch changes to review and an available agent |
+## New session: start work
 
-## Start and steer
+**You provide:** a project, workspace, provider, model, and permission choices. **You get:** a session in the selected directory on your server.
 
-[Start a session](/getting-started/first-session/) when you need an agent. [Choose a workspace](/guides/workspaces/) to decide whether it should use the current directory, a new worktree, or an existing branch.
+Have a configured provider and a project ready. [Start your first session](/getting-started/first-session/) or [choose a workspace](/guides/workspaces/) for a separate task.
 
-Use [Chat](/tools/chat/) to explain the result you want and respond when the agent needs more information.
+## Chat: give direction
 
-## Inspect and decide
+**You provide:** a task, a follow-up, or an answer. **You get:** the agent’s response and activity.
 
-Use [Diff](/tools/diff/) to see the actual changes. Use [Smart Review](/tools/smart-review/) to investigate potential problems. Use [Questions](/tools/questions/) when a task needs decisions before implementation.
+Check the selected project and branch before sending. [Use Chat](/tools/chat/) to follow the work and understand delivery notices.
 
-This first set of guides covers these core controls. Additional tools will get their own guides as their complete workflows are verified.
+## Questions: clarify a decision
+
+**You provide:** a topic through **ask me questions**, an interview depth, and your answers in **Questions**. **You get:** a combined answer message for the selected session in that worktree.
+
+Use a controllable session and check for an unfinished questionnaire first. [Answer clarifying questions](/tools/questions/).
+
+## Diff: inspect what changed
+
+**You choose:** a comparison and a file. **You get:** changed lines, file contents, or commit details.
+
+Use a session associated with a Git repository. [Review with Diff](/tools/diff/) to distinguish working edits from branch commits.
+
+## Smart Review: investigate and act
+
+**You provide:** branch changes, optional focus areas, and decisions on findings. **You get:** an assessment and follow-up work after you dispatch your choices with **Act**.
+
+Have changes and an available agent. [Use Smart Review](/tools/smart-review/), then [finish the task](/guides/finish-a-task/).
+
+These guides cover the core controls. Additional tools will get focused guides as their complete workflows are verified.

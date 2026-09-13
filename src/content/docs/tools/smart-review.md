@@ -1,44 +1,63 @@
 ---
 title: "Use Smart Review"
-description: "Inspect agent-generated review findings and decide what needs investigation or a fix."
+description: "Choose review actions, dispatch work to your session, and verify the resulting changes."
 verified: "2026-09-13"
-evidence: ["review", "diff"]
+evidence: ["review", "review-actions", "diff"]
 ---
 
-Get an agent’s review of branch changes and examine its findings before deciding what to change.
+Get an agent’s assessment of branch changes, choose how to handle each finding, and send those decisions back for action.
 
-## Start a review
+## Before you begin
 
-Have a session with branch changes you want to inspect. Open **Smart Review**. When no review is available, select **Start a review**.
+Select a session with branch changes you want reviewed. Confirm its project and branch. Review actions can request code changes or create a GitHub issue, so choose the session that should receive that work.
 
-If the review flow asks for **Areas of Focus**, describe the concerns that matter for this change. For the greeting example:
+## 1. Start a review
+
+Open **Smart Review**. When no review is available, select **Start a review**. If the flow asks for **Areas of Focus**, describe the concerns that matter. For the greeting example:
 
 ```text
 Check blank-name handling and whether the tests cover spaces-only input.
 Look for unintended changes to greetings for nonblank names.
 ```
 
-Follow the review’s progress in the panel. Findings may arrive as the agent works. If the review reports a failure, read that message before starting it again.
+**Expected result:** findings appear as the agent works. Read any failure message before starting another review.
 
-## Read a finding
+## 2. Evaluate a finding
 
-Select a finding to inspect its explanation. A finding can include:
+Select a finding and read **What**, **In practice**, **Impact**, and **Fix**. Check its file location against [Diff](/tools/diff/). A proposed fix still needs your judgment.
 
-- **What**: the potential problem.
-- **In practice**: the situation that would expose it.
-- **Impact**: what could go wrong.
-- **Fix**: a proposed way to address it.
+Use **Add comment**, then **Save note** to preserve relevant context. For example: “The input contract is strings only. Please investigate blank strings within that contract.”
 
-Use the file location and [Diff](/tools/diff/) to check whether the claim matches the code. Treat the suggested fix as a proposal to evaluate.
+## 3. Choose what should happen
 
-## Add context and check again
+Selecting an action records your choice. Selecting the same action again clears it. The choice alone does not dispatch the work.
 
-Use **Add comment** to enter relevant context, then **Save note** to keep it with the finding. For example: “This function currently accepts strings only; please evaluate blank strings within that contract.”
+| Action | What you ask for when you dispatch it |
+| --- | --- |
+| **Fix** | Implement a fix for the finding |
+| **Explain** | Read the relevant code and expand the explanation |
+| **Refine** | Investigate the finding and improve its assessment |
+| **Rewrite** | Clarify the finding’s wording while preserving its meaning; this is not a code rewrite |
+| **Issue** | Create a GitHub issue for follow-up; the agent needs the relevant GitHub access |
+| **Won’t fix** | Close the finding during Act without sending it to an agent |
 
-After a fix, **Check status** requests another assessment of the finding. Also run the relevant checks and inspect the updated diff. An agent’s assessment is useful evidence, but it does not replace those checks.
+**Example:** if the reviewer finds missing spaces-only coverage, choose **Fix**. If you don’t yet understand why the case matters, choose **Explain** first. An explanation or refinement may leave a decision for you to make afterward.
 
-Use **All findings** to return to the list. If a severity filter hides findings, choose **Show all findings** when that control is available.
+## 4. Dispatch your decisions
 
-## Finish the review
+1. Confirm the selected session and your choices across the findings.
+2. Use **Act** to dispatch eligible items. Its menu offers **Act on items** and **Clear context and act**.
+3. Choose **Act on items** to send the work without requesting a context clear. **Clear context and act** requests a context reset before delivery; include necessary task constraints in finding comments if you use it.
+4. Follow the review’s progress and the session’s conversation.
 
-Compare the result with your original task. Confirm that important findings were addressed or have a clear explanation, and that tests or manual checks support the change. Then continue your project’s normal review process.
+**Expected result:** eligible findings are queued for work after delivery succeeds. Items already queued, working, or done are not dispatched again by the same action. Pending **Won’t fix** items close without agent work.
+
+If dispatch fails, inspect the error and current finding states before retrying. Some Won’t fix decisions may already have closed even if other work could not be sent. Do not treat a selected action or a queued item as proof that a fix succeeded.
+
+## 5. Verify the result
+
+After work completes, inspect the updated diff and run the relevant checks. For the greeting example, check both spaces-only and nonblank inputs.
+
+Use **Check status** on a finding to request another assessment after a fix. Read its response alongside your own checks. Use **All findings** to return to the list; **Show all findings** removes a severity restriction when that control is available.
+
+Finish with the [task handoff and cleanup checklist](/guides/finish-a-task/).

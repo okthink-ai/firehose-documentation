@@ -2,7 +2,7 @@
 title: "Make and review a change"
 description: "Give an agent a small task, verify its checks, and inspect the resulting code changes."
 verified: "2026-09-13"
-evidence: ["launch", "chat", "diff", "example"]
+evidence: ["launch", "chat", "diff", "example", "diff-comparisons"]
 ---
 
 Improve the greeting example, check the result, and review the files before deciding what to do next.
@@ -49,7 +49,7 @@ The test run should pass and cover all four cases. The exact test names and impl
 
 ## 3. Review the files
 
-Open **Diff → Changes** and inspect the uncommitted changes. You should see the greeting change and a new test file. Check untracked files if the test file is not in the current view.
+Open **Diff → Changes → Diff filters → Compare → Working changes**. You should see the greeting change and a new test file. Check untracked files if the test file is not in the current view.
 
 Look for unrelated edits, deleted behavior, or tests that only check the easy case. If needed, send a precise follow-up:
 
@@ -60,4 +60,4 @@ Add that case and rerun node --test. Keep the change scoped to this task.
 
 ## 4. Decide whether it is ready
 
-You’re done with this walkthrough when the expected outputs are covered, the checks pass, and you understand the diff. Leave the changes available for your normal review process, or use [Smart Review](/tools/smart-review/) for another look.
+You’re done with this walkthrough when the expected outputs are covered, the checks pass, and you understand the diff. Use [Smart Review](/tools/smart-review/) for another look, then follow [Finish and close a task](/guides/finish-a-task/) to hand off the result and choose what to keep.

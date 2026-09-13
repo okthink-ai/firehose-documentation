@@ -1,63 +1,96 @@
 ---
 title: "Get unstuck"
-description: "Troubleshoot server connections, missing projects, session startup, messages, and missing changes."
+description: "Follow concrete checks for connection, project creation, startup, message delivery, and missing changes."
 verified: "2026-09-13"
-evidence: ["connection", "settings", "launch", "chat", "diff", "questions"]
+evidence: ["connection", "settings", "launch", "chat", "diff", "questions", "project-creation", "diff-comparisons", "session-signals", "diagnostics"]
 ---
 
-Find the symptom you recognize and work through the checks in order. Keep the exact error message; it is often the fastest route to a useful fix.
+Find the symptom you recognize and work through its checks in order. Keep the exact error text so you can tell the server operator what failed.
 
 ## I can’t connect to my server
 
-1. Confirm that the Firehose server machine is awake and Firehose is running.
-2. For the hosted app, confirm that the browser device and server are on the same Tailscale network.
-3. Enter the full machine name ending in `.ts.net`, without a scheme or port. Do not use an IP address or a short name in the hosted connection form.
-4. Ask the server operator to check Tailscale HTTPS, remote connectivity, and permission for the hosted app’s origin.
+For a direct-server setup, reopen the supplied server address. If it does not load, ask the operator to check whether that machine is awake and Firehose is running.
 
-If you see a version warning, follow its direction: update the server for a server-outdated warning, or reload the app for a client-outdated warning. Version warnings are advisory; they do not themselves refuse the connection.
+For the hosted app:
 
-Return to [connection setup](/getting-started/connect/) once the server is reachable.
+1. Open Tailscale on your browser device and confirm it is connected to the network your operator supplied. If the server is not available to your account, ask the network administrator to check access.
+2. In Firehose’s connection form, compare the name with the full `.ts.net` name supplied by the operator. Enter it without a scheme or port. Short names and IP addresses do not work in this form.
+3. Select **Connect**. Your expected projects or sessions should appear.
+4. If connection still fails, send the exact error to the operator. Ask them to check **Settings → Tailscale HTTPS** on their local Firehose setup and confirm that the server allows the hosted app’s origin.
+
+If a version warning says the server is outdated, ask its operator to update it. If it says the client is outdated, reload the app. These warnings are advisory; the warning alone does not refuse a connection.
+
+Return to [connection setup](/getting-started/connect/) after the operator confirms the missing prerequisite.
 
 ## My project isn’t listed
 
-Check that the repository exists on the server machine, not only on the computer or phone displaying Firehose. Open **Settings → Project directories** and confirm the directory containing the project is included.
+1. Check that the repository exists on the server, not only on your browser device.
+2. Open **Settings → Project directories**. The parent directory containing the repository should be in the comma-separated list.
+3. Preserve other entries, add the missing parent if needed, and select **Save**. Look for **Saved**.
+4. Reopen **New session** and find the project again.
 
-Select **Save**, then reopen **New session** and search again. If project refresh reports an error, keep the error text and check your server connection.
+If refresh reports an error, record it and check the server connection. If you need a new repository, use [New git project](/getting-started/first-session/#1-prepare-a-practice-project).
+
+## Creating a project fails
+
+If the error says the name already exists, select that existing project or choose a different name. Firehose does not overwrite an existing directory through Create.
+
+If no project directories are configured, add a parent in **Settings → Project directories**, save it, and retry. **Location** must be one of those configured roots.
+
+If the project was created without an initial commit, configure your normal Git identity in a terminal on the server, then commit the generated README. The repository still exists; you do not need to create it again.
 
 ## Start session is unavailable or fails
 
-Wait if the button says **Loading models**. Confirm that you chose a project, completed the workspace choice, and selected an available model.
+### The button says Loading models
 
-For a new worktree, supply a task or branch name. If the error says the branch already exists, choose **Existing branch** to continue that work or use a different name for a new task.
+Wait for the selected provider’s model list. Another provider’s slow discovery should not block this selection. If it does not finish, record the selected provider and any visible error; ask the operator to check that provider’s setup on the server.
 
-Read any provider error. The provider must be usable on the server; choosing its name in Firehose does not install or authenticate it.
+### The selected model is unavailable
+
+Read the explanation beside the model and choose an available option. The start button should become available once the project, workspace, and model are ready. Selecting a provider does not install or authenticate it.
+
+### The workspace is incomplete or launch reports an error
+
+For a new worktree, enter a task or branch name. If the branch already exists, use **Existing branch** or choose a different name for new work.
+
+After **Start session**, read the launch error. If it concerns installation, authentication, or model access, give the provider, model, and error text to the server operator. Retry once the stated cause is resolved; success means the session opens in the intended workspace.
 
 ## My message didn’t reach the agent
 
-Read the delivery notice, then check the conversation for the message before retrying. Confirm that the selected session is still available.
+1. Read the delivery notice and confirm the selected session.
+2. Check the conversation for your message before resending.
+3. If you chose **Queue after current turn**, wait for that turn to finish.
+4. If delivery failed because an attachment is unavailable, attach the file again before resending.
 
-If you used **Queue after current turn**, the message is intended to wait until the current turn ends. For a failed send, address the reported cause rather than repeatedly sending the same request.
+**Delivery could not be confirmed** means Firehose cannot establish whether the message arrived. Follow the notice’s terminal-opening control and check whether the message is still in the input box or already in the conversation. If you cannot check, ask the operator rather than repeatedly sending a potentially duplicated request.
+
+If the notice reports that the agent exited, restarted, or rejected input, resolve that session problem first. A network reconnection does not prove an earlier message was delivered.
 
 ## The agent looks inactive
 
-Read its latest response. It may have finished a turn, asked for information, or reported a command failure. Answer an ordinary question in chat, or use **Questions** for a questionnaire.
+Read the latest response alongside the [session signals](/tools/chat/#read-the-session-signals). **Idle** is not proof the task succeeded. Answer an ordinary question in Chat or use **Questions** for a questionnaire.
 
-If the conversation itself will not update, check server connectivity. Interrupting a session does not restore a broken network connection or undo previous edits.
+For **Stopping...**, allow the stop action to settle. For **Transcript unavailable**, check the server connection and share the status with the operator if it persists. Repeated interruption does not repair unavailable conversation data.
 
 ## Questions are still waiting or won’t submit
 
-A clarification request waits for the current turn to finish before it is sent. Once questions appear, they can still be generating; submit when the set is ready and required answers are complete.
+A clarification request waits for the current turn to finish before delivery. Once questions appear, the set can still be generating. Wait until it is ready and complete the required answers before **Submit to Agent**.
 
-Only one unfinished questionnaire is allowed per worktree. Check **Questions** in the existing session before creating another request. If answer delivery fails, correct the reported issue and retry **Submit to Agent**.
+Only one unfinished questionnaire is allowed per worktree. Check **Questions** in the existing session before requesting another. If answer delivery fails, resolve the stated cause and retry **Submit to Agent**; a failed delivery leaves the set available.
 
 ## I don’t see the expected file changes
 
-Check the session’s branch, the comparison in **Diff → Changes**, and active filters. A committed change may not appear under uncommitted changes. A new file may be untracked.
+1. Check the selected session’s project and branch.
+2. Open **Diff → Changes → Diff filters → Compare**. Select **All changes** for the broad comparison, **Working changes** for uncommitted edits, or **Branch changes** for branch commits.
+3. Clear search, status, and annotation filters that could exclude the file. A new file may still be untracked.
+4. If files changed while you were reading, refresh the comparison.
 
-If the repository changed while the diff was loading, refresh the comparison. If a file is too large or not a text file, read the displayed limitation instead of treating the absence of a text diff as no change.
+A committed change no longer appears in Working changes unless it has further edits. If a file shows a size or format limitation, read that message; a missing text preview does not establish that the file is unchanged.
 
 ## I need to report a problem
 
-Record what you tried, what you expected, what happened, the visible error, and whether you were using desktop or mobile web. Include the app and server versions if available. Replace private paths, names, and credentials before sharing.
+Record the steps, expected result, actual result, exact error, browser, and whether you used desktop or mobile web. Remove credentials and private paths before sharing.
 
-For a problem with these instructions, see [documentation feedback](/feedback/).
+For server version information, ask the operator to open `/api/status` on the same Firehose server they normally use. For example, they can append `/api/status` to their direct-server address. The JSON response includes `serverVersion` and `protocolVersion`; copy only those fields into the report. If this request fails, report that failure rather than guessing a version. This is the Firehose server address, not this documentation site or the hosted app’s address.
+
+Send the report through your existing support channel. For a confusing instruction, see [documentation feedback](/feedback/).

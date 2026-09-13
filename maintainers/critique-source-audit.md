@@ -4,6 +4,8 @@ Use this record to distinguish confirmed implementation from recommendations tha
 
 Checked on 2026-09-13 against `~/code/okthink/firehose-worktrees/main`, revision `c57391d84f8d5bd198354fecf9c93c7e85418ec3`. Source paths below are relative to that checkout, not this documentation repository. Symbols identify implementation without depending on local absolute links. Feature worktrees were not treated as released behavior. The source checkout was inspected without modification; its installer, agents, and tests were not run.
 
+Implementation follow-up: [the delivery record](critique-implementation.md) identifies completed changes. The diagnostic path and a limited live launch-control observation have since been added to [evidence.json](evidence.json); the original findings below describe the pre-implementation audit.
+
 ## Access and onboarding
 
 - **Evidence:** `install.sh`, usage and prerequisites, explicitly requires `GITHUB_TOKEN` with repository and package read access. `docs/hosted-web.md` and `apps/expo/src/components/SettingsPanel/ServerSettingsSection.tsx` distinguish hosted connection prerequisites and operator configuration. The documentation already separates direct-server and hosted-app access in [connect.md](../src/content/docs/getting-started/connect.md).

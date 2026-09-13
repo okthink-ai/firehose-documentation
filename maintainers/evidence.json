@@ -2,7 +2,7 @@
   "verified": "2026-09-13",
   "repository": "okthink-ai/agent-manager",
   "revision": "c57391d84f8d5bd198354fecf9c93c7e85418ec3",
-  "method": "Source inspection of the local main checkout. No live Firehose UI walkthrough or release-install validation was performed. Website browser checks are separate.",
+  "method": "Source inspection of the local main checkout. Product launch controls and diagnostics also have narrowly scoped runtime observations recorded separately below. No release-install or agent-execution validation was performed. Website browser checks are separate.",
   "entries": {
     "launch": {
       "scope": "Current session wizard, workspace choices, model loading and launch controls",
@@ -91,6 +91,107 @@
         "scripts/export-docs.mjs",
         "CONTRIBUTING.md"
       ]
+    },
+    "project-creation": {
+      "scope": "Project creation controls, configured roots, README and initial commit outcomes",
+      "paths": [
+        "apps/expo/src/components/Sidebar/NewSessionMenu/ProjectStep.tsx",
+        "apps/expo/src/store/newSessionSlice.ts",
+        "server/lib/project-creation.ts"
+      ]
+    },
+    "permissions": {
+      "scope": "Initial enabled autonomy, provider labels, Codex permission mapping, Claude launch flag and Antigravity controls",
+      "paths": [
+        "apps/expo/src/store/newSessionSlice.ts",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/providerSettings/registry.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/providerSettings/ClaudeProviderSettings.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/providerSettings/CodexProviderSettings.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/providerSettings/AntigravityProviderSettings.tsx",
+        "server/lib/codex-adapter.ts",
+        "server/daemon/agent-daemon.ts",
+        "server/lib/claude-tmux.ts"
+      ]
+    },
+    "session-signals": {
+      "scope": "Sidebar activity, idle, stopping, closing, unavailable transcript and separate delivery status",
+      "paths": [
+        "lib/types/turn-state.ts",
+        "apps/expo/src/components/SessionItem/SessionItemBody.tsx",
+        "apps/expo/src/components/SessionItem/sessionItemUtils.ts"
+      ]
+    },
+    "review-actions": {
+      "scope": "Triage versus dispatch, meanings of actions, context clearing and delivery failure",
+      "paths": [
+        "apps/expo/src/components/ReviewPanel/reviewPanelTypes.ts",
+        "apps/expo/src/components/ReviewPanel/ReviewItemDetail.tsx",
+        "apps/expo/src/components/ReviewPanel/ReviewProgressHeader.tsx",
+        "apps/expo/src/components/ReviewPanel/reviewProgressUtils.ts",
+        "apps/expo/src/store/reviewApi.ts",
+        "server/routes/reviews.ts",
+        "server/prompts/review-prompts.ts",
+        "server/prompts/templates/item-rewrite.v1.md"
+      ]
+    },
+    "diff-comparisons": {
+      "scope": "Diff filters labels, comparison scopes and base resolution",
+      "paths": [
+        "apps/expo/src/components/DiffWorkspace/changes/ChangesNavigator.tsx",
+        "apps/expo/src/components/DiffWorkspace/changes/DiffFiltersSheet.tsx",
+        "server/lib/git-comparison.ts"
+      ]
+    },
+    "closing": {
+      "scope": "Close controls, opt-in worktree deletion, blocked deletion and asynchronous cleanup notices",
+      "paths": [
+        "apps/expo/src/components/SessionItem/sessionActions.tsx",
+        "apps/expo/src/components/CloseSessionModal/index.tsx",
+        "apps/expo/src/components/CloseSessionModal/CloseSessionDialog.tsx",
+        "apps/expo/src/components/CloseSessionModal/summary.ts",
+        "apps/expo/src/store/closeSession/thunks.ts",
+        "apps/expo/src/store/closeSession/reportCloseOutcome.ts",
+        "server/routes/session-lifecycle.ts",
+        "server/lib/worktree-cleanup-service.ts"
+      ]
+    },
+    "diagnostics": {
+      "scope": "Read-only status endpoint and serverVersion/protocolVersion response fields",
+      "paths": [
+        "server/index.ts",
+        "server/lib/server-status.ts"
+      ]
     }
-  }
+  },
+  "runtimeObservations": [
+    {
+      "date": "2026-09-13",
+      "serverVersion": "fafd783ee5e0",
+      "protocolVersion": 2,
+      "scope": "Read-only GET /api/status confirmed version fields. Walked New session \u2192 documentation project \u2192 Current checkout \u2192 Codex. Observed Full Auto checked and Start session available; captured only the provider panel at desktop and mobile widths. No session was started. This differs from the source revision; approval behavior and installation were not exercised.",
+      "method": "Local HTTPS request and isolated browser with mutating API requests blocked.",
+      "captures": [
+        {
+          "path": "public/images/codex-launch-desktop.png",
+          "sha256": "eefa7ca4d03d8dbc724c614344c47cf805aa80623ccbacdbd0269390698f4142",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "deviceScaleFactor": 2,
+          "crop": "Actual provider settings panel; surrounding projects and conversations excluded. No retouching."
+        },
+        {
+          "path": "public/images/codex-launch-mobile.png",
+          "sha256": "bf1aa8f55894e110ad61530e3ae43ebbfc6d77d27916dda615d60a042bf05d41",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 2,
+          "crop": "Actual provider settings panel; surrounding projects and conversations excluded. No retouching."
+        }
+      ]
+    }
+  ]
 }

@@ -72,9 +72,9 @@ test('guides and exports work without JavaScript', async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
   const page = await context.newPage();
   await page.goto('http://127.0.0.1:4322/');
-  await page.locator('main').getByRole('link', { name: 'start your first session', exact: true }).click();
+  await page.locator('main').getByRole('link', { name: 'Start your first session →', exact: true }).click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Start your first session');
-  await expect(page.locator('main')).toContainText('git init');
+  await expect(page.locator('main')).toContainText('git add greeting.mjs');
   await expect(page.locator('pre[data-language="sh"]')).toHaveAttribute('tabindex', '0');
   await expectNoOverflow(page);
   const exported = await context.request.get('http://127.0.0.1:4322/markdown/getting-started/first-session.md');
@@ -98,4 +98,30 @@ test('missing pages offer a useful recovery path', async ({ page }) => {
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Page not found');
   await page.getByRole('link', { name: 'Return to the documentation home' }).click();
   await expect(page).toHaveURL('/');
+});
+
+
+test('article Markdown link exports the current guide', async ({ page, request, isMobile }) => {
+  await page.goto('/reference/agent-permissions/');
+  const link = page.getByRole('link', { name: 'Read as Markdown' });
+  await expect(link).toHaveAttribute('href', '/markdown/reference/agent-permissions.md');
+  const response = await request.get(await link.getAttribute('href') as string);
+  expect(response.ok()).toBe(true);
+  expect(await response.text()).toContain('## Codex');
+  const capture = page.locator('.product-capture img');
+  await capture.scrollIntoViewIfNeeded();
+  await expect.poll(() => capture.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
+  expect(await capture.evaluate((img: HTMLImageElement) => img.currentSrc)).toContain(isMobile ? 'codex-launch-mobile.png' : 'codex-launch-desktop.png');
+  await expect(page.locator('.right-sidebar-container')).toHaveCount(1);
+});
+
+test('home offers clear starting routes without an article contents column', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('.right-sidebar-container')).toHaveCount(0);
+  await expect(page.locator('main')).toContainText('existing Firehose server');
+  await page.locator('main').getByRole('link', { name: 'Review the result', exact: true }).click();
+  await expect(page).toHaveURL('/tools/diff/');
+  await page.locator('main').getByRole('link', { name: 'finish the task', exact: true }).click();
+  await expect(page).toHaveURL('/guides/finish-a-task/');
+  await expect(page.locator('main')).toContainText('Also delete the worktree');
 });

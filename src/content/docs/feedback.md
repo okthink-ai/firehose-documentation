@@ -22,6 +22,8 @@ Environment: [desktop or mobile web, browser, Firehose version if known]
 Suggested correction: [the wording or extra step that would help]
 ```
 
+If you need server version information, follow the [diagnostic steps](/troubleshooting/common-problems/#i-need-to-report-a-problem). If a version is unavailable, say so; the exact control label and error still help.
+
 Remove credentials, private repository content, and personal machine names from examples before sharing them.
 
 ## Request a missing topic
