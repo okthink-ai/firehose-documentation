@@ -93,3 +93,11 @@ repository visibility. No repository license has been selected yet.
 The scoped `smol-toml` override uses 1.8.0 to avoid the malformed-input denial of
 service advisory affecting the version pinned by the Markdown linter. Revisit the
 override when updating the linter.
+
+## Future idea: inline Firehose components
+
+Explore exporting UI components from the Firehose project and embedding them
+inline in documentation pages. Readers could see and try the actual product
+controls beside the instructions, helping examples stay aligned with Firehose.
+This is an idea for later, not an implementation task. No component integration
+is planned for the current work.
