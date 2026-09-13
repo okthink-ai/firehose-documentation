@@ -2,7 +2,7 @@
 title: "Get unstuck"
 description: "Follow concrete checks for connection, project creation, startup, message delivery, and missing changes."
 verified: "2026-09-13"
-evidence: ["connection", "settings", "launch", "chat", "diff", "questions", "project-creation", "diff-comparisons", "session-signals", "diagnostics"]
+evidence: ["connection", "settings", "launch", "chat", "diff", "questions", "project-creation", "diff-comparisons", "session-signals", "diagnostics", "git-refresh", "question-details"]
 ---
 
 Find the symptom you recognize and work through its checks in order. Keep the exact error text so you can tell the server operator what failed.
@@ -43,7 +43,7 @@ If the project was created without an initial commit, configure your normal Git 
 
 ### The button says Loading models
 
-Wait for the selected provider’s model list. Another provider’s slow discovery should not block this selection. If it does not finish, record the selected provider and any visible error; ask the operator to check that provider’s setup on the server.
+While **Loading models** is visible, the selected provider’s list is still being requested. When it finishes, check for model choices or an unavailable-model explanation. Another provider’s slow discovery should not block this selection. If you cannot get a list, send the operator the provider name, displayed message, and whether other providers load. There is no universal wait time that proves failure.
 
 ### The selected model is unavailable
 
@@ -53,7 +53,7 @@ Read the explanation beside the model and choose an available option. The start 
 
 For a new worktree, enter a task or branch name. If the branch already exists, use **Existing branch** or choose a different name for new work.
 
-After **Start session**, read the launch error. If it concerns installation, authentication, or model access, give the provider, model, and error text to the server operator. Retry once the stated cause is resolved; success means the session opens in the intended workspace.
+After **Start session**, read the launch error. If it concerns installation, authentication, or model access, give the provider, model, and error text to the server operator. Ask the operator to confirm a successful launch with that provider/model on the server, then retry **Start session**. Success means the session opens in the intended workspace. If it still fails, include the new error and the operator’s last successful check in your report.
 
 ## My message didn’t reach the agent
 
@@ -64,26 +64,35 @@ After **Start session**, read the launch error. If it concerns installation, aut
 
 **Delivery could not be confirmed** means Firehose cannot establish whether the message arrived. Follow the notice’s terminal-opening control and check whether the message is still in the input box or already in the conversation. If you cannot check, ask the operator rather than repeatedly sending a potentially duplicated request.
 
-If the notice reports that the agent exited, restarted, or rejected input, resolve that session problem first. A network reconnection does not prove an earlier message was delivered.
+If the notice reports that the agent exited or restarted, check whether the selected session still accepts input. If not, open a new session in the intended workspace and explain the unfinished task there. If it reports rejected or partial input, use the terminal-opening control to inspect that input before retrying. A network reconnection does not prove an earlier message was delivered.
+
+### Example: delivery could not be confirmed
+
+Suppose you sent “Run the greeting tests,” then saw **Delivery could not be confirmed**. This is an illustrative incident, not a guarantee of a particular provider response.
+
+1. Look for that request and a response in the selected conversation. If a test result is already present, do not send the request again.
+2. For a Claude session, select **Open Claude Code** when offered. If the request remains unsent in its input box, complete or correct that existing input there; do not also send a second copy from Firehose.
+3. If the message is absent and you can establish it was not sent, resend it once. If you cannot determine the outcome, ask the operator to inspect it, including the notice text and task name.
+4. Check the actual test output after delivery. A disappeared notice alone is not evidence that tests ran.
 
 ## The agent looks inactive
 
 Read the latest response alongside the [session signals](/tools/chat/#read-the-session-signals). **Idle** is not proof the task succeeded. Answer an ordinary question in Chat or use **Questions** for a questionnaire.
 
-For **Stopping...**, allow the stop action to settle. For **Transcript unavailable**, check the server connection and share the status with the operator if it persists. Repeated interruption does not repair unavailable conversation data.
+For **Stopping...**, check whether it changes to **Idle** and whether the latest response acknowledges interruption. If it remains unchanged and you cannot read progress, report that state instead of sending repeated interrupts. For **Transcript unavailable**, check the server connection and share the status with the operator if it persists. Repeated interruption does not repair unavailable conversation data.
 
 ## Questions are still waiting or won’t submit
 
-A clarification request waits for the current turn to finish before delivery. Once questions appear, the set can still be generating. Wait until it is ready and complete the required answers before **Submit to Agent**.
+A clarification request waits for the current turn to finish before delivery. Once questions appear, the set can still be generating. Look for **Your turn**, then complete the required answers before **Submit to Agent**. **Queued** and the generation message describe earlier stages; see [Questions](/tools/questions/#3-answer-when-it-is-your-turn).
 
-Only one unfinished questionnaire is allowed per worktree. Check **Questions** in the existing session before requesting another. If answer delivery fails, resolve the stated cause and retry **Submit to Agent**; a failed delivery leaves the set available.
+Only one unfinished questionnaire is allowed per worktree. Check **Questions** in the existing session before requesting another. If answer delivery fails, confirm the selected session accepts input and follow the delivery checks above before retrying **Submit to Agent**. A failed delivery leaves the set available.
 
 ## I don’t see the expected file changes
 
 1. Check the selected session’s project and branch.
 2. Open **Diff → Changes → Diff filters → Compare**. Select **All changes** for the broad comparison, **Working changes** for uncommitted edits, or **Branch changes** for branch commits.
 3. Clear search, status, and annotation filters that could exclude the file. A new file may still be untracked.
-4. If files changed while you were reading, refresh the comparison.
+4. Click or tap the branch name in the prompt bar to **Refresh git status**. Check for **Refreshing…**, then the updated list. If **Retry** appears after a loading error, select it once and read the resulting list or error.
 
 A committed change no longer appears in Working changes unless it has further edits. If a file shows a size or format limitation, read that message; a missing text preview does not establish that the file is unchanged.
 

@@ -82,7 +82,9 @@
       "scope": "Locally runnable sample and exact expected outputs; agent prose is illustrative",
       "localPaths": [
         "examples/hello-firehose/greeting.mjs",
-        "examples/hello-firehose/greeting.test.mjs"
+        "examples/hello-firehose/greeting.test.mjs",
+        "examples/hello-firehose-result/greeting.mjs",
+        "examples/hello-firehose-result/greeting.test.mjs"
       ]
     },
     "editorial": {
@@ -161,6 +163,62 @@
         "server/index.ts",
         "server/lib/server-status.ts"
       ]
+    },
+    "file-access": {
+      "scope": "Server workspace paths from project/workspace controls; documented shell recipe checked locally in a disposable repository. Remote SSH authentication and operator handoff remain unexercised.",
+      "paths": [
+        "server/lib/project-creation.ts",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/WorktreeStep.tsx"
+      ],
+      "localPaths": [
+        "src/content/docs/getting-started/files-and-terminal.md"
+      ]
+    },
+    "question-details": {
+      "scope": "Depth presets, generation status, captured context, answer message and instruction to proceed immediately after submission; questionnaires are illustrative.",
+      "paths": [
+        "apps/expo/src/components/AskQuestionsModal/askQuestionsCount.ts",
+        "apps/expo/src/components/UserQuestionsPanel/UserQuestionSetStatusRegion.tsx",
+        "server/prompts/templates/user-questions.v1.md",
+        "server/prompts/templates/user-question-answers.v1.md",
+        "server/prompts/user-question-prompts.ts"
+      ]
+    },
+    "context-actions": {
+      "scope": "Managed context reset, provider replacement and Claude terminal clear before review delivery; successful clear resets conversation history, not repository files.",
+      "paths": [
+        "server/lib/review-prompt-delivery.ts",
+        "server/lib/managed-context-actions.ts",
+        "server/lib/agent-manager.ts",
+        "server/routes/reviews.ts"
+      ]
+    },
+    "approval-flow": {
+      "scope": "Codex request titles, available decision labels and submission card; Claude parsed options and terminal fallback. Source and Codex unit checks, not live approval execution.",
+      "paths": [
+        "server/lib/codex-approval.ts",
+        "apps/expo/src/components/PendingApprovalCard/index.tsx",
+        "apps/expo/src/components/ClaudeInteractionCard/PermissionCard.tsx",
+        "apps/expo/src/components/ClaudeInteractionCard/OpenTerminalButton.tsx"
+      ]
+    },
+    "review-scope": {
+      "scope": "Default origin/main review base with origin/master fallback; committed branch comparison; refinement versus rewriting and empty-panel states.",
+      "paths": [
+        "server/routes/reviews.ts",
+        "server/prompts/templates/review.v1.md",
+        "server/prompts/templates/item-refine.v1.md",
+        "server/prompts/templates/item-rewrite.v1.md",
+        "apps/expo/src/components/ReviewPanel/ReviewNavigator.tsx"
+      ]
+    },
+    "git-refresh": {
+      "scope": "Prompt bar branch refresh on web and native; loading and retry indicators in Diff.",
+      "paths": [
+        "apps/expo/src/components/PromptBar/PromptBarView.tsx",
+        "apps/expo/src/components/PromptBar/usePromptBarViewProps.tsx",
+        "apps/expo/src/components/DiffWorkspace/changes/ChangesNavigator.tsx"
+      ]
     }
   },
   "runtimeObservations": [
@@ -192,6 +250,15 @@
           "crop": "Actual provider settings panel; surrounding projects and conversations excluded. No retouching."
         }
       ]
+    }
+  ],
+  "sourceTestObservations": [
+    {
+      "date": "2026-09-13",
+      "revision": "c57391d84f8d5bd198354fecf9c93c7e85418ec3",
+      "command": "pnpm exec vitest run server/lib/codex-approval.test.ts server/prompts/user-question-prompts.test.ts server/lib/managed-context-actions.test.ts apps/expo/src/components/AskQuestionsModal/askQuestionsCount.test.ts",
+      "result": "4 files, 25 tests passed using the source checkout isolated temporary-database setup. No real provider execution.",
+      "limitation": "The optional Claude interactionCards.test.ts permission suite failed before tests ran: happy-dom/Vite externalized Node built-ins. A runner-loader retry also failed at config load because __dirname was undefined. Claude card behavior remains source-inspected; product files were not changed to repair that separate harness."
     }
   ]
 }

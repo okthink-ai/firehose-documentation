@@ -46,6 +46,16 @@ Use fictional data and mark placeholders. Never present an illustrative agent
 response as guaranteed wording. Prefer examples that readers can run in a small
 sample repository without private dependencies.
 
+## Review in three passes
+
+Use the [reader-check worksheet](maintainers/reader-check.md) to record each pass.
+First, a writer checks prerequisites, undefined terms, example starting states,
+and hidden transitions. Second, a product reviewer checks labels and consequences
+against a recorded revision; keep source inspection separate from live observations.
+Third, a new reader attempts the four core tasks without coaching. Record help
+requests and wrong turns, then turn each observed obstacle into an actionable
+issue with a page, proposed change, and acceptance check. Keep unrun passes pending.
+
 ## Review checklist
 
 - The first paragraph says what the reader will accomplish.

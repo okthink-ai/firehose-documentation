@@ -14,7 +14,7 @@
     "check:links": "node scripts/check-links.mjs",
     "check:external": "node scripts/check-links.mjs --external",
     "test:browser": "playwright test",
-    "check:example": "node --test examples/hello-firehose/greeting.test.mjs"
+    "check:example": "node --test examples/hello-firehose/greeting.test.mjs examples/hello-firehose-result/greeting.test.mjs"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "7.3.0",

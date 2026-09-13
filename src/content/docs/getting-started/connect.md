@@ -2,7 +2,7 @@
 title: "Connect to Firehose"
 description: "Open Firehose and connect to the machine that runs your projects and agents."
 verified: "2026-09-13"
-evidence: ["connection", "settings"]
+evidence: ["connection", "settings", "launch"]
 ---
 
 Connect to the machine running Firehose so you can see your projects and start an agent.
@@ -24,6 +24,18 @@ These guides begin with an existing Firehose setup. If you haven’t been given 
 
 If you only have the documentation URL, you still need product access. A public installation walkthrough is not available in these guides yet.
 
+## Operator handoff checklist
+
+If you manage someone’s setup, supply:
+
+- The app address and, for the hosted route, the full server name and network access.
+- The project’s full server path and configured parent directory.
+- A provider/model combination you have used successfully on that server.
+- How the reader can place files and open a terminal, or who will do those steps for them.
+- The support contact and the result of a small session launch and response check.
+
+Have the reader repeat the readiness checks using their own access. Do not send provider credentials in the handoff.
+
 ## Open your existing setup
 
 If you were given a direct Firehose server URL, open that address. A browser served by the server itself uses that server automatically.
@@ -41,6 +53,14 @@ You’ll need both devices connected to the same Tailscale network. The Firehose
 5. Check that your expected projects or sessions appear.
 
 A short machine name or a Tailscale IP address will not work in this form. Use the full name ending in `.ts.net` so it matches the server’s HTTPS certificate.
+
+## Check that your provider is ready
+
+In **New session**, confirm that your project appears, choose its workspace, and select the provider your operator configured. Its model choices should load. After you choose an available model and check permissions, **Start session** should open a session in that workspace.
+
+These are three separate checks: project discovery, model discovery, and session startup. A model list alone does not prove the provider can handle your account’s requests. Complete the [small explanation task](/getting-started/first-session/#3-give-it-a-clear-request) to check an actual response.
+
+If a check fails, give the operator the project name, provider, selected model, exact error, and the last step that worked. See [startup troubleshooting](/troubleshooting/common-problems/#start-session-is-unavailable-or-fails).
 
 ## Use more than one server
 

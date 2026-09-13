@@ -2,7 +2,7 @@
 title: "Use Firehose on mobile web"
 description: "Connect from your phone, read an agent\u2019s progress, and answer in the correct session."
 verified: "2026-09-13"
-evidence: ["connection", "mobile", "chat"]
+evidence: ["connection", "mobile", "chat", "git-refresh", "file-access"]
 ---
 
 Check an agent’s progress and respond from your phone while its work stays on your Firehose server.
@@ -21,11 +21,20 @@ Use the session list to open the task you want to follow. Check the project and 
 
 Read the latest response and visible activity. The workspace tabs can scroll on a narrow screen, so move along the tab row to find views such as **Diff** and **Questions**.
 
+## Find a control on a narrow screen
+
+- Swipe horizontally along the workspace tab row to reach **Questions** or **Diff**.
+- In **Diff → Changes**, use the filter icon labeled **Diff filters** to reach **Compare**. A narrower layout may show one pane at a time; use the visible back control to return to the file list.
+- Tap the branch name in the prompt bar to refresh Git status. On desktop, its hover text is **Refresh git status**; phones do not require hovering.
+- Use the session header’s three-dot menu for **Interrupt**. Do not confuse it with the documentation site’s navigation menu.
+
+For the practice file, use the [operator-assisted file route](/getting-started/files-and-terminal/#ask-your-operator-to-place-the-file) if you do not have a terminal connection to the server.
+
 ## Respond or redirect
 
 Use the chat input for a follow-up, or open **Questions** to answer a structured questionnaire. Check the selected session before submitting answers.
 
-If you need to stop the current turn, open the session header’s menu and select **Interrupt**. Read the interrupted result before sending the replacement instruction.
+If you need to stop the current turn, open the session header’s menu and select **Interrupt**. Look for **Stopping...**, then check the last response when the session settles. If the state does not change and progress is unreadable, report it rather than repeatedly interrupting.
 
 ## Return later
 

@@ -10,6 +10,8 @@ State what the reader will accomplish and when this guide is useful.
 ## Before you begin
 
 List the access, setup, and files needed. Explain unfamiliar terms briefly.
+State the example’s current behavior, input contract, workspace, required files,
+and whether changes are committed. Explain any terminal or file-transfer transition.
 
 ## Complete the task
 

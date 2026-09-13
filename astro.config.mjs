@@ -31,7 +31,7 @@ export default defineConfig({
       },
       sidebar: [
         { label: 'Welcome', slug: 'index' },
-        { label: 'Start', items: ['getting-started/connect', 'getting-started/first-session', 'what-you-can-do'] },
+        { label: 'Start', items: ['getting-started/connect', 'getting-started/first-session', 'getting-started/files-and-terminal', 'what-you-can-do'] },
         { label: 'Work with agents', items: ['guides/workspaces', 'tools/chat', 'tools/questions', 'guides/explain-code', 'guides/make-a-change', 'guides/mobile'] },
         { label: 'Review results', items: ['tools/diff', 'tools/smart-review', 'guides/finish-a-task'] },
         { label: 'Reference and help', items: ['tools/overview', 'reference/agent-permissions', 'reference/settings', 'reference/glossary', 'troubleshooting/common-problems', 'feedback'] },

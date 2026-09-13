@@ -21,10 +21,12 @@ maintainer can assign people when scheduling the work.
 
 ## Follow up on the critique
 
-The [implementation record](critique-implementation.md) maps delivered changes and bounded follow-up tasks. The permission control capture and server diagnostic endpoint were observed on the running installation; full task outcomes still need the release walkthrough.
+The [first implementation record](critique-implementation.md) covers the earlier critique. The [clarity implementation](clarity-implementation.md) maps the current critique, and the [reader-check worksheet](reader-check.md) defines the remaining observation tasks. The permission control capture and server diagnostic endpoint were observed on the running installation; full task outcomes still need the release walkthrough.
 
 | Priority | Work | Owner role | Done when |
 | --- | --- | --- | --- |
+| Next | Observe short and long questionnaires | Product maintainer | Quick and Thorough examples record actual questions, submission message, continuation, and failure recovery on a disposable task |
+| Next | Verify remote file placement | Product maintainer | An operator-provided SSH account copies the sample into the correct workspace and the local/remote/phone handoff routes complete |
 | Next | Exercise provider approvals | Product maintainer | Each documented provider is installed/authenticated and enabled/disabled behavior is observed on a disposable task |
 | Next | Capture review dispatch and Diff comparisons | Documentation maintainer | A fictional sample has committed and working edits plus an actual review finding; desktop/mobile captures show the verified decisions without private data |
 | Next | Exercise close and lifecycle outcomes | Product maintainer | Retain/delete worktree, interrupted turn, reload, browser close, server sleep, and session restoration have recorded outcomes |

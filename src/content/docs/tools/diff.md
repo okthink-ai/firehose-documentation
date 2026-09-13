@@ -2,7 +2,7 @@
 title: "Review changes with Diff"
 description: "Choose the right comparison, inspect changed lines, and decide what to fix next."
 verified: "2026-09-13"
-evidence: ["diff", "diff-comparisons"]
+evidence: ["diff", "diff-comparisons", "git-refresh"]
 ---
 
 Inspect the changes in your session’s repository before accepting an agent’s result. Start by choosing the question you want the diff to answer.
@@ -57,7 +57,7 @@ Open **Commits** to browse branch commits. Select a commit, then a file, to insp
 
 Check the selected comparison first. Then clear any search, status, or annotation filter excluding that file. A committed fix will not appear in **Working changes** once no further edits remain. A new test file may still be untracked.
 
-If the repository changes while you read, refresh the comparison before deciding. See [diff troubleshooting](/troubleshooting/common-problems/#i-dont-see-the-expected-file-changes) if the result still differs from what you expect.
+If the repository changes while you read, click or tap the branch name in the prompt bar to **Refresh git status**. The file list can show **Refreshing…** while it updates. If loading fails and **Retry** appears, select it and check for files or an error before deciding. See [diff troubleshooting](/troubleshooting/common-problems/#i-dont-see-the-expected-file-changes) if the result still differs from what you expect.
 
 ## Turn the review into a follow-up
 
@@ -68,4 +68,4 @@ The diff adds a fallback name. Show the checks for an empty string,
 spaces only, and a nonblank name. Report which checks you ran.
 ```
 
-Use [Smart Review](/tools/smart-review/) for another assessment, or [finish the task](/guides/finish-a-task/) when the changes and checks meet your request.
+For committed branch work with a usable review base, use [Smart Review](/tools/smart-review/) for another assessment. For the standalone practice repository, [finish the task](/guides/finish-a-task/) when the changes and checks meet your request.

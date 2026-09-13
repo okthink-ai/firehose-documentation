@@ -11,7 +11,9 @@ Start an agent and ask it to explain a small piece of code. You’ll finish with
 
 [Connect to your Firehose server](/getting-started/connect/) and have an available agent provider on that machine. A provider is the agent system, such as Claude or Codex, that handles your requests.
 
-**Already have a Git repository on the server?** [Skip to choosing your workspace](#2-choose-where-the-agent-works). Adapt the example request to a small file you know. The practice route below also needs Git and Node.js on the server.
+**Practice route:** start without an existing `hello-firehose` project. Step 1 creates it; then add and commit the original `greeting.mjs`. Inputs are strings only. Blank strings initially produce `Hello, !`. You do not need the test file until the change guide. Before creating the project, choose a [file and terminal access route](/getting-started/files-and-terminal/). If you only have browser access, arrange operator help first.
+
+**Already have a Git repository on the server?** [Skip to choosing your workspace](#2-choose-where-the-agent-works). Use the [own-project adaptation](/guides/explain-code/#use-your-own-project) to choose a small file and a result you can verify. The practice route below also needs Git and Node.js on the server.
 
 ## 1. Prepare a practice project
 
@@ -29,6 +31,8 @@ If no project directory is configured, open **Settings → Project directories**
 If the name already exists, choose that project or use another name. If creation reports no initial commit, configure your usual Git name and email on the server, then commit the README before using branch or worktree workflows.
 
 ### Add the example file
+
+**Need help placing the file or opening a terminal?** Follow [Put files in the right workspace](/getting-started/files-and-terminal/). If you only have browser access, arrange the operator-assisted route before this step.
 
 On the server machine, save [greeting.mjs](/examples/hello-firehose/greeting.mjs) inside `hello-firehose`. If your browser downloaded it to another computer, copy it to the server’s project directory. Its contents are:
 
@@ -64,7 +68,7 @@ Turning Codex’s **Full Auto** off uses workspace restrictions and the provider
 
 A request such as “Do not change files” expresses your task’s constraints; it does not change these permission settings.
 
-**Expected result:** your session opens in the selected workspace. If the button says **Loading models**, wait for that provider’s list. If a model is unavailable or launch fails, follow [startup troubleshooting](/troubleshooting/common-problems/#start-session-is-unavailable-or-fails).
+**Expected result:** your session opens in the selected workspace. If the button says **Loading models**, the choices are still being fetched; continue when model choices appear. If a model is unavailable or launch fails, follow [startup troubleshooting](/troubleshooting/common-problems/#start-session-is-unavailable-or-fails).
 
 ## 3. Give it a clear request
 

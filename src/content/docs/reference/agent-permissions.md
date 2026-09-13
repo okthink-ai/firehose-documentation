@@ -2,7 +2,7 @@
 title: "Choose agent permissions"
 description: "Understand the launch controls for Claude, Codex, and Antigravity before starting a session."
 verified: "2026-09-13"
-evidence: ["permissions", "launch"]
+evidence: ["permissions", "launch", "approval-flow"]
 ---
 
 Decide what a new agent session may do before you start it. Permissions affect file changes and commands; they are separate from which model you choose.
@@ -31,8 +31,10 @@ Do not assume turning it off makes every operation require approval. The provide
 
 | Full Auto | What Firehose requests |
 | --- | --- |
-| Enabled | No approval requests and full access outside the workspace sandbox |
-| Disabled | Workspace write restrictions and approvals requested when the provider needs them; turn-level network access is disabled |
+| Enabled | Commands can run without approval requests and without the provider’s workspace restrictions. The agent may access files beyond the selected project, subject to the server account’s permissions. |
+| Disabled | The provider limits file writes to its allowed workspace area. Its **on-request** policy lets it ask for permission when needed; this is not a prompt before every command. Firehose also requests network access to be disabled for the turn. |
+
+The **workspace sandbox** is the provider’s set of restrictions on where commands can write and what they can access. Network restrictions can matter for tasks such as downloading dependencies; read the actual provider message rather than assuming every failure is a permission problem.
 
 These controls change the provider’s permissions, not the operating system permissions of the account running it. A prompt asking for a read-only explanation does not itself switch the sandbox or approval policy.
 
@@ -50,6 +52,34 @@ Review both the mode and **Full Auto**. Choosing an editing mode is not a substi
 ## Other providers
 
 Grok, Kimi, and Pi display **Full Auto**. Their provider-specific approval behavior is not covered by this guide yet. Ask the person configuring that provider to confirm its behavior before using it for a task that depends on approval boundaries.
+
+## Respond to an approval request
+
+Approval is a separate decision from answering a question about what to build. In **Chat**, read the requested action, target files or directory, reason, and the scope of each offered response before selecting it.
+
+### Codex example
+
+A command approval card can be titled **Approve command execution**. It can show **Command**, **Directory**, and **Reason**. For a provider request offering these choices:
+
+| Response | Meaning |
+| --- | --- |
+| **Accept** | Allow this request once |
+| **Accept For Session** | Allow matching requests for the rest of this session |
+| **Decline** | Reject this request |
+
+These options come from the provider; not every request offers all three. A generic approval card can instead offer **Approve** and **Deny**. Read the actual option descriptions.
+
+Suppose a request asks to run a command in a directory outside your intended project. Choose the rejection option if that scope is wrong, then explain the correct directory in Chat. If the command and scope match your task and you want to allow only this request, choose the one-time option when offered. Selecting a button sends the decision immediately.
+
+After a successful submission, the pending card is removed. Check the next response or command result: accepting a request permits an attempt; it does not establish that the command succeeded. If **Failed to submit approval decision** appears, the submission failed and the card remains available. Check the connection and the current request before trying again.
+
+This example explains the implemented card and request contract; it is not a recorded live command execution.
+
+### Claude example
+
+A **Permission requested** card shows Claude’s actual parsed options. Selecting an available option submits it immediately; a **Persists this session** badge identifies wording about a lasting choice. If an explanation field is available, type your response there and select **Submit**.
+
+If the card says the permission can only be answered in the terminal, select **Open Claude Code** and answer the current prompt there. Do not look for an invented universal Allow button. Check the response afterward before repeating your decision.
 
 ## Check your choice
 
