@@ -71,6 +71,7 @@ The checked-in CI files run validation only; they do not publish anything.
 | [Product inventory](maintainers/product-inventory.md) | Coverage and unresolved product questions |
 | [Maintenance backlog](maintainers/backlog.md) | Remaining review and release work |
 | [Validation record](maintainers/validation.md) | Completed checks and practical limits |
+| [Documentation critique](maintainers/documentation-critique.md) | User context gaps, design references, and actionable improvements |
 | [Page template](templates/guide.md) | Starting point for a task guide |
 | [Example project](examples/hello-firehose/README.md) | Runnable quickstart fixture |
 | [Original plan](PLAN.md) | Documentation goals and delivery approach |
