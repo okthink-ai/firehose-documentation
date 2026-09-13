@@ -1,6 +1,6 @@
 # Implement the documentation critique
 
-Use this record to review the changes delivered from the [critique](documentation-critique.md) and schedule the remaining product walkthroughs. Implementation date: September 13, 2026. Work remains local.
+This historical record covers changes delivered from the previous critique on September 13, 2026. That critique has been replaced by a [fresh assessment](documentation-critique.md) of the resulting guides. The completed changes and remaining product walkthroughs below belong to the earlier implementation. Work remains local.
 
 ## Delivered changes
 

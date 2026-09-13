@@ -1,6 +1,6 @@
 # Source audit for the documentation critique
 
-Use this record to distinguish confirmed implementation from recommendations that still need a product walkthrough. Read the [revised critique](documentation-critique.md) for priorities and design changes.
+This historical audit supported the previous critique and its implementation. That critique has been replaced by a [fresh assessment](documentation-critique.md) of the current guides. Retain this record as evidence for the earlier findings; it is not a source audit of the new critique.
 
 Checked on 2026-09-13 against `~/code/okthink/firehose-worktrees/main`, revision `c57391d84f8d5bd198354fecf9c93c7e85418ec3`. Source paths below are relative to that checkout, not this documentation repository. Symbols identify implementation without depending on local absolute links. Feature worktrees were not treated as released behavior. The source checkout was inspected without modification; its installer, agents, and tests were not run.
 
