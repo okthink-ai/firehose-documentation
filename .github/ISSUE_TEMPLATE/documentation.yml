@@ -1,0 +1,26 @@
+name: Documentation correction
+description: Report an unclear step, incorrect instruction, or broken example.
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page and step
+      description: Include the page title or URL and the step you followed.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Expected and actual result
+      description: Include the visible error, if any. Remove secrets and private content.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Desktop or mobile web, browser, and Firehose version if known.
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested correction

@@ -1,0 +1,19 @@
+name: External documentation links
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 10 * * 1'
+permissions:
+  contents: read
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci --include=dev
+      - run: npm run build
+      - run: npm run check:external

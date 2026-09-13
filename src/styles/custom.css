@@ -1,0 +1,37 @@
+:root {
+  --sl-color-accent-low: #3d2015;
+  --sl-color-accent: #e97440;
+  --sl-color-accent-high: #ffc6a9;
+  --sl-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --sl-content-width: 48rem;
+  --sl-text-body: 1.0625rem;
+}
+:root[data-theme='light'] {
+  --sl-color-accent-low: #fff0e6;
+  --sl-color-accent: #a83c14;
+  --sl-color-accent-high: #772b10;
+  --sl-color-white: #242321;
+  --sl-color-gray-1: #34312e;
+  --sl-color-gray-2: #4d4842;
+  --sl-color-gray-3: #6e665e;
+  --sl-color-gray-4: #999187;
+  --sl-color-gray-5: #e4dfd7;
+  --sl-color-gray-6: #f6f4ef;
+  --sl-color-black: #fffefb;
+}
+.site-title { font-weight: 800; letter-spacing: -0.055em; }
+h1 { letter-spacing: -0.04em; line-height: 1.12; }
+h2, h3 { letter-spacing: -0.025em; }
+.sl-markdown-content { line-height: 1.8; }
+.sl-markdown-content > p:first-child { font-size: 1.2rem; color: var(--sl-color-gray-2); }
+.sl-markdown-content a { text-underline-offset: 0.2em; }
+.sl-markdown-content table { font-size: 0.95rem; }
+.sl-markdown-content pre { max-width: 100%; }
+.docs-footer { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--sl-color-gray-5); font-size: 0.875rem; }
+.docs-footer a { color: var(--sl-color-text-accent); text-underline-offset: 0.2em; }
+.docs-footer p { color: var(--sl-color-gray-2); }
+.docs-footer nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; margin-top: 0.6rem; }
+:focus-visible { outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; }
+}

@@ -1,0 +1,96 @@
+{
+  "verified": "2026-09-13",
+  "repository": "okthink-ai/agent-manager",
+  "revision": "c57391d84f8d5bd198354fecf9c93c7e85418ec3",
+  "method": "Source inspection of the local main checkout. No live Firehose UI walkthrough or release-install validation was performed. Website browser checks are separate.",
+  "entries": {
+    "launch": {
+      "scope": "Current session wizard, workspace choices, model loading and launch controls",
+      "paths": [
+        "apps/expo/src/components/Sidebar/SidebarHeader.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/navigation.ts",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/ProjectStep.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/CheckoutStep.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/WorktreeStep.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/BranchStep.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/ProviderStep.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/WizardFooter.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/providerSettings/registry.tsx"
+      ]
+    },
+    "connection": {
+      "scope": "Hosted connection prerequisites, tab independence, switching versus forgetting and version warnings",
+      "paths": [
+        "docs/hosted-web.md",
+        "apps/expo/src/serverConnection/serverTransportPolicy.ts",
+        "apps/expo/src/components/ServerConnectionScreen/serverConnectionFormRules.ts"
+      ]
+    },
+    "settings": {
+      "scope": "Project directories and server settings labels",
+      "paths": [
+        "apps/expo/src/components/SettingsPanel/ProjectDirectoriesSection.tsx",
+        "apps/expo/src/components/SettingsPanel/ServerSettingsSection.tsx",
+        "apps/expo/src/components/SettingsPanel/TailscaleHttpsSection.tsx"
+      ]
+    },
+    "chat": {
+      "scope": "Chat labels, send and queue controls, interruption, visible session activity",
+      "paths": [
+        "apps/expo/src/components/ChatInput/ChatInputView.tsx",
+        "apps/expo/src/components/ChatInput/index.tsx",
+        "apps/expo/src/components/ChatInput/deliveryFailureText.ts",
+        "apps/expo/src/components/ChatView/ChatTabs.tsx",
+        "apps/expo/src/components/ChatView/MobileSessionHeader.tsx",
+        "apps/expo/src/components/SessionItem/SessionItemBody.tsx"
+      ]
+    },
+    "diff": {
+      "scope": "Changes, Commits, comparisons, Code, bounded file previews and stale data",
+      "paths": [
+        "docs/diff-panel.md",
+        "apps/expo/src/components/DiffWorkspace/index.tsx",
+        "apps/expo/src/components/DiffWorkspace/file-detail/FileDiffToolbar.tsx"
+      ]
+    },
+    "questions": {
+      "scope": "Questionnaire launch labels, queueing, submission target, delivery failure and deletion",
+      "paths": [
+        "docs/smart-user-questions.md",
+        "apps/expo/src/components/AskQuestionsModal/index.tsx",
+        "apps/expo/src/components/shared/AskQuestionsButton.tsx",
+        "apps/expo/src/components/UserQuestionsPanel/UserQuestionSetActions.tsx"
+      ]
+    },
+    "review": {
+      "scope": "Review entry point, focus prompt, finding sections, comments and status checks",
+      "paths": [
+        "apps/expo/src/components/ReviewPanel/ReviewNavigator.tsx",
+        "apps/expo/src/components/ReviewPanel/ReviewItemDetail.tsx",
+        "apps/expo/src/components/FocusAreasModal/index.tsx",
+        "apps/expo/src/components/ChatView/ChatTabs.tsx"
+      ]
+    },
+    "mobile": {
+      "scope": "Mobile interrupt control and scrollable workspace tabs",
+      "paths": [
+        "apps/expo/src/components/ChatView/MobileSessionHeader.tsx",
+        "apps/expo/src/components/ChatView/ChatTabs.tsx"
+      ]
+    },
+    "example": {
+      "scope": "Locally runnable sample and exact expected outputs; agent prose is illustrative",
+      "localPaths": [
+        "examples/hello-firehose/greeting.mjs",
+        "examples/hello-firehose/greeting.test.mjs"
+      ]
+    },
+    "editorial": {
+      "scope": "Documentation navigation, feedback process and generated text exports",
+      "localPaths": [
+        "scripts/export-docs.mjs",
+        "CONTRIBUTING.md"
+      ]
+    }
+  }
+}
