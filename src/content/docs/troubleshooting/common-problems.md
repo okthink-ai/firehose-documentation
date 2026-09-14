@@ -60,7 +60,7 @@ After **Start session**, read the launch error. If it concerns installation, aut
 1. Read the delivery notice and confirm the selected session.
 2. Check the conversation for your message before resending.
 3. If you chose **Queue after current turn**, wait for that turn to finish.
-4. If delivery failed because an attachment is unavailable, attach the file again before resending.
+4. If delivery failed because an attachment is unavailable, [attach the file again](/tools/attachments/) before resending.
 
 **Delivery could not be confirmed** means Firehose cannot establish whether the message arrived. Follow the notice’s terminal-opening control and check whether the message is still in the input box or already in the conversation. If you cannot check, ask the operator rather than repeatedly sending a potentially duplicated request.
 
@@ -95,6 +95,10 @@ Only one unfinished questionnaire is allowed per worktree. Check **Questions** i
 4. Click or tap the branch name in the prompt bar to **Refresh git status**. Check for **Refreshing…**, then the updated list. If **Retry** appears after a loading error, select it once and read the resulting list or error.
 
 A committed change no longer appears in Working changes unless it has further edits. If a file shows a size or format limitation, read that message; a missing text preview does not establish that the file is unchanged.
+
+## The agent changed the wrong thing
+
+Use [Recover from an unwanted change](/guides/recover-changes/) to stop additional edits, distinguish them from existing work, and request a targeted correction. If the changes belong to a session you left earlier, [check the saved workspace and latest result](/guides/return-to-work/) before restarting the task.
 
 ## I need to report a problem
 

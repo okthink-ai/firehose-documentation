@@ -36,4 +36,6 @@ A **provider** is the agent system you choose when starting a session, such as C
 
 [Understand unfamiliar code](/guides/explain-code/) before asking for a [small change](/guides/make-a-change/). Use [Questions](/tools/questions/) to clarify decisions, [Smart Review](/tools/smart-review/) for another assessment, and the [finish-task checklist](/guides/finish-a-task/) before closing a session.
 
+For ongoing project work, [prepare the environment](/guides/prepare-project/), [complete a browser task](/guides/project-workflow/), or [coordinate several sessions](/guides/parallel-sessions/). Learn how to [recover unwanted edits](/guides/recover-changes/) and [return to a task later](/guides/return-to-work/).
+
 If something doesn’t match what you expect, [find your symptom](/troubleshooting/common-problems/). The [tool guide](/tools/overview/) and [glossary](/reference/glossary/) are here when you need them.

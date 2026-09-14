@@ -19,13 +19,17 @@ Start a session in the intended directory, describe the expected behavior, and a
 
 Try: “Make blank names display Hello, guest! Keep the existing behavior for nonblank names.” Follow [make and review a change](/guides/make-a-change/).
 
+## Work in an application
+
+[Prepare the project](/guides/prepare-project/) by checking setup and existing failures. Then [complete a browser task](/guides/project-workflow/) from reproducing a visible problem through inspecting a local commit. Adapt the same sequence to your app's commands and acceptance checks.
+
 ## Clarify a task before starting
 
 Use **ask me questions** to have an agent inspect the project and prepare a questionnaire. Answer it in **Questions**, then send the answers to the session that should do the work. See [clarifying questions](/tools/questions/).
 
 ## Follow several sessions
 
-Use the sidebar to move between projects and sessions. Read each conversation’s latest response and activity before deciding whether to answer, redirect, or review. [Chat and follow-ups](/tools/chat/) explains how to continue a task.
+Use the sidebar to move between projects and sessions. Read each conversation’s latest response and activity before deciding whether to answer, redirect, or review. [Coordinate several sessions](/guides/parallel-sessions/) explains how to divide work, respond to the right agent, and combine results.
 
 ## Review the result
 

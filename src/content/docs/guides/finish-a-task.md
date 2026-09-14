@@ -34,7 +34,7 @@ Identify changes that are not committed yet.
 Do not commit, push, or create a pull request.
 ```
 
-Closing a Firehose session does not itself commit, push, merge, or approve its changes.
+Closing a Firehose session does not itself commit, push, merge, or approve its changes. For a concrete path from a reviewed diff to a local commit and an explicit next-step decision, follow [Complete a browser task](/guides/project-workflow/#4-request-and-inspect-a-local-commit).
 
 ### Example handoff
 

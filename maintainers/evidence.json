@@ -219,6 +219,76 @@
         "apps/expo/src/components/PromptBar/usePromptBarViewProps.tsx",
         "apps/expo/src/components/DiffWorkspace/changes/ChangesNavigator.tsx"
       ]
+    },
+    "project-setup": {
+      "scope": "Workspace creation is separate from general project provisioning; specific Expo environment copy helper is not a generic setup guarantee. Preparation advice is an editorial workflow.",
+      "paths": [
+        "server/lib/worktree-crud.ts"
+      ],
+      "localPaths": [
+        "src/content/docs/guides/prepare-project.md"
+      ]
+    },
+    "commit-action": {
+      "scope": "Commit dropdown groups status files and dispatches a provider action or message; no per-file checkboxes. Explicit scoped Chat commits are an editorial workflow, not an atomic commit guarantee.",
+      "paths": [
+        "apps/expo/src/components/shared/CommitButton.tsx",
+        "apps/expo/src/components/PromptBar/usePromptBarViewProps.tsx"
+      ]
+    },
+    "browser-example": {
+      "scope": "Standalone original and completed greeting forms; browser-tested inputs, keyboard submission and safe text output. No live agent-generated change or commit claimed.",
+      "localPaths": [
+        "examples/hello-form/index.html",
+        "examples/hello-form-result/index.html",
+        "tests/examples.spec.ts"
+      ]
+    },
+    "attachments": {
+      "scope": "Picker labels, upload status, staging notice and Git ignore action; provider content/path handling, retained delivery copies, and worktree lifecycle.",
+      "paths": [
+        "apps/expo/src/components/ChatInput/AttachmentPickerMenu.tsx",
+        "apps/expo/src/components/ChatInput/ProjectFileChip.tsx",
+        "apps/expo/src/components/ChatInput/AttachmentStagingNoticeModal.tsx",
+        "apps/expo/src/components/ChatInput/hooks/useProjectFileAttachments.ts",
+        "server/routes/images.ts",
+        "server/lib/prompt-attachments.ts",
+        "server/lib/provider-capabilities.ts",
+        "server/routes/session-lifecycle.ts"
+      ]
+    },
+    "terminal": {
+      "scope": "Drawer and shell controls, cwd selection, shell access warning, separate tab termination, authorization error, and detached terminal cleanup. Source-checked; live terminal mutation not exercised.",
+      "paths": [
+        "apps/expo/src/components/Terminal/NewTerminalSheet.tsx",
+        "apps/expo/src/components/Terminal/TerminalTabBar.tsx",
+        "apps/expo/src/components/Terminal/TerminalDrawer.tsx",
+        "apps/expo/src/components/Terminal/TerminalAccessWarning.tsx",
+        "apps/expo/src/components/PromptBar/usePromptBarViewProps.tsx",
+        "server/ws/terminal-handler.ts",
+        "server/lib/terminal-manager.ts",
+        "apps/expo/src/components/ChatView/useTerminalLauncher.ts"
+      ]
+    },
+    "provider-usage": {
+      "scope": "Provider capability differences, reported footer usage windows/details, and context window display. Does not verify billing prices, financial caps, or external account retention policies.",
+      "paths": [
+        "server/lib/provider-capabilities.ts",
+        "apps/expo/src/lib/providerUiConfig.ts",
+        "apps/expo/src/components/FooterMonitor/presenter.tsx",
+        "apps/expo/src/components/shared/ContextBadge.tsx"
+      ]
+    },
+    "persistence": {
+      "scope": "Managed restoration from persisted session information/history, per-server client state and forgetting. No guarantee of uninterrupted commands or uniform provider restart outcomes.",
+      "paths": [
+        "server/lib/managed-session-registry.ts",
+        "server/lib/managed-session-lifecycle.ts",
+        "server/lib/managed-history.ts",
+        "apps/expo/src/serverConnection/serverConnectionPersistence.ts",
+        "apps/expo/src/serverConnection/serverConnectionLifecycle.ts",
+        "server/routes/session-lifecycle.ts"
+      ]
     }
   },
   "runtimeObservations": [

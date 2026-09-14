@@ -38,4 +38,4 @@ A result may use an existing checkout or create a worktree from the selected bra
 
 Use descriptive names and check the branch when switching sessions. Sessions in the same directory share files, so changes from one can affect another.
 
-A worktree separates directories; it does not promise isolation for services, databases, or other resources outside the repository. Include any task-specific setup in the request you give the agent.
+A worktree separates directories; it does not promise isolation for services, databases, or other resources outside the repository. Include any task-specific setup in the request you give the agent. [Prepare each project workspace](/guides/prepare-project/) before implementation, then use [Coordinate several sessions](/guides/parallel-sessions/) to assign work and review the results.

@@ -22,7 +22,11 @@ walkthrough or a declaration of general availability in every release.
 | Mobile web | Scrollable workspace tabs and header interrupt | Mobile guide; product device walkthrough pending |
 | Provider options | Launch defaults, Claude bypass flag, Codex sandbox/approval mapping, Antigravity controls | Permission reference includes source-checked approval cards; installation/authentication and live approvals pending |
 | Agent Team Chat, X-Ray, Timeline | Tab entry points found in current UI | Full workflows pending verification |
-| Terminal, voice, attachments, issue workflows | Internal documents or components exist | Full workflows pending verification |
+| Terminal | Shell/kind/cwd controls, warnings, drawer versus tab close, detached cleanup | Terminal guide; live command and reconnect walkthrough pending |
+| Attachments | Picker, staging, upload/removal, ignore action and delivery retention | Attachment and data guides; live upload/delivery pending |
+| Usage and context | Provider footer window indicators and context menu | Provider guide; actual billing and spending controls unverified |
+| Session persistence | Managed restore and browser-state storage paths | Return-to-work guide; live provider restart matrix pending |
+| Voice and issue workflows | Internal documents or components exist | Full workflows pending verification |
 | Installation and upgrades | Source README still includes private package prerequisites | Public installation route pending verification |
 
 Do not carry historical limitations from `docs/worktrees.md` in the source repo

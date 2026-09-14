@@ -72,6 +72,8 @@ The checked-in CI files run validation only; they do not publish anything.
 | [Maintenance backlog](maintainers/backlog.md) | Remaining review and release work |
 | [Validation record](maintainers/validation.md) | Completed checks and practical limits |
 | [Critique implementation](maintainers/critique-implementation.md) | Completed improvements, validation, and remaining product walkthroughs |
+| [Project workflow implementation](maintainers/workflow-implementation.md) | Expanded project journey, everyday tools, recovery, and verification limits |
+| [Browser example](examples/hello-form/README.md) | Standalone form with original and completed browser-tested states |
 | [Clarity implementation](maintainers/clarity-implementation.md) | Current critique changes, evidence, and remaining reader validation |
 | [Reader check](maintainers/reader-check.md) | Three review passes and an uncoached task worksheet |
 | [Completed example](examples/hello-firehose-result/README.md) | Reference result with four greeting cases |

@@ -12,7 +12,7 @@ maintainer can assign people when scheduling the work.
 | Next | Walk through core guides in the current Firehose release | Product maintainer | Exact controls, outcomes, and recovery steps have been exercised; evidence records the release |
 | Next | Test the quickstart with a new reader | Documentation maintainer | Reader finishes without coaching; hesitations lead to concrete edits |
 | Next | Verify public installation and upgrade route | Product maintainer | Access, supported platforms, provider setup, and upgrade steps work from a clean environment |
-| Next | Finish tool inventory | Product maintainer | Team Chat, X-Ray, Timeline, terminal, attachments, voice, and issue workflows have verified task paths |
+| Next | Finish tool inventory | Product maintainer | Team Chat, X-Ray, Timeline, voice, and issue workflows have verified task paths; terminal and attachment guides have live validation |
 | Later | Add focused guides for remaining tools | Documentation maintainer | Each has prerequisites, an example, expected output, limits, and recovery |
 | Later | Test the Firehose mobile workflow on a real device | Product maintainer | Connection, session switching, input, questions, and diff review work on the target release |
 | Deferred | Decide repository licensing | Project owner | User chooses terms for docs, code examples, and assets; applicable license files are added |
@@ -20,6 +20,8 @@ maintainer can assign people when scheduling the work.
 | Deferred | Configure site URL, sitemap, redirects and hosting | Project owner | Hosting is requested; domain and release workflow are agreed and verified |
 
 ## Follow up on the critique
+
+The [project workflow implementation](workflow-implementation.md) covers the latest critique and defines the remaining tool, persistence, account, and reader checks.
 
 The [first implementation record](critique-implementation.md) covers the earlier critique. The [clarity implementation](clarity-implementation.md) maps the current critique, and the [reader-check worksheet](reader-check.md) defines the remaining observation tasks. The permission control capture and server diagnostic endpoint were observed on the running installation; full task outcomes still need the release walkthrough.
 

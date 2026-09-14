@@ -58,6 +58,19 @@ independently. Do not introduce an artificial speed target.
 Include a narrow-screen attempt to locate tabs, Diff comparison controls, and
 refresh. If that device is unavailable, mark the mobile observation pending.
 
+## Extend the exercise to an ongoing project
+
+After the four core tasks, use the browser form or an approved disposable app.
+Ask the reader to identify setup requirements and existing edits, reproduce the
+visible bug, check all four form inputs and Enter submission, request a scoped
+local commit, and inspect its files. Introduce a known unrelated edit and check
+that the recovery request preserves it. Keep publication outside this exercise.
+
+Record a separate attempt at opening a terminal in the correct workspace and
+attaching a fictional screenshot. Have the reader predict where the attachment
+is stored and what closing or forgetting removes. A failed prediction becomes a
+specific documentation issue. These additional reader observations are pending.
+
 ## Record obstacles and turn them into changes
 
 Copy a row for each hesitation, wrong turn, missing explanation, or help request.

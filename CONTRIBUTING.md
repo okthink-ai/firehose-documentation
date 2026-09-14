@@ -31,7 +31,9 @@ separately. Keep uncertain instructions in the backlog until verified.
 
 Copy [the guide template](templates/guide.md) into `src/content/docs/`. Use a short,
 descriptive filename; it becomes the page URL. Add the page to `astro.config.mjs`
-and the content map. Keep headings descriptive and URLs stable.
+and the content map. Keep headings descriptive and URLs stable. When changing prerequisites or outcomes,
+check the home page, tool overview, task index, and previous/next guide links for
+stale summaries. Readers should see a prerequisite before entering that workflow.
 
 Write in plain English and address the reader as “you.” Start with the outcome,
 list prerequisites, then give numbered steps using exact control labels. Explain

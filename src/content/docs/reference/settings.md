@@ -23,7 +23,7 @@ If a project is missing, check its location on the server and the configured par
 
 The **Choose an agent** step in **New session** lets you select the agent, model, and autonomy for that session.
 
-Use the models listed by your installation. The selected provider’s models may need time to load, and a model marked unavailable can prevent the session from starting. Read its explanation and select an available option.
+Use [provider and usage guidance](/reference/providers-and-usage/) to confirm account readiness and interpret usage indicators. Use the models listed by your installation. The selected provider’s models may need time to load, and a model marked unavailable can prevent the session from starting. Read its explanation and select an available option.
 
 The wizard initializes autonomy as enabled. Read [Choose agent permissions](/reference/agent-permissions/) for the meanings of Claude’s **--dangerously-skip-permissions**, Codex’s **Full Auto**, and Antigravity’s separate editing and terminal controls. Check the displayed value before starting.
 

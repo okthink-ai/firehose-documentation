@@ -40,4 +40,6 @@ If you need to stop the current turn, open the session header’s menu and selec
 
 Keep the server machine awake and connected while its agents work. Reloading a hosted browser tab retains that tab’s server address. Another tab can choose its own server.
 
+For a saved stopping point and the differences between a browser disconnect, server restart, and closed session, see [Leave and return to work](/guides/return-to-work/).
+
 If progress does not resume after reconnecting, read any connection or delivery notice and check the server’s reachability. Use [troubleshooting](/troubleshooting/common-problems/) to separate a connection problem from an agent waiting for input.

@@ -5,7 +5,7 @@ verified: "2026-09-13"
 evidence: ["permissions", "launch", "approval-flow"]
 ---
 
-Decide what a new agent session may do before you start it. Permissions affect file changes and commands; they are separate from which model you choose.
+Decide what a new agent session may do before you start it. Permissions affect file changes and commands; they are separate from which model you choose. See [data and access](/reference/data-and-access/) for where task material is used and what cleanup actions affect.
 
 ## Before you begin
 

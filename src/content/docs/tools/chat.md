@@ -57,9 +57,11 @@ When available during an active turn, **Queue after current turn** lets you hold
 
 If the task needs to stop, use the session’s interrupt control. On mobile, **Interrupt** is available in the session header’s menu. Look for **Stopping...**, then check the latest response when the session settles. Explain what should happen next once it is ready for input.
 
-Interruption does not undo file changes or commands that already ran. [Review the diff](/tools/diff/) before asking the agent to continue with a different approach.
+Interruption does not undo file changes or commands that already ran. Use [targeted recovery](/guides/recover-changes/) if edits need correction. [Review the diff](/tools/diff/) before asking the agent to continue with a different approach.
 
 ## Handle a question or delivery problem
+
+To provide concrete evidence, [attach a screenshot or file](/tools/attachments/) and explain what it shows. For an independent command check, use [a separate terminal shell](/tools/terminal/).
 
 Answer ordinary questions in chat. For a structured clarification request, use the [Questions panel](/tools/questions/).
 
