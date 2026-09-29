@@ -49,13 +49,16 @@ test('search finds a guide and handles no results', async ({ page }) => {
 });
 
 for (const theme of ['light', 'dark'] as const) {
-  test(`${theme} theme is accessible across the guides`, async ({ page }) => {
-    await page.addInitScript((value) => localStorage.setItem('starlight-theme', value), theme);
-    for (const url of docs.map((doc) => doc.url)) {
-      await page.goto(url);
-      await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
-      const report = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
-      expect(report.violations, `Accessibility failures on ${url}`).toEqual([]);
+  // Give each guide its own timeout and failure report as the site grows.
+  test.describe(`${theme} theme accessibility`, () => {
+    for (const { url } of docs) {
+      test(url, async ({ page }) => {
+        await page.addInitScript((value) => localStorage.setItem('starlight-theme', value), theme);
+        await page.goto(url);
+        await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
+        const report = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
+        expect(report.violations, `Accessibility failures on ${url}`).toEqual([]);
+      });
     }
   });
 }
