@@ -1,16 +1,8 @@
-# Firehose documentation
+# Find the documentation source
 
-Firehose helps you start, monitor, and work with coding agents from one place.
+Read the [user documentation home](../src/content/docs/index.md), or follow the
+[local preview instructions](../README.md) to browse the complete website.
 
-This documentation site is being built around the tasks users perform in Firehose. The first version will explain how to get started, open an agent session, follow ongoing work, respond when an agent needs input, and review the result.
-
-## Planned guides
-
-- Install and open Firehose
-- Connect an agent provider
-- Start your first session
-- Understand working, waiting, and completed states
-- Send follow-up instructions
-- Review changes and agent output
-- Use Firehose from mobile web
-- Resolve common setup and session problems
+User guides now live in `src/content/docs/`. This page preserves the original
+repository entry point. The [content map](../maintainers/content-map.md) lists
+all guides, and the [contribution guide](../CONTRIBUTING.md) explains how to edit them.

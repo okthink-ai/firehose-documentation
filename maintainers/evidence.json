@@ -1,0 +1,334 @@
+{
+  "verified": "2026-09-13",
+  "repository": "okthink-ai/agent-manager",
+  "revision": "c57391d84f8d5bd198354fecf9c93c7e85418ec3",
+  "method": "Source inspection of the local main checkout. Product launch controls and diagnostics also have narrowly scoped runtime observations recorded separately below. No release-install or agent-execution validation was performed. Website browser checks are separate.",
+  "entries": {
+    "launch": {
+      "scope": "Current session wizard, workspace choices, model loading and launch controls",
+      "paths": [
+        "apps/expo/src/components/Sidebar/SidebarHeader.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/navigation.ts",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/ProjectStep.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/CheckoutStep.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/WorktreeStep.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/BranchStep.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/ProviderStep.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/WizardFooter.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/providerSettings/registry.tsx"
+      ]
+    },
+    "connection": {
+      "scope": "Hosted connection prerequisites, tab independence, switching versus forgetting and version warnings",
+      "paths": [
+        "docs/hosted-web.md",
+        "apps/expo/src/serverConnection/serverTransportPolicy.ts",
+        "apps/expo/src/components/ServerConnectionScreen/serverConnectionFormRules.ts"
+      ]
+    },
+    "settings": {
+      "scope": "Project directories and server settings labels",
+      "paths": [
+        "apps/expo/src/components/SettingsPanel/ProjectDirectoriesSection.tsx",
+        "apps/expo/src/components/SettingsPanel/ServerSettingsSection.tsx",
+        "apps/expo/src/components/SettingsPanel/TailscaleHttpsSection.tsx"
+      ]
+    },
+    "chat": {
+      "scope": "Chat labels, send and queue controls, interruption, visible session activity",
+      "paths": [
+        "apps/expo/src/components/ChatInput/ChatInputView.tsx",
+        "apps/expo/src/components/ChatInput/index.tsx",
+        "apps/expo/src/components/ChatInput/deliveryFailureText.ts",
+        "apps/expo/src/components/ChatView/ChatTabs.tsx",
+        "apps/expo/src/components/ChatView/MobileSessionHeader.tsx",
+        "apps/expo/src/components/SessionItem/SessionItemBody.tsx"
+      ]
+    },
+    "diff": {
+      "scope": "Changes, Commits, comparisons, Code, bounded file previews and stale data",
+      "paths": [
+        "docs/diff-panel.md",
+        "apps/expo/src/components/DiffWorkspace/index.tsx",
+        "apps/expo/src/components/DiffWorkspace/file-detail/FileDiffToolbar.tsx"
+      ]
+    },
+    "questions": {
+      "scope": "Questionnaire launch labels, queueing, submission target, delivery failure and deletion",
+      "paths": [
+        "docs/smart-user-questions.md",
+        "apps/expo/src/components/AskQuestionsModal/index.tsx",
+        "apps/expo/src/components/shared/AskQuestionsButton.tsx",
+        "apps/expo/src/components/UserQuestionsPanel/UserQuestionSetActions.tsx"
+      ]
+    },
+    "review": {
+      "scope": "Review entry point, focus prompt, finding sections, comments and status checks",
+      "paths": [
+        "apps/expo/src/components/ReviewPanel/ReviewNavigator.tsx",
+        "apps/expo/src/components/ReviewPanel/ReviewItemDetail.tsx",
+        "apps/expo/src/components/FocusAreasModal/index.tsx",
+        "apps/expo/src/components/ChatView/ChatTabs.tsx"
+      ]
+    },
+    "mobile": {
+      "scope": "Mobile interrupt control and scrollable workspace tabs",
+      "paths": [
+        "apps/expo/src/components/ChatView/MobileSessionHeader.tsx",
+        "apps/expo/src/components/ChatView/ChatTabs.tsx"
+      ]
+    },
+    "example": {
+      "scope": "Locally runnable sample and exact expected outputs; agent prose is illustrative",
+      "localPaths": [
+        "examples/hello-firehose/greeting.mjs",
+        "examples/hello-firehose/greeting.test.mjs",
+        "examples/hello-firehose-result/greeting.mjs",
+        "examples/hello-firehose-result/greeting.test.mjs"
+      ]
+    },
+    "editorial": {
+      "scope": "Documentation navigation, feedback process and generated text exports",
+      "localPaths": [
+        "scripts/export-docs.mjs",
+        "CONTRIBUTING.md"
+      ]
+    },
+    "project-creation": {
+      "scope": "Project creation controls, configured roots, README and initial commit outcomes",
+      "paths": [
+        "apps/expo/src/components/Sidebar/NewSessionMenu/ProjectStep.tsx",
+        "apps/expo/src/store/newSessionSlice.ts",
+        "server/lib/project-creation.ts"
+      ]
+    },
+    "permissions": {
+      "scope": "Initial enabled autonomy, provider labels, Codex permission mapping, Claude launch flag and Antigravity controls",
+      "paths": [
+        "apps/expo/src/store/newSessionSlice.ts",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/providerSettings/registry.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/providerSettings/ClaudeProviderSettings.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/providerSettings/CodexProviderSettings.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/providerSettings/AntigravityProviderSettings.tsx",
+        "server/lib/codex-adapter.ts",
+        "server/daemon/agent-daemon.ts",
+        "server/lib/claude-tmux.ts"
+      ]
+    },
+    "session-signals": {
+      "scope": "Sidebar activity, idle, stopping, closing, unavailable transcript and separate delivery status",
+      "paths": [
+        "lib/types/turn-state.ts",
+        "apps/expo/src/components/SessionItem/SessionItemBody.tsx",
+        "apps/expo/src/components/SessionItem/sessionItemUtils.ts"
+      ]
+    },
+    "review-actions": {
+      "scope": "Triage versus dispatch, meanings of actions, context clearing and delivery failure",
+      "paths": [
+        "apps/expo/src/components/ReviewPanel/reviewPanelTypes.ts",
+        "apps/expo/src/components/ReviewPanel/ReviewItemDetail.tsx",
+        "apps/expo/src/components/ReviewPanel/ReviewProgressHeader.tsx",
+        "apps/expo/src/components/ReviewPanel/reviewProgressUtils.ts",
+        "apps/expo/src/store/reviewApi.ts",
+        "server/routes/reviews.ts",
+        "server/prompts/review-prompts.ts",
+        "server/prompts/templates/item-rewrite.v1.md"
+      ]
+    },
+    "diff-comparisons": {
+      "scope": "Diff filters labels, comparison scopes and base resolution",
+      "paths": [
+        "apps/expo/src/components/DiffWorkspace/changes/ChangesNavigator.tsx",
+        "apps/expo/src/components/DiffWorkspace/changes/DiffFiltersSheet.tsx",
+        "server/lib/git-comparison.ts"
+      ]
+    },
+    "closing": {
+      "scope": "Close controls, opt-in worktree deletion, blocked deletion and asynchronous cleanup notices",
+      "paths": [
+        "apps/expo/src/components/SessionItem/sessionActions.tsx",
+        "apps/expo/src/components/CloseSessionModal/index.tsx",
+        "apps/expo/src/components/CloseSessionModal/CloseSessionDialog.tsx",
+        "apps/expo/src/components/CloseSessionModal/summary.ts",
+        "apps/expo/src/store/closeSession/thunks.ts",
+        "apps/expo/src/store/closeSession/reportCloseOutcome.ts",
+        "server/routes/session-lifecycle.ts",
+        "server/lib/worktree-cleanup-service.ts"
+      ]
+    },
+    "diagnostics": {
+      "scope": "Read-only status endpoint and serverVersion/protocolVersion response fields",
+      "paths": [
+        "server/index.ts",
+        "server/lib/server-status.ts"
+      ]
+    },
+    "file-access": {
+      "scope": "Server workspace paths from project/workspace controls; documented shell recipe checked locally in a disposable repository. Remote SSH authentication and operator handoff remain unexercised.",
+      "paths": [
+        "server/lib/project-creation.ts",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/WorktreeStep.tsx"
+      ],
+      "localPaths": [
+        "src/content/docs/getting-started/files-and-terminal.md"
+      ]
+    },
+    "question-details": {
+      "scope": "Depth presets, generation status, captured context, answer message and instruction to proceed immediately after submission; questionnaires are illustrative.",
+      "paths": [
+        "apps/expo/src/components/AskQuestionsModal/askQuestionsCount.ts",
+        "apps/expo/src/components/UserQuestionsPanel/UserQuestionSetStatusRegion.tsx",
+        "server/prompts/templates/user-questions.v1.md",
+        "server/prompts/templates/user-question-answers.v1.md",
+        "server/prompts/user-question-prompts.ts"
+      ]
+    },
+    "context-actions": {
+      "scope": "Managed context reset, provider replacement and Claude terminal clear before review delivery; successful clear resets conversation history, not repository files.",
+      "paths": [
+        "server/lib/review-prompt-delivery.ts",
+        "server/lib/managed-context-actions.ts",
+        "server/lib/agent-manager.ts",
+        "server/routes/reviews.ts"
+      ]
+    },
+    "approval-flow": {
+      "scope": "Codex request titles, available decision labels and submission card; Claude parsed options and terminal fallback. Source and Codex unit checks, not live approval execution.",
+      "paths": [
+        "server/lib/codex-approval.ts",
+        "apps/expo/src/components/PendingApprovalCard/index.tsx",
+        "apps/expo/src/components/ClaudeInteractionCard/PermissionCard.tsx",
+        "apps/expo/src/components/ClaudeInteractionCard/OpenTerminalButton.tsx"
+      ]
+    },
+    "review-scope": {
+      "scope": "Default origin/main review base with origin/master fallback; committed branch comparison; refinement versus rewriting and empty-panel states.",
+      "paths": [
+        "server/routes/reviews.ts",
+        "server/prompts/templates/review.v1.md",
+        "server/prompts/templates/item-refine.v1.md",
+        "server/prompts/templates/item-rewrite.v1.md",
+        "apps/expo/src/components/ReviewPanel/ReviewNavigator.tsx"
+      ]
+    },
+    "git-refresh": {
+      "scope": "Prompt bar branch refresh on web and native; loading and retry indicators in Diff.",
+      "paths": [
+        "apps/expo/src/components/PromptBar/PromptBarView.tsx",
+        "apps/expo/src/components/PromptBar/usePromptBarViewProps.tsx",
+        "apps/expo/src/components/DiffWorkspace/changes/ChangesNavigator.tsx"
+      ]
+    },
+    "project-setup": {
+      "scope": "Workspace creation is separate from general project provisioning; specific Expo environment copy helper is not a generic setup guarantee. Preparation advice is an editorial workflow.",
+      "paths": [
+        "server/lib/worktree-crud.ts"
+      ],
+      "localPaths": [
+        "src/content/docs/guides/prepare-project.md"
+      ]
+    },
+    "commit-action": {
+      "scope": "Commit dropdown groups status files and dispatches a provider action or message; no per-file checkboxes. Explicit scoped Chat commits are an editorial workflow, not an atomic commit guarantee.",
+      "paths": [
+        "apps/expo/src/components/shared/CommitButton.tsx",
+        "apps/expo/src/components/PromptBar/usePromptBarViewProps.tsx"
+      ]
+    },
+    "browser-example": {
+      "scope": "Standalone original and completed greeting forms; browser-tested inputs, keyboard submission and safe text output. No live agent-generated change or commit claimed.",
+      "localPaths": [
+        "examples/hello-form/index.html",
+        "examples/hello-form-result/index.html",
+        "tests/examples.spec.ts"
+      ]
+    },
+    "attachments": {
+      "scope": "Picker labels, upload status, staging notice and Git ignore action; provider content/path handling, retained delivery copies, and worktree lifecycle.",
+      "paths": [
+        "apps/expo/src/components/ChatInput/AttachmentPickerMenu.tsx",
+        "apps/expo/src/components/ChatInput/ProjectFileChip.tsx",
+        "apps/expo/src/components/ChatInput/AttachmentStagingNoticeModal.tsx",
+        "apps/expo/src/components/ChatInput/hooks/useProjectFileAttachments.ts",
+        "server/routes/images.ts",
+        "server/lib/prompt-attachments.ts",
+        "server/lib/provider-capabilities.ts",
+        "server/routes/session-lifecycle.ts"
+      ]
+    },
+    "terminal": {
+      "scope": "Drawer and shell controls, cwd selection, shell access warning, separate tab termination, authorization error, and detached terminal cleanup. Source-checked; live terminal mutation not exercised.",
+      "paths": [
+        "apps/expo/src/components/Terminal/NewTerminalSheet.tsx",
+        "apps/expo/src/components/Terminal/TerminalTabBar.tsx",
+        "apps/expo/src/components/Terminal/TerminalDrawer.tsx",
+        "apps/expo/src/components/Terminal/TerminalAccessWarning.tsx",
+        "apps/expo/src/components/PromptBar/usePromptBarViewProps.tsx",
+        "server/ws/terminal-handler.ts",
+        "server/lib/terminal-manager.ts",
+        "apps/expo/src/components/ChatView/useTerminalLauncher.ts"
+      ]
+    },
+    "provider-usage": {
+      "scope": "Provider capability differences, reported footer usage windows/details, and context window display. Does not verify billing prices, financial caps, or external account retention policies.",
+      "paths": [
+        "server/lib/provider-capabilities.ts",
+        "apps/expo/src/lib/providerUiConfig.ts",
+        "apps/expo/src/components/FooterMonitor/presenter.tsx",
+        "apps/expo/src/components/shared/ContextBadge.tsx"
+      ]
+    },
+    "persistence": {
+      "scope": "Managed restoration from persisted session information/history, per-server client state and forgetting. No guarantee of uninterrupted commands or uniform provider restart outcomes.",
+      "paths": [
+        "server/lib/managed-session-registry.ts",
+        "server/lib/managed-session-lifecycle.ts",
+        "server/lib/managed-history.ts",
+        "apps/expo/src/serverConnection/serverConnectionPersistence.ts",
+        "apps/expo/src/serverConnection/serverConnectionLifecycle.ts",
+        "server/routes/session-lifecycle.ts"
+      ]
+    }
+  },
+  "runtimeObservations": [
+    {
+      "date": "2026-09-13",
+      "serverVersion": "fafd783ee5e0",
+      "protocolVersion": 2,
+      "scope": "Read-only GET /api/status confirmed version fields. Walked New session \u2192 documentation project \u2192 Current checkout \u2192 Codex. Observed Full Auto checked and Start session available; captured only the provider panel at desktop and mobile widths. No session was started. This differs from the source revision; approval behavior and installation were not exercised.",
+      "method": "Local HTTPS request and isolated browser with mutating API requests blocked.",
+      "captures": [
+        {
+          "path": "public/images/codex-launch-desktop.png",
+          "sha256": "eefa7ca4d03d8dbc724c614344c47cf805aa80623ccbacdbd0269390698f4142",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "deviceScaleFactor": 2,
+          "crop": "Actual provider settings panel; surrounding projects and conversations excluded. No retouching."
+        },
+        {
+          "path": "public/images/codex-launch-mobile.png",
+          "sha256": "bf1aa8f55894e110ad61530e3ae43ebbfc6d77d27916dda615d60a042bf05d41",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 2,
+          "crop": "Actual provider settings panel; surrounding projects and conversations excluded. No retouching."
+        }
+      ]
+    }
+  ],
+  "sourceTestObservations": [
+    {
+      "date": "2026-09-13",
+      "revision": "c57391d84f8d5bd198354fecf9c93c7e85418ec3",
+      "command": "pnpm exec vitest run server/lib/codex-approval.test.ts server/prompts/user-question-prompts.test.ts server/lib/managed-context-actions.test.ts apps/expo/src/components/AskQuestionsModal/askQuestionsCount.test.ts",
+      "result": "4 files, 25 tests passed using the source checkout isolated temporary-database setup. No real provider execution.",
+      "limitation": "The optional Claude interactionCards.test.ts permission suite failed before tests ran: happy-dom/Vite externalized Node built-ins. A runner-loader retry also failed at config load because __dirname was undefined. Claude card behavior remains source-inspected; product files were not changed to repair that separate harness."
+    }
+  ]
+}

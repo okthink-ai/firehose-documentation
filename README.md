@@ -1,26 +1,109 @@
-# Firehose Documentation
+# Firehose documentation
 
-This repository contains the public, user-facing documentation site for Firehose.
+Build and improve practical guides for people who use Firehose. The site covers
+starting agents, following conversations, answering questions, choosing workspaces,
+and reviewing changes. Markdown is the source of truth for both the website and
+its plain-text exports.
 
-The documentation should help someone use Firehose successfully without requiring them to understand its internal architecture. It will cover setup, starting and managing agent sessions, working from desktop and mobile web, common workflows, settings, and troubleshooting.
+This is a local implementation. Hosting, public repository visibility, and licensing
+are pending; no deployment workflow or hosting account is configured.
 
-## Documentation principles
+## Preview locally
 
-- Write from the user's point of view.
-- Lead with the task the user wants to complete.
-- Prefer short procedures and concrete examples.
-- Explain product terms when they first appear.
-- Verify behavior against the current product before documenting it.
-- Keep implementation details out of the main path unless they help solve a user problem.
+Use Node.js 24 LTS (`.nvmrc`) and npm. The supported minimum is Node.js 22.12.
 
-## Initial information architecture
+```sh
+npm ci --include=dev
+npm run dev
+```
 
-- Getting started
-- Sessions and agents
-- Working with repositories and worktrees
-- Reviewing work and responding to agents
-- Settings and providers
-- Mobile web
-- Troubleshooting
+Open `http://localhost:48731`, or use the network URL printed by Astro from another
+device. `astro.config.mjs` fixes the port at **48731** and enables network host mode
+(`host: true`) for both development and preview. No extra flags are needed.
+The dev server fails if the port is occupied rather than silently selecting another.
+The development server updates as you edit pages. Search uses a generated index,
+so test search against the production build:
 
-The site framework and publishing workflow have intentionally not been selected yet. The first working session in this repository can choose the simplest setup that fits the desired documentation experience.
+```sh
+npm run build
+npm run preview
+```
+
+Development and preview share port 48731; stop one before starting the other.
+If Astro started it in the background, use `npx astro dev stop` or
+`npx astro preview stop`, respectively. Otherwise use Ctrl+C in its terminal.
+
+The build clears Astro’s content cache so Markdown plugin changes are applied.
+It then produces `dist/`. It contains complete HTML, assets, search data,
+`markdown/` copies of the guides, `llms.txt`, `llms-full.txt`, and the sample project.
+These exports and sample downloads also work in the development server.
+Reading the guides and following ordinary links does not require JavaScript.
+Search uses JavaScript. The mobile menu uses the browser’s native popover control;
+the home page and documentation index also provide ordinary navigation links.
+
+## Check a change
+
+```sh
+npm run check
+npm run check:example
+npx playwright install chromium
+npm run test:browser
+```
+
+`check` validates Astro types and page metadata, lints Markdown, builds the site,
+and checks generated page links, anchors, assets, and contributor links.
+Browser checks cover desktop and mobile reading, navigation, search, accessibility,
+theme contrast, and a page load with JavaScript disabled. Playwright starts its own
+local preview on port 4322; build first when running browser checks by themselves.
+
+Run `npm run check:external` after a build when changing external references.
+External checks are separate because other sites can be temporarily unavailable.
+CI runs the site and function-example checks, with external-link checks scheduled
+separately. Playwright browser checks run locally only. CI does not publish anything.
+
+## Find the source
+
+| Location | Purpose |
+| --- | --- |
+| [User guides](src/content/docs/index.md) | Markdown pages rendered by Starlight |
+| [Content map](maintainers/content-map.md) | Every guide and its purpose |
+| [Contribution guide](CONTRIBUTING.md) | Writing, review, and local validation |
+| [Evidence record](maintainers/evidence.json) | Source revision and verification scope |
+| [Product inventory](maintainers/product-inventory.md) | Coverage and unresolved product questions |
+| [Maintenance backlog](maintainers/backlog.md) | Remaining review and release work |
+| [Validation record](maintainers/validation.md) | Completed checks and practical limits |
+| [Critique implementation](maintainers/critique-implementation.md) | Completed improvements, validation, and remaining product walkthroughs |
+| [Project workflow implementation](maintainers/workflow-implementation.md) | Expanded project journey, everyday tools, recovery, and verification limits |
+| [Browser example](examples/hello-form/README.md) | Standalone form with original and completed browser-tested states |
+| [Clarity implementation](maintainers/clarity-implementation.md) | Current critique changes, evidence, and remaining reader validation |
+| [Reader check](maintainers/reader-check.md) | Three review passes and an uncoached task worksheet |
+| [Completed example](examples/hello-firehose-result/README.md) | Reference result with four greeting cases |
+| [Documentation critique](maintainers/documentation-critique.md) | Current information gaps, clarity issues, and actionable writing improvements |
+| [Page template](templates/guide.md) | Starting point for a task guide |
+| [Example project](examples/hello-firehose/README.md) | Runnable quickstart fixture |
+| [Original plan](PLAN.md) | Documentation goals and delivery approach |
+| [Agent instructions](AGENTS.md) | Canonical guidance; `CLAUDE.md` is a symlink |
+
+## Stack and scope
+
+[Astro](https://docs.astro.build/) and [Starlight](https://starlight.astro.build/)
+provide static rendering, navigation, search, syntax highlighting, and the
+responsive documentation layout. Styling uses system fonts and local assets.
+No analytics, remote font service, application backend, or paid service is needed.
+
+A public site URL, sitemap, redirects for released URLs, public correction links,
+and deployment setup can be added when publishing is requested. The package is
+`private` to prevent accidental npm publication; that flag does not set GitHub
+repository visibility. No repository license has been selected yet.
+
+The scoped `smol-toml` override uses 1.8.0 to avoid the malformed-input denial of
+service advisory affecting the version pinned by the Markdown linter. Revisit the
+override when updating the linter.
+
+## Future idea: inline Firehose components
+
+Explore exporting UI components from the Firehose project and embedding them
+inline in documentation pages. Readers could see and try the actual product
+controls beside the instructions, helping examples stay aligned with Firehose.
+This is an idea for later, not an implementation task. No component integration
+is planned for the current work.

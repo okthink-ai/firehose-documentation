@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Practice fixing blank names in a standalone greeting form.">
+    <title>Greeting form practice</title>
+    <style>
+      body { font: 1.125rem/1.5 system-ui, sans-serif; max-width: 36rem; margin: 3rem auto; padding: 0 1rem; color: #202124; background: #fff; }
+      label { display: block; }
+      input, button { box-sizing: border-box; font: inherit; padding: .5rem; max-width: 100%; }
+      button { margin-top: .5rem; }
+      :focus-visible { outline: 3px solid #185abc; outline-offset: 3px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Try a greeting</h1>
+      <form id="greeting-form">
+        <label for="name">Name</label>
+        <input id="name" name="name" autocomplete="off">
+        <button type="submit">Show greeting</button>
+      </form>
+      <p id="result" role="status">Enter a name to begin.</p>
+      <noscript>This practice form needs JavaScript enabled.</noscript>
+    </main>
+    <script>
+      function greet(name) {
+        return `Hello, ${name.trim()}!`;
+      }
+      document.querySelector('#greeting-form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        document.querySelector('#result').textContent = greet(document.querySelector('#name').value);
+      });
+    </script>
+  </body>
+</html>

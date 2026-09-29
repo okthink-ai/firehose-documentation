@@ -1,0 +1,13 @@
+---
+import DefaultPageTitle from '@astrojs/starlight/components/PageTitle.astro';
+const { entry } = Astro.locals.starlightRoute;
+const slug = entry.id === '' ? 'index' : entry.id;
+const home = slug === 'index';
+---
+<div class:list={['page-heading', { 'home-heading': home }]}>
+  <p class="eyebrow">{home ? 'THE FIREHOSE GUIDE' : 'FIREHOSE DOCUMENTATION'}</p>
+  <DefaultPageTitle />
+  {slug !== '404' && (
+    <a class="markdown-link" href={`/markdown/${slug}.md`} data-pagefind-ignore>Read as Markdown <span aria-hidden="true">↗</span></a>
+  )}
+</div>

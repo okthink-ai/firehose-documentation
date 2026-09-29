@@ -1,0 +1,16 @@
+name: Missing guide
+description: Suggest a task or example the documentation should explain.
+body:
+  - type: textarea
+    id: outcome
+    attributes:
+      label: What are you trying to accomplish?
+    validations:
+      required: true
+  - type: textarea
+    id: gap
+    attributes:
+      label: Where did you get stuck?
+      description: Mention any guides you already tried and a useful example, if you have one.
+    validations:
+      required: true
