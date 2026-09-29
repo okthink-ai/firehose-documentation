@@ -2,7 +2,7 @@
 
 Use this list to complete product validation and prepare a future public release.
 The local site, core guides, text exports, contributor tooling, and validation
-workflow are implemented. No public hosting or repository changes have been made.
+workflow are implemented. The site is hosted at <https://firehose-docs.web.app>; no repository visibility changes have been made.
 
 Owners below are responsibility roles, not assignments to named people. The project
 maintainer can assign people when scheduling the work.
@@ -17,7 +17,7 @@ maintainer can assign people when scheduling the work.
 | Later | Test the Firehose mobile workflow on a real device | Product maintainer | Connection, session switching, input, questions, and diff review work on the target release |
 | Deferred | Decide repository licensing | Project owner | User chooses terms for docs, code examples, and assets; applicable license files are added |
 | Deferred | Confirm public repository visibility and contribution URLs | Project owner | Explicit publication request is received and destinations are verified |
-| Deferred | Configure site URL, sitemap, redirects and hosting | Project owner | Hosting is requested; domain and release workflow are agreed and verified |
+| Later | Add redirects for moved URLs and decide on a custom domain | Project owner | Firebase redirects cover moved pages; any custom domain is connected and `site` is updated |
 
 ## Follow up on the critique
 

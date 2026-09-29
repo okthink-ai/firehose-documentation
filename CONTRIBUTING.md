@@ -67,7 +67,7 @@ issue with a page, proposed change, and acceptance check. Keep unrun passes pend
 - Links work, terms are explained, and paragraphs are easy to scan.
 - Screenshots add useful information and have text alternatives.
 - Product facts have current evidence; unknowns are tracked rather than invented.
-- Changes remain within the requested task and do not introduce publishing steps.
+- Changes remain within the requested task and do not deploy unless publishing was requested.
 
 ## Run the checks
 

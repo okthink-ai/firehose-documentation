@@ -4,6 +4,7 @@ import { unified } from '@astrojs/markdown-remark';
 import readableOverflow from './scripts/rehype-accessibility.mjs';
 
 export default defineConfig({
+  site: 'https://firehose-docs.web.app',
   output: 'static',
   server: { host: true, port: 48731 },
   vite: { server: { strictPort: true } },

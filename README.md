@@ -5,8 +5,8 @@ starting agents, following conversations, answering questions, choosing workspac
 and reviewing changes. Markdown is the source of truth for both the website and
 its plain-text exports.
 
-This is a local implementation. Hosting, public repository visibility, and licensing
-are pending; no deployment workflow or hosting account is configured.
+The site is published at <https://firehose-docs.web.app> on Firebase Hosting.
+Public repository visibility and licensing are still pending.
 
 ## Preview locally
 
@@ -61,6 +61,24 @@ External checks are separate because other sites can be temporarily unavailable.
 CI runs the site and function-example checks, with external-link checks scheduled
 separately. Playwright browser checks run locally only. CI does not publish anything.
 
+## Publish to Firebase Hosting
+
+The site deploys to the `firehose-docs` Hosting site in the Firebase project
+`claude-manager-chat` (display name **okthink-firehose**). That project's default
+site serves the Firehose app, so always deploy through the `docs` target:
+
+```sh
+firebase login
+firebase deploy --only hosting:docs
+```
+
+The deploy runs `npm run check` first and uploads `dist/`. Never run a plain
+`firebase deploy` or deploy to `claude-manager-chat` directly; that would replace
+the app. Deploys are manual; CI does not publish. The `docs` target is defined in
+`.firebaserc`, and headers and trailing-slash behavior are in `firebase.json`.
+`site` in `astro.config.mjs` sets canonical URLs and the sitemap; update it if the
+domain changes.
+
 ## Find the source
 
 | Location | Purpose |
@@ -91,8 +109,7 @@ provide static rendering, navigation, search, syntax highlighting, and the
 responsive documentation layout. Styling uses system fonts and local assets.
 No analytics, remote font service, application backend, or paid service is needed.
 
-A public site URL, sitemap, redirects for released URLs, public correction links,
-and deployment setup can be added when publishing is requested. The package is
+Redirects for moved URLs and public correction links can be added as the site grows. The package is
 `private` to prevent accidental npm publication; that flag does not set GitHub
 repository visibility. No repository license has been selected yet.
 

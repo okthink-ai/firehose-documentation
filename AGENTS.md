@@ -35,6 +35,6 @@ Whenever you make changes, run the applicable checks and create a local Git comm
 
 User pages live in `src/content/docs/`; contributor evidence and coverage live in `maintainers/`. Follow [CONTRIBUTING.md](CONTRIBUTING.md) for page metadata and review guidance. Use `npm ci --include=dev`, `npm run dev`, and `npm run check`. Run `npm run test:browser` after layout, navigation, or search changes, and `npm run check:example` after example changes.
 
-Hosting, publishing, public visibility, and license selection are deferred. Keep work local until the user requests those actions.
+The site is hosted on Firebase at `https://firehose-docs.web.app` (see the README's publishing section). Deploy only with `firebase deploy --only hosting:docs`, and only when the user asks; never deploy to the project's default site, which serves the Firehose app. Public repository visibility and license selection are deferred until the user requests them.
 
 Keep development and preview on port `48731` with network host mode (`server.host: true`) in `astro.config.mjs`. Use the npm scripts without localhost overrides. The dev server must fail on a port conflict rather than silently choose another port. Browser tests use their own loopback preview on port `4322`.
