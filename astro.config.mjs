@@ -15,8 +15,13 @@ export default defineConfig({
       title: 'Firehose',
       disable404Route: true,
       description: 'Practical guides to starting agents, following their work, and reviewing changes in Firehose.',
-      favicon: '/favicon.svg',
-      customCss: ['./src/styles/custom.css'],
+      favicon: '/favicon.png',
+      logo: { src: './src/assets/okthink-wordmark.svg', alt: 'okthink' },
+      head: [
+        { tag: 'link', attrs: { rel: 'preload', href: '/fonts/space-grotesk/SpaceGrotesk-latin-var.woff2', as: 'font', type: 'font/woff2', crossorigin: '' } },
+        { tag: 'link', attrs: { rel: 'preload', href: '/fonts/spectral/Spectral-Italic-600-latin.woff2', as: 'font', type: 'font/woff2', crossorigin: '' } },
+      ],
+      customCss: ['./src/styles/fonts.css', './src/styles/custom.css'],
       expressiveCode: {
         plugins: [{
           name: 'Keyboard-accessible code examples',

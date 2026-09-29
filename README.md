@@ -106,7 +106,10 @@ domain changes.
 
 [Astro](https://docs.astro.build/) and [Starlight](https://starlight.astro.build/)
 provide static rendering, navigation, search, syntax highlighting, and the
-responsive documentation layout. Styling uses system fonts and local assets.
+responsive documentation layout. Styling follows the okthink.co brand from the
+`okthink-dot-co` repository: its colours, the pixel `okthink` wordmark, the favicon,
+and self-hosted Space Grotesk, Spectral, and JetBrains Mono fonts (SIL Open Font
+License; see `public/fonts/*/OFL.txt`). Brand tokens are in `src/styles/custom.css`.
 No analytics, remote font service, application backend, or paid service is needed.
 
 Redirects for moved URLs and public correction links can be added as the site grows. The package is

@@ -1,27 +1,60 @@
 :root {
-  --sl-color-accent-low: #3d2015;
-  --sl-color-accent: #e97440;
-  --sl-color-accent-high: #ffc6a9;
-  --sl-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* okthink.co palette (okthink-dot-co src/styles/global.css). Dark is the
+     brand's own theme: near-black ground, #8a6dd8 purple, cool greys. */
+  --ok-font-display: 'Spectral', Georgia, 'Times New Roman', serif;
+  --ok-logo-spectrum: linear-gradient(90deg, #f09040 0%, #e07060 17%, #c85888 33%, #a050b0 50%, #7050c8 67%, #4890a8 83%, #3878e8 100%);
+  --sl-font: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --sl-font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --sl-color-accent-low: #1e1638;
+  --sl-color-accent: #8a6dd8;
+  --sl-color-accent-high: #c9b8f2;
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #f0f0f5;
+  --sl-color-gray-2: #dcdce6;
+  --sl-color-gray-3: #a0a0b0;
+  --sl-color-gray-4: #6c6a7c;
+  --sl-color-gray-5: #2a2638;
+  --sl-color-gray-6: #13101e;
+  --sl-color-black: #08060f;
+  --sl-color-bg-nav: #0d0b16;
+  --sl-color-bg-sidebar: #08060f;
+  --sl-color-hairline: rgba(255, 255, 255, 0.06);
+  --sl-color-hairline-light: rgba(255, 255, 255, 0.1);
   --sl-content-width: 46rem;
   --sl-text-body: 1.0625rem;
 }
 :root[data-theme='light'] {
-  --sl-color-accent-low: #fff0e6;
-  --sl-color-accent: #a83c14;
-  --sl-color-accent-high: #772b10;
-  --sl-color-white: #242321;
-  --sl-color-gray-1: #34312e;
-  --sl-color-gray-2: #4d4842;
-  --sl-color-gray-3: #6e665e;
-  --sl-color-gray-4: #999187;
-  --sl-color-gray-5: #e4dfd7;
-  --sl-color-gray-6: #f6f4ef;
-  --sl-color-black: #fffefb;
+  /* The brand has no light theme; this keeps its purple at #7050c8, the stop
+     okthink.co picked because it clears AA on light grounds. */
+  --sl-color-accent-low: #ece6fa;
+  --sl-color-accent: #7050c8;
+  --sl-color-accent-high: #4a2f9c;
+  --sl-color-white: #13101e;
+  --sl-color-gray-1: #2a2638;
+  --sl-color-gray-2: #423e52;
+  --sl-color-gray-3: #635f73;
+  --sl-color-gray-4: #95919f;
+  --sl-color-gray-5: #e2dfea;
+  --sl-color-gray-6: #f5f3fa;
+  --sl-color-black: #fdfcff;
+  --sl-color-bg-nav: #fdfcff;
+  --sl-color-bg-sidebar: #fdfcff;
+  --sl-color-hairline: #e2dfea;
+  --sl-color-hairline-light: #ece9f2;
 }
-.site-title { font-weight: 800; letter-spacing: -0.055em; }
-h1 { letter-spacing: -0.04em; line-height: 1.12; font-size: clamp(2rem, 3.5vw, 2.8rem); text-wrap: balance; }
-h2, h3 { letter-spacing: -0.025em; }
+/* Display voice: Spectral italic on the two largest headings, as on okthink.co. */
+h1, .sl-markdown-content h2 { font-family: var(--ok-font-display); font-style: italic; }
+h1 { font-weight: 600; }
+.sl-markdown-content h2 { font-weight: 500; letter-spacing: -0.005em; }
+/* Italic headings overhang their box; give the anchor icon room. */
+.sl-markdown-content .sl-heading-wrapper.level-h2 { --sl-anchor-icon-gap: 0.45em; }
+/* okthink.co's primary button: solid #7050c8 with white text, in both themes. */
+nav.sidebar a[aria-current='page'], nav.sidebar a[aria-current='page']:hover { background: #7050c8; color: #ffffff; }
+.site-title { gap: 0.75rem; }
+.site-title img { height: 1.25rem; width: auto; }
+.site-title span { font-weight: 600; letter-spacing: -0.02em; color: var(--sl-color-white); }
+h1 { letter-spacing: -0.005em; line-height: 1.12; font-size: clamp(2rem, 3.5vw, 2.8rem); text-wrap: balance; }
+h3 { letter-spacing: -0.015em; }
 .sl-markdown-content { line-height: 1.7; }
 .sl-markdown-content > p:first-child { font-size: 1.125rem; color: var(--sl-color-gray-2); }
 .sl-markdown-content h2 { font-size: 1.5rem; margin-top: 2.3rem; }
@@ -38,12 +71,12 @@ h2, h3 { letter-spacing: -0.025em; }
 .page-heading { position: relative; }
 .eyebrow { color: var(--sl-color-text-accent); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; }
 .markdown-link { display: inline-flex; gap: 0.4rem; align-items: center; padding-block: 0.6rem; margin-top: 0.5rem; font-size: 0.8rem; color: var(--sl-color-gray-2); text-underline-offset: 0.2em; }
-.home-heading h1 { max-width: 12ch; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 750; line-height: 1.04; }
+.home-heading h1 { max-width: 12ch; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 600; line-height: 1.08; }
 .home-heading { padding-top: 1rem; }
 .docs-home .sl-markdown-content > p:first-child { max-width: 46ch; font-size: 1.25rem; }
 .docs-home .sl-markdown-content > p:nth-of-type(2) { display: flex; align-items: center; flex-wrap: wrap; gap: 0.8rem; font-size: 0; }
 .docs-home .sl-markdown-content > p:nth-of-type(2) a { font-size: 0.875rem; }
-.docs-home .sl-markdown-content > p:nth-of-type(2) a:first-child { background: var(--sl-color-text-accent); color: var(--sl-color-black); border-radius: 0.5rem; padding: 0.8rem 1.1rem; font-weight: 650; text-decoration: none; }
+.docs-home .sl-markdown-content > p:nth-of-type(2) a:first-child { background: #7050c8; color: #ffffff; border-radius: 0.5rem; padding: 0.8rem 1.1rem; font-weight: 650; text-decoration: none; }
 .docs-home .sl-markdown-content > p:nth-of-type(3) { font-size: 0.875rem; padding: 1rem 1.2rem; border-inline-start: 2px solid var(--sl-color-accent); background: var(--sl-color-gray-6); border-radius: 0 0.5rem 0.5rem 0; }
 .docs-home .sl-markdown-content > ul:first-of-type { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
 .docs-home .sl-markdown-content > ul:first-of-type li { position: relative; margin: 0; padding: 1.15rem; border: 1px solid var(--sl-color-gray-5); border-radius: 0.65rem; font-size: 0.875rem; transition: border-color 120ms ease; }
