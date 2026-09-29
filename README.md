@@ -58,7 +58,8 @@ local preview on port 4322; build first when running browser checks by themselve
 
 Run `npm run check:external` after a build when changing external references.
 External checks are separate because other sites can be temporarily unavailable.
-The checked-in CI files run validation only; they do not publish anything.
+CI runs the site and function-example checks, with external-link checks scheduled
+separately. Playwright browser checks run locally only. CI does not publish anything.
 
 ## Find the source
 
