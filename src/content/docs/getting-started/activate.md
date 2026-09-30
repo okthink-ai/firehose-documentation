@@ -28,6 +28,11 @@ The dashboard now says **Waiting for approval in the tab that opened…**. Leave
 
 If no tab opened, select the link under the code.
 
+<figure class="product-capture">
+  <img src="/images/ui/activation-code.png" width="800" height="400" loading="lazy" alt="The Activate Firehose screen showing the code K7QF-3MXP under Enter this code on the activation page, a link to agents.okthink.ai/activate, and the text Waiting for approval in the tab that opened.">
+  <figcaption>The dashboard while it waits for approval. The code is an example; yours will differ.</figcaption>
+</figure>
+
 ## 2. Sign in with your email
 
 On the activation page:

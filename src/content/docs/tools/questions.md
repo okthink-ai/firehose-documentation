@@ -1,8 +1,8 @@
 ---
 title: "Ask clarifying questions"
 description: "Choose an interview depth, answer decisions, and send the answers to the session that should continue."
-verified: "2026-09-13"
-evidence: ["questions", "question-details", "example"]
+verified: "2026-09-29"
+evidence: ["questions", "question-details", "example", "layout"]
 ---
 
 Use a questionnaire when a task needs decisions before implementation. Your answers become a message that tells the selected agent to continue the requested work.
@@ -15,9 +15,14 @@ Open the intended session and confirm its project and branch. Use a session wher
 
 ## 1. Request a questionnaire
 
-1. Select **ask me questions** in the prompt bar.
+1. On the prompt bar above the message box, select **tools**, then **Ask me questions**.
 2. In **Ask me clarifying questions**, enter the topic below.
 3. Choose an **Interview depth**, then select **Ask questions**.
+
+<figure class="product-capture">
+  <img src="/images/ui/tools-menu.png" width="760" height="210" loading="lazy" alt="The tools menu open above the prompt bar, listing Smart review with an arrow for more options and Ask me questions. The prompt bar shows the branch greeting-blank-names and the tools button, with the message box below.">
+  <figcaption>The <strong>tools</strong> menu on the prompt bar. <strong>Smart review</strong> appears only on a branch other than <code>main</code> or <code>master</code>. Sample project.</figcaption>
+</figure>
 
 ```text
 Improve greeting.mjs for empty and spaces-only strings.
@@ -43,7 +48,7 @@ For the greeting task, a short interview might cover fallback text, whitespace, 
 
 ## 3. Answer when it is your turn
 
-Open **Questions**. **Queued** means the request is waiting behind the current turn. During generation, the panel says the agent is reading code and writing questions. **Your turn** indicates that answers are ready to complete. The panel also shows how many questions were requested and written.
+Select the **Ask me** tab at the top of the session; it reads **Ask me (N)** when questions are waiting. **Queued** means the request is waiting behind the current turn. During generation, the panel says the agent is reading code and writing questions. **Your turn** indicates that answers are ready to complete. The panel also shows how many questions were requested and written.
 
 Read each question and its option descriptions. Answer required questions; add text where the question offers a field. **Show captured context**, when present, displays the background saved with the request.
 
@@ -53,17 +58,17 @@ For example, a question could ask: “What should a blank name produce?” You m
 
 1. Check the selected session in the same worktree. Sessions sharing that worktree see the same unfinished questionnaire.
 2. Confirm your answers and any remaining task constraints.
-3. Select **Submit to Agent** when the set is ready and required answers are complete.
+3. Select **Submit to** followed by the provider's name, such as **Submit to Claude Code** or **Submit to Codex**, when the set is ready and required answers are complete.
 
 Submission tells the receiving agent to summarize its understanding and begin the requested work. There is no additional confirmation step in that instruction. If you only want a proposal, state that limited task in the original topic and your answers before submitting.
 
-**Expected result:** after confirmed delivery, the questionnaire disappears. Open the receiving session’s **Chat** and look for `[Smart User Questions — answers]`. That message includes the original topic, captured background when available, questions, chosen options, and written answers.
+**Expected result:** after confirmed delivery, the questionnaire disappears. Open the receiving session’s conversation and look for `[Smart User Questions — answers]`. That message includes the original topic, captured background when available, questions, chosen options, and written answers.
 
 In the example, check that the delivered answer includes `guest`, trimming, and the strings-only constraint. Then compare the agent’s continuation with those decisions. The message’s exact formatting includes question identifiers; you do not need to copy those identifiers to continue the task.
 
 ## If delivery or generation fails
 
-A failed answer delivery leaves the questionnaire available. Read the error, confirm that the receiving session accepts input, and use [delivery troubleshooting](/troubleshooting/common-problems/#my-message-didnt-reach-the-agent) before retrying **Submit to Agent**.
+A failed answer delivery leaves the questionnaire available. Read the error, confirm that the receiving session accepts input, and use [delivery troubleshooting](/troubleshooting/common-problems/#my-message-didnt-reach-the-agent) before retrying **Submit to** the provider.
 
 **Failed** or **Cancelled** sets stay visible until you choose **Remove**. Removing a set deletes its questions and saved answers. Preserve information you still need first. If the set says **Expired**, its original session has changed; read the explanation rather than expecting the old request to continue.
 

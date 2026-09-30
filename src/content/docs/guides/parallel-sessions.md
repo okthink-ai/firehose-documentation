@@ -1,8 +1,8 @@
 ---
 title: "Coordinate several sessions"
 description: "Separate tasks, track which session needs attention, and review each result without mixing work."
-verified: "2026-09-13"
-evidence: ["launch", "chat", "session-signals", "questions", "project-setup"]
+verified: "2026-09-29"
+evidence: ["launch", "chat", "session-signals", "questions", "project-setup", "layout"]
 ---
 
 Run independent tasks in clearly identified workspaces and keep responsibility for each result visible.
@@ -15,8 +15,8 @@ For example, in a fictional shop project, one session could improve checkout err
 
 ## Give each task a home
 
-1. Use **New session → New worktree** for each independent task. Choose descriptive names such as `checkout-errors` and `account-help`.
-2. Record each session's project, full workspace path, branch, intended files, and acceptance check.
+1. For each independent task, select **New session** (the **+** at the top of the **Sessions** sidebar), pick the project, select **Next: Choose a workspace**, and choose **New worktree**. Enter a name in **Task or branch name**. Choose descriptive names such as `checkout-errors` and `account-help`.
+2. Record each session's project, full workspace path, branch, intended files, and acceptance check. To find the path, open **More actions** (the **⋮** at the right end of the workspace tabs), select **Session details**, and read **Directory**.
 3. [Prepare each workspace](/guides/prepare-project/) before asking for implementation.
 4. Send a focused task to the matching session, including what it should leave for the other task.
 
@@ -24,9 +24,9 @@ Worktrees separate working files. They still share repository history and can us
 
 ## Check in without losing your place
 
-Use the sidebar to select a session, then confirm its project and branch before replying. Read the latest response alongside its activity signal. **Idle** can mean a completed turn or a request for input; it does not establish completion.
+Select a session in the **Sessions** sidebar, then confirm its project and branch on the prompt bar above the message box before replying. Its status, such as **Idle**, appears on its row in the sidebar. Read the latest response alongside its activity signal. **Idle** can mean a completed turn or a request for input; it does not establish completion.
 
-Keep a small task list with three fields: latest result, decision needed, and next check. Resolve ordinary questions in that session's Chat. For **Questions**, verify the receiving session before submission; sessions in the same worktree share the unfinished questionnaire.
+Keep a small task list with three fields: latest result, decision needed, and next check. Resolve ordinary questions in that session's conversation. For questionnaires in the **Ask me** tab, verify the receiving session before submission; sessions in the same worktree share the unfinished questionnaire.
 
 ## If sessions share a directory
 

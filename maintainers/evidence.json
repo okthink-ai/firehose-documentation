@@ -347,6 +347,42 @@
         "https://tailscale.com/kb/1153/enabling-https",
         "https://tailscale.com/kb/1347/installation"
       ]
+    },
+    "layout": {
+      "scope": "Where controls live in the 1.0.1 web UI: icon rail and Settings gear, Sessions sidebar and New session button, New agent session steps, workspace tabs and Chat toggle, prompt bar (folder, branch, commit, tools), message box, send, attach, context badge, stop button, Session options and Session details, mobile layout. Source inspection plus mock-data screenshots; not a live release session.",
+      "revision": "8d9eccaedbb5472aef4dc0f4dca6e11ac5e097df",
+      "verified": "2026-09-29",
+      "paths": [
+        "apps/expo/src/components/Sidebar/ActivityBar.tsx",
+        "apps/expo/src/components/Sidebar/SidebarHeader.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/navigation.ts",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/ProjectStep.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/CheckoutStep.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/WorktreeStep.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/BranchStep.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/WizardFooter.tsx",
+        "apps/expo/src/components/ChatView/ChatTabs.tsx",
+        "apps/expo/src/components/ChatView/MobileSessionHeader.tsx",
+        "apps/expo/src/components/ChatInput/ChatInputView.tsx",
+        "apps/expo/src/components/ChatInput/index.tsx",
+        "apps/expo/src/components/PromptBar/PromptBarView.tsx",
+        "apps/expo/src/components/PromptBar/ToolsButton.tsx",
+        "apps/expo/src/components/PromptBar/usePromptBarViewProps.tsx",
+        "apps/expo/src/components/ThinkingIndicator/ThinkingIndicatorWeb.tsx",
+        "apps/expo/src/components/SessionItem/sessionActions.tsx",
+        "apps/expo/src/components/SessionItem/SessionItemBody.tsx",
+        "apps/expo/src/components/SessionActions/SessionActionsButton.tsx",
+        "apps/expo/src/components/shared/ContextBadge.tsx",
+        "apps/expo/src/components/DiffWorkspace/changes/ChangesNavigator.tsx",
+        "apps/expo/src/components/DiffWorkspace/changes/DiffFiltersSheet.tsx",
+        "apps/expo/src/components/ServerConnectionScreen/ServerConnectionForm.tsx",
+        "apps/expo/src/components/UserQuestionsPanel/UserQuestionSetActions.tsx",
+        "apps/expo/src/components/ReviewPanel/index.tsx",
+        "apps/expo/src/components/shared/BetterReviewButton.tsx",
+        "apps/expo/src/components/FocusAreasModal/index.tsx",
+        "apps/expo/src/components/CloseSessionModal/CloseSessionDialog.tsx"
+      ]
     }
   },
   "runtimeObservations": [
@@ -376,6 +412,95 @@
           },
           "deviceScaleFactor": 2,
           "crop": "Actual provider settings panel; surrounding projects and conversations excluded. No retouching."
+        }
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "serverVersion": "8d9eccaedbb5 (source, Expo web dev build)",
+      "scope": "Interface captures for the user guides. The real 1.0.1 web UI was driven by Playwright against the repository's e2e mock API with invented data only: the hello-firehose and hello-form practice projects under /home/you/projects, a fictional activation code, and a placeholder tailnet address. No real server, project, account, or provider was involved. Mock-only chips such as make-pr and tts are left as rendered; nothing was retouched.",
+      "method": "agent-manager branch docs-screenshot-capture, e2e/tests/docs-screenshots.spec.ts, run with DOCS_SHOT_DIR and DOCS_SHOT_BROWSER=/snap/bin/chromium.",
+      "captures": [
+        {
+          "path": "public/images/ui/activation-code.png",
+          "sha256": "611f71c548b284366c09a25728d3b55adb38f31a8a5f9b50ba690536bca22280",
+          "pixels": {
+            "width": 1600,
+            "height": 800
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/diff-changes.png",
+          "sha256": "d8139023da499fe580c24619c5b0fac3fcc84399a36992cae29524a9f377035d",
+          "pixels": {
+            "width": 1520,
+            "height": 520
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/layout-desktop.png",
+          "sha256": "40098d0423cc7014027157b4537405a143cf638f213b17e24108cadea897e280",
+          "pixels": {
+            "width": 2880,
+            "height": 1800
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/mobile-session.png",
+          "sha256": "e9a30ee0bcf08bd9029324ad6e9d20695df2411691108bc5e7f020ed247dbdaf",
+          "pixels": {
+            "width": 780,
+            "height": 1688
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/new-session-project.png",
+          "sha256": "719c6b2bf24b5f7aea399fb62387de3706be31ca3089f2ee980d6c176d4ce2d8",
+          "pixels": {
+            "width": 1408,
+            "height": 1168
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/new-session-workspace.png",
+          "sha256": "cf3ede4127def01d86ef4d3d084124ff92eec3accf61cdc1995e9a44518619e0",
+          "pixels": {
+            "width": 1408,
+            "height": 1168
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/session-options.png",
+          "sha256": "a7f7e943aa8430cedc401b7b7c649b93af4f9851c43d6d5befca1c6b20ba8792",
+          "pixels": {
+            "width": 1440,
+            "height": 1040
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/settings-tailnet.png",
+          "sha256": "df7ff6518ce2ba2700a723d433c5092c727ac95a8aed59c27ef8da26a85ee144",
+          "pixels": {
+            "width": 840,
+            "height": 600
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/tools-menu.png",
+          "sha256": "63fd3e24d07d587af72593c0b2779933c0a250a5fd5d053332abe8f9b9385a95",
+          "pixels": {
+            "width": 1520,
+            "height": 420
+          },
+          "deviceScaleFactor": 2
         }
       ]
     }

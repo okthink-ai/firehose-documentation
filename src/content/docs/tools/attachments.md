@@ -1,8 +1,8 @@
 ---
 title: "Give an agent a file or screenshot"
 description: "Attach relevant evidence, confirm upload and delivery, and understand the copy stored in the project."
-verified: "2026-09-13"
-evidence: ["attachments", "chat", "closing"]
+verified: "2026-09-29"
+evidence: ["attachments", "chat", "closing", "layout"]
 ---
 
 Add a screenshot or file to a request so the agent can use concrete evidence when investigating a task.
@@ -15,10 +15,10 @@ Attaching a file copies it to the server workspace. It does not replace an appli
 
 ## Attach and explain the evidence
 
-1. In Chat, select **Add attachment**, the attachment button beside the input.
+1. Select **Add attachment**, the **+** button at the left of the message box's lower row.
 2. Choose **Photos** or **Files** when that menu is offered. Some configurations open the file picker directly.
 3. Select the file. Check its preview or filename and upload status. If it shows progress, let that finish before sending. For an error, read the message and use **Retry** when offered.
-4. Add a request that explains what to inspect, then use **Send message**.
+4. Add a request that explains what to inspect, then press Enter or select the round arrow button to send.
 
 For example:
 

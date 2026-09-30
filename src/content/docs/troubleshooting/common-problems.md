@@ -2,7 +2,7 @@
 title: "Get unstuck"
 description: "Follow concrete checks for activation, connection, project creation, startup, message delivery, and missing changes."
 verified: "2026-09-29"
-evidence: ["activation", "tailnet-access", "hosted-connection", "connection", "settings", "launch", "chat", "diff", "questions", "project-creation", "diff-comparisons", "session-signals", "diagnostics", "git-refresh", "question-details"]
+evidence: ["activation", "tailnet-access", "hosted-connection", "connection", "settings", "launch", "chat", "diff", "questions", "project-creation", "diff-comparisons", "session-signals", "diagnostics", "git-refresh", "question-details", "layout"]
 ---
 
 Find the symptom you recognize and work through its checks in order. Keep the exact error text so you can report what failed.
@@ -37,7 +37,7 @@ From your phone or another computer:
 | What you see | What to do |
 | --- | --- |
 | `This Firehose only answers its owner over the tailnet.` | You are signed in to Tailscale with a different account than the computer's owner. Sign in with the owner's account. Other people cannot connect to your Firehose. |
-| **Enter the server address without a port. Port 4801 is added automatically.** | Remove the port from the hosted app's form. If you installed on another port, open the address from **Settings** directly instead of using agents.okthink.ai. |
+| **Enter the server address without a port. Port 4801 is added automatically.** | Remove the port from the hosted app's form. If you installed on another port, open the address shown under **Open from your other devices** in **Settings** directly instead of using agents.okthink.ai. |
 | **Enter the full Tailscale MagicDNS hostname ending in .ts.net** | Use your computer's full Tailscale name, such as `your-computer.your-tailnet.ts.net`. Short names and IP addresses do not work in the hosted app. |
 | `Tailscale only lets its operator publish services on this machine.` when running `firehose tailnet on` | Run `sudo tailscale set --operator=$USER` once, as the message says, then run `firehose tailnet on` again. |
 | `HTTPS and Serve must be turned on for your tailnet first` | Follow the link in the message, or turn them on in the Tailscale admin console. Then run `firehose tailnet on` again. |
@@ -50,9 +50,9 @@ Return to [Connect to Firehose](/getting-started/connect/) once the check passes
 ## My project isn’t listed
 
 1. Check that the repository exists on the server, not only on your browser device.
-2. Open **Settings → Project directories**. The parent directory containing the repository should be in the comma-separated list.
+2. Open **Settings** (the gear icon at the bottom of the icon rail on the far left) and find **Project directories**. The parent directory containing the repository should be in the comma-separated list.
 3. Preserve other entries, add the missing parent if needed, and select **Save**. Look for **Saved**.
-4. Reopen **New session** and find the project again.
+4. Select **New session** (the **+** at the top of the **Sessions** sidebar) again and find the project at **Pick a project**.
 
 If refresh reports an error, record it and check the server connection. If you need a new repository, use [New git project](/getting-started/first-session/#1-prepare-a-practice-project).
 
@@ -76,7 +76,7 @@ Read the explanation beside the model and choose an available option. The start 
 
 ### The workspace is incomplete or launch reports an error
 
-For a new worktree, enter a task or branch name. If the branch already exists, use **Existing branch** or choose a different name for new work.
+For a new worktree, select **New worktree** at **Choose a workspace** and enter a **Task or branch name**. If the branch already exists, use **Existing branch** or choose a different name for new work.
 
 After **Start session**, read the launch error. If it concerns installation, authentication, or model access, give the provider, model, and error text to the server operator. Ask the operator to confirm a successful launch with that provider/model on the server, then retry **Start session**. Success means the session opens in the intended workspace. If it still fails, include the new error and the operator’s last successful check in your report.
 
@@ -102,22 +102,22 @@ Suppose you sent “Run the greeting tests,” then saw **Delivery could not be 
 
 ## The agent looks inactive
 
-Read the latest response alongside the [session signals](/tools/chat/#read-the-session-signals). **Idle** is not proof the task succeeded. Answer an ordinary question in Chat or use **Questions** for a questionnaire.
+Read the latest response alongside the [session signals](/tools/chat/#read-the-session-signals). **Idle** is not proof the task succeeded. Answer an ordinary question in the message box, or use the **Ask me** tab for a questionnaire.
 
 For **Stopping...**, check whether it changes to **Idle** and whether the latest response acknowledges interruption. If it remains unchanged and you cannot read progress, report that state instead of sending repeated interrupts. For **Transcript unavailable**, check the server connection and share the status with the operator if it persists. Repeated interruption does not repair unavailable conversation data.
 
 ## Questions are still waiting or won’t submit
 
-A clarification request waits for the current turn to finish before delivery. Once questions appear, the set can still be generating. Look for **Your turn**, then complete the required answers before **Submit to Agent**. **Queued** and the generation message describe earlier stages; see [Questions](/tools/questions/#3-answer-when-it-is-your-turn).
+A clarification request waits for the current turn to finish before delivery. Once questions appear, the set can still be generating. Look for **Your turn**, then complete the required answers before selecting **Submit to** the provider, such as **Submit to Codex**. **Queued** and the generation message describe earlier stages; see [Questions](/tools/questions/#3-answer-when-it-is-your-turn).
 
-Only one unfinished questionnaire is allowed per worktree. Check **Questions** in the existing session before requesting another. If answer delivery fails, confirm the selected session accepts input and follow the delivery checks above before retrying **Submit to Agent**. A failed delivery leaves the set available.
+Only one unfinished questionnaire is allowed per worktree. Check the **Ask me** tab in the existing session before requesting another. If answer delivery fails, confirm the selected session accepts input and follow the delivery checks above before retrying the submit button. A failed delivery leaves the set available.
 
 ## I don’t see the expected file changes
 
 1. Check the selected session’s project and branch.
-2. Open **Diff → Changes → Diff filters → Compare**. Select **All changes** for the broad comparison, **Working changes** for uncommitted edits, or **Branch changes** for branch commits.
+2. Select the **Diff** tab, then **Changes**, then **Diff filters** (the **⋮** next to the search icon). Under **Compare**, select **All changes** for the broad comparison, **Working changes** for uncommitted edits, or **Branch changes** for branch commits.
 3. Clear search, status, and annotation filters that could exclude the file. A new file may still be untracked.
-4. Click or tap the branch name in the prompt bar to **Refresh git status**. Check for **Refreshing…**, then the updated list. If **Retry** appears after a loading error, select it once and read the resulting list or error.
+4. Click or tap the branch name on the prompt bar to refresh Git status. Check for **Refreshing…**, then the updated list. If **Retry** appears after a loading error, select it once and read the resulting list or error.
 
 A committed change no longer appears in Working changes unless it has further edits. If a file shows a size or format limitation, read that message; a missing text preview does not establish that the file is unchanged.
 

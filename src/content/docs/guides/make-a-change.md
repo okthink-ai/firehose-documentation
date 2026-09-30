@@ -1,8 +1,8 @@
 ---
 title: "Make and review a change"
 description: "Give an agent a small task, verify its checks, and inspect the resulting code changes."
-verified: "2026-09-13"
-evidence: ["launch", "chat", "diff", "example", "diff-comparisons"]
+verified: "2026-09-29"
+evidence: ["launch", "chat", "diff", "example", "diff-comparisons", "layout"]
 ---
 
 Improve the greeting example, check the result, and review the files before deciding what to do next.
@@ -65,7 +65,7 @@ A [completed reference function](/examples/hello-firehose-result/greeting.mjs) a
 
 ## 3. Review the files
 
-Open **Diff → Changes → Diff filters → Compare → Working changes**. You should see the greeting change and a new test file. Check untracked files if the test file is not in the current view.
+Select the **Diff** tab at the top of the session, then **Changes**. Open **Diff filters** (the **⋮** next to the search icon), and under **Compare** choose **Working changes**. You should see the greeting change and a new test file. If the test file is missing, turn on **Untracked files** in the same **Diff filters** panel.
 
 Look for unrelated edits, deleted behavior, or tests that only check the easy case. If needed, send a precise follow-up:
 

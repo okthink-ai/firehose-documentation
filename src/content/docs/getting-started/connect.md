@@ -2,7 +2,7 @@
 title: "Connect to Firehose"
 description: "Open Firehose on your computer or from your other devices, and check that your agent is ready."
 verified: "2026-09-29"
-evidence: ["hosted-connection", "tailnet-access", "tailscale-setup", "connection", "settings", "launch"]
+evidence: ["hosted-connection", "tailnet-access", "tailscale-setup", "connection", "settings", "launch", "layout"]
 ---
 
 Open Firehose on the computer where you installed it, or from your phone or another computer. Then check that your agent can start a session.
@@ -56,9 +56,14 @@ With Tailscale running on the Firehose computer, use one of these:
 
 - **During installation:** answer `y` when the installer asks to open Firehose from your other devices, or install with `--tailnet`.
 - **In the terminal:** run `firehose tailnet on`.
-- **In the dashboard:** open **Settings**, find **Open from your other devices**, and turn on **Allow my other devices**. If Settings says **Restart Firehose to apply this.**, select **Restart now**.
+- **In the dashboard:** open **Settings** (the gear icon at the bottom of the icon rail on the far left). Under **Open from your other devices**, turn on **Allow my other devices**. If Settings says **Restart Firehose to apply this.**, select **Restart now**.
 
-When it is on, Firehose shows the address to use. It looks like `https://your-computer.your-tailnet.ts.net:4801`, where `your-computer.your-tailnet.ts.net` is a placeholder for your computer's full Tailscale name. In **Settings**, select **Copy** to copy it.
+When it is on, Firehose shows the address to use. It looks like `https://your-computer.your-tailnet.ts.net:4801`, where `your-computer.your-tailnet.ts.net` is a placeholder for your computer's full Tailscale name. Under **Open from your other devices** in **Settings**, select **Copy** to copy it.
+
+<figure class="product-capture">
+  <img src="/images/ui/settings-tailnet.png" width="420" height="300" loading="lazy" alt="The Open from your other devices section of Settings. Allow my other devices is switched on, followed by the address https://your-computer.your-tailnet.ts.net:4801, a Copy button, and the note Or open agents.okthink.ai and enter this computer's name.">
+  <figcaption><strong>Open from your other devices</strong> in Settings, turned on. The address is a placeholder; yours uses your computer's Tailscale name.</figcaption>
+</figure>
 
 If Settings says **Install Tailscale and sign in to use this.** or **Turn on MagicDNS for your tailnet in the Tailscale admin console.**, fix that in Tailscale first. MagicDNS gives your computer the `.ts.net` name the address uses.
 
@@ -70,10 +75,10 @@ If Settings says **Install Tailscale and sign in to use this.** or **Turn on Mag
 
 You can also open **agents.okthink.ai**, the hosted Firehose app, and enter your computer's full Tailscale name:
 
-1. Enter the name, such as `your-computer.your-tailnet.ts.net`, without `https://` or a port.
-2. Select **Connect**.
+1. In the **Connect to Firehose** dialog, enter the name in **Server address**, such as `your-computer.your-tailnet.ts.net`, without `https://` or a port.
+2. Select **Save and connect**.
 
-The hosted app always connects on port 4801. If you installed Firehose on another port, open the address from **Settings** directly instead.
+The hosted app always connects on port 4801. If you installed Firehose on another port, open the address shown under **Open from your other devices** in **Settings** directly instead.
 
 A short computer name or a Tailscale IP address does not work in the hosted app. Use the full name ending in `.ts.net` so it matches the HTTPS certificate.
 
@@ -81,7 +86,7 @@ To turn tailnet access off, run `firehose tailnet off` or turn off **Allow my ot
 
 ## Check that your provider is ready
 
-In **New session**, confirm that your project appears, choose its workspace, and select the provider you installed. Its model choices should load. After you choose an available model and check permissions, **Start session** should open a session in that workspace.
+Select **New session**, the **+** button at the top right of the **Sessions** sidebar. In the **New agent session** dialog, confirm that your project appears at **Pick a project**, choose its workspace, and select the provider you installed. Its model choices should load. After you choose an available model and check permissions, **Start session** should open a session in that workspace.
 
 These are three separate checks: project discovery, model discovery, and session startup. A model list alone does not prove the provider can handle your account’s requests. Complete the [small explanation task](/getting-started/first-session/#3-give-it-a-clear-request) to check an actual response.
 
@@ -91,7 +96,7 @@ If a check fails, note the project name, provider, selected model, exact error, 
 
 In the hosted app, each browser tab chooses its own server. Reloading a tab keeps its selected address. You can connect another tab to a different server.
 
-Switch servers through **Settings → Server connection**. Switching preserves the previous server’s stored workspace for when you return.
+To switch servers, open **Settings** (the gear icon at the bottom of the icon rail on the far left). Under **Server connection**, enter the other server's address and select **Save and connect**. Switching preserves the previous server’s stored workspace for when you return.
 
 **Forget this server** clears that server’s stored workspace, including drafts, annotations, open files, and project ordering. Use switching when you intend to return; read the confirmation before forgetting a server.
 

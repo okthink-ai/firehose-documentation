@@ -1,8 +1,8 @@
 ---
 title: "Review changes with Diff"
 description: "Choose the right comparison, inspect changed lines, and decide what to fix next."
-verified: "2026-09-13"
-evidence: ["diff", "diff-comparisons", "git-refresh"]
+verified: "2026-09-29"
+evidence: ["diff", "diff-comparisons", "git-refresh", "layout"]
 ---
 
 Inspect the changes in your session’s repository before accepting an agent’s result. Start by choosing the question you want the diff to answer.
@@ -13,7 +13,12 @@ Select the intended session and check its project and branch. A diff shows diffe
 
 ## 1. Choose a comparison
 
-Open **Diff → Changes**, then the **Diff filters** control. Under **Compare**, choose:
+Select the **Diff** tab at the top of the session. In the Diff sidebar, select **Changes**, then **Diff filters**, the **⋮** button next to the search icon. If the Diff sidebar is hidden, select **Show Diff sidebar**. Under **Compare**, choose:
+
+<figure class="product-capture">
+  <img src="/images/ui/diff-changes.png" width="760" height="260" loading="lazy" alt="The Diff tab with Changes selected and Commits beside it. A toolbar shows 2 files, +22 −1, and icons ending with a search icon and a three-dot Diff filters button. The file list shows greeting.mjs as modified and greeting.test.mjs as untracked.">
+  <figcaption>The Diff sidebar: <strong>Changes</strong> and <strong>Commits</strong>, with <strong>Diff filters</strong> as the <strong>⋮</strong> at the right of the toolbar. Sample project and messages.</figcaption>
+</figure>
 
 | Compare option | Question it answers |
 | --- | --- |
@@ -37,7 +42,7 @@ In this example, **Branch changes** compares the shared point with E. **All chan
 
 ## 2. Read a changed file
 
-Select a file to inspect added and removed lines. Read them alongside the original request. Select **Code** for the contents represented by that comparison; deleted files have no new contents to display.
+Select a file to inspect added and removed lines. Read them alongside the original request. Select **Code**, beside **Diff** above the file, for the contents represented by that comparison; deleted files have no new contents to display.
 
 **Expected result:** you can identify the specific behavior changed, such as choosing `guest` when the trimmed name is blank.
 
@@ -51,13 +56,13 @@ Suppose your task branch already contains a committed greeting fix, and you then
 - **Working changes** shows the test edit still outside a commit.
 - **All changes** gives you the combined view.
 
-Open **Commits** to browse branch commits. Select a commit, then a file, to inspect that commit’s changes. Use the visible back control to return to its parent view.
+Select **Commits**, beside **Changes** in the Diff sidebar, to browse branch commits. Select a commit, then a file, to inspect that commit’s changes. Select **Back to file list** or **Back to commits** to return.
 
 ## If a file is missing
 
 Check the selected comparison first. Then clear any search, status, or annotation filter excluding that file. A committed fix will not appear in **Working changes** once no further edits remain. A new test file may still be untracked.
 
-If the repository changes while you read, click or tap the branch name in the prompt bar to **Refresh git status**. The file list can show **Refreshing…** while it updates. If loading fails and **Retry** appears, select it and check for files or an error before deciding. See [diff troubleshooting](/troubleshooting/common-problems/#i-dont-see-the-expected-file-changes) if the result still differs from what you expect.
+If the repository changes while you read, click or tap the branch name on the prompt bar to refresh Git status. The file list can show **Refreshing…** while it updates. If loading fails and **Retry** appears, select it and check for files or an error before deciding. See [diff troubleshooting](/troubleshooting/common-problems/#i-dont-see-the-expected-file-changes) if the result still differs from what you expect.
 
 ## Turn the review into a follow-up
 

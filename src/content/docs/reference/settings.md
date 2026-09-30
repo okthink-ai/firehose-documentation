@@ -2,14 +2,16 @@
 title: "Projects, agents, and settings"
 description: "Find project discovery and server settings, and choose agent options when starting a session."
 verified: "2026-09-29"
-evidence: ["settings", "launch", "connection", "permissions", "tailnet-access"]
+evidence: ["settings", "launch", "connection", "permissions", "tailnet-access", "layout"]
 ---
 
 Find the settings that control which projects you see and where a new session runs.
 
+To open Settings, select the gear icon labeled **Settings** at the bottom of the icon rail on the far left. On a phone, go back to the session list first; the icon rail appears only there. Settings opens in the sidebar.
+
 ## Project directories
 
-Open **Settings → Project directories**. Enter a comma-separated list of directories to scan, such as:
+Open **Settings** and scroll to **Project directories**, near the bottom of the panel. Enter a comma-separated list of directories to scan, such as:
 
 ```text
 ~/dev, ~/projects
@@ -21,7 +23,7 @@ If a project is missing, check its location on the server and the configured par
 
 ## Agent and model
 
-The **Choose an agent** step in **New session** lets you select the agent, model, and autonomy for that session.
+The **Choose an agent** step, the last step after you select **New session** (the **+** at the top of the **Sessions** sidebar), lets you select the agent, model, and autonomy for that session.
 
 Use [provider and usage guidance](/reference/providers-and-usage/) to confirm account readiness and interpret usage indicators. Use the models listed by your installation. The selected provider’s models may need time to load, and a model marked unavailable can prevent the session from starting. Read its explanation and select an available option.
 

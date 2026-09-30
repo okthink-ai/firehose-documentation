@@ -1,8 +1,8 @@
 ---
 title: "Start your first session"
 description: "Choose an existing project or a tiny practice project, start an agent, and check its answer."
-verified: "2026-09-13"
-evidence: ["launch", "settings", "chat", "diff", "example", "permissions", "project-creation"]
+verified: "2026-09-29"
+evidence: ["launch", "settings", "chat", "diff", "example", "permissions", "project-creation", "layout"]
 ---
 
 Start an agent and ask it to explain a small piece of code. You’ll finish with an answer you can check against the file.
@@ -19,14 +19,19 @@ Start an agent and ask it to explain a small piece of code. You’ll finish with
 
 In Firehose:
 
-1. Select **New session** in the sidebar header.
-2. At **Pick a project**, select **New git project**.
-3. Choose a configured parent directory under **Location** and enter `hello-firehose` as the project name.
+1. Select **New session**, the **+** button at the top right of the **Sessions** sidebar. The **New agent session** dialog opens at **Pick a project**.
+2. Below the project list, select **New git project**.
+3. Enter `hello-firehose` in the name field, which shows `new-project-name` when empty. If you see **Location**, choose the parent directory first; with one project directory, Firehose shows where it will create the project instead.
 4. Select **Create**.
+
+<figure class="product-capture">
+  <img src="/images/ui/new-session-project.png" width="704" height="584" loading="lazy" alt="The New agent session dialog at Pick a project. The project list shows hello-firehose and hello-form. Below it is a name field showing new-project-name, a Create button, and the hint git init in /home/you/projects/<name>.">
+  <figcaption><strong>Pick a project</strong> with the new project form below the list. Sample project and messages.</figcaption>
+</figure>
 
 **Expected result:** Firehose creates a Git repository with a README and attempts an initial commit. It does not add the greeting example for you.
 
-If no project directory is configured, open **Settings → Project directories**, add your projects directory, and select **Save**. These are paths on the server. Preserve existing entries.
+If Firehose says **No project directories configured — add one in Settings first.**, open **Settings** (the gear icon at the bottom of the icon rail on the far left). Under **Project directories**, add your projects directory to the comma-separated list and select **Save**. These are paths on the server. Preserve existing entries.
 
 If the name already exists, choose that project or use another name. If creation reports no initial commit, configure your usual Git name and email on the server, then commit the README before using branch or worktree workflows.
 
@@ -54,7 +59,7 @@ node --input-type=module -e "import { greet } from './greeting.mjs'; console.log
 
 ## 2. Choose where the agent works
 
-1. Open **New session** and choose your repository at **Pick a project**.
+1. Select **New session** (the **+** at the top of the **Sessions** sidebar) and choose your repository at **Pick a project**.
 2. Select **Next: Choose a workspace**.
 3. Choose **Current checkout** to use that directory. For a separate task directory, see [workspace choices](/guides/workspaces/).
 4. At **Choose an agent**, choose a provider and an available model.
@@ -72,7 +77,7 @@ A request such as “Do not change files” expresses your task’s constraints;
 
 ## 3. Give it a clear request
 
-Send this in **Chat**. For your own repository, replace the filename and question with a small example you can verify:
+Type this in the message box at the bottom of the session and press Enter, or select the round arrow button at its right. For your own repository, replace the filename and question with a small example you can verify:
 
 ```text
 Read greeting.mjs and explain what greet does.
@@ -81,7 +86,7 @@ Do not change files or run installation commands.
 Point to the code that explains each result.
 ```
 
-Follow the response in **Chat**. If the agent asks for information, answer in the same session.
+Follow the response in the session's conversation above the message box. If the agent asks for information, answer in the same session.
 
 ## 4. Check the answer
 
@@ -94,6 +99,6 @@ The function trims spaces from the name and adds a greeting:
 
 The agent may phrase its explanation differently. Check its answer against `greeting.mjs`.
 
-Open **Diff → Changes**, then **Diff filters → Compare → Working changes** to check for uncommitted edits. With a clean starting repository, you should see none. If you already had edits, compare with that starting state instead of attributing them all to this session.
+Select the **Diff** tab at the top of the session, then **Changes**. Select **Diff filters**, the **⋮** button next to the search icon, and under **Compare** choose **Working changes** to check for uncommitted edits. With a clean starting repository, you should see none. If you already had edits, compare with that starting state instead of attributing them all to this session.
 
 You’ve started a session, sent a request, and checked its result. Next, [ask for a small improvement](/guides/make-a-change/) using the same project.

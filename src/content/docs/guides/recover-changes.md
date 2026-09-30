@@ -1,21 +1,21 @@
 ---
 title: "Recover from an unwanted change"
 description: "Stop additional work, identify the affected edits, and request a correction while preserving unrelated changes."
-verified: "2026-09-13"
-evidence: ["chat", "diff", "closing", "example"]
+verified: "2026-09-29"
+evidence: ["chat", "diff", "closing", "example", "layout"]
 ---
 
 Correct an agent's unwanted edits without treating every change in the workspace as disposable.
 
 ## 1. Stop additional work and identify the workspace
 
-If the agent is still making the wrong change, use **Interrupt**. On mobile, find it in the session header's three-dot menu. Check the last response once the session settles. Interrupting does not undo commands or file edits already completed.
+If the agent is still making the wrong change, select the red stop button, **Stop (interrupt)**, beside the activity indicator above the message box. On mobile, open the session header's **⋮** menu and select **Interrupt**. Check the last response once the session settles. Interrupting does not undo commands or file edits already completed.
 
-Confirm the full workspace path and branch. If another session shares the directory, coordinate a pause in its editing too.
+Confirm the full workspace path and branch: open **More actions** (the **⋮** at the right end of the workspace tabs), select **Session details**, and read **Directory**. If another session shares the directory, coordinate a pause in its editing too.
 
 ## 2. Separate the changes
 
-Open **Diff → Changes** and inspect **Working changes**. Compare the files with the starting state recorded before the task. Use **Commits** for work already committed.
+Select the **Diff** tab at the top of the session, then **Changes**. Open **Diff filters** (the **⋮** next to the search icon), and under **Compare** choose **Working changes**. Compare the files with the starting state recorded before the task. For work already committed, select **Commits** beside **Changes**.
 
 Ask the agent to explain which edits it made, but verify its answer against the diff and your notes. If an affected file contained earlier uncommitted work and you cannot distinguish it, preserve the current files and ask the owner to review the relevant lines before requesting a reversal. Do not use a repository-wide reset or clean command to resolve that uncertainty.
 

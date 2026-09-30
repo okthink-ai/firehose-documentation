@@ -1,15 +1,15 @@
 ---
 title: "Put files in the right workspace"
 description: "Save the practice file on your Firehose server and verify your terminal is in the intended project."
-verified: "2026-09-13"
-evidence: ["project-creation", "launch", "file-access", "example", "terminal", "attachments"]
+verified: "2026-09-29"
+evidence: ["project-creation", "launch", "file-access", "example", "terminal", "attachments", "layout"]
 ---
 
 Put `greeting.mjs` in the project your agent will use, then open a terminal in that same directory. Choose the route that matches where you are sitting.
 
 ## Before you begin
 
-You need the project directory on the Firehose server. For the practice route, first create `hello-firehose` through **New git project**. Its path combines the **Location** you selected and the project name.
+You need the project directory on the Firehose server. For the practice route, first create `hello-firehose` through **New git project** in **New session**, as described in [Start your first session](/getting-started/first-session/#1-prepare-a-practice-project). Its path combines the **Location** you selected and the project name.
 
 Ask your operator for the full path if you do not know it. Do this before copying a file. The examples below use `~/projects/hello-firehose`; replace it with your actual path.
 
@@ -19,7 +19,7 @@ Ask your operator for the full path if you do not know it. Do this before copyin
 | You use another computer and already have SSH access | [Copy over SSH](#copy-from-another-computer-with-ssh) |
 | You are on a phone or do not have terminal access | [Ask your operator](#ask-your-operator-to-place-the-file) |
 
-If your Firehose installation offers the in-app terminal, you can [open a server shell there](/tools/terminal/) for these location and command checks. Attaching a file to Chat stages prompt material; it does not place `greeting.mjs` at the project root for this tutorial.
+You can also select the **Terminal** tab at the top of a session to [open a shell in that session's folder](/tools/terminal/) for these location and command checks. Attaching a file to Chat stages prompt material; it does not place `greeting.mjs` at the project root for this tutorial.
 
 SSH is a separate way to sign in to the server from a terminal. Access to the Firehose app or its Tailscale network does not by itself establish an SSH login. The shell examples here use a macOS or Linux terminal with Git and Node.js available on the server.
 

@@ -2,7 +2,7 @@
 title: "Install Firehose"
 description: "Install Firehose on your Mac or Linux computer with the one-line installer and open the dashboard."
 verified: "2026-09-29"
-evidence: ["install", "tailscale-setup"]
+evidence: ["install", "tailscale-setup", "layout"]
 ---
 
 Install Firehose on the computer where your repositories live. When you finish, Firehose is running on that computer and its dashboard is open in your browser, ready to [activate](/getting-started/activate/).
@@ -90,7 +90,7 @@ curl -fsSL https://github.com/okthink-ai/firehose-releases/releases/latest/downl
 | `--release <version>` | Install a specific version instead of the latest |
 | `--dir <path>` | Install somewhere other than `~/.firehose` |
 
-Changing the port has a cost: the hosted app at agents.okthink.ai always connects on port 4801. On another port, use the tailnet address from **Settings** on your other devices instead.
+Changing the port has a cost: the hosted app at agents.okthink.ai always connects on port 4801. On another port, open **Settings** (the gear icon at the bottom of the icon rail on the far left) and copy the address under **Open from your other devices** to use on your other devices instead.
 
 ## Manage Firehose from the terminal
 
