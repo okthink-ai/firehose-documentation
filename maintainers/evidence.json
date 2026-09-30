@@ -418,12 +418,102 @@
     {
       "date": "2026-09-29",
       "serverVersion": "8d9eccaedbb5 (source, Expo web dev build)",
-      "scope": "Interface captures for the user guides. The real 1.0.1 web UI was driven by Playwright against the repository's e2e mock API with invented data only: the hello-firehose and hello-form practice projects under /home/you/projects, a fictional activation code, and a placeholder tailnet address. No real server, project, account, or provider was involved. Mock-only chips such as make-pr and tts are left as rendered; nothing was retouched.",
-      "method": "agent-manager branch docs-screenshot-capture, e2e/tests/docs-screenshots.spec.ts, run with DOCS_SHOT_DIR and DOCS_SHOT_BROWSER=/snap/bin/chromium.",
+      "scope": "Interface captures for the user guides. The real 1.0.1 web UI was driven by Playwright against the repository's e2e mock API with invented data only: the hello-firehose and hello-form practice projects under /home/you/projects, a fictional activation code, and a placeholder tailnet address. No real server, project, account, or provider was involved. Mock-only chips such as make-pr and tts are left as rendered; nothing was retouched. Hosted /activate and /account captures restore a fictional you@example.com Firebase user from browser storage and answer every Firebase and license-service request with canned responses; plan labels are the service's own (functions/src/plans.ts) and no prices appear. The license agreement capture uses shortened placeholder agreement text. The locked-screen reason uses the service's real 'subscription is <status>' wording.",
+      "method": "agent-manager branch docs-screenshot-capture, e2e/tests/docs-screenshots.spec.ts, run with DOCS_SHOT_DIR and DOCS_SHOT_BROWSER=/snap/bin/chromium. Hosted pages: e2e/hosted/docs-activation.spec.ts with playwright.hosted.config.ts and placeholder EXPO_PUBLIC_FIREBASE_* settings.",
       "captures": [
+        {
+          "path": "public/images/ui/account.png",
+          "sha256": "eb0074cd1bfd0274880c7d26296eb52f2789392da12644714e5eba508e6f9a36",
+          "pixels": {
+            "width": 710,
+            "height": 458
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activate-approve.png",
+          "sha256": "80ef456798653d1571abd672bb9fb35b6829447c17967d000d01e5544996b4f5",
+          "pixels": {
+            "width": 1120,
+            "height": 816
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activate-approved.png",
+          "sha256": "32a5a99e93ab43be9c37bba4eaebd1d7c29dfe1b2927f6763a044ebfb08eb7fa",
+          "pixels": {
+            "width": 1120,
+            "height": 820
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activate-billing.png",
+          "sha256": "d44be016fa651dc8969b75cb1b536711f61f41d76ed0171159e55d53ab9fe4f9",
+          "pixels": {
+            "width": 1120,
+            "height": 852
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activate-link-sent.png",
+          "sha256": "c0b9cab18411ffa3c433853ff53f9f605739790caa66aa33ee96d24c0b2a786b",
+          "pixels": {
+            "width": 1120,
+            "height": 810
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activate-signin.png",
+          "sha256": "1f662a4ec703d8b3c3d63d450bf018b4eb7c4aaebb837449bd1afeeca4cab863",
+          "pixels": {
+            "width": 1120,
+            "height": 702
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activate-subscribe.png",
+          "sha256": "448842d5309e66a122ac5e5276519e9289e497863885a8be137528c9ca784477",
+          "pixels": {
+            "width": 1120,
+            "height": 1124
+          },
+          "deviceScaleFactor": 2
+        },
         {
           "path": "public/images/ui/activation-code.png",
           "sha256": "611f71c548b284366c09a25728d3b55adb38f31a8a5f9b50ba690536bca22280",
+          "pixels": {
+            "width": 1600,
+            "height": 800
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activation-expired.png",
+          "sha256": "a4d42fc49e858b61015f2fa7d29f933a6a286792d6cebf77421710ec2010d5b9",
+          "pixels": {
+            "width": 1600,
+            "height": 800
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activation-locked.png",
+          "sha256": "675e774658395143bb1ffbf68f2ccdbc0a02035032f7a96d6f1e43c44568266c",
+          "pixels": {
+            "width": 1600,
+            "height": 800
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activation-start.png",
+          "sha256": "79acc15ceedab9dfb1fe1cdf86f54495e1bc7496148b62ca361b83eb39909948",
           "pixels": {
             "width": 1600,
             "height": 800
@@ -445,6 +535,15 @@
           "pixels": {
             "width": 2880,
             "height": 1800
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/license-agreement.png",
+          "sha256": "6e0330c8061b40571b619ab18768509a9b127248db11cfce7b47d2f61276598a",
+          "pixels": {
+            "width": 1600,
+            "height": 1320
           },
           "deviceScaleFactor": 2
         },
