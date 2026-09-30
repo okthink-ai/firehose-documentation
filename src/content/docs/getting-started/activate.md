@@ -68,4 +68,4 @@ Firehose renews its license automatically while the computer is online. If it ca
 | **The activation was not approved.** | Select **Try again**. If it happens again, check your subscription at `agents.okthink.ai/account`. |
 | The dashboard keeps waiting after the page said the code was approved | Check that the computer is online, then wait a minute. Firehose checks for approval every few seconds. |
 | The sign-in email does not arrive | Check your spam folder, then select **Send the link again**. |
-| **License agreement** instead of **Activate Firehose** | Read the agreement and select **I accept**. This appears if the agreement was not accepted during installation. |
+| **License agreement** instead of **Activate Firehose** | Read the agreement, also available as the [published end-user license agreement](https://github.com/okthink-ai/firehose-releases/releases/latest/download/EULA.md), and select **I accept**. This appears if the agreement was not accepted during installation. |

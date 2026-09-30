@@ -291,11 +291,13 @@
       ]
     },
     "install": {
-      "scope": "Public one-line installer: platforms, prerequisites warnings, EULA and tailnet prompts, flags, final messages, firehose commands and error messages. Source inspection of the commit Firehose 1.0.1 was built from (release build id 8d9eccaedbb5). No install on a clean machine, live activation, Stripe checkout, or hosted-app run was performed.",
+      "scope": "Public one-line installer: platforms, prerequisites warnings, EULA and tailnet prompts, flags, final messages, the published EULA release asset (identical to resources/EULA.md in the 1.0.0 and 1.0.1 archives), firehose commands and error messages. Source inspection of the commit Firehose 1.0.1 was built from (release build id 8d9eccaedbb5). No install on a clean machine, live activation, Stripe checkout, or hosted-app run was performed.",
       "revision": "8d9eccaedbb5472aef4dc0f4dca6e11ac5e097df",
       "verified": "2026-09-29",
       "paths": [
-        "install.sh"
+        "install.sh",
+        "docs/EULA.md",
+        "scripts/release/stage-resources.ts"
       ]
     },
     "activation": {

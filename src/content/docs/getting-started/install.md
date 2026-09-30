@@ -17,6 +17,7 @@ You need:
 - `curl` and `tar`, which the installer uses to download and unpack Firehose.
 - `tmux`, which Firehose needs to launch agent sessions, and `git` for workspace features.
 - At least one agent command-line tool installed and signed in: Claude Code (`claude`), Codex (`codex`), or Antigravity (`agy`). Firehose does not install or sign in to these for you.
+- Agreement to the [Firehose end-user license agreement](https://github.com/okthink-ai/firehose-releases/releases/latest/download/EULA.md). You can read it before you install; the installer asks you to accept it.
 - A paid Firehose subscription, or the email address you will use to buy one during [activation](/getting-started/activate/).
 - [Tailscale](https://tailscale.com/download), only if you want to open Firehose from your phone or another computer. Install it before running the installer and the installer offers to set up access for you. You can also add it later; see [Set up Tailscale](/getting-started/connect/#set-up-tailscale).
 
@@ -34,7 +35,7 @@ The installer downloads the latest release for your computer, checks its checksu
 
 ## 2. Accept the license agreement
 
-The installer shows where the agreement is saved and asks:
+Firehose is licensed software. You can read the [end-user license agreement](https://github.com/okthink-ai/firehose-releases/releases/latest/download/EULA.md) before you start; it is the same text the installer saves on your computer. The installer shows where it saved the agreement and asks:
 
 ```text
 Do you accept the end-user license agreement? [y/N]
