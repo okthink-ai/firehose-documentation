@@ -1,8 +1,8 @@
 ---
 title: "What you can do"
 description: "Choose a practical Firehose workflow for understanding code, making changes, or reviewing work."
-verified: "2026-09-13"
-evidence: ["launch", "chat", "diff", "questions", "review", "connection"]
+verified: "2026-09-29"
+evidence: ["launch", "chat", "diff", "questions", "review", "connection", "tailnet-access"]
 ---
 
 Choose a workflow that matches the result you want, then use the linked guide to complete it.
@@ -37,6 +37,6 @@ Use **Diff** to inspect changed files and commits. Use **Smart Review** for agen
 
 ## Check in from another device
 
-Use the hosted app with your existing server over Tailscale. Read progress and answer the agent from your phone using the [mobile web guide](/guides/mobile/).
+Turn on tailnet access to open Firehose from your phone or another computer over Tailscale. Only you can connect. Read progress and answer the agent from your phone using the [mobile web guide](/guides/mobile/).
 
 Available models and provider options depend on your server’s configuration. Start with [the tools overview](/tools/overview/) to find the controls for each workflow.

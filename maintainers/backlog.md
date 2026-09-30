@@ -15,6 +15,13 @@ maintainer can assign people when scheduling the work.
 | Next | Finish tool inventory | Product maintainer | Team Chat, X-Ray, Timeline, voice, and issue workflows have verified task paths; terminal and attachment guides have live validation |
 | Later | Add focused guides for remaining tools | Documentation maintainer | Each has prerequisites, an example, expected output, limits, and recovery |
 | Later | Test the Firehose mobile workflow on a real device | Product maintainer | Connection, session switching, input, questions, and diff review work on the target release |
+| Next | Run the 1.0.1 install, activation and tailnet pages on a clean Mac and Linux machine | Product maintainer | A new reader installs, activates, connects from a phone and starts a session using only the guides; exact messages match |
+| Next | Decide whether one machine can be shared with other people | Product owner | Owner-only tailnet access is confirmed as intended, or a supported way for a teammate to connect is documented; operator wording on deeper guides (files and terminal, first session, providers, terminal) is updated to match |
+| Next | Decide how the guides describe pricing and trials | Product owner | Pages either name the price and trial policy or keep pointing to the plans shown at checkout |
+| Next | Decide whether the hosted app or the tailnet address is the primary remote route | Product owner | Connect leads with the chosen route |
+| Next | Decide whether the hosted app should accept a port | Product owner | Installs using `--port` can use agents.okthink.ai, or the current workaround stays documented |
+| Next | Decide where accounts that skip checkout learn about it | Product owner | Activation explains it without naming who qualifies |
+| Next | Confirm whether Windows or WSL is in scope | Product owner | Install states the supported platforms beyond the installer's macOS and Linux check |
 | Deferred | Decide repository licensing | Project owner | User chooses terms for docs, code examples, and assets; applicable license files are added |
 | Deferred | Confirm public repository visibility and contribution URLs | Project owner | Explicit publication request is received and destinations are verified |
 | Later | Add redirects for moved URLs and decide on a custom domain | Project owner | Firebase redirects cover moved pages; any custom domain is connected and `site` is updated |

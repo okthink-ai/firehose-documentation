@@ -1,8 +1,8 @@
 ---
 title: "Projects, agents, and settings"
 description: "Find project discovery and server settings, and choose agent options when starting a session."
-verified: "2026-09-13"
-evidence: ["settings", "launch", "connection", "permissions"]
+verified: "2026-09-29"
+evidence: ["settings", "launch", "connection", "permissions", "tailnet-access"]
 ---
 
 Find the settings that control which projects you see and where a new session runs.
@@ -33,8 +33,12 @@ For the hosted app, use **Settings → Server connection** to manage the selecte
 
 See [Connect to Firehose](/getting-started/connect/) for address requirements and tab behavior.
 
+## Open from your other devices
+
+**Settings → Open from your other devices** turns tailnet access on and off with **Allow my other devices**. When it is on, it shows the address to open from your phone or another computer, with a **Copy** button. Only the Tailscale account that owns this computer can connect. If it says **Restart Firehose to apply this.**, select **Restart now**. See [Connect to Firehose](/getting-started/connect/#open-firehose-from-your-other-devices).
+
 ## Tailscale HTTPS
 
-**Settings → Tailscale HTTPS** shows certificate setup and status for remote access. If you manage the server, use it to investigate a missing, expired, or mismatched certificate. Restart Firehose after certificate installation or renewal.
+**Settings → Tailscale HTTPS** shows the status of the HTTPS certificate used for remote access. Use it to investigate a missing, expired, or mismatched certificate. Restart Firehose after certificate installation or renewal.
 
-If someone else manages the server, share the status message with them. You don’t need to change server configuration to complete the everyday session guides.
+You don’t need to change these settings to complete the everyday session guides on the Firehose computer itself.

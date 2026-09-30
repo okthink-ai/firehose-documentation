@@ -1,21 +1,21 @@
 ---
 title: "Put your agents to work."
 description: "Start an agent, follow its work, and review the result with practical Firehose guides."
-verified: "2026-09-13"
-evidence: ["launch", "chat", "diff", "questions", "connection"]
+verified: "2026-09-29"
+evidence: ["launch", "chat", "diff", "questions", "connection", "install"]
 tableOfContents: false
 ---
 
 Give a coding agent a task. Follow the conversation, answer its questions, and review the changes—all in one Firehose workspace.
 
-[Start your first session →](/getting-started/first-session/) · [Check connection requirements](/getting-started/connect/)
+[Start your first session →](/getting-started/first-session/) · [Install Firehose](/getting-started/install/)
 
-**Before you start:** these guides use an existing Firehose server with a configured agent provider. Opening the app connects you to that machine. Ask the person managing your setup for access if you don’t have it yet.
+**Before you start:** Firehose runs on your own Mac or Linux computer. [Install it](/getting-started/install/), [activate it](/getting-started/activate/) with your subscription, and install an agent tool such as Claude Code or Codex. These guides describe Firehose 1.0.1.
 
 ## Find your next step
 
 - **[Connect to Firehose](/getting-started/connect/)**
-  Open your setup and find the projects on your server.
+  Open Firehose on your computer or your phone, and find your projects.
 - **[Start a session](/getting-started/first-session/)**
   Choose a workspace, send a useful request, and check the answer.
 - **[Review the result](/tools/diff/)**

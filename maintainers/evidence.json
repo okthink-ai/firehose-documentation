@@ -2,7 +2,7 @@
   "verified": "2026-09-13",
   "repository": "okthink-ai/agent-manager",
   "revision": "c57391d84f8d5bd198354fecf9c93c7e85418ec3",
-  "method": "Source inspection of the local main checkout. Product launch controls and diagnostics also have narrowly scoped runtime observations recorded separately below. No release-install or agent-execution validation was performed. Website browser checks are separate.",
+  "method": "Source inspection of the local main checkout. Product launch controls and diagnostics also have narrowly scoped runtime observations recorded separately below. No release-install or agent-execution validation was performed. Website browser checks are separate. Entries with their own revision and verified fields were checked against that revision instead of the record-level one.",
   "entries": {
     "launch": {
       "scope": "Current session wizard, workspace choices, model loading and launch controls",
@@ -288,6 +288,50 @@
         "apps/expo/src/serverConnection/serverConnectionPersistence.ts",
         "apps/expo/src/serverConnection/serverConnectionLifecycle.ts",
         "server/routes/session-lifecycle.ts"
+      ]
+    },
+    "install": {
+      "scope": "Public one-line installer: platforms, prerequisites warnings, EULA and tailnet prompts, flags, final messages, firehose commands and error messages. Source inspection of the commit Firehose 1.0.1 was built from (release build id 8d9eccaedbb5). No install on a clean machine, live activation, Stripe checkout, or hosted-app run was performed.",
+      "revision": "8d9eccaedbb5472aef4dc0f4dca6e11ac5e097df",
+      "verified": "2026-09-29",
+      "paths": [
+        "install.sh"
+      ]
+    },
+    "activation": {
+      "scope": "Release license gate, lock and activation screens, device-code flow, hosted /activate and /account pages, subscription checkout and billing states, renewal grace and code expiry. Exempt accounts, prices and plan names intentionally omitted. Source inspection of the commit Firehose 1.0.1 was built from (release build id 8d9eccaedbb5). No install on a clean machine, live activation, Stripe checkout, or hosted-app run was performed.",
+      "revision": "8d9eccaedbb5472aef4dc0f4dca6e11ac5e097df",
+      "verified": "2026-09-29",
+      "paths": [
+        "server/lib/license/config.ts",
+        "server/lib/license/gate.ts",
+        "server/lib/license/state.ts",
+        "lib/types/server-status.ts",
+        "apps/expo/src/serverConnection/LicenseGate.tsx",
+        "apps/expo/src/components/Activate/ActivatePage.tsx",
+        "apps/expo/src/components/Activate/AccountPage.tsx",
+        "apps/expo/src/components/Activate/route.ts"
+      ]
+    },
+    "tailnet-access": {
+      "scope": "Owner-only tailnet access: installer prompt, --tailnet, firehose tailnet on|off|status, Settings Open from your other devices, owner-only gateway refusal, loopback-only server, Tailscale error messages. Source inspection of the commit Firehose 1.0.1 was built from (release build id 8d9eccaedbb5). No install on a clean machine, live activation, Stripe checkout, or hosted-app run was performed.",
+      "revision": "8d9eccaedbb5472aef4dc0f4dca6e11ac5e097df",
+      "verified": "2026-09-29",
+      "paths": [
+        "server/lib/tailnet-access.ts",
+        "server/lib/tailnet-gateway.ts",
+        "server/cli/tailnet.ts",
+        "server/routes/tailnet.ts",
+        "apps/expo/src/components/SettingsPanel/TailnetAccessSection.tsx"
+      ]
+    },
+    "hosted-connection": {
+      "scope": "Hosted app at agents.okthink.ai: fixed port 4801, rejected explicit ports, .ts.net names only, and their error messages. Source inspection of the commit Firehose 1.0.1 was built from; the live hosted app was not exercised.",
+      "revision": "8d9eccaedbb5472aef4dc0f4dca6e11ac5e097df",
+      "verified": "2026-09-29",
+      "paths": [
+        "apps/expo/src/serverConnection/serverTransportPolicy.ts",
+        "apps/expo/src/serverConnection/serverConnectionPolicy.ts"
       ]
     }
   },

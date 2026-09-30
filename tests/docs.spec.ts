@@ -121,7 +121,7 @@ test('article Markdown link exports the current guide', async ({ page, request, 
 test('home offers clear starting routes without an article contents column', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('.right-sidebar-container')).toHaveCount(0);
-  await expect(page.locator('main')).toContainText('existing Firehose server');
+  await expect(page.locator('main')).toContainText('Firehose runs on your own');
   await page.locator('main').getByRole('link', { name: 'Review the result', exact: true }).click();
   await expect(page).toHaveURL('/tools/diff/');
   await page.locator('main').getByRole('link', { name: 'finish the task', exact: true }).click();
