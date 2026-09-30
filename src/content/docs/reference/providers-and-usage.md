@@ -1,8 +1,8 @@
 ---
 title: "Choose a provider and check usage"
 description: "Confirm a usable provider, understand differing controls, and distinguish usage indicators from billing."
-verified: "2026-09-13"
-evidence: ["launch", "permissions", "provider-usage"]
+verified: "2026-09-29"
+evidence: ["launch", "permissions", "provider-usage", "layout"]
 ---
 
 Choose an agent setup that can perform your task and identify where to check availability and usage.
@@ -28,9 +28,9 @@ Attachment handling also differs: an agent may receive native content or a stage
 
 ## Read usage without guessing a bill
 
-When provider limit data is available, the footer monitor shows provider entries with reported window labels and percentages. Claude, Codex, and Antigravity have detail menus; select the provider entry to inspect the available information. Not every provider or account supplies the same data. Missing or unknown usage is not zero usage.
+When provider limit data is available, the status bar along the bottom of the Firehose window shows provider entries with reported window labels and percentages. Claude, Codex, and Antigravity have detail menus; select the provider entry to inspect the available information. Not every provider or account supplies the same data. Missing or unknown usage is not zero usage.
 
-The session's context indicator describes how much information occupies the model's context window. Its **Context window** details, where available, are separate from account limits and financial charges.
+The **NN% context** button below the message box describes how much information occupies the model's context window. Its **Context window** details, where available, are separate from account limits and financial charges.
 
 For actual charges, subscription terms, and account spending controls, use the account's billing information with its owner. This guide does not verify a universal Firehose budget cap or automatic stop at a chosen cost. If your task requires a spending boundary, have the account owner confirm where it is enforced before running the task.
 

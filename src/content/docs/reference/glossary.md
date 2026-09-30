@@ -1,8 +1,8 @@
 ---
 title: "Glossary"
 description: "Understand agents, models, sessions, context, and Git terms through a concrete task."
-verified: "2026-09-13"
-evidence: ["launch", "chat", "diff", "questions", "connection", "context-actions"]
+verified: "2026-09-29"
+evidence: ["launch", "chat", "diff", "questions", "connection", "context-actions", "layout"]
 ---
 
 Look up an unfamiliar term, then return to the step where you encountered it.
@@ -27,7 +27,7 @@ The agent explains the change in one **turn**. You ask it to add a missing test;
 | Turn | A period of agent work following input, ending when it returns control or stops |
 | Context | Information available for the next response, including the conversation so far and relevant material the agent has read |
 | Approval | A decision about whether the agent may perform a requested action |
-| Questionnaire | A set of task questions answered in **Questions**; submitting them tells the agent to continue the requested work |
+| Questionnaire | A set of task questions answered in the **Ask me** tab; submitting them tells the agent to continue the requested work |
 
 ## Files, Git, and connections
 

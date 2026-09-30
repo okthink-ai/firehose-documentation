@@ -1,0 +1,22 @@
+{
+  "hosting": [
+    {
+      "target": "docs",
+      "public": "dist",
+      "predeploy": ["npm run check"],
+      "ignore": ["firebase.json", "**/.*"],
+      "cleanUrls": false,
+      "trailingSlash": true,
+      "headers": [
+        {
+          "source": "/_astro/**",
+          "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+        },
+        {
+          "source": "/pagefind/**",
+          "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
+        }
+      ]
+    }
+  ]
+}

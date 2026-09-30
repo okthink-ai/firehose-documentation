@@ -1,8 +1,8 @@
 ---
 title: "What you can do"
 description: "Choose a practical Firehose workflow for understanding code, making changes, or reviewing work."
-verified: "2026-09-13"
-evidence: ["launch", "chat", "diff", "questions", "review", "connection"]
+verified: "2026-09-29"
+evidence: ["launch", "chat", "diff", "questions", "review", "connection", "tailnet-access", "layout"]
 ---
 
 Choose a workflow that matches the result you want, then use the linked guide to complete it.
@@ -15,7 +15,7 @@ Try: “Find where the greeting text is created. Explain how whitespace is handl
 
 ## Make a focused change
 
-Start a session in the intended directory, describe the expected behavior, and ask for relevant checks. Use a new worktree when you want a separate directory and branch for the task.
+Start a session in the intended directory, describe the expected behavior, and ask for relevant checks. Use a new worktree when you want a separate directory and branch for the task: in **New session**, choose **New worktree** at the **Choose a workspace** step. See [Choose a workspace](/guides/workspaces/).
 
 Try: “Make blank names display Hello, guest! Keep the existing behavior for nonblank names.” Follow [make and review a change](/guides/make-a-change/).
 
@@ -25,7 +25,7 @@ Try: “Make blank names display Hello, guest! Keep the existing behavior for no
 
 ## Clarify a task before starting
 
-Use **ask me questions** to have an agent inspect the project and prepare a questionnaire. Answer it in **Questions**, then send the answers to the session that should do the work. See [clarifying questions](/tools/questions/).
+Select **tools** on the prompt bar above the message box, then **Ask me questions**, to have an agent inspect the project and prepare a questionnaire. Answer it in the **Ask me** tab at the top of the session, then send the answers to the session that should do the work. See [clarifying questions](/tools/questions/).
 
 ## Follow several sessions
 
@@ -33,10 +33,10 @@ Use the sidebar to move between projects and sessions. Read each conversation’
 
 ## Review the result
 
-Use **Diff** to inspect changed files and commits. Use **Smart Review** for agent-generated findings, then investigate the findings and verify any fixes. A completed response alone does not establish that the code is correct.
+Use the **Diff** tab at the top of a session to inspect changed files and commits. Use the **Smart Review** tab for agent-generated findings, then investigate the findings and verify any fixes. A completed response alone does not establish that the code is correct.
 
 ## Check in from another device
 
-Use the hosted app with your existing server over Tailscale. Read progress and answer the agent from your phone using the [mobile web guide](/guides/mobile/).
+Turn on tailnet access to open Firehose from your phone or another computer over Tailscale. Only you can connect. Read progress and answer the agent from your phone using the [mobile web guide](/guides/mobile/).
 
 Available models and provider options depend on your server’s configuration. Start with [the tools overview](/tools/overview/) to find the controls for each workflow.

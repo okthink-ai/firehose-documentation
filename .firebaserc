@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "default": "claude-manager-chat"
+  },
+  "targets": {
+    "claude-manager-chat": {
+      "hosting": {
+        "docs": ["firehose-docs"]
+      }
+    }
+  }
+}

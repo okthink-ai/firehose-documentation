@@ -1,8 +1,8 @@
 ---
 title: "Use Smart Review"
 description: "Choose review actions, dispatch work to your session, and verify the resulting changes."
-verified: "2026-09-13"
-evidence: ["review", "review-actions", "diff", "context-actions", "review-scope"]
+verified: "2026-09-29"
+evidence: ["review", "review-actions", "diff", "context-actions", "review-scope", "layout"]
 ---
 
 Get an agent’s assessment of branch changes, choose how to handle each finding, and send those decisions back for action.
@@ -11,7 +11,7 @@ Get an agent’s assessment of branch changes, choose how to handle each finding
 
 Select a session with branch changes you want reviewed. Confirm its project and branch. Review actions can request code changes or create a GitHub issue, so choose the session that should receive that work.
 
-**Starting state:** use a task branch with committed changes and an available review base. Smart Review instructs the agent to start from the committed branch diff and then read full changed files. Uncommitted work alone is not that branch diff; use **Diff → Working changes** to inspect it.
+**Starting state:** use a task branch with committed changes and an available review base. Smart Review instructs the agent to start from the committed branch diff and then read full changed files. Uncommitted work alone is not that branch diff; inspect it in the **Diff** tab with **Compare** set to **Working changes**.
 
 The default review base is `origin/main`, with `origin/master` used when it is found instead. Unlike Diff’s broader fallback behavior, a fresh practice repository with no remote references does not automatically get a usable Smart Review base. If neither exists, ask the project maintainer how reviews are configured. Do not add or publish a remote just to finish the greeting exercise.
 
@@ -19,7 +19,7 @@ For a configured project, follow its commit policy to record the changes before 
 
 ## 1. Start a review
 
-Open **Smart Review**. When no review is available, select **Start a review**. If the flow asks for **Areas of Focus**, describe the concerns that matter. For the greeting example:
+On the prompt bar above the message box, select **tools**, then **Smart review**, then **run review**. **Smart review** appears only on a branch other than `main` or `master`. In **Areas of Focus**, describe the concerns that matter, then select **Start Review**. Follow progress in the **Smart Review** tab at the top of the session, which says **No active review** until one exists. For the greeting example:
 
 ```text
 Check blank-name handling and whether the tests cover spaces-only input.
@@ -62,7 +62,7 @@ After the response, decide whether a **Fix** is still needed. A clearer explanat
 ## 4. Dispatch your decisions
 
 1. Confirm the selected session and your choices across the findings.
-2. Use **Act** to dispatch eligible items. Its menu offers **Act on items** and **Clear context and act**.
+2. Use **Act** in the review header, which appears once a finding has an action chosen and shows a count such as **Act (1 fix)**, to dispatch eligible items. Its menu offers **Act on items** and **Clear context and act**.
 3. Choose **Act on items** to send the work without requesting a context clear. **Clear context and act** requests a context reset before delivery; include necessary task constraints in finding comments if you use it.
 4. Follow the review’s progress and the session’s conversation.
 

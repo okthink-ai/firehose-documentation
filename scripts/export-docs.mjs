@@ -10,8 +10,14 @@ export async function publicDocs() {
     for (const id of doc.data.evidence) {
       if (!evidence.entries[id]) throw new Error(`Unknown evidence ID ${id}: ${doc.file}`);
     }
-    if (doc.data.verified !== evidence.verified) {
-      throw new Error(`Verification date does not match evidence record: ${doc.file}`);
+    // An entry may carry its own revision and date; a page is as recent as the
+    // newest evidence it cites.
+    const newest = doc.data.evidence
+      .map((id) => evidence.entries[id].verified ?? evidence.verified)
+      .sort()
+      .at(-1);
+    if (doc.data.verified !== newest) {
+      throw new Error(`Verification date ${doc.data.verified} should be ${newest}, the newest cited evidence: ${doc.file}`);
     }
   }
   return docs;

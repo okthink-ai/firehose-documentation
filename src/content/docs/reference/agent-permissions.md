@@ -1,15 +1,15 @@
 ---
 title: "Choose agent permissions"
 description: "Understand the launch controls for Claude, Codex, and Antigravity before starting a session."
-verified: "2026-09-13"
-evidence: ["permissions", "launch", "approval-flow"]
+verified: "2026-09-29"
+evidence: ["permissions", "launch", "approval-flow", "layout"]
 ---
 
 Decide what a new agent session may do before you start it. Permissions affect file changes and commands; they are separate from which model you choose. See [data and access](/reference/data-and-access/) for where task material is used and what cleanup actions affect.
 
 ## Before you begin
 
-At **New session → Choose an agent**, select your provider and model. The wizard initializes autonomy as enabled. Check its current value each time you launch.
+Select **New session** (the **+** at the top of the **Sessions** sidebar), pick a project and workspace, and at **Choose an agent**, select your provider and model. The wizard initializes autonomy as enabled. Check its current value each time you launch.
 
 Your provider must already be usable on the server. Seeing its name in Firehose does not install it, authenticate your account, or grant model access.
 
@@ -55,7 +55,7 @@ Grok, Kimi, and Pi display **Full Auto**. Their provider-specific approval behav
 
 ## Respond to an approval request
 
-Approval is a separate decision from answering a question about what to build. In **Chat**, read the requested action, target files or directory, reason, and the scope of each offered response before selecting it.
+Approval is a separate decision from answering a question about what to build. Approval cards appear directly above the message box. Read the requested action, target files or directory, reason, and the scope of each offered response before selecting it.
 
 ### Codex example
 

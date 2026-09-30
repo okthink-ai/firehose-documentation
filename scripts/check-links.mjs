@@ -48,6 +48,9 @@ for (const [file, $] of html) {
   for (const element of $('[href], [src]').toArray()) {
     const href = $(element).attr('href') ?? $(element).attr('src');
     if (!href) continue;
+    // Starlight gives the error page a canonical /404/ URL; hosts serve it for
+    // missing paths instead, so that address is never meant to resolve.
+    if (from === '/404.html' && $(element).is('link[rel="canonical"]')) continue;
     checked++;
     await checkLink(href, from, from);
   }

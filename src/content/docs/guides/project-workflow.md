@@ -1,8 +1,8 @@
 ---
 title: "Complete a browser task"
 description: "Reproduce a visible bug, request a focused fix, check it in a browser, and review a local commit."
-verified: "2026-09-13"
-evidence: ["launch", "chat", "diff", "commit-action", "browser-example"]
+verified: "2026-09-29"
+evidence: ["launch", "chat", "diff", "commit-action", "browser-example", "layout"]
 ---
 
 Fix a small greeting form and finish with a local commit you have inspected. This example adds a visible browser check to the earlier function exercise.
@@ -13,14 +13,14 @@ Use a separate disposable Git project, such as `hello-form`, with no unrelated e
 
 This form is a standalone HTML file. It needs a browser with JavaScript enabled, with no dependency installation, backend, credentials, or development server. For your own application, complete [project preparation](/guides/prepare-project/) and use its documented startup and check commands instead.
 
-In the workspace terminal, record the baseline:
+In a terminal in the project folder, such as the session's **Terminal** tab, record the baseline:
 
 ```sh
 git add index.html
 git commit -m "Add greeting form baseline"
 ```
 
-Start a Firehose session in this project's **Current checkout**. The standalone example can be completed with Diff; it has no remote review base by default.
+Start a Firehose session in this project's **Current checkout**: select **New session**, pick `hello-form`, select **Next: Choose a workspace**, then **Current checkout**. The standalone example can be completed with Diff; it has no remote review base by default.
 
 ## 1. Reproduce the problem
 
@@ -57,7 +57,7 @@ Reload the changed workspace file. If you copied it to another computer, copy it
 | Empty | `Hello, guest!` |
 | Three spaces | `Hello, guest!` |
 
-Also focus **Name**, type a name, and press Enter. Confirm submission still works. Open **Diff → Changes → Diff filters → Compare → Working changes** and inspect `index.html` for unrelated edits. A [completed reference](/examples/hello-form-result/index.html) is available after your attempt; it is one possible result, not guaranteed agent output.
+Also focus **Name**, type a name, and press Enter. Confirm submission still works. Select the **Diff** tab, then **Changes**. Open **Diff filters** (the **⋮** next to the search icon) and under **Compare** choose **Working changes**. Inspect `index.html` for unrelated edits. A [completed reference](/examples/hello-form-result/index.html) is available after your attempt; it is one possible result, not guaranteed agent output.
 
 If the blank case still fails, report the exact input and visible output. Ask for a targeted correction while keeping all four expectations. For unwanted edits, use [recovery](/guides/recover-changes/).
 
@@ -73,7 +73,7 @@ Do not push, create a pull request, or merge.
 Report the commit hash and checks completed.
 ```
 
-This message authorizes a local commit. Review the agent's response, then independently inspect it in the workspace terminal:
+This message authorizes a local commit. Review the agent's response, then independently inspect it in a terminal in the project folder:
 
 ```sh
 git log -1 --oneline
@@ -82,7 +82,7 @@ git show HEAD -- index.html
 git status --short
 ```
 
-Confirm the reported hash matches, the commit contains the intended change, and outstanding edits are explained. For this clean practice project, no working changes should remain. Firehose's **Diff → Commits** also lets you inspect a commit's files.
+Confirm the reported hash matches, the commit contains the intended change, and outstanding edits are explained. For this clean practice project, no working changes should remain. In Firehose, the **Commits** view beside **Changes** in the **Diff** tab also lets you inspect a commit's files.
 
 ## 5. Decide the next step
 

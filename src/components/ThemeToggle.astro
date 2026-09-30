@@ -1,0 +1,69 @@
+---
+import { Icon } from '@astrojs/starlight/components';
+---
+{/* One button instead of Starlight's Light/Dark/Auto select. It follows the
+   system setting until the reader picks a theme, and stores the pick under
+   Starlight's own key so its head script still prevents a flash on load.
+   Hidden without JavaScript, where it could not work. */}
+<button type="button" class="theme-toggle" data-theme-toggle hidden>
+  <Icon name="moon" class="to-dark" />
+  <Icon name="sun" class="to-light" />
+</button>
+
+<script is:inline>
+  document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+    const dark = document.documentElement.dataset.theme === 'dark';
+    button.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+    button.hidden = false;
+  });
+</script>
+
+<script>
+  const storageKey = 'starlight-theme';
+
+  function stored(): string | null {
+    try { return localStorage.getItem(storageKey); } catch { return null; }
+  }
+
+  function apply(theme: 'light' | 'dark'): void {
+    document.documentElement.dataset.theme = theme;
+    const label = theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
+    document.querySelectorAll('[data-theme-toggle]').forEach((button) => button.setAttribute('aria-label', label));
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      apply(next);
+      try { localStorage.setItem(storageKey, next); } catch { /* the choice lasts for this page only */ }
+    });
+  });
+
+  // Until the reader picks a theme, keep following the system setting.
+  matchMedia('(prefers-color-scheme: light)').addEventListener('change', (event) => {
+    const choice = stored();
+    if (choice !== 'light' && choice !== 'dark') apply(event.matches ? 'light' : 'dark');
+  });
+</script>
+
+<style>
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 999px;
+    background: var(--sl-color-gray-6);
+    color: var(--sl-color-white);
+    cursor: pointer;
+    transition: border-color 120ms ease, color 120ms ease;
+  }
+  .theme-toggle[hidden] { display: none; }
+  .theme-toggle:hover { border-color: var(--sl-color-accent); color: var(--sl-color-text-accent); }
+  .theme-toggle :global(svg) { width: 1.1rem; height: 1.1rem; }
+  :global(:root[data-theme='dark']) .theme-toggle :global(.to-dark),
+  :global(:root[data-theme='light']) .theme-toggle :global(.to-light) { display: none; }
+</style>

@@ -1,33 +1,58 @@
 ---
 title: "Get unstuck"
-description: "Follow concrete checks for connection, project creation, startup, message delivery, and missing changes."
-verified: "2026-09-13"
-evidence: ["connection", "settings", "launch", "chat", "diff", "questions", "project-creation", "diff-comparisons", "session-signals", "diagnostics", "git-refresh", "question-details"]
+description: "Follow concrete checks for activation, connection, project creation, startup, message delivery, and missing changes."
+verified: "2026-09-29"
+evidence: ["activation", "tailnet-access", "hosted-connection", "connection", "settings", "launch", "chat", "diff", "questions", "project-creation", "diff-comparisons", "session-signals", "diagnostics", "git-refresh", "question-details", "layout"]
 ---
 
-Find the symptom you recognize and work through its checks in order. Keep the exact error text so you can tell the server operator what failed.
+Find the symptom you recognize and work through its checks in order. Keep the exact error text so you can report what failed.
+
+## Firehose shows Activate Firehose
+
+A new installation shows **Activate Firehose** until you activate it with a subscription. Nothing else works until then. Follow [Activate Firehose](/getting-started/activate/).
+
+| What you see | What to do |
+| --- | --- |
+| **The code expired before it was approved.** | Codes last one hour. Select **Try again** and approve the new code. |
+| **The activation was not approved.** | Select **Try again**. If it repeats, check your subscription at `agents.okthink.ai/account`. |
+| **This account has no active subscription.** on the activation page | Subscribe on that page, then select **Approve this code** again. |
+| **Reactivate Firehose** | The license could not be renewed. Read the reason shown, then select **Activate this server**. |
+| **License agreement** | Read the agreement and select **I accept**. |
 
 ## I can’t connect to my server
 
-For a direct-server setup, reopen the supplied server address. If it does not load, ask the operator to check whether that machine is awake and Firehose is running.
+On the Firehose computer:
 
-For the hosted app:
+1. Run `firehose status` to check that Firehose is running.
+2. Open `http://localhost:4801`, or the port you chose with `--port`.
+3. If it does not load, check the logs in `~/.firehose/logs`.
 
-1. Open Tailscale on your browser device and confirm it is connected to the network your operator supplied. If the server is not available to your account, ask the network administrator to check access.
-2. In Firehose’s connection form, compare the name with the full `.ts.net` name supplied by the operator. Enter it without a scheme or port. Short names and IP addresses do not work in this form.
-3. Select **Connect**. Your expected projects or sessions should appear.
-4. If connection still fails, send the exact error to the operator. Ask them to check **Settings → Tailscale HTTPS** on their local Firehose setup and confirm that the server allows the hosted app’s origin.
+From your phone or another computer:
 
-If a version warning says the server is outdated, ask its operator to update it. If it says the client is outdated, reload the app. These warnings are advisory; the warning alone does not refuse a connection.
+1. Check that the Firehose computer is awake and connected to Tailscale.
+2. Open Tailscale on your device and check that you are signed in to the same Tailscale account that owns the Firehose computer.
+3. Run `firehose tailnet status` on the Firehose computer. It shows `On:` with the address to open, or explains what is missing.
+4. Open that exact address, including `https://` and the port.
 
-Return to [connection setup](/getting-started/connect/) after the operator confirms the missing prerequisite.
+| What you see | What to do |
+| --- | --- |
+| `This Firehose only answers its owner over the tailnet.` | You are signed in to Tailscale with a different account than the computer's owner. Sign in with the owner's account. Other people cannot connect to your Firehose. |
+| **Enter the server address without a port. Port 4801 is added automatically.** | Remove the port from the hosted app's form. If you installed on another port, open the address shown under **Open from your other devices** in **Settings** directly instead of using agents.okthink.ai. |
+| **Enter the full Tailscale MagicDNS hostname ending in .ts.net** | Use your computer's full Tailscale name, such as `your-computer.your-tailnet.ts.net`. Short names and IP addresses do not work in the hosted app. |
+| `Tailscale only lets its operator publish services on this machine.` when running `firehose tailnet on` | Run `sudo tailscale set --operator=$USER` once, as the message says, then run `firehose tailnet on` again. |
+| `HTTPS and Serve must be turned on for your tailnet first` | Follow the link in the message, or turn them on in the Tailscale admin console. Then run `firehose tailnet on` again. |
+| **Restart Firehose to apply this.** in Settings | Select **Restart now**. |
+
+If a version warning says the server is outdated, run `firehose update` on the Firehose computer. If it says the client is outdated, reload the app. These warnings are advisory; the warning alone does not refuse a connection.
+
+Return to [Connect to Firehose](/getting-started/connect/) once the check passes.
 
 ## My project isn’t listed
 
 1. Check that the repository exists on the server, not only on your browser device.
-2. Open **Settings → Project directories**. The parent directory containing the repository should be in the comma-separated list.
+2. Open **Settings** (the gear icon at the bottom of the icon rail on the far left) and find **Project directories**. The parent directory containing the repository should be in the comma-separated list.
 3. Preserve other entries, add the missing parent if needed, and select **Save**. Look for **Saved**.
-4. Reopen **New session** and find the project again.
+4. Select **New session** (the **+** at the top of the **Sessions** sidebar) again and find the project at **Pick a project**.
 
 If refresh reports an error, record it and check the server connection. If you need a new repository, use [New git project](/getting-started/first-session/#1-prepare-a-practice-project).
 
@@ -51,7 +76,7 @@ Read the explanation beside the model and choose an available option. The start 
 
 ### The workspace is incomplete or launch reports an error
 
-For a new worktree, enter a task or branch name. If the branch already exists, use **Existing branch** or choose a different name for new work.
+For a new worktree, select **New worktree** at **Choose a workspace** and enter a **Task or branch name**. If the branch already exists, use **Existing branch** or choose a different name for new work.
 
 After **Start session**, read the launch error. If it concerns installation, authentication, or model access, give the provider, model, and error text to the server operator. Ask the operator to confirm a successful launch with that provider/model on the server, then retry **Start session**. Success means the session opens in the intended workspace. If it still fails, include the new error and the operator’s last successful check in your report.
 
@@ -77,22 +102,22 @@ Suppose you sent “Run the greeting tests,” then saw **Delivery could not be 
 
 ## The agent looks inactive
 
-Read the latest response alongside the [session signals](/tools/chat/#read-the-session-signals). **Idle** is not proof the task succeeded. Answer an ordinary question in Chat or use **Questions** for a questionnaire.
+Read the latest response alongside the [session signals](/tools/chat/#read-the-session-signals). **Idle** is not proof the task succeeded. Answer an ordinary question in the message box, or use the **Ask me** tab for a questionnaire.
 
 For **Stopping...**, check whether it changes to **Idle** and whether the latest response acknowledges interruption. If it remains unchanged and you cannot read progress, report that state instead of sending repeated interrupts. For **Transcript unavailable**, check the server connection and share the status with the operator if it persists. Repeated interruption does not repair unavailable conversation data.
 
 ## Questions are still waiting or won’t submit
 
-A clarification request waits for the current turn to finish before delivery. Once questions appear, the set can still be generating. Look for **Your turn**, then complete the required answers before **Submit to Agent**. **Queued** and the generation message describe earlier stages; see [Questions](/tools/questions/#3-answer-when-it-is-your-turn).
+A clarification request waits for the current turn to finish before delivery. Once questions appear, the set can still be generating. Look for **Your turn**, then complete the required answers before selecting **Submit to** the provider, such as **Submit to Codex**. **Queued** and the generation message describe earlier stages; see [Questions](/tools/questions/#3-answer-when-it-is-your-turn).
 
-Only one unfinished questionnaire is allowed per worktree. Check **Questions** in the existing session before requesting another. If answer delivery fails, confirm the selected session accepts input and follow the delivery checks above before retrying **Submit to Agent**. A failed delivery leaves the set available.
+Only one unfinished questionnaire is allowed per worktree. Check the **Ask me** tab in the existing session before requesting another. If answer delivery fails, confirm the selected session accepts input and follow the delivery checks above before retrying the submit button. A failed delivery leaves the set available.
 
 ## I don’t see the expected file changes
 
 1. Check the selected session’s project and branch.
-2. Open **Diff → Changes → Diff filters → Compare**. Select **All changes** for the broad comparison, **Working changes** for uncommitted edits, or **Branch changes** for branch commits.
+2. Select the **Diff** tab, then **Changes**, then **Diff filters** (the **⋮** next to the search icon). Under **Compare**, select **All changes** for the broad comparison, **Working changes** for uncommitted edits, or **Branch changes** for branch commits.
 3. Clear search, status, and annotation filters that could exclude the file. A new file may still be untracked.
-4. Click or tap the branch name in the prompt bar to **Refresh git status**. Check for **Refreshing…**, then the updated list. If **Retry** appears after a loading error, select it once and read the resulting list or error.
+4. Click or tap the branch name on the prompt bar to refresh Git status. Check for **Refreshing…**, then the updated list. If **Retry** appears after a loading error, select it once and read the resulting list or error.
 
 A committed change no longer appears in Working changes unless it has further edits. If a file shows a size or format limitation, read that message; a missing text preview does not establish that the file is unchanged.
 
@@ -104,6 +129,6 @@ Use [Recover from an unwanted change](/guides/recover-changes/) to stop addition
 
 Record the steps, expected result, actual result, exact error, browser, and whether you used desktop or mobile web. Remove credentials and private paths before sharing.
 
-For server version information, ask the operator to open `/api/status` on the same Firehose server they normally use. For example, they can append `/api/status` to their direct-server address. The JSON response includes `serverVersion` and `protocolVersion`; copy only those fields into the report. If this request fails, report that failure rather than guessing a version. This is the Firehose server address, not this documentation site or the hosted app’s address.
+For server version information, open `http://localhost:4801/api/status` on the Firehose computer, using your port if you changed it. The JSON response includes `serverVersion` and `protocolVersion`; copy only those fields into the report. If this request fails, report that failure rather than guessing a version. This is the Firehose server address, not this documentation site or the hosted app’s address.
 
 Send the report through your existing support channel. For a confusing instruction, see [documentation feedback](/feedback/).

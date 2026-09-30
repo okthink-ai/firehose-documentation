@@ -1,8 +1,8 @@
 ---
 title: "Prepare a project for an agent"
 description: "Check instructions, dependencies, configuration, and existing failures before asking for changes."
-verified: "2026-09-13"
-evidence: ["launch", "project-setup", "terminal", "example"]
+verified: "2026-09-29"
+evidence: ["launch", "project-setup", "terminal", "example", "layout"]
 ---
 
 Give the agent a workspace where you can reproduce the problem and check its work. Finish this preparation before asking it to implement a change.
@@ -13,7 +13,7 @@ Choose a repository already on the server and confirm you can use its developmen
 
 ## 1. Establish the starting point
 
-Select the intended project and [workspace](/guides/workspaces/). In a [server terminal](/tools/terminal/), run:
+Select **New session** (the **+** at the top of the **Sessions** sidebar), pick the project, and choose a [workspace](/guides/workspaces/). In the session's **Terminal** tab or another [server terminal](/tools/terminal/), run:
 
 ```sh
 pwd
@@ -25,7 +25,7 @@ Record the full path, branch, and existing edits in your task notes. If the bran
 
 ## 2. Find the project's instructions
 
-Ask in Chat:
+Ask in the message box at the bottom of the session:
 
 ```text
 Read this project's README and applicable contributor and agent instructions.

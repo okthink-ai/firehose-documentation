@@ -1,15 +1,15 @@
 ---
 title: "Ask for a code walkthrough"
 description: "Get a focused explanation of unfamiliar code with file references and verifiable examples."
-verified: "2026-09-13"
-evidence: ["chat", "example"]
+verified: "2026-09-29"
+evidence: ["chat", "example", "layout"]
 ---
 
 Understand a small part of a project before changing it. Ask a focused question and check the answer against the code.
 
 ## Before you begin
 
-Open a session in the repository you want to understand. This example uses `greeting.mjs` from [your first session](/getting-started/first-session/); replace the filename when using another project.
+Open a session in the repository you want to understand: select **New session** (the **+** at the top of the **Sessions** sidebar) and pick its project, or select an existing session in the sidebar. This example uses `greeting.mjs` from [your first session](/getting-started/first-session/); replace the filename when using another project.
 
 **Starting state:** use the committed original `greeting.mjs`, before adding the fallback. Inputs are strings; blank strings produce `Hello, !`. This guide asks for an explanation without edits. If you already completed the change guide, the blank-string result is now `Hello, guest!`; do not reset useful work just to match this example.
 

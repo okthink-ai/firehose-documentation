@@ -1,19 +1,19 @@
 ---
 title: "Chat and follow-ups"
 description: "Send useful requests, follow an agent\u2019s work, and decide when to send another message."
-verified: "2026-09-13"
-evidence: ["chat", "session-signals"]
+verified: "2026-09-29"
+evidence: ["chat", "session-signals", "layout"]
 ---
 
 Give your agent a clear task, follow its response, and keep the conversation moving when more information is needed.
 
 ## Send a request
 
-1. Select the intended session in the sidebar.
-2. Check its project and branch.
-3. Enter your request in the chat input.
-4. Select **Send message**.
-5. Follow the response and activity in **Chat**.
+1. Select the intended session in the **Sessions** sidebar.
+2. Check its project and branch on the prompt bar above the message box.
+3. Type your request in the message box at the bottom of the session, which shows `Type / for commands...` when empty.
+4. Press Enter, or select the round arrow button at the right of the message box.
+5. Follow the response and activity in the conversation. On a phone, it is in the **Chat** tab.
 
 A useful request names the result, relevant files, constraints, and how the agent should check its work. For example:
 
@@ -51,11 +51,11 @@ Explain why the spaces-only check passes.
 Point to the line that chooses the fallback name.
 ```
 
-When available during an active turn, **Queue after current turn** lets you hold a follow-up until that turn ends. Use it for work that should come afterward. Read any delivery notice before retrying a message.
+During an active turn, **Queue after current turn**, the list icon to the left of the send button, lets you hold a follow-up until that turn ends. Use it for work that should come afterward. Read any delivery notice before retrying a message.
 
 ## Change direction
 
-If the task needs to stop, use the session’s interrupt control. On mobile, **Interrupt** is available in the session header’s menu. Look for **Stopping...**, then check the latest response when the session settles. Explain what should happen next once it is ready for input.
+If the task needs to stop, press Escape in the message box, or select the red stop button, **Stop (interrupt)**, beside the activity indicator above the message box. On mobile, **Interrupt** is in the session header’s **⋮** menu. Look for **Stopping...**, then check the latest response when the session settles. Explain what should happen next once it is ready for input.
 
 Interruption does not undo file changes or commands that already ran. Use [targeted recovery](/guides/recover-changes/) if edits need correction. [Review the diff](/tools/diff/) before asking the agent to continue with a different approach.
 
@@ -63,6 +63,6 @@ Interruption does not undo file changes or commands that already ran. Use [targe
 
 To provide concrete evidence, [attach a screenshot or file](/tools/attachments/) and explain what it shows. For an independent command check, use [a separate terminal shell](/tools/terminal/).
 
-Answer ordinary questions in chat. For a structured clarification request, use the [Questions panel](/tools/questions/).
+Answer ordinary questions in chat. For a structured clarification request, use the [**Ask me** tab](/tools/questions/).
 
 If a send fails, read the delivery notice and check whether the message already appears in the conversation before sending it again. See [message troubleshooting](/troubleshooting/common-problems/#my-message-didnt-reach-the-agent).

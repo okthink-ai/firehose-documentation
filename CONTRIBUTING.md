@@ -18,10 +18,12 @@ source revision, paths, date, and limits in [the evidence record](maintainers/ev
 Do not copy private repository material into public pages.
 
 Every page has `title`, `description`, `verified`, and `evidence` frontmatter.
-Evidence IDs refer to entries in the record. The initial batch shares one source
-revision and date; update the record and affected pages together when re-verifying.
-If future batches use multiple revisions, extend the record to support per-entry
-dates before mixing them. Never update a date just to make a page appear current.
+Evidence IDs refer to entries in the record. Entries use the record's `revision`
+and `verified` date unless they set their own; a page's `verified` date must equal
+the newest date among the entries it cites. When re-verifying against a new
+revision, add or update entries with their own `revision` and `verified` fields,
+then update the pages that cite them. Never update a date just to make a page
+appear current.
 
 Source inspection supports a draft; it does not establish that a release installer
 works or that a new reader can follow the UI without help. Record those checks
@@ -67,7 +69,7 @@ issue with a page, proposed change, and acceptance check. Keep unrun passes pend
 - Links work, terms are explained, and paragraphs are easy to scan.
 - Screenshots add useful information and have text alternatives.
 - Product facts have current evidence; unknowns are tracked rather than invented.
-- Changes remain within the requested task and do not introduce publishing steps.
+- Changes remain within the requested task and do not deploy unless publishing was requested.
 
 ## Run the checks
 

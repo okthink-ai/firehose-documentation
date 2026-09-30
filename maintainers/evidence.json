@@ -2,7 +2,7 @@
   "verified": "2026-09-13",
   "repository": "okthink-ai/agent-manager",
   "revision": "c57391d84f8d5bd198354fecf9c93c7e85418ec3",
-  "method": "Source inspection of the local main checkout. Product launch controls and diagnostics also have narrowly scoped runtime observations recorded separately below. No release-install or agent-execution validation was performed. Website browser checks are separate.",
+  "method": "Source inspection of the local main checkout. Product launch controls and diagnostics also have narrowly scoped runtime observations recorded separately below. No release-install or agent-execution validation was performed. Website browser checks are separate. Entries with their own revision and verified fields were checked against that revision instead of the record-level one.",
   "entries": {
     "launch": {
       "scope": "Current session wizard, workspace choices, model loading and launch controls",
@@ -289,6 +289,100 @@
         "apps/expo/src/serverConnection/serverConnectionLifecycle.ts",
         "server/routes/session-lifecycle.ts"
       ]
+    },
+    "install": {
+      "scope": "Public one-line installer: platforms, prerequisites warnings, EULA and tailnet prompts, flags, final messages, the published EULA release asset (identical to resources/EULA.md in the 1.0.0 and 1.0.1 archives), firehose commands and error messages. Source inspection of the commit Firehose 1.0.1 was built from (release build id 8d9eccaedbb5). No install on a clean machine, live activation, Stripe checkout, or hosted-app run was performed.",
+      "revision": "8d9eccaedbb5472aef4dc0f4dca6e11ac5e097df",
+      "verified": "2026-09-29",
+      "paths": [
+        "install.sh",
+        "docs/EULA.md",
+        "scripts/release/stage-resources.ts"
+      ]
+    },
+    "activation": {
+      "scope": "Release license gate, lock and activation screens, device-code flow, hosted /activate and /account pages, subscription checkout and billing states, renewal grace and code expiry. Exempt accounts, prices and plan names intentionally omitted. Source inspection of the commit Firehose 1.0.1 was built from (release build id 8d9eccaedbb5). No install on a clean machine, live activation, Stripe checkout, or hosted-app run was performed.",
+      "revision": "8d9eccaedbb5472aef4dc0f4dca6e11ac5e097df",
+      "verified": "2026-09-29",
+      "paths": [
+        "server/lib/license/config.ts",
+        "server/lib/license/gate.ts",
+        "server/lib/license/state.ts",
+        "lib/types/server-status.ts",
+        "apps/expo/src/serverConnection/LicenseGate.tsx",
+        "apps/expo/src/components/Activate/ActivatePage.tsx",
+        "apps/expo/src/components/Activate/AccountPage.tsx",
+        "apps/expo/src/components/Activate/route.ts"
+      ]
+    },
+    "tailnet-access": {
+      "scope": "Owner-only tailnet access: installer prompt, --tailnet, firehose tailnet on|off|status, Settings Open from your other devices, owner-only gateway refusal, loopback-only server, Tailscale error messages. Source inspection of the commit Firehose 1.0.1 was built from (release build id 8d9eccaedbb5). No install on a clean machine, live activation, Stripe checkout, or hosted-app run was performed.",
+      "revision": "8d9eccaedbb5472aef4dc0f4dca6e11ac5e097df",
+      "verified": "2026-09-29",
+      "paths": [
+        "server/lib/tailnet-access.ts",
+        "server/lib/tailnet-gateway.ts",
+        "server/cli/tailnet.ts",
+        "server/routes/tailnet.ts",
+        "apps/expo/src/components/SettingsPanel/TailnetAccessSection.tsx"
+      ]
+    },
+    "hosted-connection": {
+      "scope": "Hosted app at agents.okthink.ai: fixed port 4801, rejected explicit ports, .ts.net names only, and their error messages. Source inspection of the commit Firehose 1.0.1 was built from; the live hosted app was not exercised.",
+      "revision": "8d9eccaedbb5472aef4dc0f4dca6e11ac5e097df",
+      "verified": "2026-09-29",
+      "paths": [
+        "apps/expo/src/serverConnection/serverTransportPolicy.ts",
+        "apps/expo/src/serverConnection/serverConnectionPolicy.ts"
+      ]
+    },
+    "tailscale-setup": {
+      "scope": "Third-party Tailscale setup steps: download page, Linux install script and sign-in command, MagicDNS default and enable button, HTTPS certificate enable steps and public-ledger notice. Checked against Tailscale's public documentation, not a live install.",
+      "verified": "2026-09-29",
+      "urls": [
+        "https://tailscale.com/download",
+        "https://tailscale.com/download/mac",
+        "https://tailscale.com/kb/1031/install-linux",
+        "https://tailscale.com/kb/1081/magicdns",
+        "https://tailscale.com/kb/1153/enabling-https",
+        "https://tailscale.com/kb/1347/installation"
+      ]
+    },
+    "layout": {
+      "scope": "Where controls live in the 1.0.1 web UI: icon rail and Settings gear, Sessions sidebar and New session button, New agent session steps, workspace tabs and Chat toggle, prompt bar (folder, branch, commit, tools), message box, send, attach, context badge, stop button, Session options and Session details, mobile layout. Source inspection plus mock-data screenshots; not a live release session.",
+      "revision": "8d9eccaedbb5472aef4dc0f4dca6e11ac5e097df",
+      "verified": "2026-09-29",
+      "paths": [
+        "apps/expo/src/components/Sidebar/ActivityBar.tsx",
+        "apps/expo/src/components/Sidebar/SidebarHeader.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/navigation.ts",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/ProjectStep.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/CheckoutStep.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/WorktreeStep.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/BranchStep.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/WizardFooter.tsx",
+        "apps/expo/src/components/ChatView/ChatTabs.tsx",
+        "apps/expo/src/components/ChatView/MobileSessionHeader.tsx",
+        "apps/expo/src/components/ChatInput/ChatInputView.tsx",
+        "apps/expo/src/components/ChatInput/index.tsx",
+        "apps/expo/src/components/PromptBar/PromptBarView.tsx",
+        "apps/expo/src/components/PromptBar/ToolsButton.tsx",
+        "apps/expo/src/components/PromptBar/usePromptBarViewProps.tsx",
+        "apps/expo/src/components/ThinkingIndicator/ThinkingIndicatorWeb.tsx",
+        "apps/expo/src/components/SessionItem/sessionActions.tsx",
+        "apps/expo/src/components/SessionItem/SessionItemBody.tsx",
+        "apps/expo/src/components/SessionActions/SessionActionsButton.tsx",
+        "apps/expo/src/components/shared/ContextBadge.tsx",
+        "apps/expo/src/components/DiffWorkspace/changes/ChangesNavigator.tsx",
+        "apps/expo/src/components/DiffWorkspace/changes/DiffFiltersSheet.tsx",
+        "apps/expo/src/components/ServerConnectionScreen/ServerConnectionForm.tsx",
+        "apps/expo/src/components/UserQuestionsPanel/UserQuestionSetActions.tsx",
+        "apps/expo/src/components/ReviewPanel/index.tsx",
+        "apps/expo/src/components/shared/BetterReviewButton.tsx",
+        "apps/expo/src/components/FocusAreasModal/index.tsx",
+        "apps/expo/src/components/CloseSessionModal/CloseSessionDialog.tsx"
+      ]
     }
   },
   "runtimeObservations": [
@@ -318,6 +412,230 @@
           },
           "deviceScaleFactor": 2,
           "crop": "Actual provider settings panel; surrounding projects and conversations excluded. No retouching."
+        }
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "serverVersion": "8d9eccaedbb5 (source, Expo web dev build)",
+      "scope": "Interface captures for the user guides. The real 1.0.1 web UI was driven by Playwright against the repository's e2e mock API with invented data only: the hello-firehose and hello-form practice projects under /home/you/projects, a fictional activation code, and a placeholder tailnet address. No real server, project, account, or provider was involved. Mock-only chips such as make-pr and tts are left as rendered; nothing was retouched. Hosted /activate and /account captures restore a fictional you@example.com Firebase user from browser storage and answer every Firebase and license-service request with canned responses; plan labels are the service's own (functions/src/plans.ts) and no prices appear. The license agreement capture uses shortened placeholder agreement text. The locked-screen reason uses the service's real 'subscription is <status>' wording.",
+      "method": "agent-manager branch docs-screenshot-capture, e2e/tests/docs-screenshots.spec.ts, run with DOCS_SHOT_DIR and DOCS_SHOT_BROWSER=/snap/bin/chromium. Hosted pages: e2e/hosted/docs-activation.spec.ts with playwright.hosted.config.ts and placeholder EXPO_PUBLIC_FIREBASE_* settings. Desktop captures also run with placeholder EXPO_PUBLIC_FIREBASE_* settings (Firebase network blocked) and fake healthy Tailscale HTTPS and tailnet responses so Settings matches a release; the New session provider row is the app's fixed list of startable providers.",
+      "captures": [
+        {
+          "path": "public/images/ui/account.png",
+          "sha256": "eb0074cd1bfd0274880c7d26296eb52f2789392da12644714e5eba508e6f9a36",
+          "pixels": {
+            "width": 710,
+            "height": 458
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activate-approve.png",
+          "sha256": "80ef456798653d1571abd672bb9fb35b6829447c17967d000d01e5544996b4f5",
+          "pixels": {
+            "width": 1120,
+            "height": 816
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activate-approved.png",
+          "sha256": "32a5a99e93ab43be9c37bba4eaebd1d7c29dfe1b2927f6763a044ebfb08eb7fa",
+          "pixels": {
+            "width": 1120,
+            "height": 820
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activate-billing.png",
+          "sha256": "d44be016fa651dc8969b75cb1b536711f61f41d76ed0171159e55d53ab9fe4f9",
+          "pixels": {
+            "width": 1120,
+            "height": 852
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activate-link-sent.png",
+          "sha256": "c0b9cab18411ffa3c433853ff53f9f605739790caa66aa33ee96d24c0b2a786b",
+          "pixels": {
+            "width": 1120,
+            "height": 810
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activate-signin.png",
+          "sha256": "1f662a4ec703d8b3c3d63d450bf018b4eb7c4aaebb837449bd1afeeca4cab863",
+          "pixels": {
+            "width": 1120,
+            "height": 702
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activate-subscribe.png",
+          "sha256": "448842d5309e66a122ac5e5276519e9289e497863885a8be137528c9ca784477",
+          "pixels": {
+            "width": 1120,
+            "height": 1124
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activation-code.png",
+          "sha256": "611f71c548b284366c09a25728d3b55adb38f31a8a5f9b50ba690536bca22280",
+          "pixels": {
+            "width": 1600,
+            "height": 800
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activation-expired.png",
+          "sha256": "a4d42fc49e858b61015f2fa7d29f933a6a286792d6cebf77421710ec2010d5b9",
+          "pixels": {
+            "width": 1600,
+            "height": 800
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activation-locked.png",
+          "sha256": "675e774658395143bb1ffbf68f2ccdbc0a02035032f7a96d6f1e43c44568266c",
+          "pixels": {
+            "width": 1600,
+            "height": 800
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activation-start.png",
+          "sha256": "79acc15ceedab9dfb1fe1cdf86f54495e1bc7496148b62ca361b83eb39909948",
+          "pixels": {
+            "width": 1600,
+            "height": 800
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/diff-changes.png",
+          "sha256": "d8139023da499fe580c24619c5b0fac3fcc84399a36992cae29524a9f377035d",
+          "pixels": {
+            "width": 1520,
+            "height": 520
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/layout-desktop.png",
+          "sha256": "705b05d8f0c60bb51c81d19b5bbb91fa22d0ad53b3514e6e24b38e72ee386d73",
+          "pixels": {
+            "width": 2880,
+            "height": 1800
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/license-agreement.png",
+          "sha256": "6e0330c8061b40571b619ab18768509a9b127248db11cfce7b47d2f61276598a",
+          "pixels": {
+            "width": 1600,
+            "height": 1320
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/mobile-session.png",
+          "sha256": "ea1429f0e60306236f05307f5d9f8a18affa580930ab75fe1db57761c0a2d8eb",
+          "pixels": {
+            "width": 780,
+            "height": 1688
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/new-session-agent.png",
+          "sha256": "855b9794e8e5331156e188f1494e1fcb86a2246c26ba1bfa7648d24e405f119c",
+          "pixels": {
+            "width": 1408,
+            "height": 1168
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/new-session-project.png",
+          "sha256": "abe7fbed28bba25191918d52afcf57b594d9bc64435797c2e6b4be947800d327",
+          "pixels": {
+            "width": 1408,
+            "height": 1168
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/new-session-workspace.png",
+          "sha256": "cf3ede4127def01d86ef4d3d084124ff92eec3accf61cdc1995e9a44518619e0",
+          "pixels": {
+            "width": 1408,
+            "height": 1168
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/session-composer.png",
+          "sha256": "a4bbe51ef94d361da6ffacf3b6f18ba1a1c92002a652f52c087bd3fcb6208134",
+          "pixels": {
+            "width": 1520,
+            "height": 420
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/session-options.png",
+          "sha256": "a7f7e943aa8430cedc401b7b7c649b93af4f9851c43d6d5befca1c6b20ba8792",
+          "pixels": {
+            "width": 1440,
+            "height": 1040
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/settings-panel.png",
+          "sha256": "3cee776709313d694dd65c54b8489480f5f59e9a29f656da5f3d7ce963f519d0",
+          "pixels": {
+            "width": 1440,
+            "height": 1800
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/settings-tailnet.png",
+          "sha256": "df7ff6518ce2ba2700a723d433c5092c727ac95a8aed59c27ef8da26a85ee144",
+          "pixels": {
+            "width": 840,
+            "height": 600
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/terminal-first-use.png",
+          "sha256": "84ab9d8ca4f4cbe8789c6867b875bbe2a2227b1a7b21781c0c2d78259c784aa0",
+          "pixels": {
+            "width": 2240,
+            "height": 1040
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/tools-menu.png",
+          "sha256": "63fd3e24d07d587af72593c0b2779933c0a250a5fd5d053332abe8f9b9385a95",
+          "pixels": {
+            "width": 1520,
+            "height": 420
+          },
+          "deviceScaleFactor": 2
         }
       ]
     }

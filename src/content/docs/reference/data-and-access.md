@@ -1,8 +1,8 @@
 ---
 title: "Understand data and access"
 description: "Know where task material is used and what closing, clearing, and forgetting actually affect."
-verified: "2026-09-13"
-evidence: ["connection", "attachments", "context-actions", "closing", "persistence", "terminal", "provider-usage"]
+verified: "2026-09-29"
+evidence: ["connection", "attachments", "context-actions", "closing", "persistence", "terminal", "provider-usage", "layout"]
 ---
 
 Decide what material to give an agent by understanding the browser, server workspace, and provider involved in your task.
@@ -29,10 +29,10 @@ Agent permissions control the provider's allowed actions. The in-app terminal is
 
 | Action | What it affects |
 | --- | --- |
-| Clear context | Requests a conversation reset for subsequent work; it does not undo files or establish erasure of provider records |
-| Close a session, retaining the checkout | Stops that session while preserving the checkout, including staged attachment files |
-| Delete the worktree | Removes that checkout and its local attachment directory; it does not establish deletion of copies elsewhere |
-| Forget this server | Clears that server's saved client workspace state; it is not a request to delete the server repository or provider account data |
+| Clear context (**NN% context** below the message box → **Clear**) | Requests a conversation reset for subsequent work; it does not undo files or establish erasure of provider records |
+| Close a session, retaining the checkout (the session row's **⋮** → **Close**) | Stops that session while preserving the checkout, including staged attachment files |
+| Delete the worktree (**Also delete the worktree** in the close dialog) | Removes that checkout and its local attachment directory; it does not establish deletion of copies elsewhere |
+| Forget this server (**Settings** → **Server connection**) | Clears that server's saved client workspace state; it is not a request to delete the server repository or provider account data |
 | Add attachment staging to `.gitignore` | Changes Git's ignore rules; it neither deletes the files nor makes them inaccessible to the agent |
 
 For a deletion or retention requirement, ask the operator and provider account owner to identify the relevant server storage, provider records, and backups. Use their verified procedure. A disappearing panel or empty chat is not evidence of complete data erasure.

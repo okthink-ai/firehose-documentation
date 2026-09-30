@@ -1,21 +1,21 @@
 ---
 title: "Put your agents to work."
 description: "Start an agent, follow its work, and review the result with practical Firehose guides."
-verified: "2026-09-13"
-evidence: ["launch", "chat", "diff", "questions", "connection"]
+verified: "2026-09-29"
+evidence: ["launch", "chat", "diff", "questions", "connection", "install"]
 tableOfContents: false
 ---
 
 Give a coding agent a task. Follow the conversation, answer its questions, and review the changes—all in one Firehose workspace.
 
-[Start your first session →](/getting-started/first-session/) · [Check connection requirements](/getting-started/connect/)
+[Install Firehose →](/getting-started/install/)
 
-**Before you start:** these guides use an existing Firehose server with a configured agent provider. Opening the app connects you to that machine. Ask the person managing your setup for access if you don’t have it yet.
+**What you need:** a Mac or Linux computer, a Firehose subscription, and an agent tool such as Claude Code or Codex. These guides describe Firehose 1.0.1.
 
 ## Find your next step
 
-- **[Connect to Firehose](/getting-started/connect/)**
-  Open your setup and find the projects on your server.
+- **[Set up Firehose](/getting-started/install/)**
+  Install and activate it, then open it on your computer or your phone.
 - **[Start a session](/getting-started/first-session/)**
   Choose a workspace, send a useful request, and check the answer.
 - **[Review the result](/tools/diff/)**
@@ -24,11 +24,11 @@ Give a coding agent a task. Follow the conversation, answer its questions, and r
 ## Know where the work happens
 
 1. **Your browser**
-   Send requests and read results from your computer or phone.
-2. **Your Firehose server**
-   The machine running Firehose also runs your agent sessions. It needs to be available for you to connect.
-3. **Your project workspace**
-   Files and commands belong to the selected directory on the server. Save example files and run terminal checks there.
+   Send requests and read results, on your computer or your phone.
+2. **Your computer**
+   Firehose and your agent sessions run on the computer where you installed it. It needs to be on for you to connect.
+3. **Your project folder**
+   Files and commands belong to the session's folder. Save example files and run terminal checks there.
 
 A **provider** is the agent system you choose when starting a session, such as Claude or Codex. Providers have their own setup, model access, and permission controls.
 

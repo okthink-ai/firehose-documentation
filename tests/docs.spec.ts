@@ -75,14 +75,14 @@ test('guides and exports work without JavaScript', async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
   const page = await context.newPage();
   await page.goto('http://127.0.0.1:4322/');
-  await page.locator('main').getByRole('link', { name: 'Start your first session →', exact: true }).click();
+  await page.locator('main').getByRole('link', { name: 'Start a session', exact: true }).click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Start your first session');
   await expect(page.locator('main')).toContainText('git add greeting.mjs');
   await expect(page.locator('pre[data-language="sh"]')).toHaveAttribute('tabindex', '0');
   await expectNoOverflow(page);
   const exported = await context.request.get('http://127.0.0.1:4322/markdown/getting-started/first-session.md');
   expect(exported.ok()).toBe(true);
-  expect(await exported.text()).toContain('## 4. Check the answer');
+  expect(await exported.text()).toContain('## 5. Check the answer');
   await context.close();
 });
 
@@ -121,7 +121,7 @@ test('article Markdown link exports the current guide', async ({ page, request, 
 test('home offers clear starting routes without an article contents column', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('.right-sidebar-container')).toHaveCount(0);
-  await expect(page.locator('main')).toContainText('existing Firehose server');
+  await expect(page.locator('main')).toContainText('What you need');
   await page.locator('main').getByRole('link', { name: 'Review the result', exact: true }).click();
   await expect(page).toHaveURL('/tools/diff/');
   await page.locator('main').getByRole('link', { name: 'finish the task', exact: true }).click();

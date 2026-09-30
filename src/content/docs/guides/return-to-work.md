@@ -1,8 +1,8 @@
 ---
 title: "Leave and return to work"
 description: "Record a useful stopping point and distinguish reconnecting, restoring an agent, and finding retained files."
-verified: "2026-09-13"
-evidence: ["connection", "session-signals", "closing", "persistence", "terminal"]
+verified: "2026-09-29"
+evidence: ["connection", "session-signals", "closing", "persistence", "terminal", "layout"]
 ---
 
 Leave a clear stopping point and check the actual state when you return. Your browser connection, agent process, conversation, and repository files have separate lifetimes.
@@ -11,11 +11,11 @@ Leave a clear stopping point and check the actual state when you return. Your br
 
 Record the server, project, full workspace path, branch, latest completed check, and next action. Let a critical command finish and record its result, or interrupt the task deliberately. Save important instructions in the task's handoff rather than relying on an unsent browser draft.
 
-Keep the server awake and connected if you expect agents to work while you are away. Closing a browser tab is not the Firehose session's **Close** action.
+Keep the server awake and connected if you expect agents to work while you are away. Closing a browser tab is not the Firehose session's **Close** action, which is in the session row's **⋮** (**Session options**) menu in the **Sessions** sidebar.
 
 | Event | What to check when you return |
 | --- | --- |
-| Browser reload or connection loss | Reconnect to the same server, select the task, and read its latest response and activity |
+| Browser reload or connection loss | Reconnect to the same server, select the session in the **Sessions** sidebar, and read its latest response and activity |
 | Browser tab closed | Reopen the app with the intended server details; confirm the selected workspace rather than assuming a new tab selected it |
 | Server restart or sleep | Confirm reachability first, then check whether the session accepts input and what work actually completed |
 | Agent exited | Inspect retained files and the last readable response before continuing in a new session |
@@ -27,7 +27,7 @@ Firehose has restoration paths for managed sessions using saved session informat
 ## Resume from evidence
 
 1. Confirm the server, path, and branch against your notes.
-2. Read the latest conversation and inspect the diff. **Transcript unavailable** means the conversation cannot be read reliably, not that no work happened.
+2. Read the latest conversation and inspect the **Diff** tab. **Transcript unavailable**, shown on the session's sidebar row, means the conversation cannot be read reliably, not that no work happened.
 3. Check whether your last request already received a result before sending it again.
 4. If input is available, give the next specific instruction. Otherwise, create a new session in the retained workspace and provide a short handoff.
 
