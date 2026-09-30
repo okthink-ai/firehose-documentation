@@ -55,7 +55,7 @@ During an active turn, **Queue after current turn**, the list icon to the left o
 
 ## Change direction
 
-If the task needs to stop, select the red stop button, **Stop (interrupt)**, beside the activity indicator above the message box. On mobile, **Interrupt** is in the session header’s **⋮** menu. Look for **Stopping...**, then check the latest response when the session settles. Explain what should happen next once it is ready for input.
+If the task needs to stop, press Escape in the message box, or select the red stop button, **Stop (interrupt)**, beside the activity indicator above the message box. On mobile, **Interrupt** is in the session header’s **⋮** menu. Look for **Stopping...**, then check the latest response when the session settles. Explain what should happen next once it is ready for input.
 
 Interruption does not undo file changes or commands that already ran. Use [targeted recovery](/guides/recover-changes/) if edits need correction. [Review the diff](/tools/diff/) before asking the agent to continue with a different approach.
 

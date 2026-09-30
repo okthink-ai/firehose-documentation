@@ -9,7 +9,7 @@ Correct an agent's unwanted edits without treating every change in the workspace
 
 ## 1. Stop additional work and identify the workspace
 
-If the agent is still making the wrong change, select the red stop button, **Stop (interrupt)**, beside the activity indicator above the message box. On mobile, open the session header's **⋮** menu and select **Interrupt**. Check the last response once the session settles. Interrupting does not undo commands or file edits already completed.
+If the agent is still making the wrong change, press Escape in the message box, or select the red stop button, **Stop (interrupt)**, beside the activity indicator above the message box. On mobile, open the session header's **⋮** menu and select **Interrupt**. Check the last response once the session settles. Interrupting does not undo commands or file edits already completed.
 
 Confirm the full workspace path and branch: open **More actions** (the **⋮** at the right end of the workspace tabs), select **Session details**, and read **Directory**. If another session shares the directory, coordinate a pause in its editing too.
 

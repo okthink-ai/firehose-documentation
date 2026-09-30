@@ -86,4 +86,4 @@ Follow the close or cleanup notice. Cleanup can continue after the session close
 
 Deletion may be unavailable because Firehose is running from that worktree, another agent is still working there, or the main repository could not be located. Read the stated reason. Ask the server operator for help when the server’s own checkout needs to move.
 
-Stopping an active turn is separate: select the red **Stop (interrupt)** button above the message box, or **Interrupt** in the session header's **⋮** menu on a phone. It does not undo edits or replace the handoff and cleanup steps above. See [session activity](/tools/chat/#read-the-session-signals) when you only need to change direction.
+Stopping an active turn is separate: press Escape in the message box or select the red **Stop (interrupt)** button above it, or **Interrupt** in the session header's **⋮** menu on a phone. It does not undo edits or replace the handoff and cleanup steps above. See [session activity](/tools/chat/#read-the-session-signals) when you only need to change direction.

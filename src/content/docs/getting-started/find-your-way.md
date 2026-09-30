@@ -50,7 +50,7 @@ Select a session in the **Sessions** sidebar to open it.
 - **Use tools.** Select **tools** on the prompt bar for **Ask me questions** and **Smart review**. The **commit** button appears beside it when the branch has uncommitted changes.
 - **Attach a file.** Select the **+** at the left of the message box's lower row.
 - **Check context use.** The **NN% context** button below the message box shows how much of the agent's context window is used, with **Compact** and **Clear**.
-- **Stop the agent.** While it works, a red stop button, **Stop (interrupt)**, appears beside the activity indicator above the message box.
+- **Stop the agent.** While it works, press Escape in the message box, or select the red stop button, **Stop (interrupt)**, beside the activity indicator above the message box.
 - **Close the session.** In the **Sessions** sidebar, select the session row's **⋮** (**Session options**), then **Close**.
 
 A session's status, such as **Idle** or **Stopping...**, appears on its row in the **Sessions** sidebar.
