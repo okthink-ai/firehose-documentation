@@ -34,6 +34,7 @@ export default defineConfig({
         Footer: './src/components/Footer.astro',
         PageTitle: './src/components/PageTitle.astro',
         MarkdownContent: './src/components/MarkdownContent.astro',
+        ThemeSelect: './src/components/ThemeToggle.astro',
       },
       sidebar: [
         { label: 'Welcome', slug: 'index' },
