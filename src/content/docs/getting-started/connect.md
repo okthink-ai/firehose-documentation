@@ -88,7 +88,12 @@ To turn tailnet access off, run `firehose tailnet off` or turn off **Allow my ot
 
 Select **New session**, the **+** button at the top right of the **Sessions** sidebar. In the **New agent session** dialog, confirm that your project appears at **Pick a project**, choose its workspace, and select the provider you installed. Its model choices should load. After you choose an available model and check permissions, **Start session** should open a session in that workspace.
 
-These are three separate checks: project discovery, model discovery, and session startup. A model list alone does not prove the provider can handle your account’s requests. Complete the [small explanation task](/getting-started/first-session/#3-give-it-a-clear-request) to check an actual response.
+<figure class="product-capture">
+  <img src="/images/ui/new-session-agent.png" width="704" height="584" loading="lazy" alt="The Choose an agent step of the New agent session dialog for hello-firehose. It shows the workspace path, provider choices Claude Code (selected), Codex, Antigravity, Grok Build, Pi Agent, and OpenCode, a Model row with Default (recommended) selected, a checked --dangerously-skip-permissions box, and the Start session button.">
+  <figcaption><strong>Choose an agent</strong>. Model choices depend on your provider and account. Sample project.</figcaption>
+</figure>
+
+These are three separate checks: project discovery, model discovery, and session startup. A model list alone does not prove the provider can handle your account’s requests. Complete the [small explanation task](/getting-started/first-session/#4-give-it-a-clear-request) to check an actual response.
 
 If a check fails, note the project name, provider, selected model, exact error, and the last step that worked. See [startup troubleshooting](/troubleshooting/common-problems/#start-session-is-unavailable-or-fails).
 

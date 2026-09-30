@@ -41,6 +41,11 @@ The **New agent session** dialog walks through three steps:
 
 Select the gear icon labeled **Settings** at the bottom of the icon rail. Settings opens in the sidebar. See [Projects, agents, and settings](/reference/settings/) for what each section does.
 
+<figure class="product-capture">
+  <img src="/images/ui/settings-panel.png" width="720" height="900" loading="lazy" alt="Settings open in the sidebar, with the gear icon highlighted at the bottom of the icon rail. Sections include Workspace layout, Open from your other devices with Allow my other devices switched on, Tailscale HTTPS, Account, and Conversation names.">
+  <figcaption><strong>Settings</strong> in the sidebar, opened from the gear at the bottom of the icon rail. Sample values.</figcaption>
+</figure>
+
 ## Work in a session
 
 Select a session in the **Sessions** sidebar to open it.
@@ -52,6 +57,11 @@ Select a session in the **Sessions** sidebar to open it.
 - **Check context use.** The **NN% context** button below the message box shows how much of the agent's context window is used, with **Compact** and **Clear**.
 - **Stop the agent.** While it works, press Escape in the message box, or select the red stop button, **Stop (interrupt)**, beside the activity indicator above the message box.
 - **Close the session.** In the **Sessions** sidebar, select the session row's **⋮** (**Session options**), then **Close**.
+
+<figure class="product-capture">
+  <img src="/images/ui/session-composer.png" width="760" height="210" loading="lazy" alt="The bottom of a session. The prompt bar shows the branch main on the left and tools on the right. Below it, the message box shows a plus button, the placeholder Type / for commands..., and a round arrow send button. Under the box are the model name and 9% context.">
+  <figcaption>The prompt bar, message box, and <strong>NN% context</strong> button. Sample session.</figcaption>
+</figure>
 
 A session's status, such as **Idle** or **Stopping...**, appears on its row in the **Sessions** sidebar.
 

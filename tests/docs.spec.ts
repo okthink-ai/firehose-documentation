@@ -82,7 +82,7 @@ test('guides and exports work without JavaScript', async ({ browser }) => {
   await expectNoOverflow(page);
   const exported = await context.request.get('http://127.0.0.1:4322/markdown/getting-started/first-session.md');
   expect(exported.ok()).toBe(true);
-  expect(await exported.text()).toContain('## 4. Check the answer');
+  expect(await exported.text()).toContain('## 5. Check the answer');
   await context.close();
 });
 

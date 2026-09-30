@@ -419,7 +419,7 @@
       "date": "2026-09-29",
       "serverVersion": "8d9eccaedbb5 (source, Expo web dev build)",
       "scope": "Interface captures for the user guides. The real 1.0.1 web UI was driven by Playwright against the repository's e2e mock API with invented data only: the hello-firehose and hello-form practice projects under /home/you/projects, a fictional activation code, and a placeholder tailnet address. No real server, project, account, or provider was involved. Mock-only chips such as make-pr and tts are left as rendered; nothing was retouched. Hosted /activate and /account captures restore a fictional you@example.com Firebase user from browser storage and answer every Firebase and license-service request with canned responses; plan labels are the service's own (functions/src/plans.ts) and no prices appear. The license agreement capture uses shortened placeholder agreement text. The locked-screen reason uses the service's real 'subscription is <status>' wording.",
-      "method": "agent-manager branch docs-screenshot-capture, e2e/tests/docs-screenshots.spec.ts, run with DOCS_SHOT_DIR and DOCS_SHOT_BROWSER=/snap/bin/chromium. Hosted pages: e2e/hosted/docs-activation.spec.ts with playwright.hosted.config.ts and placeholder EXPO_PUBLIC_FIREBASE_* settings.",
+      "method": "agent-manager branch docs-screenshot-capture, e2e/tests/docs-screenshots.spec.ts, run with DOCS_SHOT_DIR and DOCS_SHOT_BROWSER=/snap/bin/chromium. Hosted pages: e2e/hosted/docs-activation.spec.ts with playwright.hosted.config.ts and placeholder EXPO_PUBLIC_FIREBASE_* settings. Desktop captures also run with placeholder EXPO_PUBLIC_FIREBASE_* settings (Firebase network blocked) and fake healthy Tailscale HTTPS and tailnet responses so Settings matches a release; the New session provider row is the app's fixed list of startable providers.",
       "captures": [
         {
           "path": "public/images/ui/account.png",
@@ -531,7 +531,7 @@
         },
         {
           "path": "public/images/ui/layout-desktop.png",
-          "sha256": "40098d0423cc7014027157b4537405a143cf638f213b17e24108cadea897e280",
+          "sha256": "705b05d8f0c60bb51c81d19b5bbb91fa22d0ad53b3514e6e24b38e72ee386d73",
           "pixels": {
             "width": 2880,
             "height": 1800
@@ -549,10 +549,19 @@
         },
         {
           "path": "public/images/ui/mobile-session.png",
-          "sha256": "e9a30ee0bcf08bd9029324ad6e9d20695df2411691108bc5e7f020ed247dbdaf",
+          "sha256": "ea1429f0e60306236f05307f5d9f8a18affa580930ab75fe1db57761c0a2d8eb",
           "pixels": {
             "width": 780,
             "height": 1688
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/new-session-agent.png",
+          "sha256": "855b9794e8e5331156e188f1494e1fcb86a2246c26ba1bfa7648d24e405f119c",
+          "pixels": {
+            "width": 1408,
+            "height": 1168
           },
           "deviceScaleFactor": 2
         },
@@ -575,6 +584,15 @@
           "deviceScaleFactor": 2
         },
         {
+          "path": "public/images/ui/session-composer.png",
+          "sha256": "a4bbe51ef94d361da6ffacf3b6f18ba1a1c92002a652f52c087bd3fcb6208134",
+          "pixels": {
+            "width": 1520,
+            "height": 420
+          },
+          "deviceScaleFactor": 2
+        },
+        {
           "path": "public/images/ui/session-options.png",
           "sha256": "a7f7e943aa8430cedc401b7b7c649b93af4f9851c43d6d5befca1c6b20ba8792",
           "pixels": {
@@ -584,11 +602,29 @@
           "deviceScaleFactor": 2
         },
         {
+          "path": "public/images/ui/settings-panel.png",
+          "sha256": "3cee776709313d694dd65c54b8489480f5f59e9a29f656da5f3d7ce963f519d0",
+          "pixels": {
+            "width": 1440,
+            "height": 1800
+          },
+          "deviceScaleFactor": 2
+        },
+        {
           "path": "public/images/ui/settings-tailnet.png",
           "sha256": "df7ff6518ce2ba2700a723d433c5092c727ac95a8aed59c27ef8da26a85ee144",
           "pixels": {
             "width": 840,
             "height": 600
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/terminal-first-use.png",
+          "sha256": "84ab9d8ca4f4cbe8789c6867b875bbe2a2227b1a7b21781c0c2d78259c784aa0",
+          "pixels": {
+            "width": 2240,
+            "height": 1040
           },
           "deviceScaleFactor": 2
         },

@@ -36,7 +36,7 @@ SSH is a separate way to sign in to the server from a terminal. Access to the Fi
 
    Both printed paths should identify `hello-firehose` on the server. If `cd` fails, stop and confirm the path; do not continue in the terminal’s previous directory.
 
-3. Open a text editor, paste the [quickstart’s greeting code](/getting-started/first-session/#add-the-example-file), and save it in that directory as `greeting.mjs`, without an extra `.txt` extension. Alternatively, save the [downloadable file](/examples/hello-firehose/greeting.mjs) there.
+3. Open a text editor, paste the [quickstart’s greeting code](/getting-started/first-session/#3-add-the-example-file), and save it in that directory as `greeting.mjs`, without an extra `.txt` extension. Alternatively, save the [downloadable file](/examples/hello-firehose/greeting.mjs) there.
 4. Continue with [Check the file](#check-the-file).
 
 ## Copy from another computer with SSH
@@ -91,4 +91,4 @@ node --input-type=module -e "import { greet } from './greeting.mjs'; console.log
 
 If the file is missing, check the save location and extension. If `node` is unavailable, ask the operator to supply Node.js before proceeding. If the greeting differs, compare the file with the original sample before asking an agent to explain it.
 
-Return to [Add the example file](/getting-started/first-session/#add-the-example-file) to commit the baseline, then start the session. For a new worktree later, repeat the location check using that worktree’s path; its files live in a different directory.
+Return to [Add the example file](/getting-started/first-session/#3-add-the-example-file) to commit the baseline. For a new worktree later, repeat the location check using that worktree’s path; its files live in a different directory.
