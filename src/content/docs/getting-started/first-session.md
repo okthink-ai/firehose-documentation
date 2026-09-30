@@ -25,8 +25,8 @@ In Firehose:
 4. Select **Create**.
 
 <figure class="product-capture">
-  <img src="/images/ui/new-session-project.png" width="704" height="584" loading="lazy" alt="The New agent session dialog at Pick a project. The project list shows hello-firehose and hello-form. Below it is a name field showing new-project-name, a Create button, and the hint git init in /home/you/projects/<name>.">
-  <figcaption><strong>Pick a project</strong> with the new project form below the list. Sample project and messages.</figcaption>
+  <img src="/images/ui/new-session-project.png" width="704" height="584" loading="lazy" alt="The New agent session dialog at Pick a project with no projects listed yet (No matching projects). The name field below the list contains hello-firehose, beside the Create button, with the hint git init in /home/you/projects/hello-firehose.">
+  <figcaption>Creating the practice project. The folder in the hint is an example; Firehose uses your project directory.</figcaption>
 </figure>
 
 **Expected result:** Firehose creates a Git repository with a README and attempts an initial commit. You add the example file in step 3, once a session is open.
