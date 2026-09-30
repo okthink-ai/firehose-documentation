@@ -2,7 +2,7 @@
 title: "Install Firehose"
 description: "Install Firehose on your Mac or Linux computer with the one-line installer and open the dashboard."
 verified: "2026-09-29"
-evidence: ["install"]
+evidence: ["install", "tailscale-setup"]
 ---
 
 Install Firehose on the computer where your repositories live. When you finish, Firehose is running on that computer and its dashboard is open in your browser, ready to [activate](/getting-started/activate/).
@@ -18,7 +18,7 @@ You need:
 - `tmux`, which Firehose needs to launch agent sessions, and `git` for workspace features.
 - At least one agent command-line tool installed and signed in: Claude Code (`claude`), Codex (`codex`), or Antigravity (`agy`). Firehose does not install or sign in to these for you.
 - A paid Firehose subscription, or the email address you will use to buy one during [activation](/getting-started/activate/).
-- Tailscale, only if you want to open Firehose from your phone or another computer. You can add it later.
+- [Tailscale](https://tailscale.com/download), only if you want to open Firehose from your phone or another computer. Install it before running the installer and the installer offers to set up access for you. You can also add it later; see [Set up Tailscale](/getting-started/connect/#set-up-tailscale).
 
 The installer warns rather than stops if `tmux`, `git`, or an agent tool is missing. Install them before you start a session.
 

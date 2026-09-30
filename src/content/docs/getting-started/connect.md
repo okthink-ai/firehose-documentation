@@ -2,7 +2,7 @@
 title: "Connect to Firehose"
 description: "Open Firehose on your computer or from your other devices, and check that your agent is ready."
 verified: "2026-09-29"
-evidence: ["hosted-connection", "tailnet-access", "connection", "settings", "launch"]
+evidence: ["hosted-connection", "tailnet-access", "tailscale-setup", "connection", "settings", "launch"]
 ---
 
 Open Firehose on the computer where you installed it, or from your phone or another computer. Then check that your agent can start a session.
@@ -29,9 +29,30 @@ To use Firehose from your phone or another computer, turn on tailnet access. It 
 
 **Only you can connect this way.** Firehose answers only the Tailscale account that owns the computer. Anyone else who opens the address sees `This Firehose only answers its owner over the tailnet.`
 
+### Set up Tailscale
+
+Tailscale connects your own devices to each other over a private network, called a tailnet. Every device you use with Firehose needs Tailscale installed and signed in to the same Tailscale account. You set this up once.
+
+1. On the Firehose computer, install Tailscale from [tailscale.com/download](https://tailscale.com/download):
+   - **macOS:** download the app, or get it from the Mac App Store. Open it and sign in.
+   - **Linux:** run the install script, then connect the computer and follow the sign-in instructions:
+
+     ```sh
+     curl -fsSL https://tailscale.com/install.sh | sh
+     sudo tailscale up
+     ```
+
+2. On your phone or other computer, install Tailscale from the same page and sign in with the same account.
+3. Check that MagicDNS is on. It is on by default for tailnets created on or after October 20, 2022. Otherwise, open the [DNS page](https://console.tailscale.com/admin/dns) of the Tailscale admin console and select **Enable MagicDNS**.
+4. On the same DNS page, under **HTTPS Certificates**, select **Enable HTTPS**. Firehose needs it to serve your address over HTTPS.
+
+Enabling HTTPS publishes your computer names and your tailnet's DNS name on a public certificate ledger. Tailscale asks you to acknowledge this before it turns HTTPS on.
+
+For other platforms and details, see Tailscale's [installation guide](https://tailscale.com/kb/1347/installation) and [Enabling HTTPS](https://tailscale.com/kb/1153/enabling-https).
+
 ### Turn on tailnet access
 
-Install Tailscale on the Firehose computer and sign in. Then use one of these:
+With Tailscale running on the Firehose computer, use one of these:
 
 - **During installation:** answer `y` when the installer asks to open Firehose from your other devices, or install with `--tailnet`.
 - **In the terminal:** run `firehose tailnet on`.

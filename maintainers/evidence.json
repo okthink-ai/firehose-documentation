@@ -333,6 +333,18 @@
         "apps/expo/src/serverConnection/serverTransportPolicy.ts",
         "apps/expo/src/serverConnection/serverConnectionPolicy.ts"
       ]
+    },
+    "tailscale-setup": {
+      "scope": "Third-party Tailscale setup steps: download page, Linux install script and sign-in command, MagicDNS default and enable button, HTTPS certificate enable steps and public-ledger notice. Checked against Tailscale's public documentation, not a live install.",
+      "verified": "2026-09-29",
+      "urls": [
+        "https://tailscale.com/download",
+        "https://tailscale.com/download/mac",
+        "https://tailscale.com/kb/1031/install-linux",
+        "https://tailscale.com/kb/1081/magicdns",
+        "https://tailscale.com/kb/1153/enabling-https",
+        "https://tailscale.com/kb/1347/installation"
+      ]
     }
   },
   "runtimeObservations": [

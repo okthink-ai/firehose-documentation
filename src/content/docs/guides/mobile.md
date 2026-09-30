@@ -2,14 +2,14 @@
 title: "Use Firehose on mobile web"
 description: "Connect from your phone, read an agent\u2019s progress, and answer in the correct session."
 verified: "2026-09-29"
-evidence: ["tailnet-access", "connection", "mobile", "chat", "git-refresh", "file-access"]
+evidence: ["tailnet-access", "tailscale-setup", "connection", "mobile", "chat", "git-refresh", "file-access"]
 ---
 
 Check an agent’s progress and respond from your phone while its work stays on your Firehose server.
 
 ## Connect your phone
 
-Turn on [tailnet access](/getting-started/connect/#open-firehose-from-your-other-devices) on your Firehose computer first. Then sign in to Tailscale on your phone with the same account that owns the computer, and open the address Firehose showed you, such as `https://your-computer.your-tailnet.ts.net:4801`.
+[Set up Tailscale](/getting-started/connect/#set-up-tailscale) and turn on [tailnet access](/getting-started/connect/#turn-on-tailnet-access) on your Firehose computer first. Then install the Tailscale app on your phone and sign in with the same account that owns the computer, and open the address Firehose showed you, such as `https://your-computer.your-tailnet.ts.net:4801`.
 
 You can also open agents.okthink.ai, enter the full `.ts.net` name, and select **Connect**. Only the computer's owner can connect either way.
 
