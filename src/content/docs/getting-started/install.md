@@ -31,7 +31,9 @@ Open a terminal on the computer and run:
 curl -fsSL https://okthink.ai/install.sh | bash
 ```
 
-This address points to the installer published with the latest Firehose release on GitHub. The installer downloads the latest release for your computer, checks its checksum, and unpacks it into `~/.firehose`. The release includes its own Node.js runtime, so nothing is built on your computer.
+This address points to the installer published with the latest Firehose release on GitHub. On a system without bash, such as Alpine Linux, replace `bash` with `sh`.
+
+The installer downloads the latest release for your computer, checks its checksum, and unpacks it into `~/.firehose`. The release includes its own Node.js runtime, so nothing is built on your computer.
 
 ## 2. Accept the license agreement
 
