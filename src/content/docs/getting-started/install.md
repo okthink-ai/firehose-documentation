@@ -28,8 +28,10 @@ The installer warns rather than stops if `tmux`, `git`, or an agent tool is miss
 Open a terminal on the computer and run:
 
 ```sh
-curl -fsSL https://github.com/okthink-ai/firehose-releases/releases/latest/download/install.sh | sh
+curl -fsSL https://okthink.ai/install.sh | bash
 ```
+
+This address points to the installer published with the latest Firehose release on GitHub. On a system without bash, such as Alpine Linux, replace `bash` with `sh`.
 
 The installer downloads the latest release for your computer, checks its checksum, and unpacks it into `~/.firehose`. The release includes its own Node.js runtime, so nothing is built on your computer.
 
@@ -74,10 +76,10 @@ If the installer could not register a login service, it starts Firehose for this
 
 ## Use installer options
 
-To pass an option through the one-line command, add `sh -s --` and the options:
+To pass an option through the one-line command, add `bash -s --` and the options:
 
 ```sh
-curl -fsSL https://github.com/okthink-ai/firehose-releases/releases/latest/download/install.sh | sh -s -- --port 4900
+curl -fsSL https://okthink.ai/install.sh | bash -s -- --port 4900
 ```
 
 | Option | Use it to |
