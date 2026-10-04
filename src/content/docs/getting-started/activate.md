@@ -1,114 +1,107 @@
 ---
 title: "Activate Firehose"
-description: "Activate a new Firehose installation with your subscription so you can start sessions."
-verified: "2026-09-29"
+description: "Activate a new Firehose installation with a code emailed to you, and subscribe if you need to, so you can start sessions."
+verified: "2026-10-04"
 evidence: ["activation", "layout"]
 ---
 
 Activate Firehose on your computer so it can start agent sessions. Until you do, the dashboard shows an activation screen and nothing else works.
 
-This page describes Firehose 1.0.1. You need a Firehose installation from [Install Firehose](/getting-started/install/) and an email address you can open on this device.
+This page describes Firehose 1.2.0. Activation by emailed code started in Firehose 1.1.0; if your dashboard shows **Activate this server** instead of an email field, [update Firehose](/getting-started/install/#manage-firehose-from-the-terminal) with `firehose update`.
 
 ## Before you begin
 
-Activation needs a paid subscription. If your account does not have one yet, you subscribe during activation. Billing starts the day you subscribe.
+You need:
 
-Activation happens in two browser tabs:
+- A Firehose installation from [Install Firehose](/getting-started/install/).
+- An email address you can read. Firehose sends a 6-digit code there. You can read the email on any device, such as your phone.
 
-- **Your dashboard** at `http://localhost:4801` shows a code and waits.
-- **The activation page** at `agents.okthink.ai/activate` is where you sign in, subscribe if needed, and approve the code.
+Activation needs a paid subscription, which belongs to that email address. If the address does not have one yet, you subscribe during activation. Billing starts the day you subscribe.
 
-## 1. Get an activation code
+Everything happens on the dashboard at `http://localhost:4801`, except paying, which opens a checkout page in your browser.
+
+## 1. Enter your email address
 
 1. Open your dashboard. After a fresh install, it is already open and shows **Activate Firehose**.
-2. Select **Activate this server**.
+2. Type your email address under **Email**.
+3. Select **Send code**.
 
 <figure class="product-capture">
-  <img src="/images/ui/activation-start.png" width="800" height="400" loading="lazy" alt="The Activate Firehose screen on the dashboard. It reads: This installation has not been activated yet. Sign in on the Firehose site to subscribe or use your existing subscription. Below is the Activate this server button.">
+  <img src="/images/ui/activation-start.png" width="540" height="445" loading="lazy" alt="The Activate Firehose screen. It reads: This installation has not been activated yet. Enter your email address and we'll send you a 6-digit code. Below are an Email field showing you@example.com as a hint and the Send code button.">
   <figcaption>The dashboard before activation.</figcaption>
 </figure>
 
-Firehose shows a code under **Enter this code on the activation page** and opens the activation page in a new tab. The dashboard says **Waiting for approval in the tab that opened…**. Leave it open. The code works for one hour. If no tab opened, select the link under the code.
+## 2. Enter the code from the email
+
+Firehose sends an email from `Firehose <noreply@okthink.ai>` with the subject **Your Firehose code:** followed by six digits. The dashboard says **We sent a code to** your address, and that it expires in 10 minutes.
+
+1. Type the six digits under **Code**.
+2. Select **Verify**.
 
 <figure class="product-capture">
-  <img src="/images/ui/activation-code.png" width="800" height="400" loading="lazy" alt="The Activate Firehose screen showing the code K7QF-3MXP under Enter this code on the activation page, a link to agents.okthink.ai/activate, and the text Waiting for approval in the tab that opened.">
-  <figcaption>The dashboard while it waits for approval. The code is an example; yours will differ.</figcaption>
+  <img src="/images/ui/activation-code.png" width="540" height="519" loading="lazy" alt="The Activate Firehose screen reading: We sent a code to you@example.com. It expires in 10 minutes. The Code field holds 482915, followed by the Verify button and the Resend code and Use a different email links.">
+  <figcaption>Entering the emailed code. The email address and code are examples; yours will differ.</figcaption>
 </figure>
 
-## 2. Sign in with your email
-
-The activation page opens with your code already filled in. Type it in if the field is empty.
-
-Enter your email address and select **Email me a sign-in link**.
-
-<figure class="product-capture">
-  <img src="/images/ui/activate-signin.png" width="560" height="351" loading="lazy" alt="The activation page titled Activate Firehose. The code K7QF-3MXP is in the code field, followed by an empty email field showing you@example.com as a hint, and the Email me a sign-in link button.">
-  <figcaption>The activation page before you sign in. The code and email address are examples.</figcaption>
-</figure>
-
-The page then says **Check your inbox and open the link on this device; it verifies your address and brings you back here.** Open the email on this same device and select its link.
-
-<figure class="product-capture">
-  <img src="/images/ui/activate-link-sent.png" width="560" height="405" loading="lazy" alt="The activation page after sending the link. The email field shows you@example.com, the button now reads Send the link again, and a note says to check your inbox and open the link on this device.">
-  <figcaption>After you ask for the link. The code and email address are examples.</figcaption>
-</figure>
-
-## 3. Approve the code
-
-Back on the activation page, it shows **Verified as** and your address. Your subscription belongs to this address. To use another one, select **Use a different email**.
-
-Select **Approve this code**.
-
-<figure class="product-capture">
-  <img src="/images/ui/activate-approve.png" width="560" height="408" loading="lazy" alt="The activation page signed in. Under the code it reads Verified as you@example.com, with a Use a different email link, the Approve this code button, and a Manage billing link.">
-  <figcaption>Signed in and ready to approve. The code and email address are examples.</figcaption>
-</figure>
+If the email does not arrive, check your spam folder, then select **Resend code**. If you typed the wrong address, select **Use a different email**.
 
 What happens next depends on your subscription.
 
 ### If you already subscribe
 
-The page says **Approved. Firehose will finish activating on its own; you can close this page.**
-
-<figure class="product-capture">
-  <img src="/images/ui/activate-approved.png" width="560" height="410" loading="lazy" alt="The activation page after approval, showing in green: Approved. Firehose will finish activating on its own; you can close this page.">
-  <figcaption>The code is approved. The code and email address are examples.</figcaption>
-</figure>
+Firehose unlocks right away. Continue to [Check the result](#4-check-the-result).
 
 ### If you do not subscribe yet
 
-The page says **This account has no active subscription. Subscribe to activate; your card is charged today.**
+The dashboard says your address **is verified** and that activating Firehose needs a subscription; your card is charged today. Continue to the next step.
 
-1. Choose **Individual, billed monthly** or **Individual, billed yearly**. The checkout page shows the price.
-2. Select **Subscribe** and pay on the checkout page.
-3. When you return to the activation page, select **Approve this code** again.
+## 3. Subscribe
+
+1. Under **Plan**, choose **Individual, billed monthly** or **Individual, billed yearly**. The checkout page shows the price.
+2. Select **Subscribe**.
 
 <figure class="product-capture">
-  <img src="/images/ui/activate-subscribe.png" width="560" height="562" loading="lazy" alt="The activation page asking you to subscribe. Two plan choices, Individual, billed monthly (selected) and Individual, billed yearly, appear above the Subscribe button.">
-  <figcaption>Choosing a plan. The code and email address are examples.</figcaption>
+  <img src="/images/ui/activation-subscribe.png" width="540" height="559" loading="lazy" alt="The Activate Firehose screen reading: you@example.com is verified. Activating Firehose needs a subscription; your card is charged today. Two plan choices, Individual, billed monthly (selected) and Individual, billed yearly, appear above the Subscribe button and a Use a different email link.">
+  <figcaption>Choosing a plan. The email address is an example.</figcaption>
+</figure>
+
+A checkout page opens in a new browser tab. The dashboard says **Waiting for payment…**. Pay on the checkout page; you have up to an hour.
+
+<figure class="product-capture">
+  <img src="/images/ui/activation-payment.png" width="540" height="385" loading="lazy" alt="The Activate Firehose screen reading: Checkout is open in your browser for you@example.com. Waiting for payment. Finish paying there; Firehose unlocks as soon as it goes through. Below are the Open checkout again and Choose a different plan links.">
+  <figcaption>The dashboard while you pay. The email address is an example.</figcaption>
+</figure>
+
+If you closed the checkout tab, select **Open checkout again**. To change plans, select **Choose a different plan**.
+
+When the payment goes through, the checkout tab shows **Payment received**. You can close it and go back to the dashboard.
+
+<figure class="product-capture">
+  <img src="/images/ui/activate-checkout-complete.png" width="540" height="282" loading="lazy" alt="A page titled Payment received that reads: Go back to Firehose; it unlocks in a few seconds. You can close this page.">
+  <figcaption>The page you see after paying.</figcaption>
 </figure>
 
 ### If your subscription needs attention
 
-The page says the subscription needs attention, usually because a payment did not go through. Select **Open billing**, fix the payment, then select **Approve this code** again.
+If your address already has a subscription with a problem, usually a payment that did not go through, selecting **Subscribe** shows a message saying so. Select **Manage billing**, fix the payment, then select **Subscribe** again.
 
 <figure class="product-capture">
-  <img src="/images/ui/activate-billing.png" width="560" height="426" loading="lazy" alt="The activation page saying: This account already has a subscription that needs attention, usually a payment that did not go through. Fix it in billing, then approve the code again. Below is the Open billing button.">
-  <figcaption>A subscription with a failed payment. The code and email address are examples.</figcaption>
+  <img src="/images/ui/activation-billing.png" width="540" height="673" loading="lazy" alt="The plan screen with a red message: This account already has a subscription that needs attention, usually a payment that did not go through. Fix it in billing, then try again. Below it are a Manage billing link and the Subscribe button.">
+  <figcaption>A subscription with a failed payment. The email address is an example.</figcaption>
 </figure>
 
 ## 4. Check the result
 
-Return to your dashboard tab. Within a few seconds, the activation screen closes and Firehose opens with the **Sessions** sidebar. You do not need to reload. See [Find your way around Firehose](/getting-started/find-your-way/) for what you are looking at.
+Within a few seconds, the activation screen closes and Firehose opens with the **Sessions** sidebar. You do not need to reload. See [Find your way around Firehose](/getting-started/find-your-way/) for what you are looking at.
 
 Next, [connect to Firehose](/getting-started/connect/) and check that your agent is ready.
 
 ## Manage your subscription
 
-Open `agents.okthink.ai/account` and sign in with an email link. Select **Manage billing** to open your billing details. The activation page also has a **Manage billing** link once you are signed in.
+Open `agents.okthink.ai/account` and sign in with the email address you used to activate Firehose. You can select **Continue with Google** or have a sign-in link emailed to you. Select **Manage billing** to change your card, see invoices, switch plans, or cancel.
 
 <figure class="product-capture">
-  <img src="/images/ui/account.png" width="355" height="229" loading="lazy" alt="The account page titled Your Firehose account, showing Signed in as you@example.com, a Manage billing button, and a Sign out link.">
+  <img src="/images/ui/account.png" width="540" height="498" loading="lazy" alt="The account page titled Your Firehose account, showing Signed in as you@example.com, a note about the billing portal, a Manage billing button, and a Sign out link.">
   <figcaption>The account page. The email address is an example.</figcaption>
 </figure>
 
@@ -121,10 +114,10 @@ The dashboard shows **Reactivate Firehose** only when a renewal fails:
 - **Your subscription stopped,** for example it was canceled or a payment failed. The screen names the reason. Fix it at `agents.okthink.ai/account`, and Firehose unlocks on its own at its next check, within about an hour.
 - **Firehose could not reach the license service for 14 days** while it kept running. Reconnect the computer to the internet, and Firehose unlocks at its next check.
 
-To unlock right away instead of waiting, select **Activate this server** and repeat the steps above.
+To unlock right away instead of waiting, enter your email address on the **Reactivate Firehose** screen and repeat the steps above.
 
 <figure class="product-capture">
-  <img src="/images/ui/activation-locked.png" width="800" height="400" loading="lazy" alt="The Reactivate Firehose screen reading: This installation is locked: subscription is canceled. Sign in to reactivate it. Below is the Activate this server button.">
+  <img src="/images/ui/activation-locked.png" width="540" height="445" loading="lazy" alt="The Reactivate Firehose screen reading: This installation is locked: subscription is canceled. Enter your email address and we'll send you a 6-digit code. Below are the Email field and the Send code button.">
   <figcaption>A locked installation, with the reason the license service gave.</figcaption>
 </figure>
 
@@ -132,18 +125,16 @@ To unlock right away instead of waiting, select **Activate this server** and rep
 
 | What you see | What to do |
 | --- | --- |
-| **The code expired before it was approved.** | More than an hour passed. Select **Try again** for a new code. |
-| **The activation was not approved.** | Select **Try again**. If it happens again, check your subscription at `agents.okthink.ai/account`. |
-| The dashboard keeps waiting after the page said the code was approved | Check that the computer is online, then wait a minute. Firehose checks for approval every few seconds. |
-| The sign-in email does not arrive | Check your spam folder, then select **Send the link again**. |
+| The email does not arrive | Check your spam folder, then select **Resend code**. Check that the address shown after **We sent a code to** is right; if not, select **Use a different email**. |
+| **That code isn’t right.** and the attempts left | Check the digits in the newest email and try again. Each code allows five tries. |
+| **That code has expired.** or **Too many wrong codes.** | Select **Resend code** for a new code. Codes last 10 minutes. |
+| **Too many codes were requested.** | Wait a few minutes, then try again. Firehose sends at most five codes an hour to one address. |
+| **The activation timed out before payment finished.** | More than an hour passed before payment went through. Enter your email address again; you get a new code. |
+| **Firehose could not reach its license service.** | Check that the computer is online, then try again. |
+| The dashboard keeps waiting after the checkout page said **Payment received** | Check that the computer is online, then wait a minute. Firehose checks for the payment every few seconds. |
 | **License agreement** instead of **Activate Firehose** | Read the agreement, also available as the [published end-user license agreement](https://github.com/okthink-ai/firehose-releases/releases/latest/download/EULA.md), and select **I accept**. This appears if the agreement was not accepted during installation. |
 
 <figure class="product-capture">
-  <img src="/images/ui/activation-expired.png" width="800" height="400" loading="lazy" alt="The Activate Firehose screen with a Try again button and the note: The code expired before it was approved.">
-  <figcaption>An expired code.</figcaption>
-</figure>
-
-<figure class="product-capture">
-  <img src="/images/ui/license-agreement.png" width="800" height="660" loading="lazy" alt="The License agreement screen reading Read and accept the agreement to use Firehose on this machine, with the agreement in a scrolling box and an I accept button.">
+  <img src="/images/ui/license-agreement.png" width="540" height="466" loading="lazy" alt="The License agreement screen reading Read and accept the agreement to use Firehose on this machine, with the agreement in a scrolling box and an I accept button.">
   <figcaption>The license agreement screen. The agreement text is shortened here; read the full agreement on the screen or at the link above.</figcaption>
 </figure>

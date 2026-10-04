@@ -7,7 +7,7 @@ Website URLs follow the source path without `.md`; `index.md` is the home page.
 | --- | --- |
 | [Help improve these guides](../src/content/docs/feedback.md) | Prepare a useful documentation correction or a request for a missing example. |
 | [Install Firehose](../src/content/docs/getting-started/install.md) | Install Firehose on your Mac or Linux computer with the one-line installer and open the dashboard. |
-| [Activate Firehose](../src/content/docs/getting-started/activate.md) | Activate a new Firehose installation with your subscription so you can start sessions. |
+| [Activate Firehose](../src/content/docs/getting-started/activate.md) | Activate a new Firehose installation with a code emailed to you, and subscribe if you need to, so you can start sessions. |
 | [Connect to Firehose](../src/content/docs/getting-started/connect.md) | Open Firehose on your computer or from your other devices, and check that your agent is ready. |
 | [Find your way around Firehose](../src/content/docs/getting-started/find-your-way.md) | Learn where the sidebar, New session, Settings, workspace tabs, prompt bar, and message box are, on desktop and on a phone. |
 | [Put files in the right workspace](../src/content/docs/getting-started/files-and-terminal.md) | Save the practice file on your Firehose server and verify your terminal is in the intended project. |

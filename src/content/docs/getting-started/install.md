@@ -1,13 +1,13 @@
 ---
 title: "Install Firehose"
 description: "Install Firehose on your Mac or Linux computer with the one-line installer and open the dashboard."
-verified: "2026-09-29"
+verified: "2026-10-04"
 evidence: ["install", "tailscale-setup", "layout"]
 ---
 
 Install Firehose on the computer where your repositories live. When you finish, Firehose is running on that computer and its dashboard is open in your browser, ready to [activate](/getting-started/activate/).
 
-This page describes Firehose 1.0.1.
+This page describes Firehose 1.2.0.
 
 ## Before you begin
 
@@ -18,10 +18,10 @@ You need:
 - `tmux`, which Firehose needs to launch agent sessions, and `git` for workspace features.
 - At least one agent command-line tool installed and signed in: Claude Code (`claude`), Codex (`codex`), or Antigravity (`agy`). Firehose does not install or sign in to these for you.
 - Agreement to the [Firehose end-user license agreement](https://github.com/okthink-ai/firehose-releases/releases/latest/download/EULA.md). You can read it before you install; the installer asks you to accept it.
-- A paid Firehose subscription, or the email address you will use to buy one during [activation](/getting-started/activate/).
+- An email address you can read. [Activation](/getting-started/activate/) emails you a code, and the subscription belongs to that address. If it does not have one yet, you subscribe during activation.
 - [Tailscale](https://tailscale.com/download), only if you want to open Firehose from your phone or another computer. Install it before running the installer and the installer offers to set up access for you. You can also add it later; see [Set up Tailscale](/getting-started/connect/#set-up-tailscale).
 
-The installer warns rather than stops if `tmux`, `git`, or an agent tool is missing. Install them before you start a session.
+If `tmux` is missing, the installer offers to install it for you; see [Install tmux if asked](#install-tmux-if-asked). It warns rather than stops if `git` or an agent tool is missing. Install them before you start a session.
 
 ## 1. Run the installer
 
@@ -34,6 +34,19 @@ curl -fsSL https://okthink.ai/install.sh | bash
 This address points to the installer published with the latest Firehose release on GitHub. On a system without bash, such as Alpine Linux, replace `bash` with `sh`.
 
 The installer downloads the latest release for your computer, checks its checksum, and unpacks it into `~/.firehose`. The release includes its own Node.js runtime, so nothing is built on your computer.
+
+### Install tmux if asked
+
+Firehose runs every agent session inside tmux. If tmux is not installed, the installer offers to install it with your computer's package manager, for example:
+
+```text
+Firehose needs tmux to start agent sessions, and it is not installed.
+Install it now with: sudo apt-get update && sudo apt-get install -y tmux ? [Y/n]
+```
+
+Press Enter to install it, or type `n` to skip. The command depends on your computer: Homebrew (`brew install tmux`) on a Mac, and `apt-get`, `dnf`, `yum`, `pacman`, or `zypper` on Linux. On Linux it uses `sudo` unless you run the installer as root, and `sudo` may ask for your password.
+
+If you skip it or the tmux installation fails, the installer prints a warning with the command to run and carries on. If it finds no package manager it knows, it warns you to install tmux with your package manager. On a Mac without Homebrew, it points you to [brew.sh](https://brew.sh); install Homebrew, then run `brew install tmux`. Install tmux before you start a session.
 
 ## 2. Accept the license agreement
 
@@ -61,7 +74,7 @@ Type `y` to use Firehose from your phone or another computer, or press Enter to 
 The installer registers Firehose to start when you log in, starts it, and opens `http://localhost:4801` in your browser. It finishes with a message like this:
 
 ```text
-==> Firehose 1.0.1 installed
+==> Firehose 1.2.0 installed
 
   Firehose is running at http://localhost:4801.
   It starts by itself when you log in.
@@ -70,7 +83,7 @@ The installer registers Firehose to start when you log in, starts it, and opens 
 
 On a computer without a desktop, such as one you reach over SSH, no browser opens. The message tells you to open `http://localhost:4801` in a browser instead.
 
-The dashboard shows **Activate Firehose** until you activate it. Continue to [Activate Firehose](/getting-started/activate/).
+The dashboard shows **Activate Firehose**, with a field for your email address, until you activate it. Continue to [Activate Firehose](/getting-started/activate/).
 
 If the installer could not register a login service, it starts Firehose for this session only and says so. Run `firehose service install` later to start it at login.
 
@@ -114,7 +127,7 @@ The installer prints `ERROR:` followed by the reason. Common ones:
 
 | Message | What to do |
 | --- | --- |
-| `unsupported operating system` or `unsupported architecture` | Firehose 1.0.1 runs on macOS and Linux, on x64 and arm64. Use a supported computer. |
+| `unsupported operating system` or `unsupported architecture` | Firehose runs on macOS and Linux, on x64 and arm64. Use a supported computer. |
 | `musl-based Linux (Alpine and similar) is not supported` | Use a glibc-based Linux distribution. |
 | `the license agreement must be accepted to install` | Run the command again and type `y`, or add `--accept-eula` after reading the agreement. |
 | `no terminal to confirm the license agreement` | The installer could not ask you. Read the agreement at the path shown, then run it with `--accept-eula`. |

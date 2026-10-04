@@ -1,7 +1,7 @@
 ---
 title: "Get unstuck"
 description: "Follow concrete checks for activation, connection, project creation, startup, message delivery, and missing changes."
-verified: "2026-09-29"
+verified: "2026-10-04"
 evidence: ["activation", "tailnet-access", "hosted-connection", "connection", "settings", "launch", "chat", "diff", "questions", "project-creation", "diff-comparisons", "session-signals", "diagnostics", "git-refresh", "question-details", "layout"]
 ---
 
@@ -13,10 +13,11 @@ A new installation shows **Activate Firehose** until you activate it with a subs
 
 | What you see | What to do |
 | --- | --- |
-| **The code expired before it was approved.** | Codes last one hour. Select **Try again** and approve the new code. |
-| **The activation was not approved.** | Select **Try again**. If it repeats, check your subscription at `agents.okthink.ai/account`. |
-| **This account has no active subscription.** on the activation page | Subscribe on that page, then select **Approve this code** again. |
-| **Reactivate Firehose** | The license could not be renewed. Read the reason shown, then select **Activate this server**. |
+| The code email does not arrive | Check your spam folder, then select **Resend code**. Check the address shown after **We sent a code to**. |
+| **That code has expired.** or **Too many wrong codes.** | Codes last 10 minutes and allow five tries. Select **Resend code** for a new one. |
+| **The activation timed out before payment finished.** | Enter your email address again and pay within an hour of verifying the code. |
+| **Activate this server** instead of an email field | Your Firehose is older than 1.1.0. Run `firehose update`, then reload the dashboard. |
+| **Reactivate Firehose** | The license could not be renewed. Read the reason shown, then enter your email address to activate again. |
 | **License agreement** | Read the agreement and select **I accept**. |
 
 ## I can’t connect to my server
