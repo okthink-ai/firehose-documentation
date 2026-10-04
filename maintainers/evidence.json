@@ -291,9 +291,9 @@
       ]
     },
     "install": {
-      "scope": "Public one-line installer: platforms, prerequisites warnings, EULA and tailnet prompts, flags, final messages, the published EULA release asset (identical to resources/EULA.md in the 1.0.0 and 1.0.1 archives), firehose commands and error messages. Source inspection of the commit Firehose 1.0.1 was built from (release build id 8d9eccaedbb5). No install on a clean machine, live activation, Stripe checkout, or hosted-app run was performed.",
-      "revision": "8d9eccaedbb5472aef4dc0f4dca6e11ac5e097df",
-      "verified": "2026-09-29",
+      "scope": "Public one-line installer: platforms, prerequisite checks including the offer to install tmux with Homebrew, apt-get, dnf, yum, pacman or zypper, EULA and tailnet prompts, flags, final messages, the published EULA release asset, firehose commands and error messages. Source inspection of the commit Firehose 1.2.0 was built from (tag v1.2.0); install.sh is unchanged in behavior on main after #717 (usage comment only). The unmerged firehose start/stop commands (PR #724) are intentionally not documented. No install on a clean machine was performed.",
+      "revision": "37769a376032de8bd1595639aa67ee756a448f3f",
+      "verified": "2026-10-04",
       "paths": [
         "install.sh",
         "docs/EULA.md",
@@ -301,18 +301,22 @@
       ]
     },
     "activation": {
-      "scope": "Release license gate, lock and activation screens, device-code flow, hosted /activate and /account pages, subscription checkout and billing states, renewal grace and code expiry. Exempt accounts, prices and plan names intentionally omitted. Source inspection of the commit Firehose 1.0.1 was built from (release build id 8d9eccaedbb5). No install on a clean machine, live activation, Stripe checkout, or hosted-app run was performed.",
-      "revision": "8d9eccaedbb5472aef4dc0f4dca6e11ac5e097df",
-      "verified": "2026-09-29",
+      "scope": "Release license gate, emailed-code activation screen (email, 6-digit code, plan, waiting for payment, billing that needs attention), code lifetime, attempt and send limits, sender and subject of the code email, lock and reactivation screens, hosted Checkout return page and /account page, renewal grace. The hosted /activate device-code flow is kept only for releases before 1.1.0 and is not documented. Exempt accounts, prices and plan names beyond the service's labels intentionally omitted. Source inspection of the commit Firehose 1.2.0 was built from (tag v1.2.0; emailed-code activation shipped in 1.1.0, firehose PR #691). No live activation, real email delivery, or Stripe checkout was performed.",
+      "revision": "37769a376032de8bd1595639aa67ee756a448f3f",
+      "verified": "2026-10-04",
       "paths": [
         "server/lib/license/config.ts",
         "server/lib/license/gate.ts",
         "server/lib/license/state.ts",
         "lib/types/server-status.ts",
         "apps/expo/src/serverConnection/LicenseGate.tsx",
+        "apps/expo/src/serverConnection/EmailActivation.tsx",
         "apps/expo/src/components/Activate/ActivatePage.tsx",
         "apps/expo/src/components/Activate/AccountPage.tsx",
-        "apps/expo/src/components/Activate/route.ts"
+        "apps/expo/src/components/Activate/route.ts",
+        "functions/src/email-activation.ts",
+        "functions/src/email-code.ts",
+        "functions/src/plans.ts"
       ]
     },
     "tailnet-access": {
@@ -390,7 +394,7 @@
       "date": "2026-09-13",
       "serverVersion": "fafd783ee5e0",
       "protocolVersion": 2,
-      "scope": "Read-only GET /api/status confirmed version fields. Walked New session \u2192 documentation project \u2192 Current checkout \u2192 Codex. Observed Full Auto checked and Start session available; captured only the provider panel at desktop and mobile widths. No session was started. This differs from the source revision; approval behavior and installation were not exercised.",
+      "scope": "Read-only GET /api/status confirmed version fields. Walked New session → documentation project → Current checkout → Codex. Observed Full Auto checked and Start session available; captured only the provider panel at desktop and mobile widths. No session was started. This differs from the source revision; approval behavior and installation were not exercised.",
       "method": "Local HTTPS request and isolated browser with mutating API requests blocked.",
       "captures": [
         {
@@ -634,6 +638,95 @@
           "pixels": {
             "width": 1520,
             "height": 420
+          },
+          "deviceScaleFactor": 2
+        }
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "serverVersion": "0a5f7741a (source, Expo web dev build; activation code identical to the v1.2.0 release commit)",
+      "scope": "Activation captures for Firehose 1.1+. The real web UI was driven by Playwright against the repository's e2e mock API with invented data only: the address you@example.com, the code 482915, and a placeholder checkout URL. Every /api/license route was answered by the spec; no license service, Stripe, or mailbox was involved. The hosted Payment received and /account pages restore a fictional you@example.com Firebase user and answer every Firebase and license-service request with canned responses. Plan labels are the service's own (functions/src/plans.ts); no prices appear. The license agreement capture uses shortened placeholder text. Captures are cropped to the screen's content; nothing was retouched. These replace the 1.0.1 activation captures (activation-start, activation-locked, license-agreement and account were regenerated; the device-code captures were removed).",
+      "method": "firehose branch docs-screenshots-1-1: e2e/tests/docs-screenshots.spec.ts -g 'license screens' with DOCS_SHOT_DIR and placeholder EXPO_PUBLIC_FIREBASE_* settings, then e2e/hosted/docs-activation.spec.ts with playwright.hosted.config.ts. Bundled Playwright Chromium.",
+      "captures": [
+        {
+          "path": "public/images/ui/account.png",
+          "sha256": "6fbcb40f3ded29bb73e2f08cad328393f1930c1a067813b3e912585f0d9b786f",
+          "pixels": {
+            "width": 1080,
+            "height": 996
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activate-checkout-complete.png",
+          "sha256": "c71a885e59886d8b8b4c0b9725e69981ed1c7c70bef18d2c3a136c01ab552ff5",
+          "pixels": {
+            "width": 1080,
+            "height": 564
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activation-billing.png",
+          "sha256": "fc564fed849b9c4e14bc63100ee136c42aa8939cfbe3159170e1cda5b7e11733",
+          "pixels": {
+            "width": 1080,
+            "height": 1346
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activation-code.png",
+          "sha256": "8557e7ac9fd67e60b9f8ca23330cf76f3a1c252f05b0324b1139ba3fcbac6ede",
+          "pixels": {
+            "width": 1080,
+            "height": 1038
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activation-locked.png",
+          "sha256": "a0388c0a09980cfd3fe5bd6522dacbab3c7c74828182726beddf6c9ac5b6ebc8",
+          "pixels": {
+            "width": 1080,
+            "height": 890
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activation-payment.png",
+          "sha256": "0ea4bf92868b2fb372617551518413cb41161651f6c068d3b5b9f6955b856dd3",
+          "pixels": {
+            "width": 1080,
+            "height": 770
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activation-start.png",
+          "sha256": "42984699dce8f0ab0a2e2e781648123d323851f9388db471b1375d1c2c3032e2",
+          "pixels": {
+            "width": 1080,
+            "height": 890
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/activation-subscribe.png",
+          "sha256": "955456a7b56550d3d1711adba1a1ee5152db52b817219f44f945638e63b4c847",
+          "pixels": {
+            "width": 1080,
+            "height": 1118
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/license-agreement.png",
+          "sha256": "d5e7e9ab6df37487eb1731d428b6a800580094ba4a740449bd193a6e4add76b1",
+          "pixels": {
+            "width": 1080,
+            "height": 932
           },
           "deviceScaleFactor": 2
         }
