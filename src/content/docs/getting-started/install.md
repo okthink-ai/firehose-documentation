@@ -58,20 +58,28 @@ Do you accept the end-user license agreement? [y/N]
 
 Read the agreement, then type `y` to continue. Any other answer stops the installation without changing anything.
 
-## 3. Choose whether to allow your other devices
+## 3. Wait for Firehose to start
 
-If the computer is connected to Tailscale, the installer asks:
+The installer registers Firehose to start when you log in, then starts it. While Firehose starts, the installer shows `==> Waiting for Firehose to start` and adds a dot every few seconds. The first start can take up to a minute.
+
+If the installer could not register a login service, it starts Firehose for this session only and says so. Run `firehose service install` later to start it at login.
+
+If Firehose does not answer in time, see [If Firehose does not start](#if-firehose-does-not-start).
+
+## 4. Choose whether to allow your other devices
+
+Once Firehose answers, if the computer is connected to Tailscale, the installer asks:
 
 ```text
 This machine is on Tailscale. Also open Firehose from your other devices
 on your tailnet (only you, over HTTPS)? [y/N]
 ```
 
-Type `y` to use Firehose from your phone or another computer, or press Enter to skip it. You can turn it on later; see [Connect to Firehose](/getting-started/connect/#open-firehose-from-your-other-devices). Without Tailscale, the installer does not ask.
+Type `y` to use Firehose from your phone or another computer, or press Enter to skip it. You can turn it on later; see [Connect to Firehose](/getting-started/connect/#open-firehose-from-your-other-devices). Without Tailscale, the installer does not ask. It also skips the question when you upgrade, or when Firehose did not start.
 
-## 4. Check the result
+## 5. Check the result
 
-The installer registers Firehose to start when you log in and starts it. While Firehose starts, the installer shows `==> Waiting for Firehose to start` and adds a dot every few seconds; the first start can take up to a minute. When Firehose answers, the installer opens `http://localhost:4801` in your browser and finishes with a message like this:
+The installer opens `http://localhost:4801` in your browser and finishes with a message like this:
 
 ```text
 ==> Firehose 1.2.2 installed
@@ -84,10 +92,6 @@ The installer registers Firehose to start when you log in and starts it. While F
 On a computer without a desktop, such as one you reach over SSH, no browser opens. The message tells you to open `http://localhost:4801` in a browser instead.
 
 The dashboard shows **Activate Firehose**, with a field for your email address, until you activate it. Continue to [Activate Firehose](/getting-started/activate/).
-
-If the installer could not register a login service, it starts Firehose for this session only and says so. Run `firehose service install` later to start it at login.
-
-If Firehose does not start, see [If Firehose does not start](#if-firehose-does-not-start).
 
 ## Use installer options
 
@@ -138,12 +142,16 @@ The installer prints `ERROR:` followed by the reason. Common ones:
 
 ## If Firehose does not start
 
-If Firehose is installed but does not answer within about a minute, the installer prints:
+If Firehose does not answer within about a minute, the installer prints a warning with your port, 4801 unless you chose another with `--port`:
 
 ```text
 WARNING: Firehose did not answer on port 4801
 ```
 
-It then shows the last lines of Firehose's log in `~/.firehose/logs`, usually `service.log`, which often say why. On Linux, it may tell you to read the log with `journalctl --user -u firehose` instead.
+It then shows the last lines of Firehose's log in `~/.firehose/logs`, usually `service.log`. On Linux, it may tell you to read the log with `journalctl --user -u firehose` instead. It does not open your browser or ask about Tailscale.
 
-Fix the cause the log names, then run `firehose service install` to start Firehose again. Check the result with `firehose status`, then open `http://localhost:4801`.
+A first start can take longer than the installer waits, so check before you change anything:
+
+1. Wait a minute, then open `http://localhost:4801`, or the port you chose with `--port`.
+2. If the dashboard loads, Firehose was still starting. Continue to [Activate Firehose](/getting-started/activate/). To use it from your other devices, run `firehose tailnet on`.
+3. If it still does not load, read the log for the cause and fix it. Then run `firehose service install` to start Firehose again, and open the dashboard address once more.
