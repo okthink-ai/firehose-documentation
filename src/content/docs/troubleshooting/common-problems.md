@@ -1,7 +1,7 @@
 ---
 title: "Get unstuck"
 description: "Follow concrete checks for activation, connection, project creation, startup, message delivery, and missing changes."
-verified: "2026-10-04"
+verified: "2026-10-06"
 evidence: ["activation", "tailnet-access", "hosted-connection", "connection", "settings", "launch", "chat", "diff", "questions", "project-creation", "diff-comparisons", "session-signals", "diagnostics", "git-refresh", "question-details", "layout"]
 ---
 
