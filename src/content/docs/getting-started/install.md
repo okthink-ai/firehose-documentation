@@ -1,13 +1,13 @@
 ---
 title: "Install Firehose"
 description: "Install Firehose on your Mac or Linux computer with the one-line installer and open the dashboard."
-verified: "2026-10-04"
+verified: "2026-10-06"
 evidence: ["install", "tailscale-setup", "layout"]
 ---
 
 Install Firehose on the computer where your repositories live. When you finish, Firehose is running on that computer and its dashboard is open in your browser, ready to [activate](/getting-started/activate/).
 
-This page describes Firehose 1.2.0.
+This page describes Firehose 1.2.2.
 
 ## Before you begin
 
@@ -71,10 +71,10 @@ Type `y` to use Firehose from your phone or another computer, or press Enter to 
 
 ## 4. Check the result
 
-The installer registers Firehose to start when you log in, starts it, and opens `http://localhost:4801` in your browser. It finishes with a message like this:
+The installer registers Firehose to start when you log in and starts it. While Firehose starts, the installer shows `==> Waiting for Firehose to start` and adds a dot every few seconds; the first start can take up to a minute. When Firehose answers, the installer opens `http://localhost:4801` in your browser and finishes with a message like this:
 
 ```text
-==> Firehose 1.2.0 installed
+==> Firehose 1.2.2 installed
 
   Firehose is running at http://localhost:4801.
   It starts by itself when you log in.
@@ -86,6 +86,8 @@ On a computer without a desktop, such as one you reach over SSH, no browser open
 The dashboard shows **Activate Firehose**, with a field for your email address, until you activate it. Continue to [Activate Firehose](/getting-started/activate/).
 
 If the installer could not register a login service, it starts Firehose for this session only and says so. Run `firehose service install` later to start it at login.
+
+If Firehose does not start, see [If Firehose does not start](#if-firehose-does-not-start).
 
 ## Use installer options
 
@@ -101,7 +103,7 @@ curl -fsSL https://okthink.ai/install.sh | bash -s -- --port 4900
 | `--tailnet` | Allow your other devices on Tailscale without being asked |
 | `--accept-eula` | Accept the license agreement without a prompt, after reading it |
 | `--no-browser` | Skip opening the dashboard when the installer finishes |
-| `--no-start` | Install without starting Firehose or registering it to start at login |
+| `--no-start` | Install without starting Firehose or registering it to start at login. Run `firehose service install` when you want to start it. |
 | `--release <version>` | Install a specific version instead of the latest |
 | `--dir <path>` | Install somewhere other than `~/.firehose` |
 
@@ -116,7 +118,8 @@ The installer adds a `firehose` command. Open a new terminal window if the comma
 | `firehose status` | Show a quick status in the terminal |
 | `firehose update` | Upgrade to the latest release |
 | `firehose tailnet on` | Open Firehose from your other devices on Tailscale |
-| `firehose service uninstall` | Stop starting Firehose at login |
+| `firehose service install` | Start Firehose in the background now, and whenever you log in |
+| `firehose service uninstall` | Stop Firehose and stop starting it at login |
 | `firehose uninstall` | Remove Firehose from this computer |
 
 Running the installer again also upgrades Firehose. It keeps the port you chose before.
@@ -132,4 +135,15 @@ The installer prints `ERROR:` followed by the reason. Common ones:
 | `the license agreement must be accepted to install` | Run the command again and type `y`, or add `--accept-eula` after reading the agreement. |
 | `no terminal to confirm the license agreement` | The installer could not ask you. Read the agreement at the path shown, then run it with `--accept-eula`. |
 | `conflicting command(s) already on PATH` | Another program named `firehose` exists. Check what it is before re-running with `--force`. |
-| `Firehose did not answer on port 4801` | Check the logs in `~/.firehose/logs`, then run `firehose status`. |
+
+## If Firehose does not start
+
+If Firehose is installed but does not answer within about a minute, the installer prints:
+
+```text
+WARNING: Firehose did not answer on port 4801
+```
+
+It then shows the last lines of Firehose's log in `~/.firehose/logs`, usually `service.log`, which often say why. On Linux, it may tell you to read the log with `journalctl --user -u firehose` instead.
+
+Fix the cause the log names, then run `firehose service install` to start Firehose again. Check the result with `firehose status`, then open `http://localhost:4801`.

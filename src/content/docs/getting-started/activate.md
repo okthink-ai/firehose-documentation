@@ -1,13 +1,13 @@
 ---
 title: "Activate Firehose"
 description: "Activate a new Firehose installation with a code emailed to you, and subscribe if you need to, so you can start sessions."
-verified: "2026-10-04"
+verified: "2026-10-06"
 evidence: ["activation", "layout"]
 ---
 
 Activate Firehose on your computer so it can start agent sessions. Until you do, the dashboard shows an activation screen and nothing else works.
 
-This page describes Firehose 1.2.0. Activation by emailed code started in Firehose 1.1.0; if your dashboard shows **Activate this server** instead of an email field, [update Firehose](/getting-started/install/#manage-firehose-from-the-terminal) with `firehose update`.
+This page describes Firehose 1.2.2. Activation by emailed code started in Firehose 1.1.0; if your dashboard shows **Activate this server** instead of an email field, [update Firehose](/getting-started/install/#manage-firehose-from-the-terminal) with `firehose update`.
 
 ## Before you begin
 
@@ -98,12 +98,37 @@ Next, [connect to Firehose](/getting-started/connect/) and check that your agent
 
 ## Manage your subscription
 
-Open `agents.okthink.ai/account` and sign in with the email address you used to activate Firehose. You can select **Continue with Google** or have a sign-in link emailed to you. Select **Manage billing** to change your card, see invoices, switch plans, or cancel.
+To change your card, see invoices, switch plans, or cancel, open `agents.okthink.ai/account`. From the dashboard, you can also open **Settings** and select **Manage subscription** under **License**.
+
+Sign in with the email address you used to activate Firehose. Either:
+
+- Select **Continue with Google** and choose the Google account with that address. The page shows **Signed in as** your address. Select **Manage billing**.
+- Or type the address under **or use your email** and select **Email me a code**. Firehose emails you a 6-digit code with the subject **Your Firehose sign-in code**. Type the code and select **Open billing**.
+
+<figure class="product-capture">
+  <img src="/images/ui/account-signin.png" width="540" height="544" loading="lazy" alt="The account page titled Your Firehose account. It reads: Sign in with the email address you used to activate Firehose to change your card, see invoices, switch plans, or cancel. Below are a Continue with Google button, the divider or use your email, an email field holding you@example.com, and the Email me a code button.">
+  <figcaption>Signing in to the account page. The email address is an example.</figcaption>
+</figure>
+
+<figure class="product-capture">
+  <img src="/images/ui/account-code.png" width="540" height="651" loading="lazy" alt="The account page reading: We emailed a 6-digit code to you@example.com. It expires in 10 minutes. The code field holds 275481, followed by the Open billing button and the Send a new code and Use a different email links.">
+  <figcaption>Entering the emailed code. The email address and code are examples; yours will differ.</figcaption>
+</figure>
+
+Either way, the billing portal opens, where you manage your subscription.
 
 <figure class="product-capture">
   <img src="/images/ui/account.png" width="540" height="498" loading="lazy" alt="The account page titled Your Firehose account, showing Signed in as you@example.com, a note about the billing portal, a Manage billing button, and a Sign out link.">
-  <figcaption>The account page. The email address is an example.</figcaption>
+  <figcaption>The account page after signing in with Google. The email address is an example.</figcaption>
 </figure>
+
+| What you see | What to do |
+| --- | --- |
+| The code email does not arrive | Check your spam folder, then select **Send a new code**. If the address is wrong, select **Use a different email**. |
+| **That code isn’t right.** and the tries left | Check the digits in the newest email and try again. Each code allows five tries. |
+| **That code expired.** or **Too many wrong codes.** | Select **Send a new code**. Codes last 10 minutes. |
+| **Too many codes requested.** | Wait and try again later. The account page sends at most five codes an hour, and ten a day, to one address. |
+| **This account has no billing yet.** | That address has never subscribed. Check that you used the address you activated Firehose with. |
 
 ## If Firehose asks you to reactivate
 
