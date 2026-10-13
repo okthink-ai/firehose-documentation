@@ -1,8 +1,8 @@
 ---
 title: "Use Smart Review"
 description: "Choose review actions, dispatch work to your session, and verify the resulting changes."
-verified: "2026-09-29"
-evidence: ["review", "review-actions", "diff", "context-actions", "review-scope", "layout"]
+verified: "2026-10-13"
+evidence: ["review", "review-prompts", "review-actions", "diff", "context-actions", "review-scope", "layout"]
 ---
 
 Get an agent’s assessment of branch changes, choose how to handle each finding, and send those decisions back for action.
@@ -25,6 +25,14 @@ On the prompt bar above the message box, select **tools**, then **Smart review**
 Check blank-name handling and whether the tests cover spaces-only input.
 Look for unintended changes to greetings for nonblank names.
 ```
+
+### Reuse a saved prompt
+
+The buttons above the focus box are saved prompts, such as **Redux** and **Clean up architecture**. Select one to include its text in the review, and select it again to leave it out. You can select several and still type your own concerns; the review gets the selected prompts followed by what you typed. Selected prompts are highlighted.
+
+To keep what you typed for later reviews, select **Save as prompt**. It appears once the box holds text that isn't already a saved prompt. The new prompt is named after its first line and selected for this review. Rename, edit, or remove prompts in [Settings → Smart Review prompts](/reference/settings/#smart-review-prompts).
+
+Saved prompts were added in Firehose 1.2.3.
 
 **Expected result:** the review begins analyzing changes; findings may appear as it works. An empty panel alone does not establish a successful review. See [empty and unsuccessful reviews](#if-the-review-is-empty-or-unsuccessful) below.
 

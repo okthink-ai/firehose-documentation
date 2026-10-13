@@ -1,13 +1,13 @@
 ---
 title: "Install Firehose"
 description: "Install Firehose on your Mac or Linux computer with the one-line installer and open the dashboard."
-verified: "2026-10-06"
-evidence: ["install", "tailscale-setup", "layout"]
+verified: "2026-10-13"
+evidence: ["install", "release-1-2-3", "update-notice", "tailscale-setup", "layout"]
 ---
 
 Install Firehose on the computer where your repositories live. When you finish, Firehose is running on that computer and its dashboard is open in your browser, ready to [activate](/getting-started/activate/).
 
-This page describes Firehose 1.2.2.
+This page describes Firehose 1.2.3.
 
 ## Before you begin
 
@@ -82,7 +82,7 @@ Type `y` to use Firehose from your phone or another computer, or press Enter to 
 The installer opens `http://localhost:4801` in your browser and finishes with a message like this:
 
 ```text
-==> Firehose 1.2.2 installed
+==> Firehose 1.2.3 installed
 
   Firehose is running at http://localhost:4801.
   It starts by itself when you log in.
@@ -120,6 +120,7 @@ The installer adds a `firehose` command. Open a new terminal window if the comma
 | Command | What it does |
 | --- | --- |
 | `firehose status` | Show a quick status in the terminal |
+| `firehose version` | Show which version is installed |
 | `firehose update` | Upgrade to the latest release |
 | `firehose tailnet on` | Open Firehose from your other devices on Tailscale |
 | `firehose service install` | Start Firehose in the background now, and whenever you log in |
@@ -127,6 +128,12 @@ The installer adds a `firehose` command. Open a new terminal window if the comma
 | `firehose uninstall` | Remove Firehose from this computer |
 
 Running the installer again also upgrades Firehose. It keeps the port you chose before.
+
+### Know when an update is available
+
+Firehose checks for a new release about once a day. When it finds one, the dashboard shows a banner such as **Firehose 1.2.4 is available (you have 1.2.3)**, and `firehose status` and `firehose version` end with a line that says the same. Run `firehose update` to install it.
+
+Select **What's new** in the banner to read the release notes. **Dismiss** hides the banner in that browser until the next release. These notices started in Firehose 1.2.3.
 
 ## If the installation stops
 

@@ -428,6 +428,57 @@
         "apps/expo/src/components/shared/PromptPrBadge.tsx",
         "apps/expo/src/components/CloseSessionModal/CloseSessionDialog.tsx"
       ]
+    },
+    "release-1-2-3": {
+      "scope": "Firehose 1.2.3 against 1.2.2 for the install and activation guides: git diff v1.2.2 v1.2.3 over the install and activation evidence paths changes only the update notice (the update fields in lib/types/server-status.ts and the notice firehose version prints in server/cli/main.ts). Installer, activation screens, hosted pages and the license service are unchanged, so the 1.2.2 entries still describe 1.2.3. No install on a clean machine was performed.",
+      "revision": "5664d1a063d08a768d42cf620e6a48890257852e",
+      "verified": "2026-10-13",
+      "paths": [
+        "install.sh",
+        "server/cli/main.ts",
+        "lib/types/server-status.ts",
+        "apps/expo/src/serverConnection/EmailActivation.tsx",
+        "apps/expo/src/components/Activate/AccountPage.tsx",
+        "functions/src/email-activation.ts"
+      ]
+    },
+    "update-notice": {
+      "scope": "New-release notice added in 1.2.3 (firehose PR #741): the dashboard banner below the server warnings ('Firehose <version> is available (you have <version>). Run firehose update in a terminal to install it.', What's new link to the release page, Dismiss), dismissal per version in this browser's app storage, the server's update check at most once a day with the answer saved across restarts, and the stderr line firehose status and firehose version print in a release ('A new Firehose release is available: <latest> (you have <current>). Run firehose update to install it.'). Source inspection only; no installed release was observed showing it.",
+      "revision": "5664d1a063d08a768d42cf620e6a48890257852e",
+      "verified": "2026-10-13",
+      "paths": [
+        "apps/expo/src/components/UpdateAvailableBanner/index.tsx",
+        "apps/expo/src/components/UpdateAvailableBanner/dismissal.ts",
+        "apps/expo/src/App.tsx",
+        "server/lib/update-check.ts",
+        "server/cli/update-notice.ts",
+        "server/cli/main.ts",
+        "server/cli/status.ts"
+      ]
+    },
+    "review-prompts": {
+      "scope": "Saved Smart Review prompts added in 1.2.3 (firehose PR #742): Areas of Focus lists saved prompts as toggles that combine, in list order, with typed text when the review starts; Save as prompt appears for new typed text, names the prompt after its first line, selects it and clears the box; the window reloads prompts each time it opens. Settings -> Smart Review prompts (after Project directories): name and text fields, Remove, Add prompt, Save / Saved. Prompts are stored by the Firehose server; built-ins Redux and Clean up architecture until a list is saved; at most 30 prompts, names up to 60 characters, text up to 4,000. Source inspection only.",
+      "revision": "5664d1a063d08a768d42cf620e6a48890257852e",
+      "verified": "2026-10-13",
+      "paths": [
+        "apps/expo/src/components/FocusAreasModal/index.tsx",
+        "apps/expo/src/components/SettingsPanel/ReviewPromptsSettingsSection.tsx",
+        "apps/expo/src/components/SettingsPanel/index.tsx",
+        "lib/types/review-prompts.ts",
+        "server/routes/review-prompts.ts"
+      ]
+    },
+    "question-model": {
+      "scope": "Ask me model choice added in 1.2.3 (firehose PR #744): the Write the questions with row in Ask me clarifying questions; This session's model is the default; Claude sessions offer Haiku, Sonnet and Opus, other startable providers their own model list, and the row is hidden when there is nothing to choose. A chosen model runs separately: it reads the code and the topic but not the conversation, answers still go to the session, and it is held to read-only for Claude, Codex, Antigravity and Grok; OpenCode and Pi keep the session's usual permissions and the window says so. The Ask me panel reads '<model> is reading the code and writing questions.' A cut-off or timed-out run (10 minutes) marks the questionnaire failed so it can be retried on the same model. Source inspection plus the PR's recorded Claude and Codex runs; not observed in a browser.",
+      "revision": "5664d1a063d08a768d42cf620e6a48890257852e",
+      "verified": "2026-10-13",
+      "paths": [
+        "apps/expo/src/components/AskQuestionsModal/QuestionModelPicker.tsx",
+        "apps/expo/src/components/AskQuestionsModal/askQuestionsModel.ts",
+        "apps/expo/src/components/UserQuestionsPanel/UserQuestionSetStatusRegion.tsx",
+        "server/lib/user-question-separate-run.ts",
+        "server/routes/user-questions.ts"
+      ]
     }
   },
   "runtimeObservations": [

@@ -1,8 +1,8 @@
 ---
 title: "Put your agents to work."
 description: "Start an agent, follow its work, and review the result with practical Firehose guides."
-verified: "2026-10-06"
-evidence: ["launch", "chat", "diff", "questions", "connection", "install"]
+verified: "2026-10-13"
+evidence: ["launch", "chat", "diff", "questions", "connection", "install", "release-1-2-3"]
 tableOfContents: false
 ---
 
@@ -10,7 +10,7 @@ Give a coding agent a task. Follow the conversation, answer its questions, and r
 
 [Install Firehose →](/getting-started/install/)
 
-**What you need:** a Mac or Linux computer, a Firehose subscription, and an agent tool such as Claude Code or Codex. The install and activation guides describe Firehose 1.2.2; the other guides were checked against Firehose 1.0.1.
+**What you need:** a Mac or Linux computer, a Firehose subscription, and an agent tool such as Claude Code or Codex. The install and activation guides describe Firehose 1.2.3. The other guides were checked against Firehose 1.0.1, with the 1.2.3 changes to Smart Review, clarifying questions, and Settings added.
 
 ## Find your next step
 
