@@ -119,7 +119,7 @@ The installer adds a `firehose` command. Open a new terminal window if the comma
 
 | Command | What it does |
 | --- | --- |
-| `firehose status` | Show a quick status in the terminal |
+| `firehose status` | List the Claude Code sessions running on this computer |
 | `firehose version` | Show which version is installed |
 | `firehose update` | Upgrade to the latest release |
 | `firehose tailnet on` | Open Firehose from your other devices on Tailscale |

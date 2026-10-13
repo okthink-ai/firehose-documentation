@@ -45,4 +45,4 @@ Expect four passing cases. A missing file usually means you need to check the wo
 
 Disconnected terminals can be cleaned up by the server, so use the project's normal process management for work that must survive your departure. See [Leave and return](/guides/return-to-work/) before relying on a terminal command to keep running.
 
-If **Terminal needs authorization** appears, read the error and select **Retry** after checking your connection. If it still fails, check that Firehose is running with `firehose status`. Use the manual **Authorize** field only with a terminal key from a source you trust; keep that key out of Chat and public reports.
+If **Terminal needs authorization** appears, read the error and select **Retry** after checking your connection. If it still fails, check that Firehose is running by opening `http://localhost:4801`, or the port you chose with `--port`, on the Firehose computer. Use the manual **Authorize** field only with a terminal key from a source you trust; keep that key out of Chat and public reports.
