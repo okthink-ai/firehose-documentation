@@ -291,19 +291,21 @@
       ]
     },
     "install": {
-      "scope": "Public one-line installer: platforms, prerequisite checks including the offer to install tmux with Homebrew, apt-get, dnf, yum, pacman or zypper, EULA and tailnet prompts, flags, final messages, the published EULA release asset, firehose commands and error messages. Source inspection of the commit Firehose 1.2.0 was built from (tag v1.2.0); install.sh is unchanged in behavior on main after #717 (usage comment only). The unmerged firehose start/stop commands (PR #724) are intentionally not documented. No install on a clean machine was performed.",
-      "revision": "37769a376032de8bd1595639aa67ee756a448f3f",
-      "verified": "2026-10-04",
+      "scope": "Public one-line installer: platforms, prerequisite checks including the offer to install tmux with Homebrew, apt-get, dnf, yum, pacman or zypper, EULA and tailnet prompts, flags, the wait for the first start (a progress dot every three tries, up to 60 tries, over HTTP then HTTPS), final messages, the warning and service log tail shown when Firehose does not answer, the published EULA release asset (the real agreement since firehose PR #719), firehose commands including service install/uninstall and error messages. Source inspection of the commit Firehose 1.2.2 was built from (tag v1.2.2). Since 1.2.0: #717 changed only the usage comment; #724 (1.2.1) starts the macOS login service with launchctl kickstart, adds the progress dots, the HTTPS fallback and the log tail, and lists firehose service install before firehose serve when Firehose was not started. #724 merged without the firehose start and firehose stop commands that an earlier revision proposed; server/cli/main.ts at v1.2.2 has neither, so they are not documented. No install on a clean machine was performed.",
+      "revision": "d111e6ca396a992dc26f8066780234f921279601",
+      "verified": "2026-10-06",
       "paths": [
         "install.sh",
         "docs/EULA.md",
-        "scripts/release/stage-resources.ts"
+        "scripts/release/stage-resources.ts",
+        "server/cli/main.ts",
+        "server/cli/service.ts"
       ]
     },
     "activation": {
-      "scope": "Release license gate, emailed-code activation screen (email, 6-digit code, plan, waiting for payment, billing that needs attention), code lifetime, attempt and send limits, sender and subject of the code email, lock and reactivation screens, hosted Checkout return page and /account page, renewal grace. The hosted /activate device-code flow is kept only for releases before 1.1.0 and is not documented. Exempt accounts, prices and plan names beyond the service's labels intentionally omitted. Source inspection of the commit Firehose 1.2.0 was built from (tag v1.2.0; emailed-code activation shipped in 1.1.0, firehose PR #691). No live activation, real email delivery, or Stripe checkout was performed.",
-      "revision": "37769a376032de8bd1595639aa67ee756a448f3f",
-      "verified": "2026-10-04",
+      "scope": "Release license gate, emailed-code activation screen (email, 6-digit code, plan, waiting for payment, billing that needs attention), code lifetime, attempt and send limits, sender and subject of the code email, lock and reactivation screens, hosted Checkout return page, renewal grace, Settings → License → Manage subscription, and the hosted /account page: Continue with Google, or the emailed sign-in code added in 1.2.2 (firehose PR #727; subject Your Firehose sign-in code, 10 minutes, five tries, five sends an hour and ten a day per address, Open billing, no-billing and error messages). The hosted /activate device-code flow is kept only for releases before 1.1.0 and is not documented. Exempt accounts, prices and plan names beyond the service's labels intentionally omitted. Source inspection of the commit Firehose 1.2.2 was built from (tag v1.2.2); the dashboard activation code is unchanged since 1.2.0. No live activation, account sign-in, real email delivery, or Stripe checkout was performed.",
+      "revision": "d111e6ca396a992dc26f8066780234f921279601",
+      "verified": "2026-10-06",
       "paths": [
         "server/lib/license/config.ts",
         "server/lib/license/gate.ts",
@@ -316,7 +318,10 @@
         "apps/expo/src/components/Activate/route.ts",
         "functions/src/email-activation.ts",
         "functions/src/email-code.ts",
-        "functions/src/plans.ts"
+        "functions/src/plans.ts",
+        "apps/expo/src/components/Activate/licenseService.ts",
+        "apps/expo/src/components/SettingsPanel/LicenseSettingsSection.tsx",
+        "functions/src/account-email.ts"
       ]
     },
     "tailnet-access": {
@@ -386,6 +391,57 @@
         "apps/expo/src/components/shared/BetterReviewButton.tsx",
         "apps/expo/src/components/FocusAreasModal/index.tsx",
         "apps/expo/src/components/CloseSessionModal/CloseSessionDialog.tsx"
+      ]
+    },
+    "release-1-2-3": {
+      "scope": "Firehose 1.2.3 against 1.2.2 for the install and activation guides: git diff v1.2.2 v1.2.3 over the install and activation evidence paths changes only the update notice (the update fields in lib/types/server-status.ts and the notice firehose version prints in server/cli/main.ts). Installer, activation screens, hosted pages and the license service are unchanged, so the 1.2.2 entries still describe 1.2.3. No install on a clean machine was performed.",
+      "revision": "5664d1a063d08a768d42cf620e6a48890257852e",
+      "verified": "2026-10-13",
+      "paths": [
+        "install.sh",
+        "server/cli/main.ts",
+        "lib/types/server-status.ts",
+        "apps/expo/src/serverConnection/EmailActivation.tsx",
+        "apps/expo/src/components/Activate/AccountPage.tsx",
+        "functions/src/email-activation.ts"
+      ]
+    },
+    "update-notice": {
+      "scope": "New-release notice added in 1.2.3 (firehose PR #741): the dashboard banner below the server warnings ('Firehose <version> is available (you have <version>). Run firehose update in a terminal to install it.', What's new link to the release page, Dismiss), dismissal per version in this browser's app storage, the server's update check at most once a day with the answer saved across restarts, and the stderr line firehose status and firehose version print in a release ('A new Firehose release is available: <latest> (you have <current>). Run firehose update to install it.'). Source inspection only; no installed release was observed showing it.",
+      "revision": "5664d1a063d08a768d42cf620e6a48890257852e",
+      "verified": "2026-10-13",
+      "paths": [
+        "apps/expo/src/components/UpdateAvailableBanner/index.tsx",
+        "apps/expo/src/components/UpdateAvailableBanner/dismissal.ts",
+        "apps/expo/src/App.tsx",
+        "server/lib/update-check.ts",
+        "server/cli/update-notice.ts",
+        "server/cli/main.ts",
+        "server/cli/status.ts"
+      ]
+    },
+    "review-prompts": {
+      "scope": "Saved Smart Review prompts added in 1.2.3 (firehose PR #742): Areas of Focus lists saved prompts as toggles that combine, in list order, with typed text when the review starts; Save as prompt appears for new typed text, names the prompt after its first line, selects it and clears the box; the window reloads prompts each time it opens. Settings -> Smart Review prompts (after Project directories): name and text fields, Remove, Add prompt, Save / Saved. Prompts are stored by the Firehose server; built-ins Redux and Clean up architecture until a list is saved; at most 30 prompts, names up to 60 characters, text up to 4,000. Source inspection only.",
+      "revision": "5664d1a063d08a768d42cf620e6a48890257852e",
+      "verified": "2026-10-13",
+      "paths": [
+        "apps/expo/src/components/FocusAreasModal/index.tsx",
+        "apps/expo/src/components/SettingsPanel/ReviewPromptsSettingsSection.tsx",
+        "apps/expo/src/components/SettingsPanel/index.tsx",
+        "lib/types/review-prompts.ts",
+        "server/routes/review-prompts.ts"
+      ]
+    },
+    "question-model": {
+      "scope": "Ask me model choice added in 1.2.3 (firehose PR #744): the Write the questions with row in Ask me clarifying questions; This session's model is the default; Claude sessions offer Haiku, Sonnet and Opus, other startable providers their own model list, and the row is hidden when there is nothing to choose. A chosen model runs separately: it reads the code and the topic but not the conversation, answers still go to the session, and it is held to read-only for Claude, Codex, Antigravity and Grok; OpenCode and Pi keep the session's usual permissions and the window says so. The Ask me panel reads '<model> is reading the code and writing questions.' A cut-off or timed-out run (10 minutes) marks the questionnaire failed so it can be retried on the same model. Source inspection plus the PR's recorded Claude and Codex runs; not observed in a browser.",
+      "revision": "5664d1a063d08a768d42cf620e6a48890257852e",
+      "verified": "2026-10-13",
+      "paths": [
+        "apps/expo/src/components/AskQuestionsModal/QuestionModelPicker.tsx",
+        "apps/expo/src/components/AskQuestionsModal/askQuestionsModel.ts",
+        "apps/expo/src/components/UserQuestionsPanel/UserQuestionSetStatusRegion.tsx",
+        "server/lib/user-question-separate-run.ts",
+        "server/routes/user-questions.ts"
       ]
     }
   },
@@ -727,6 +783,32 @@
           "pixels": {
             "width": 1080,
             "height": 932
+          },
+          "deviceScaleFactor": 2
+        }
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "serverVersion": "8401717d (source at v1.2.2 plus the capture specs, Expo web dev build)",
+      "scope": "Account page sign-in captures for Firehose 1.2.2. The hosted /account page was driven signed out by Playwright with invented data only: the address you@example.com and the code 275481. /account/email/start was answered with a placeholder sign-in id; every Firebase and license-service request was answered by the spec, and no email was sent. Captures are cropped to the page's content; nothing was retouched. In the same run the 2026-10-04 captures (activation-start, activation-code, activation-subscribe, activation-payment, activation-billing, activation-locked, license-agreement, activate-checkout-complete and account) were regenerated at v1.2.2 and were byte-identical to the committed files, so they were kept and their checksums in the 2026-10-04 record still apply.",
+      "method": "firehose branch docs-screenshots-1-1 rebased onto v1.2.2: e2e/hosted/docs-activation.spec.ts with playwright.hosted.config.ts, and e2e/tests/docs-screenshots.spec.ts -g 'license screens', both with DOCS_SHOT_DIR and placeholder EXPO_PUBLIC_FIREBASE_* settings. Bundled Playwright Chromium (build 1208).",
+      "captures": [
+        {
+          "path": "public/images/ui/account-signin.png",
+          "sha256": "5072a244e5045217fd562ccf4fcbaece57f39efe3598af8b4a89d395d9818c06",
+          "pixels": {
+            "width": 1080,
+            "height": 1088
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/account-code.png",
+          "sha256": "f83c17b02b9b956d93777d8e5e10b60979c7f77ffe98931fb87133a7d74aeb29",
+          "pixels": {
+            "width": 1080,
+            "height": 1302
           },
           "deviceScaleFactor": 2
         }

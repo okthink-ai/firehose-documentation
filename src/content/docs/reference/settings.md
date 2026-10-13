@@ -1,8 +1,8 @@
 ---
 title: "Projects, agents, and settings"
 description: "Find project discovery and server settings, and choose agent options when starting a session."
-verified: "2026-09-29"
-evidence: ["settings", "launch", "connection", "permissions", "tailnet-access", "layout"]
+verified: "2026-10-13"
+evidence: ["settings", "review-prompts", "launch", "connection", "permissions", "tailnet-access", "layout"]
 ---
 
 Find the settings that control which projects you see and where a new session runs.
@@ -20,6 +20,16 @@ Open **Settings** and scroll to **Project directories**, near the bottom of the 
 These paths refer to the machine running Firehose. `~` is supported. Keep existing entries you still need, then select **Save** and look for **Saved**.
 
 If a project is missing, check its location on the server and the configured parent directory before trying [project troubleshooting](/troubleshooting/common-problems/#my-project-isnt-listed).
+
+## Smart Review prompts
+
+**Settings → Smart Review prompts**, just below **Project directories**, holds the prompts offered in [Smart Review’s **Areas of Focus**](/tools/smart-review/#reuse-a-saved-prompt). Each prompt has a name, shown on its button, and the text the reviewer receives.
+
+- Edit a name or its text in place.
+- Select **Add prompt** for a new one, or **Remove** to delete one.
+- Select **Save** and look for **Saved**. Changes are not kept until you save.
+
+Firehose stores the prompts on the Firehose computer, so everyone who uses it sees the same list. It starts with **Redux** and **Clean up architecture**, which you can edit or remove like any other. You can keep up to 30 prompts, with names up to 60 characters and text up to 4,000 characters. This section was added in Firehose 1.2.3.
 
 ## Agent and model
 
