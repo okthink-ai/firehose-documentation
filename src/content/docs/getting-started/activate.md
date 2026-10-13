@@ -129,7 +129,7 @@ Either way, the billing portal opens, where you manage your subscription.
 | **That code isn’t right.** and the tries left | Check the digits in the newest email and try again. Each code allows five tries. |
 | **That code expired.**, **Too many wrong codes.**, or **That code is no longer valid.** | The page goes back to the email field. Check the address and select **Email me a code** for a new code. Codes last 10 minutes. |
 | **Too many codes requested.** | Wait and try again later. The account page sends at most five codes an hour, and ten a day, to one address. |
-| **This account has no billing yet.** | That address has never subscribed. Check that you used the address you activated Firehose with. |
+| **This account has no billing yet.** | That address has never subscribed. Check that you used the address you activated Firehose with. If you signed in with Google, select **Sign out**, then sign in with the Google account for that address or use an emailed code. |
 
 ## If Firehose asks you to reactivate
 

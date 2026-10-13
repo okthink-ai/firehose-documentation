@@ -24,9 +24,8 @@ A new installation shows **Activate Firehose** until you activate it with a subs
 
 On the Firehose computer:
 
-1. Run `firehose status` to check that Firehose is running.
-2. Open `http://localhost:4801`, or the port you chose with `--port`.
-3. If it does not load, check the logs in `~/.firehose/logs`.
+1. Open `http://localhost:4801`, or the port you chose with `--port`. If the dashboard loads, Firehose is running.
+2. If it does not load, follow [If Firehose does not start](/getting-started/install/#if-firehose-does-not-start).
 
 From your phone or another computer:
 

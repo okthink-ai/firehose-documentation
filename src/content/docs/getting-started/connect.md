@@ -107,6 +107,6 @@ To switch servers, open **Settings** (the gear icon at the bottom of the icon ra
 
 ## If you can’t connect
 
-On the Firehose computer, run `firehose status` to check that Firehose is running. From another device, check that the Firehose computer is awake and that both devices are signed in to the same Tailscale account. Follow [connection troubleshooting](/troubleshooting/common-problems/#i-cant-connect-to-my-server) for the next checks.
+On the Firehose computer, open `http://localhost:4801`, or the port you chose with `--port`, to check that Firehose is running. If it does not load, follow [If Firehose does not start](/getting-started/install/#if-firehose-does-not-start). From another device, check that the Firehose computer is awake and that both devices are signed in to the same Tailscale account. Follow [connection troubleshooting](/troubleshooting/common-problems/#i-cant-connect-to-my-server) for the next checks.
 
 Once connected, [start your first session](/getting-started/first-session/).
