@@ -387,6 +387,42 @@
         "apps/expo/src/components/FocusAreasModal/index.tsx",
         "apps/expo/src/components/CloseSessionModal/CloseSessionDialog.tsx"
       ]
+    },
+    "feature-workflow": {
+      "scope": "End-to-end feature workflow in 1.2.3: GitHub Issues panel and Create session to fix (issue-solver kickoff per provider, issue-plan.md for Claude), Ask me questions modal/tab and answer prompt, Writing > Refine Plan and Writing Editor, Claude Plan review card, Antigravity Plan only, Auto prompt, Smart Review (run review, Areas of Focus, triage actions, Act menu, Check status, review more/fresh review), X-Ray tab (Working/Committed, Start review, markers, Filters), Preview/Add URL, Simulator, commit, make-pr, PR badge menu, close session. There is no single testing feature; the final testing round is a documented combination of tools. Source inspection plus mock-data screenshots; not a live release session.",
+      "revision": "08e9727a292c31bea94d3115b50b158e371fdcb1",
+      "verified": "2026-10-13",
+      "paths": [
+        "apps/expo/src/components/IssuesPanel/index.tsx",
+        "apps/expo/src/components/IssuesPanel/IssueDetail.tsx",
+        "apps/expo/src/components/IssuesPanel/IssueSolveSessionModal.tsx",
+        "server/lib/issue-solver.ts",
+        "server/routes/github.ts",
+        "apps/expo/src/components/AskQuestionsModal/index.tsx",
+        "apps/expo/src/components/UserQuestionsPanel/UserQuestionSetActions.tsx",
+        "server/prompts/templates/user-questions.v1.md",
+        "server/prompts/templates/user-question-answers.v1.md",
+        "apps/expo/src/components/FileViewer/FileViewerHeader.tsx",
+        "apps/expo/src/components/FileViewer/useWritingTools.ts",
+        ".agents/skills/refine-plan/SKILL.md",
+        "apps/expo/src/components/ClaudeInteractionCard/PlanApprovalSnapshotCard.tsx",
+        "apps/expo/src/components/Sidebar/NewSessionMenu/providerSettings/AntigravityProviderSettings.tsx",
+        "apps/expo/src/components/RecurringPromptModal/index.tsx",
+        "apps/expo/src/components/shared/BetterReviewButton.tsx",
+        "apps/expo/src/components/FocusAreasModal/index.tsx",
+        "apps/expo/src/components/ReviewPanel/reviewPanelTypes.ts",
+        "apps/expo/src/components/ReviewPanel/ReviewProgressHeader.tsx",
+        "server/prompts/templates/review.v1.md",
+        "server/prompts/review-prompts.ts",
+        "apps/expo/src/components/Xray/XrayHeader.tsx",
+        "apps/expo/src/components/Xray/XrayReviewGuide.tsx",
+        "docs/xray.md",
+        "apps/expo/src/components/PreviewUrlModal/index.tsx",
+        "apps/expo/src/components/shared/CommitButton.tsx",
+        ".agents/skills/make-pr/SKILL.md",
+        "apps/expo/src/components/shared/PromptPrBadge.tsx",
+        "apps/expo/src/components/CloseSessionModal/CloseSessionDialog.tsx"
+      ]
     }
   },
   "runtimeObservations": [
@@ -394,7 +430,7 @@
       "date": "2026-09-13",
       "serverVersion": "fafd783ee5e0",
       "protocolVersion": 2,
-      "scope": "Read-only GET /api/status confirmed version fields. Walked New session → documentation project → Current checkout → Codex. Observed Full Auto checked and Start session available; captured only the provider panel at desktop and mobile widths. No session was started. This differs from the source revision; approval behavior and installation were not exercised.",
+      "scope": "Read-only GET /api/status confirmed version fields. Walked New session \u2192 documentation project \u2192 Current checkout \u2192 Codex. Observed Full Auto checked and Start session available; captured only the provider panel at desktop and mobile widths. No session was started. This differs from the source revision; approval behavior and installation were not exercised.",
       "method": "Local HTTPS request and isolated browser with mutating API requests blocked.",
       "captures": [
         {
@@ -727,6 +763,140 @@
           "pixels": {
             "width": 1080,
             "height": 932
+          },
+          "deviceScaleFactor": 2
+        }
+      ]
+    },
+    {
+      "date": "2026-10-13",
+      "serverVersion": "08e9727a292c (source, Expo web dev build)",
+      "scope": "Captures for Take a feature from plan to merge. The real 1.2.3 web UI was driven by Playwright against the e2e mock API with invented data only: the hello-firehose project, issues #42 and #57, a sample plan, questionnaire, Smart Review findings, PR #43, and an X-Ray board captured from a throwaway hello-firehose repository. The Plan review card's option labels are samples; real options come from Claude Code. Team Chat and the session chips are left as rendered.",
+      "method": "agent-manager branch docs-help-feature-captures (commit a293e71a), e2e/tests/docs-help-feature.spec.ts with DOCS_SHOT_DIR, DOCS_SHOT_BROWSER, and placeholder EXPO_PUBLIC_FIREBASE_* settings.",
+      "captures": [
+        {
+          "path": "public/images/help/ask-me-tab.png",
+          "sha256": "21a1c359c8851f33b8687e52d5eaab9dbad46afe108b6f5f39db526b27627218",
+          "pixels": {
+            "width": 2880,
+            "height": 1800
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/help/ask-questions-modal.png",
+          "sha256": "2b4f255f763cfa3ee85a6fb89c3d48742a1f05acb90ad15abbae6318567a5423",
+          "pixels": {
+            "width": 1328,
+            "height": 956
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/help/close-session-modal.png",
+          "sha256": "8ad6e58113ac8afca2b79a4b63b1d921353d2b3643c3174da50638aef33637d7",
+          "pixels": {
+            "width": 928,
+            "height": 616
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/help/focus-areas-modal.png",
+          "sha256": "98e843fed1bc9b14e2cca278de62ea41ca0098d8d8d9571ae31bf0bbf8b293fe",
+          "pixels": {
+            "width": 888,
+            "height": 630
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/help/issue-detail.png",
+          "sha256": "6fb1faba7cabf1b535b7d8891f8b755f581afb1191f5b4ecc29102ff9231679b",
+          "pixels": {
+            "width": 2880,
+            "height": 1800
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/help/issue-session-modal.png",
+          "sha256": "ab4b99f877d4e3e244b0ec0beca947b8215fe335e35f894dcafb0087df9e1fb9",
+          "pixels": {
+            "width": 1408,
+            "height": 1168
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/help/issues-list.png",
+          "sha256": "2e1ea7b829f9ea66ff1922cf82797568738c8a859046b2e41c526eb7f144d50d",
+          "pixels": {
+            "width": 1280,
+            "height": 840
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/help/plan-review-card.png",
+          "sha256": "373e6e1fe0ccc2cf72bec238ca402c70db6e625a9341e4671e3e1d2cccedff9e",
+          "pixels": {
+            "width": 1560,
+            "height": 1480
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/help/pr-menu.png",
+          "sha256": "b43595e9414d0892044e9ef531e9357591331fa2a28673e2f9c4c0e5a90d72b5",
+          "pixels": {
+            "width": 1560,
+            "height": 680
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/help/preview-modal.png",
+          "sha256": "9f63da162a85fbd64532a2d44fbca2876b92bdb4180e9d1bc30388721c79f58e",
+          "pixels": {
+            "width": 888,
+            "height": 538
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/help/refine-plan-menu.png",
+          "sha256": "7175af93c7dbe00fc76370686a8b87c0fc578ce38cae6879b926c46e2d460511",
+          "pixels": {
+            "width": 2880,
+            "height": 1800
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/help/smart-review-act.png",
+          "sha256": "660358657d6b276676b1f234dbe842cebd2c6773fe19c2aba0c982e83e9f0957",
+          "pixels": {
+            "width": 1540,
+            "height": 1800
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/help/smart-review-tab.png",
+          "sha256": "39f193a001483b6b0deb596c21615ba3a7323a0deac2dd9ae5e3ef68281f071d",
+          "pixels": {
+            "width": 2880,
+            "height": 1800
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/help/xray-tab.png",
+          "sha256": "6eefbc985a6941a2d91d2ab4a1d38c6f67fc277e315d6ed6ba108deff450d244",
+          "pixels": {
+            "width": 2880,
+            "height": 1800
           },
           "deviceScaleFactor": 2
         }

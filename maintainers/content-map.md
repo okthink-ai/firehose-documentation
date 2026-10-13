@@ -12,6 +12,8 @@ Website URLs follow the source path without `.md`; `index.md` is the home page.
 | [Find your way around Firehose](../src/content/docs/getting-started/find-your-way.md) | Learn where the sidebar, New session, Settings, workspace tabs, prompt bar, and message box are, on desktop and on a phone. |
 | [Put files in the right workspace](../src/content/docs/getting-started/files-and-terminal.md) | Save the practice file on your Firehose server and verify your terminal is in the intended project. |
 | [Start your first session](../src/content/docs/getting-started/first-session.md) | Choose an existing project or a tiny practice project, start an agent, and check its answer. |
+| [Help articles](../src/content/docs/help/index.md) | End-to-end walkthroughs that combine several Firehose tools to finish a real piece of work. |
+| [Take a feature from plan to merge](../src/content/docs/help/feature-workflow.md) | Plan a feature in Firehose or start from a GitHub issue, clarify it, build it in a worktree, review it with Smart Review and X-Ray, test it, and open a pull request. |
 | [Ask for a code walkthrough](../src/content/docs/guides/explain-code.md) | Get a focused explanation of unfamiliar code with file references and verifiable examples. |
 | [Finish and close a task](../src/content/docs/guides/finish-a-task.md) | Verify the result, hand off changes, and choose whether to retain or delete a session’s worktree. |
 | [Make and review a change](../src/content/docs/guides/make-a-change.md) | Give an agent a small task, verify its checks, and inspect the resulting code changes. |

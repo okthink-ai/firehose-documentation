@@ -20,7 +20,8 @@ export async function readDocs() {
     const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/);
     if (!match) throw new Error(`Missing frontmatter: ${file}`);
     const data = parse(match[1]);
-    const slug = path.relative(root, file).replaceAll(path.sep, '/').replace(/\.md$/, '');
+    // A folder's index.md is the folder's own page, as Starlight routes it.
+    const slug = path.relative(root, file).replaceAll(path.sep, '/').replace(/\.md$/, '').replace(/\/index$/, '');
     return { file, slug, data, body: source.slice(match[0].length).trim(),
       url: slug === 'index' ? '/' : `/${slug}/` };
   }));
