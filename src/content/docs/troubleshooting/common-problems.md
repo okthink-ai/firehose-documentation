@@ -1,8 +1,8 @@
 ---
 title: "Get unstuck"
-description: "Follow concrete checks for activation, connection, project creation, startup, message delivery, and missing changes."
-verified: "2026-10-06"
-evidence: ["activation", "tailnet-access", "hosted-connection", "connection", "settings", "launch", "chat", "diff", "questions", "project-creation", "diff-comparisons", "session-signals", "diagnostics", "git-refresh", "question-details", "layout"]
+description: "Follow concrete checks for activation, connection, project creation, startup, message delivery, ended sessions, and missing changes."
+verified: "2026-10-14"
+evidence: ["activation", "tailnet-access", "hosted-connection", "connection", "settings", "launch", "chat", "diff", "questions", "project-creation", "diff-comparisons", "session-signals", "diagnostics", "git-refresh", "question-details", "oom-isolation", "layout"]
 ---
 
 Find the symptom you recognize and work through its checks in order. Keep the exact error text so you can report what failed.
@@ -105,6 +105,17 @@ Suppose you sent “Run the greeting tests,” then saw **Delivery could not be 
 Read the latest response alongside the [session signals](/tools/chat/#read-the-session-signals). **Idle** is not proof the task succeeded. Answer an ordinary question in the message box, or use the **Ask me** tab for a questionnaire.
 
 For **Stopping...**, check whether it changes to **Idle** and whether the latest response acknowledges interruption. If it remains unchanged and you cannot read progress, report that state instead of sending repeated interrupts. For **Transcript unavailable**, check the server connection and share the status with the operator if it persists. Repeated interruption does not repair unavailable conversation data.
+
+## A Claude Code session ended on its own
+
+If a Claude Code session stopped and left the **Sessions** sidebar without you closing it, the Firehose computer may have run out of memory. When that happens, Linux stops a process to free memory, such as a large build or test run that the agent started.
+
+Before Firehose 1.2.4, on Linux computers where tmux runs each pane under systemd, stopping one of the agent's commands could end the whole session with it. Firehose 1.2.4 protects Claude Code sessions from this, usually within 15 seconds of their start: only the stopped command fails, and the agent keeps running and can read the failure. A session still ends if Linux stops the agent itself. Codex and Antigravity sessions are not covered, and Macs are not affected.
+
+1. Run `firehose update` on the Firehose computer so it has 1.2.4 or later.
+2. Free memory before the agent runs the heavy command again. Close programs you don't need, or run fewer sessions at once.
+3. Files the agent already changed stay in the workspace. [Check the saved workspace and latest result](/guides/return-to-work/), then start a new session to continue.
+4. If a session on 1.2.4 or later still ends on its own, [report the problem](#i-need-to-report-a-problem) with the time it happened.
 
 ## Questions are still waiting or won’t submit
 

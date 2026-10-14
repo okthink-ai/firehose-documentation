@@ -479,6 +479,29 @@
         "server/lib/user-question-separate-run.ts",
         "server/routes/user-questions.ts"
       ]
+    },
+    "release-1-2-4": {
+      "scope": "Firehose 1.2.4 against 1.2.3 for the install and activation guides: git diff v1.2.3 v1.2.4 over the install and activation evidence paths (install.sh, server/cli, lib/types/server-status.ts, server/lib/license, apps/expo, functions, docs/EULA.md, scripts/release) changes only apps/expo/src/changelog.json, the 1.2.3 changelog entry (firehose PR #752). Installer, activation screens, hosted pages, the update notice and the license service are unchanged, so the 1.2.2 and 1.2.3 entries still describe 1.2.4. The release's one product change is out-of-memory isolation (entry oom-isolation). No install on a clean machine was performed.",
+      "revision": "af3d0dfd2c1c7c96d23f4649664d132641bb9235",
+      "verified": "2026-10-14",
+      "paths": [
+        "install.sh",
+        "server/cli/main.ts",
+        "lib/types/server-status.ts",
+        "apps/expo/src/changelog.json"
+      ]
+    },
+    "oom-isolation": {
+      "scope": "Out-of-memory isolation for Claude Code sessions added in 1.2.4 (firehose PR #754). On Linux, when tmux runs a pane in a systemd tmux-spawn-*.scope (tmux 3.4 built with systemd support), an out-of-memory kill of any process in the scope used to stop the whole scope, ending the Claude session and removing it from the sidebar. Firehose now starts its own scope with OOMPolicy=continue for each Claude process it finds in such a scope (through busctl --user StartTransientUnit) and moves the rest of the pane's processes into it, so an out-of-memory kill stops only the process the kernel chose. It runs during session discovery and on a server timer every 15 seconds, covers Claude Code only (getClaudeProcesses), does nothing on macOS, stops trying when busctl is missing, leaves Claude in place when a move fails, and is turned off by CM_CLAUDE_OOM_ISOLATION=0 (not documented for readers). Process discovery also keeps partial lsof output when one process exits mid-scan. Source inspection and the PR's recorded live test only; no out-of-memory kill was observed for this documentation.",
+      "revision": "af3d0dfd2c1c7c96d23f4649664d132641bb9235",
+      "verified": "2026-10-14",
+      "paths": [
+        "server/lib/claude-oom-isolation.ts",
+        "server/index.ts",
+        "server/lib/session-discovery.ts",
+        "lib/processes.ts",
+        "lib/proc-cwd.ts"
+      ]
     }
   },
   "runtimeObservations": [
