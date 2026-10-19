@@ -523,6 +523,17 @@
         "apps/expo/src/store/chat/optimisticMessages.ts",
         "apps/expo/src/store/sendMessage.test.ts"
       ]
+    },
+    "update-command": {
+      "scope": "firehose version and firehose update at 1.2.5. firehose version prints 'firehose <version> (<distribution>, <channel>[, build <id>])' followed by the update notice (present since at least 1.2.2; the notice since 1.2.3). firehose update fetches the release index, downloads the newer archive, verifies its sha256, unpacks it under releases/<version>, and switches to it, logging '[update] Firehose <current> is up to date (latest <latest>)' or '[update] Firehose <latest> is available (running <current>)', then '[update] Now running <latest>'. The switch restarts a service-managed server (or a hand-started one through the restart transaction) and flips back to the previous release if the new one is not healthy. Conversation history is parsed on the server with an in-memory cache (lib/parse-cache.ts), so a restart after the 1.2.5 update re-reads Claude transcripts without the internal records. Source inspection only; no update was run for this documentation.",
+      "revision": "2bf179bfc7d7f7ad43b0d6141e10cad4dc8001cc",
+      "verified": "2026-10-19",
+      "paths": [
+        "server/cli/main.ts",
+        "server/cli/update.ts",
+        "server/cli/switch.ts",
+        "lib/parse-cache.ts"
+      ]
     }
   },
   "runtimeObservations": [
