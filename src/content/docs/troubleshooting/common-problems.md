@@ -1,8 +1,8 @@
 ---
 title: "Get unstuck"
 description: "Follow concrete checks for activation, connection, project creation, startup, message delivery, ended sessions, and missing changes."
-verified: "2026-10-14"
-evidence: ["activation", "tailnet-access", "hosted-connection", "connection", "settings", "launch", "chat", "diff", "questions", "project-creation", "diff-comparisons", "session-signals", "diagnostics", "git-refresh", "question-details", "oom-isolation", "layout"]
+verified: "2026-10-18"
+evidence: ["activation", "tailnet-access", "hosted-connection", "connection", "settings", "launch", "chat", "diff", "questions", "project-creation", "diff-comparisons", "session-signals", "diagnostics", "git-refresh", "question-details", "oom-isolation", "chat-history-snapshots", "layout"]
 ---
 
 Find the symptom you recognize and work through its checks in order. Keep the exact error text so you can report what failed.
@@ -90,6 +90,19 @@ After **Start session**, read the launch error. If it concerns installation, aut
 **Delivery could not be confirmed** means Firehose cannot establish whether the message arrived. Follow the notice’s terminal-opening control and check whether the message is still in the input box or already in the conversation. If you cannot check, ask the operator rather than repeatedly sending a potentially duplicated request.
 
 If the notice reports that the agent exited or restarted, check whether the selected session still accepts input. If not, open a new session in the intended workspace and explain the unfinished task there. If it reports rejected or partial input, use the terminal-opening control to inspect that input before retrying. A network reconnection does not prove an earlier message was delivered.
+
+### Your message cleared but never arrived (Claude Code 2.1.300)
+
+Claude Code 2.1.300, released on October 14, 2026, started saving internal records in its conversation history. Firehose 1.2.4 and earlier show those records as chat messages, which causes two problems in Claude Code sessions:
+
+- Tool activity appears twice in the conversation.
+- A message you send clears from the message box but never reaches the agent.
+
+Firehose 1.2.5 fixes both. To check your Claude Code version, run `claude --version`.
+
+1. Run `firehose update` on the Firehose computer to install 1.2.5 or later.
+2. Reload the dashboard.
+3. Send the message again. The copy that cleared never reached the agent, so this does not duplicate it.
 
 ### Example: delivery could not be confirmed
 

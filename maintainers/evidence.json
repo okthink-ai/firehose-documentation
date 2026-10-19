@@ -502,6 +502,27 @@
         "lib/processes.ts",
         "lib/proc-cwd.ts"
       ]
+    },
+    "release-1-2-5": {
+      "scope": "Firehose 1.2.5 against 1.2.4 for the install and activation guides: git diff v1.2.4 v1.2.5 over the install and activation evidence paths (install.sh, server/cli, lib/types/server-status.ts, server/lib/license, apps/expo, functions, docs/EULA.md, scripts/release) changes only apps/expo/src/changelog.json (the 1.2.4 entry, firehose PR #758) and the chat history fix (entry chat-history-snapshots). Installer, activation screens, hosted pages, the update notice and the license service are unchanged, so the 1.2.2 to 1.2.4 entries still describe 1.2.5. No install on a clean machine was performed.",
+      "revision": "2bf179bfc7d7f7ad43b0d6141e10cad4dc8001cc",
+      "verified": "2026-10-18",
+      "paths": [
+        "install.sh",
+        "server/cli/main.ts",
+        "lib/types/server-status.ts",
+        "apps/expo/src/changelog.json"
+      ]
+    },
+    "chat-history-snapshots": {
+      "scope": "Chat fix in 1.2.5 (firehose PR #759) for Claude Code 2.1.300, published 2026-10-14, which began writing internal API request snapshots (api-request-blob records) into its transcript. Firehose 1.2.4 and earlier showed them as chat messages without a message id, duplicating tool activity; the next send then threw in optimistic-message cleanup before the request reached the server, while the message box still cleared, so the message looked sent but was never delivered. 1.2.5 drops those records from the conversation (lib/jsonl-parser.ts) and tolerates rows without an id already loaded in the dashboard (optimisticMessages.ts). Source inspection and the PR's tests only; not reproduced against a real Claude Code 2.1.300 session.",
+      "revision": "2bf179bfc7d7f7ad43b0d6141e10cad4dc8001cc",
+      "verified": "2026-10-18",
+      "paths": [
+        "lib/jsonl-parser.ts",
+        "apps/expo/src/store/chat/optimisticMessages.ts",
+        "apps/expo/src/store/sendMessage.test.ts"
+      ]
     }
   },
   "runtimeObservations": [
