@@ -54,7 +54,7 @@ Return to [Connect to Firehose](/getting-started/connect/) once the check passes
 3. Preserve other entries, add the missing parent if needed, and select **Save**. Look for **Saved**.
 4. Select **New session** (the **+** at the top of the **Sessions** sidebar) again and find the project at **Pick a project**.
 
-If the project directory is a symbolic link, such as `~/code` pointing to an external drive, and the picker lists none of its projects, update Firehose with `firehose update`. Releases after 1.2.5 list projects through a linked directory. A project that is itself a link inside the directory is still not listed.
+If the project directory is a symbolic link, such as `~/code` pointing to an external drive, and the picker lists none of its projects, update Firehose with `firehose update`. Firehose 1.3.0 and later list projects through a linked directory. A project that is itself a link inside the directory is still not listed.
 
 If refresh reports an error, record it and check the server connection. If you need a new repository, use [New git project](/getting-started/first-session/#1-prepare-a-practice-project).
 
@@ -134,7 +134,7 @@ Before Firehose 1.2.4, on Linux computers where tmux runs each pane under system
 3. Files the agent already changed stay in the workspace. [Check the saved workspace and latest result](/guides/return-to-work/), then start a new session to continue.
 4. If a session on 1.2.4 or later still ends on its own, [report the problem](#i-need-to-report-a-problem) with the time it happened.
 
-In releases after 1.2.5, a Claude Code session that Firehose started is not lost when it is cut off, whether by the system stopping the agent, a restart of the computer, a crash, or a Firehose restart. It stays in the **Sessions** sidebar with its conversation, and sending it a message reconnects it. See [Reconnect a cut-off Claude Code session](/guides/return-to-work/#reconnect-a-cut-off-claude-code-session).
+From Firehose 1.3.0 on, a Claude Code session that Firehose started is not lost when it is cut off, whether by the system stopping the agent, a restart of the computer, a crash, or a Firehose restart. It stays in the **Sessions** sidebar with its conversation, and sending it a message reconnects it. See [Reconnect a cut-off Claude Code session](/guides/return-to-work/#reconnect-a-cut-off-claude-code-session).
 
 ## Questions are still waiting or won’t submit
 

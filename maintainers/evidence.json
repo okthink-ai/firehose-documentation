@@ -722,6 +722,23 @@
         "docs/workflows-api.md",
         "server/lib/workflows/triggers/dispatcher.ts"
       ]
+    },
+    "release-1-3-0": {
+      "scope": "Firehose 1.3.0 against 1.2.5 for the install and activation guides: git diff v1.2.5 d23e1e95 (the commit the 1.3.0 changelog entry, firehose PR #860, names) over the install and activation evidence paths. install.sh, server/cli, lib/types/server-status.ts and server/lib/license are unchanged. The activation screens, hosted /activate and /account pages and License settings changed only in text styling (Text to AppText, firehose PR #640); their visible wording and steps are the same. functions/src changes move the email-code helpers into a shared module for Team Chat sign-in (firehose PR #835) without changing activation codes, expiry or attempts. The update check also runs when a dashboard is opened or refocused (entry update-check-visit). Screenshots were not recaptured. No install on a clean machine was performed.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "install.sh",
+        "server/cli/main.ts",
+        "lib/types/server-status.ts",
+        "apps/expo/src/components/Activate/AccountPage.tsx",
+        "apps/expo/src/components/Activate/ActivatePage.tsx",
+        "apps/expo/src/serverConnection/EmailActivation.tsx",
+        "apps/expo/src/serverConnection/LicenseGate.tsx",
+        "functions/src/email-activation.ts",
+        "functions/src/email-code-primitives.ts",
+        "apps/expo/src/changelog.json"
+      ]
     }
   },
   "runtimeObservations": [

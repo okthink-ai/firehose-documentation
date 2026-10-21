@@ -40,7 +40,7 @@ When a Linux computer runs out of memory, the system stops a process to free som
 
 Firehose 1.2.4 protects Claude Code sessions from this, usually within 15 seconds of their start. Only the stopped command fails, and the agent keeps running and can read the failure. A session still ends if the system stops the agent itself. Codex and Antigravity sessions are not covered, and Macs are not affected.
 
-In releases after 1.2.5, a Claude Code session the system stops this way stays in the **Sessions** sidebar, and sending it a message reconnects it. See [Reconnect a cut-off Claude Code session](/guides/return-to-work/#reconnect-a-cut-off-claude-code-session).
+From Firehose 1.3.0 on, a Claude Code session the system stops this way stays in the **Sessions** sidebar, and sending it a message reconnects it. See [Reconnect a cut-off Claude Code session](/guides/return-to-work/#reconnect-a-cut-off-claude-code-session).
 
 ## 2. Check your Firehose version
 
@@ -52,7 +52,7 @@ firehose version
 
 The version follows the word `firehose`, as in `firehose 1.2.5 (release, …)`. If it is lower than the **Fixed in** release for your problem, continue to the next step. If it is already that release or later, skip to [Pick up the lost work](#4-pick-up-the-lost-work).
 
-From Firehose 1.2.3 on, the dashboard also shows a banner such as **Firehose 1.2.6 is available (you have 1.2.5)** when a newer release is out. See [Know when an update is available](/getting-started/install/#know-when-an-update-is-available).
+From Firehose 1.2.3 on, the dashboard also shows a banner such as **Firehose 1.3.0 is available (you have 1.2.5)** when a newer release is out. See [Know when an update is available](/getting-started/install/#know-when-an-update-is-available).
 
 ## 3. Update Firehose
 

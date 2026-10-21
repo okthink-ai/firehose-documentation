@@ -7,7 +7,7 @@ evidence: ["workflows", "workflow-runs", "workflow-triggers"]
 
 Hand Firehose a list of steps, such as "implement the fix, check it with Smart Review, commit, and push," and let it send each step to an agent in order while you watch. Use a workflow when you repeat the same sequence on many branches or issues and want Firehose to move from one step to the next for you.
 
-**Workflows are a beta feature.** They are off by default, they may change or go away, and some parts have known gaps (see [Limits and known gaps](#limits-and-known-gaps)). Workflows are newer than Firehose 1.2.5. If you don't see **Workflows** under **Beta features** in Settings, your Firehose doesn't include them yet.
+**Workflows are a beta feature.** They are off by default, they may change or go away, and some parts have known gaps (see [Limits and known gaps](#limits-and-known-gaps)). Workflows were added in Firehose 1.3.0. If you don't see **Workflows** under **Beta features** in Settings, your Firehose doesn't include them yet.
 
 ## What a workflow is
 

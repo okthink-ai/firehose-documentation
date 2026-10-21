@@ -28,7 +28,7 @@ Firehose has restoration paths for managed sessions using saved session informat
 
 ## Reconnect a cut-off Claude Code session
 
-In releases after 1.2.5, a Claude Code session that Firehose started is not lost when it is cut off by a restart of the computer, a crash, the system stopping it for memory, or a Firehose restart. It stays in the **Sessions** sidebar looking as it did, with its full conversation. Opening it starts nothing.
+From Firehose 1.3.0 on, a Claude Code session that Firehose started is not lost when it is cut off by a restart of the computer, a crash, the system stopping it for memory, or a Firehose restart. It stays in the **Sessions** sidebar looking as it did, with its full conversation. Opening it starts nothing.
 
 1. Select the session and read the end of the conversation.
 2. Send your next message. While Firehose reconnects, the session's row and your message show **Reconnecting…**.
