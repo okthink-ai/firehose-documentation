@@ -534,6 +534,194 @@
         "server/cli/switch.ts",
         "lib/parse-cache.ts"
       ]
+    },
+    "settings-workspace": {
+      "scope": "Source inspection; not observed in a live release. Settings as a full-page workspace (firehose PR #831): seven sections (General, Account, Connection, Agents, Voice & sounds, Beta features, Debugging) beside an index on wide layouts; compact layouts open at the index with a Back to Settings sections button; leaving by the rail button, Escape outside a text field, or opening a session keeps the selected session and draft. Group placement read from settingsSections.tsx, including Sentence annotation (PR #713, off by default, web Markdown files only) and GPT-Live voice in Beta features. Workflows settings were left to the separate Workflows page.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "apps/expo/src/components/SettingsPanel/settingsSections.tsx",
+        "apps/expo/src/components/SettingsPanel/index.tsx",
+        "apps/expo/src/components/SettingsPanel/SettingsNavigation.tsx",
+        "apps/expo/src/components/SettingsPanel/useSettingsBack.ts",
+        "apps/expo/src/components/SettingsPanel/AnnotationModeSettingsSection.tsx",
+        "apps/expo/src/components/SettingsPanel/LiveVoiceSettingsSection.tsx",
+        "apps/expo/src/components/FileViewer/keyboardTextCommands.ts",
+        "apps/expo/src/components/FileViewer/AnnotationModeToggle.tsx",
+        "apps/expo/src/components/FileViewer/index.tsx"
+      ]
+    },
+    "firehose-agent-skill": {
+      "scope": "Source inspection; not observed in a live release. Opt-in Firehose Agent skill (firehose PR #785) under Settings → Agents: per-harness Install, Update and Remove for Claude Code and Codex into <config>/skills/firehose-agent, status text for modified and unmanaged copies, startup refresh only of unmodified copies this installation owns, and removal of owned unmodified copies by firehose uninstall.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "apps/expo/src/components/SettingsPanel/FirehoseAgentSkillSettingsSection.tsx",
+        "server/lib/firehose-agent-skill.ts"
+      ]
+    },
+    "team-chat-sign-in": {
+      "scope": "Source inspection; not observed in a live release. Team Chat email-code sign-in in Settings → Account (firehose PRs #835 and #856): Send code, Verify code, Resend code and Change email; codes expire after ten minutes; only existing, enabled, allow-listed accounts are signed in. Real email delivery was not exercised.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "apps/expo/src/components/SettingsPanel/AccountSettingsSection.tsx",
+        "apps/expo/src/features/team-auth/EmailCodeSignIn.tsx",
+        "apps/expo/src/components/SettingsPanel/LicenseSettingsSection.tsx"
+      ]
+    },
+    "changelog-workspace": {
+      "scope": "Source inspection; not observed in a live release. Changelog as a workspace (firehose PR #853): the Changelog rail button above Settings opens and closes it in place of the session area, with an entry index beside the notes on wide layouts and a horizontal strip on compact layouts; opening a session returns to Sessions.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "apps/expo/src/components/Sidebar/ActivityBar.tsx",
+        "apps/expo/src/components/ChangelogPanel/index.tsx",
+        "apps/expo/src/App.tsx"
+      ]
+    },
+    "update-check-visit": {
+      "scope": "Source inspection; not observed in a live release. Release check when a dashboard connects or comes back into view, at most once an hour, in addition to the daily background check (firehose PR #809).",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "server/lib/update-check.ts",
+        "server/ws/handler.ts",
+        "server/index.ts",
+        "apps/expo/src/hooks/useAppStartupEffects.ts"
+      ]
+    },
+    "commit-hook-fix": {
+      "scope": "Source inspection; not observed in a live release. Commit button behavior after a pre-commit hook failure (firehose PR #775): the commit skill fixes the reported problem, reruns verification, restages and retries, lists the files it edited, stops safely when no fix exists, and never uses --no-verify. Applies to Claude Code, Codex and Antigravity; Pi and Grok keep their own commit text.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        ".agents/skills/commit/SKILL.md",
+        "server/lib/provider-action-descriptors/claude.ts",
+        "server/lib/commit-helper.ts"
+      ]
+    },
+    "chat-formatting": {
+      "scope": "Source inspection; not observed in a live release. Chat rendering of GFM Markdown tables with horizontal scrolling (firehose PR #761), file links with angle-bracket destinations (PR #836), and message-box refocus after mouse-driven Send, Queue and Retry on web with a fine pointer (PR #782).",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "apps/expo/src/lib/formatTextTables.ts",
+        "apps/expo/src/components/formatText/MarkdownTable.tsx",
+        "apps/expo/src/lib/formatTextTokens.ts",
+        "apps/expo/src/components/ChatInput/ChatInputView.tsx"
+      ]
+    },
+    "terminal-tmux-viewer": {
+      "scope": "Source inspection; not observed in a live release. Web terminal viewers kept on their own tmux session (firehose PR #746): drift is undone before each write and by a one-second poll; input is refused with a terminal error when the placement cannot be confirmed. Exact on-screen error text was not checked.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "server/lib/terminal-tmux-viewer.ts",
+        "server/lib/terminal-manager.ts",
+        "server/ws/terminal-handler.ts"
+      ]
+    },
+    "review-start-screen": {
+      "scope": "Source inspection; not observed in a live release. Shared Smart Review start screen (firehose PR #722): Start a review before any review, Loading findings… with no button while a finished review's findings load, No findings with Review again for a clean review, and a failed review's saved error above the start button.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "apps/expo/src/components/ReviewPanel/ReviewStartScreen.tsx",
+        "apps/expo/src/components/ReviewPanel/index.tsx",
+        "apps/expo/src/components/ReviewPanel/reviewPanelState.ts"
+      ]
+    },
+    "mobile-web-display": {
+      "scope": "Source inspection; not observed in a live release. Notification toasts anchored top-right with swipe-to-dismiss on touch (firehose PR #811), and mobile web text following the Android system text size through Chrome's preferred text scale, re-read when the page becomes visible (PR #640). Not checked on a phone.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "apps/expo/src/components/ToastContainer/ToastItem.tsx",
+        "apps/expo/src/components/ToastContainer/useToastSwipe.ts",
+        "apps/expo/public/index.html",
+        "apps/expo/src/themes/text-scale.ts"
+      ]
+    },
+    "symlinked-project-dirs": {
+      "scope": "Source inspection; not observed in a live release. Project discovery through a symbolic-linked project directory and worktree grouping by physical path (firehose PR #780), and one sidebar group per checkout with reviews, question sets and pins stored by real path (PR #768). A repository that is itself a symlink inside a project directory is still skipped.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "server/lib/launch-targets.ts",
+        "server/lib/project-creation.ts",
+        "server/lib/canonical-cwd.ts",
+        "server/db/canonicalize-stored-paths.ts"
+      ]
+    },
+    "missing-workspace-error": {
+      "scope": "Source inspection; not observed in a live release. Daemon-launched runtimes (Codex, Antigravity, Grok, Kimi, OpenCode, Pi) check the workspace before launch and fail with 'Agent working directory no longer exists: <cwd>' or 'Agent working directory is not a directory: <cwd>' (firehose PR #817). How the dashboard frames the message was not checked.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "server/daemon/agent-daemon.ts"
+      ]
+    },
+    "cut-off-sessions": {
+      "scope": "Source inspection; not observed in a live release. Cut-off Claude Code sessions kept in the sidebar and reconnected on the next message (firehose PR #842, phase 1): Reconnecting… status, cost hint text for warm-cache resume and summary handoff, automatic continuation only with positive cut-off evidence while the cache is warm, failure messages that keep the message in the composer, and Close behaving as for a live session. Claude Code sessions in Firehose's tmux only.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "apps/expo/src/components/PausedSessions/pausedSessionCopy.ts",
+        "apps/expo/src/components/PausedSessions/PausedChatView.tsx",
+        "server/lib/session-ledger.ts",
+        "server/db/session-records.ts"
+      ]
+    },
+    "workflows": {
+      "scope": "Workflows (beta) switch in Settings → Beta features → Workflows → Show Workflows, the Workflows icon-rail panel and its sections, the built-in Quality workflow and its steps and agents, recommended workflows, the workflow editor (Add step, starter steps, building blocks, step agent field, cleared context, Run this step, Your agent fields, save conflicts), and the step catalog labels. Not in a release tag as of v1.2.5. Source inspection; not observed in a live release.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "apps/expo/src/components/SettingsPanel/WorkflowsSettingsSection.tsx",
+        "apps/expo/src/components/SettingsPanel/settingsSections.tsx",
+        "apps/expo/src/components/Sidebar/ActivityBar.tsx",
+        "apps/expo/src/store/uiSettings.ts",
+        "apps/expo/src/features/workflows/WorkflowsPanel.tsx",
+        "apps/expo/src/features/workflows/WorkflowEditor/index.tsx",
+        "apps/expo/src/features/workflows/WorkflowEditor/StepCard.tsx",
+        "apps/expo/src/features/workflows/WorkflowEditor/StepAgentField.tsx",
+        "apps/expo/src/features/workflows/WorkflowEditor/ExternalAgentFields.tsx",
+        "apps/expo/src/features/workflows/workflowLabels.ts",
+        "lib/workflows.ts",
+        "lib/workflow-library.ts",
+        "lib/types/workflows.ts"
+      ]
+    },
+    "workflow-runs": {
+      "scope": "Starting runs (Run workflow dialog from the Workflows panel, tools menu, Session options menu, and GitHub issues; Fix with <workflow>), where a run works (session, new worktree, no session), agent-availability refusals, one run per issue, GitHub issue claim comments, the run page with statuses, step states and controls (Pause, Resume, Continue, Retry, Skip step, Cancel run), run retention, and known gaps from PR #849. Source inspection; not observed in a live release.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "apps/expo/src/features/workflows/RunWorkflowModal.tsx",
+        "apps/expo/src/features/workflows/IssueWorkflowActions.tsx",
+        "apps/expo/src/features/workflows/WorkflowRunView/index.tsx",
+        "apps/expo/src/features/workflows/WorkflowRunView/runViewModel.ts",
+        "apps/expo/src/components/PromptBar/ToolsButton.tsx",
+        "apps/expo/src/components/SessionItem/sessionActions.tsx",
+        "apps/expo/src/components/IssuesPanel/IssueDetail.tsx",
+        "server/lib/workflows/service.ts",
+        "server/lib/workflows/launch.ts",
+        "server/lib/workflows/issue-claims.ts",
+        "server/lib/workflows/run-actions.ts",
+        "server/lib/workflows/run-store.ts",
+        "server/lib/workflows/compile.ts",
+        "docs/workflows-api.md"
+      ]
+    },
+    "workflow-triggers": {
+      "scope": "Trigger kinds (schedule, GitHub events, signed webhook), that they launch runs, that they are machine-local and managed only through the HTTP API with no UI, and that the beta switch does not stop them. Source inspection; not observed in a live release.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "docs/workflows-api.md",
+        "server/lib/workflows/triggers/dispatcher.ts"
+      ]
     }
   },
   "runtimeObservations": [

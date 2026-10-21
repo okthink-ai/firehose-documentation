@@ -1,8 +1,8 @@
 ---
 title: "Use Firehose on mobile web"
 description: "Connect from your phone, read an agent\u2019s progress, and answer in the correct session."
-verified: "2026-09-29"
-evidence: ["tailnet-access", "tailscale-setup", "connection", "mobile", "chat", "git-refresh", "file-access", "layout"]
+verified: "2026-10-21"
+evidence: ["tailnet-access", "tailscale-setup", "connection", "mobile", "chat", "git-refresh", "file-access", "layout", "mobile-web-display"]
 ---
 
 Check an agent’s progress and respond from your phone while its work stays on your Firehose server.
@@ -20,6 +20,10 @@ You can also open agents.okthink.ai, enter the full `.ts.net` name in **Server a
 Use the session list, the first screen on a phone, to open the task you want to follow. To go back to the list, select the back arrow in the session header. Check the project and branch in the session header before sending anything.
 
 Read the latest response and visible activity. The workspace tabs can scroll on a narrow screen, so move along the tab row to find views such as **Diff** and **Ask me**.
+
+When an agent finishes its turn or posts clarifying questions, a notification card appears at the top right of the screen. Tap it to open that session, or swipe it sideways to dismiss it. It also disappears on its own after a few seconds.
+
+In Chrome on Android, Firehose follows your phone's text size setting, as the phone's own apps do. If text looks too small or too large, change the text size in your phone's settings, then return to the Firehose tab.
 
 ## Find a control on a narrow screen
 

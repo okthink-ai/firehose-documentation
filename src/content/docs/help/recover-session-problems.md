@@ -1,8 +1,8 @@
 ---
 title: "Recover from lost messages and ended sessions"
 description: "Fix two problems in older Firehose releases: messages that clear without reaching a Claude Code agent, and Claude Code sessions that end on their own. Then update and pick up the lost work."
-verified: "2026-10-19"
-evidence: ["chat-history-snapshots", "oom-isolation", "update-command", "update-notice", "release-1-2-5", "launch", "persistence"]
+verified: "2026-10-21"
+evidence: ["chat-history-snapshots", "oom-isolation", "update-command", "update-notice", "release-1-2-5", "launch", "persistence", "cut-off-sessions"]
 ---
 
 Work out which of two recent problems you hit, update Firehose to the release that fixes it, and pick up the work you lost. Both problems affect Claude Code sessions in older releases:
@@ -39,6 +39,8 @@ To check which Claude Code version you have, run `claude --version` on the Fireh
 When a Linux computer runs out of memory, the system stops a process to free some. Before Firehose 1.2.4, on Linux computers where tmux runs each pane under systemd, stopping one command the agent ran could end the whole Claude Code session with it.
 
 Firehose 1.2.4 protects Claude Code sessions from this, usually within 15 seconds of their start. Only the stopped command fails, and the agent keeps running and can read the failure. A session still ends if the system stops the agent itself. Codex and Antigravity sessions are not covered, and Macs are not affected.
+
+In releases after 1.2.5, a Claude Code session the system stops this way stays in the **Sessions** sidebar, and sending it a message reconnects it. See [Reconnect a cut-off Claude Code session](/guides/return-to-work/#reconnect-a-cut-off-claude-code-session).
 
 ## 2. Check your Firehose version
 

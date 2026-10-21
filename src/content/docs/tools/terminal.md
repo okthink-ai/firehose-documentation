@@ -1,8 +1,8 @@
 ---
 title: "Run a check in the terminal"
 description: "Open a server shell in the intended workspace and distinguish it from an agent's live terminal."
-verified: "2026-09-29"
-evidence: ["terminal", "file-access", "example", "layout"]
+verified: "2026-10-21"
+evidence: ["terminal", "file-access", "example", "layout", "terminal-tmux-viewer"]
 ---
 
 Run a project command yourself and inspect its output in Firehose's **Terminal** tab or terminal drawer.
@@ -38,6 +38,8 @@ node --test greeting.test.mjs
 Expect four passing cases. A missing file usually means you need to check the workspace or finish creating the tests. A failed test needs its input, expected result, and actual result sent back to the agent. For other projects, use their documented check command.
 
 **Command** opens a terminal for a specified command. **Tmux** attaches to an existing terminal session. **Open Claude Code**, a button on some approval cards and delivery notices, and the **Claude Code** tab let you interact with the agent's terminal. Input there can answer or interrupt the agent; use a separate **Shell** for independent checks.
+
+A terminal pane attached to a tmux session stays on that session. If you also attach to it from your own terminal and a session picker switches the Firehose pane to another tmux session, Firehose moves the pane back within about a second, and before it sends anything you type. If Firehose can't confirm which session the pane is on, it refuses your input and shows an error, rather than risk typing into another agent's session. Send the input again after a moment.
 
 ## Hide, close, and reconnect
 

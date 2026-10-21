@@ -1,13 +1,13 @@
 ---
 title: "Find your way around Firehose"
 description: "Learn where the sidebar, New session, Settings, workspace tabs, prompt bar, and message box are, on desktop and on a phone."
-verified: "2026-09-29"
-evidence: ["layout"]
+verified: "2026-10-21"
+evidence: ["layout", "settings-workspace", "changelog-workspace"]
 ---
 
 Learn where Firehose keeps its controls, so you can follow any guide on this site. Every guide names a control and where it is; this page shows how those places fit together.
 
-This page describes Firehose 1.0.1.
+This page describes Firehose 1.0.1, updated for the full-page Settings and Changelog.
 
 ## The layout on a computer
 
@@ -15,7 +15,7 @@ The Firehose window has four areas, from left to right and top to bottom:
 
 | Area | Where it is | What you use it for |
 | --- | --- | --- |
-| **Icon rail** | The narrow strip of icons on the far left edge | Switch the sidebar between panels. The speech-bubble icon at the top shows **Sessions**. The gear icon at the bottom opens **Settings**. |
+| **Icon rail** | The narrow strip of icons on the far left edge | Switch the sidebar between panels. The speech-bubble icon at the top shows **Sessions**. Near the bottom, **Changelog** opens the release notes, and the gear icon at the very bottom opens **Settings**. |
 | **Sessions sidebar** | Beside the icon rail | See every session, grouped by project. The **+** button in its header, labeled **New session**, starts a session. |
 | **Workspace tabs** | A row across the top of the selected session | Open **Terminal**, **Diff**, **Smart Review**, **Ask me**, and other tools. The **Chat** toggle sits at the right end of this row. |
 | **Prompt bar and message box** | The bottom of the selected session | The prompt bar shows the session's folder and branch, with **commit** and **tools** on the right. Below it, the message box is where you type to the agent. |
@@ -39,12 +39,13 @@ The **New agent session** dialog walks through three steps:
 
 ## Open Settings
 
-Select the gear icon labeled **Settings** at the bottom of the icon rail. Settings opens in the sidebar. See [Projects, agents, and settings](/reference/settings/) for what each section does.
+Select the gear icon labeled **Settings** at the bottom of the icon rail. Settings opens as a full page in place of the session area, with an index of its sections on the left: **General**, **Account**, **Connection**, **Agents**, **Voice & sounds**, **Beta features**, and **Debugging**. On a phone, it opens at that list of sections.
 
-<figure class="product-capture">
-  <img src="/images/ui/settings-panel.png" width="720" height="900" loading="lazy" alt="Settings open in the sidebar, with the gear icon highlighted at the bottom of the icon rail. Sections include Workspace layout, Open from your other devices with Allow my other devices switched on, Tailscale HTTPS, Account, and Conversation names.">
-  <figcaption><strong>Settings</strong> in the sidebar, opened from the gear at the bottom of the icon rail. Sample values.</figcaption>
-</figure>
+To leave, select **Settings** again, press Escape, or open a session. The session you had open comes back with any unsent message. See [Projects, agents, and settings](/reference/settings/) for what each section does.
+
+## Read the release notes
+
+Select **Changelog**, the icon just above **Settings** on the icon rail. Like Settings, it opens in place of the session area. An index of releases sits beside the notes; on a narrow screen, it is a strip across the top. Select an entry to jump to it. Select **Changelog** again, or open a session, to return.
 
 ## Work in a session
 

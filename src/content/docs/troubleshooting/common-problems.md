@@ -1,8 +1,8 @@
 ---
 title: "Get unstuck"
 description: "Follow concrete checks for activation, connection, project creation, startup, message delivery, ended sessions, and missing changes."
-verified: "2026-10-18"
-evidence: ["activation", "tailnet-access", "hosted-connection", "connection", "settings", "launch", "chat", "diff", "questions", "project-creation", "diff-comparisons", "session-signals", "diagnostics", "git-refresh", "question-details", "oom-isolation", "chat-history-snapshots", "layout"]
+verified: "2026-10-21"
+evidence: ["activation", "tailnet-access", "hosted-connection", "connection", "settings", "launch", "chat", "diff", "questions", "project-creation", "diff-comparisons", "session-signals", "diagnostics", "git-refresh", "question-details", "oom-isolation", "chat-history-snapshots", "layout", "symlinked-project-dirs", "missing-workspace-error", "cut-off-sessions"]
 ---
 
 Find the symptom you recognize and work through its checks in order. Keep the exact error text so you can report what failed.
@@ -54,6 +54,8 @@ Return to [Connect to Firehose](/getting-started/connect/) once the check passes
 3. Preserve other entries, add the missing parent if needed, and select **Save**. Look for **Saved**.
 4. Select **New session** (the **+** at the top of the **Sessions** sidebar) again and find the project at **Pick a project**.
 
+If the project directory is a symbolic link, such as `~/code` pointing to an external drive, and the picker lists none of its projects, update Firehose with `firehose update`. Releases after 1.2.5 list projects through a linked directory. A project that is itself a link inside the directory is still not listed.
+
 If refresh reports an error, record it and check the server connection. If you need a new repository, use [New git project](/getting-started/first-session/#1-prepare-a-practice-project).
 
 ## Creating a project fails
@@ -79,6 +81,8 @@ Read the explanation beside the model and choose an available option. The start 
 For a new worktree, select **New worktree** at **Choose a workspace** and enter a **Task or branch name**. If the branch already exists, use **Existing branch** or choose a different name for new work.
 
 After **Start session**, read the launch error. If it concerns installation, authentication, or model access, give the provider, model, and error text to the server operator. Ask the operator to confirm a successful launch with that provider/model on the server, then retry **Start session**. Success means the session opens in the intended workspace. If it still fails, include the new error and the operator’s last successful check in your report.
+
+If starting a session, or restoring an earlier one, fails with an error that includes **Agent working directory no longer exists:** or **Agent working directory is not a directory:** followed by a path, the session's folder was deleted or replaced, for example when its worktree was cleaned up. Reinstalling the agent won't help. Start a new session in a workspace that still exists; see [Choose a workspace](/guides/workspaces/). Codex, Antigravity, and the other providers Firehose runs in the background report this; Claude Code does not.
 
 ## My message didn’t reach the agent
 
@@ -129,6 +133,8 @@ Before Firehose 1.2.4, on Linux computers where tmux runs each pane under system
 2. Free memory before the agent runs the heavy command again. Close programs you don't need, or run fewer sessions at once.
 3. Files the agent already changed stay in the workspace. [Check the saved workspace and latest result](/guides/return-to-work/), then start a new session to continue.
 4. If a session on 1.2.4 or later still ends on its own, [report the problem](#i-need-to-report-a-problem) with the time it happened.
+
+In releases after 1.2.5, a Claude Code session that Firehose started is not lost when it is cut off, whether by the system stopping the agent, a restart of the computer, a crash, or a Firehose restart. It stays in the **Sessions** sidebar with its conversation, and sending it a message reconnects it. See [Reconnect a cut-off Claude Code session](/guides/return-to-work/#reconnect-a-cut-off-claude-code-session).
 
 ## Questions are still waiting or won’t submit
 

@@ -1,8 +1,8 @@
 ---
 title: "Find the right tool"
 description: "Choose a Firehose control by the result you want, from starting a session to reviewing changes."
-verified: "2026-09-29"
-evidence: ["launch", "chat", "diff", "questions", "review", "review-actions", "review-scope", "terminal", "attachments", "commit-action", "layout"]
+verified: "2026-10-21"
+evidence: ["launch", "chat", "diff", "questions", "review", "review-actions", "review-scope", "terminal", "attachments", "commit-action", "layout", "commit-hook-fix", "workflows"]
 ---
 
 Find the control you need for your next step. Firehose’s controls organize the work; the commands your agent can run also depend on its provider and permissions.
@@ -37,6 +37,10 @@ Select the **Diff** tab at the top of a session associated with a Git repository
 
 Start one from **tools → Smart review** on the prompt bar, and read it in the **Smart Review** tab. It needs committed branch changes, an available agent, and a usable review base such as `origin/main`. For the standalone greeting sample, use Diff and its checks. [Use Smart Review](/tools/smart-review/), then [finish the task](/guides/finish-a-task/).
 
+## Workflows (beta): run a sequence of steps
+
+**You provide:** a workflow, such as the built-in **Quality**, and optionally an issue or a request. **You get:** a run that sends each step, such as implement, review, commit, and push, to an agent in order while you watch. Turn it on in **Settings → Beta features → Show Workflows**. [Run a workflow](/tools/workflows/).
+
 ## Terminal: run an independent check
 
 **You provide:** a server directory and a command. **You get:** live command output in a server shell, in the **Terminal** tab at the top of a session. [Run a terminal check](/tools/terminal/) and distinguish a separate shell from the agent's live terminal.
@@ -47,6 +51,6 @@ Start one from **tools → Smart review** on the prompt bar, and read it in the 
 
 ## Commit: record reviewed work
 
-The prompt bar's **commit** button, shown when the branch has uncommitted changes, opens a list grouped as **Staged**, **Unstaged**, and **Untracked**. Selecting **Commit** requests agent work; the list is not a per-file selection interface. For mixed edits, give explicit scope in Chat and verify the resulting commit. Follow [the local commit walkthrough](/guides/project-workflow/#4-request-and-inspect-a-local-commit).
+The prompt bar's **commit** button, shown when the branch has uncommitted changes, opens a list grouped as **Staged**, **Unstaged**, and **Untracked**. Selecting **Commit** requests agent work; the list is not a per-file selection interface. For mixed edits, give explicit scope in Chat and verify the resulting commit. If the repository's pre-commit hook rejects the commit, Claude Code, Codex, and Antigravity sessions fix the reported problem, rerun the check, and retry the commit; the final message lists every file the agent edited to satisfy the hook. If there is no safe fix, the agent reports the problem and stops with your changes intact. It never skips the hook. Follow [the local commit walkthrough](/guides/project-workflow/#4-request-and-inspect-a-local-commit).
 
 Team Chat, X-Ray, Timeline, voice, and issue workflows still need complete verified walkthroughs. Their presence in an installation does not mean this guide covers their prerequisites or outcomes.
