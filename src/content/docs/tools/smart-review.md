@@ -1,8 +1,8 @@
 ---
 title: "Use Smart Review"
 description: "Choose review actions, dispatch work to your session, and verify the resulting changes."
-verified: "2026-09-29"
-evidence: ["review", "review-actions", "diff", "context-actions", "review-scope", "layout"]
+verified: "2026-10-21"
+evidence: ["review", "review-prompts", "review-actions", "diff", "context-actions", "review-scope", "layout", "review-start-screen", "workflows"]
 ---
 
 Get an agent’s assessment of branch changes, choose how to handle each finding, and send those decisions back for action.
@@ -19,12 +19,20 @@ For a configured project, follow its commit policy to record the changes before 
 
 ## 1. Start a review
 
-On the prompt bar above the message box, select **tools**, then **Smart review**, then **run review**. **Smart review** appears only on a branch other than `main` or `master`. In **Areas of Focus**, describe the concerns that matter, then select **Start Review**. Follow progress in the **Smart Review** tab at the top of the session, which says **No active review** until one exists. For the greeting example:
+On the prompt bar above the message box, select **tools**, then **Smart review**, then **run review**. **Smart review** appears only on a branch other than `main` or `master`. In **Areas of Focus**, describe the concerns that matter, then select **Start Review**. Follow progress in the **Smart Review** tab at the top of the session. Until a review exists, that tab explains what Smart Review does and offers **Start a review**, which opens the same **Areas of Focus** dialog. For the greeting example:
 
 ```text
 Check blank-name handling and whether the tests cover spaces-only input.
 Look for unintended changes to greetings for nonblank names.
 ```
+
+### Reuse a saved prompt
+
+The buttons above the focus box are saved prompts, such as **Redux** and **Clean up architecture**. Select one to include its text in the review, and select it again to leave it out. You can select several and still type your own concerns; the review gets the selected prompts followed by what you typed. Selected prompts are highlighted.
+
+To keep what you typed for later reviews, select **Save as prompt**. It appears once the box holds text that isn't already a saved prompt. The new prompt is named after its first line and selected for this review. Rename, edit, or remove prompts in [Settings → Smart Review prompts](/reference/settings/#smart-review-prompts).
+
+Saved prompts were added in Firehose 1.2.3.
 
 **Expected result:** the review begins analyzing changes; findings may appear as it works. An empty panel alone does not establish a successful review. See [empty and unsuccessful reviews](#if-the-review-is-empty-or-unsuccessful) below.
 
@@ -94,7 +102,10 @@ For a finding about a missing spaces-only test, choose **Fix**, add the strings-
 
 - **Analyzing branch changes…** means analysis is still in progress. Check the selected session’s Chat for activity or a reported problem.
 - **No … findings** can be a severity filter result. Select **Show all findings** before deciding the review is empty.
-- A failed review can show its error in the empty panel. Keep that error and check the session before starting another review.
-- A completed review with no findings means none were reported. It does not establish that tests passed or every defect was ruled out. Verify the diff and checks anyway.
+- **Loading findings…** means the review has finished and its findings are still loading. Wait for them; the tab offers no button until they arrive, so you can't replace the review by accident.
+- A failed review that posted no findings shows its error above **Start a review**. Keep that error and check the session before starting another review.
+- **No findings**, saying the last review found nothing to fix, with a **Review again** button, means the review finished and reported none. That does not establish that tests passed or every defect was ruled out. Verify the diff and checks anyway.
+
+To run a review as one step in a longer sequence, such as review, fix, commit, and push, see [Use workflows (beta)](/guides/use-workflows/).
 
 Finish with the [task handoff and cleanup checklist](/guides/finish-a-task/).

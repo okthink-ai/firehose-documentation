@@ -291,19 +291,21 @@
       ]
     },
     "install": {
-      "scope": "Public one-line installer: platforms, prerequisite checks including the offer to install tmux with Homebrew, apt-get, dnf, yum, pacman or zypper, EULA and tailnet prompts, flags, final messages, the published EULA release asset, firehose commands and error messages. Source inspection of the commit Firehose 1.2.0 was built from (tag v1.2.0); install.sh is unchanged in behavior on main after #717 (usage comment only). The unmerged firehose start/stop commands (PR #724) are intentionally not documented. No install on a clean machine was performed.",
-      "revision": "37769a376032de8bd1595639aa67ee756a448f3f",
-      "verified": "2026-10-04",
+      "scope": "Public one-line installer: platforms, prerequisite checks including the offer to install tmux with Homebrew, apt-get, dnf, yum, pacman or zypper, EULA and tailnet prompts, flags, the wait for the first start (a progress dot every three tries, up to 60 tries, over HTTP then HTTPS), final messages, the warning and service log tail shown when Firehose does not answer, the published EULA release asset (the real agreement since firehose PR #719), firehose commands including service install/uninstall and error messages. Source inspection of the commit Firehose 1.2.2 was built from (tag v1.2.2). Since 1.2.0: #717 changed only the usage comment; #724 (1.2.1) starts the macOS login service with launchctl kickstart, adds the progress dots, the HTTPS fallback and the log tail, and lists firehose service install before firehose serve when Firehose was not started. #724 merged without the firehose start and firehose stop commands that an earlier revision proposed; server/cli/main.ts at v1.2.2 has neither, so they are not documented. No install on a clean machine was performed.",
+      "revision": "d111e6ca396a992dc26f8066780234f921279601",
+      "verified": "2026-10-06",
       "paths": [
         "install.sh",
         "docs/EULA.md",
-        "scripts/release/stage-resources.ts"
+        "scripts/release/stage-resources.ts",
+        "server/cli/main.ts",
+        "server/cli/service.ts"
       ]
     },
     "activation": {
-      "scope": "Release license gate, emailed-code activation screen (email, 6-digit code, plan, waiting for payment, billing that needs attention), code lifetime, attempt and send limits, sender and subject of the code email, lock and reactivation screens, hosted Checkout return page and /account page, renewal grace. The hosted /activate device-code flow is kept only for releases before 1.1.0 and is not documented. Exempt accounts, prices and plan names beyond the service's labels intentionally omitted. Source inspection of the commit Firehose 1.2.0 was built from (tag v1.2.0; emailed-code activation shipped in 1.1.0, firehose PR #691). No live activation, real email delivery, or Stripe checkout was performed.",
-      "revision": "37769a376032de8bd1595639aa67ee756a448f3f",
-      "verified": "2026-10-04",
+      "scope": "Release license gate, emailed-code activation screen (email, 6-digit code, plan, waiting for payment, billing that needs attention), code lifetime, attempt and send limits, sender and subject of the code email, lock and reactivation screens, hosted Checkout return page, renewal grace, Settings → License → Manage subscription, and the hosted /account page: Continue with Google, or the emailed sign-in code added in 1.2.2 (firehose PR #727; subject Your Firehose sign-in code, 10 minutes, five tries, five sends an hour and ten a day per address, Open billing, no-billing and error messages). The hosted /activate device-code flow is kept only for releases before 1.1.0 and is not documented. Exempt accounts, prices and plan names beyond the service's labels intentionally omitted. Source inspection of the commit Firehose 1.2.2 was built from (tag v1.2.2); the dashboard activation code is unchanged since 1.2.0. No live activation, account sign-in, real email delivery, or Stripe checkout was performed.",
+      "revision": "d111e6ca396a992dc26f8066780234f921279601",
+      "verified": "2026-10-06",
       "paths": [
         "server/lib/license/config.ts",
         "server/lib/license/gate.ts",
@@ -316,7 +318,10 @@
         "apps/expo/src/components/Activate/route.ts",
         "functions/src/email-activation.ts",
         "functions/src/email-code.ts",
-        "functions/src/plans.ts"
+        "functions/src/plans.ts",
+        "apps/expo/src/components/Activate/licenseService.ts",
+        "apps/expo/src/components/SettingsPanel/LicenseSettingsSection.tsx",
+        "functions/src/account-email.ts"
       ]
     },
     "tailnet-access": {
@@ -423,6 +428,331 @@
         "apps/expo/src/components/shared/PromptPrBadge.tsx",
         "apps/expo/src/components/CloseSessionModal/CloseSessionDialog.tsx"
       ]
+    },
+    "release-1-2-3": {
+      "scope": "Firehose 1.2.3 against 1.2.2 for the install and activation guides: git diff v1.2.2 v1.2.3 over the install and activation evidence paths changes only the update notice (the update fields in lib/types/server-status.ts and the notice firehose version prints in server/cli/main.ts). Installer, activation screens, hosted pages and the license service are unchanged, so the 1.2.2 entries still describe 1.2.3. No install on a clean machine was performed.",
+      "revision": "5664d1a063d08a768d42cf620e6a48890257852e",
+      "verified": "2026-10-13",
+      "paths": [
+        "install.sh",
+        "server/cli/main.ts",
+        "lib/types/server-status.ts",
+        "apps/expo/src/serverConnection/EmailActivation.tsx",
+        "apps/expo/src/components/Activate/AccountPage.tsx",
+        "functions/src/email-activation.ts"
+      ]
+    },
+    "update-notice": {
+      "scope": "New-release notice added in 1.2.3 (firehose PR #741): the dashboard banner below the server warnings ('Firehose <version> is available (you have <version>). Run firehose update in a terminal to install it.', What's new link to the release page, Dismiss), dismissal per version in this browser's app storage, the server's update check at most once a day with the answer saved across restarts, and the stderr line firehose status and firehose version print in a release ('A new Firehose release is available: <latest> (you have <current>). Run firehose update to install it.'). Source inspection only; no installed release was observed showing it.",
+      "revision": "5664d1a063d08a768d42cf620e6a48890257852e",
+      "verified": "2026-10-13",
+      "paths": [
+        "apps/expo/src/components/UpdateAvailableBanner/index.tsx",
+        "apps/expo/src/components/UpdateAvailableBanner/dismissal.ts",
+        "apps/expo/src/App.tsx",
+        "server/lib/update-check.ts",
+        "server/cli/update-notice.ts",
+        "server/cli/main.ts",
+        "server/cli/status.ts"
+      ]
+    },
+    "review-prompts": {
+      "scope": "Saved Smart Review prompts added in 1.2.3 (firehose PR #742): Areas of Focus lists saved prompts as toggles that combine, in list order, with typed text when the review starts; Save as prompt appears for new typed text, names the prompt after its first line, selects it and clears the box; the window reloads prompts each time it opens. Settings -> Smart Review prompts (after Project directories): name and text fields, Remove, Add prompt, Save / Saved. Prompts are stored by the Firehose server; built-ins Redux and Clean up architecture until a list is saved; at most 30 prompts, names up to 60 characters, text up to 4,000. Source inspection only.",
+      "revision": "5664d1a063d08a768d42cf620e6a48890257852e",
+      "verified": "2026-10-13",
+      "paths": [
+        "apps/expo/src/components/FocusAreasModal/index.tsx",
+        "apps/expo/src/components/SettingsPanel/ReviewPromptsSettingsSection.tsx",
+        "apps/expo/src/components/SettingsPanel/index.tsx",
+        "lib/types/review-prompts.ts",
+        "server/routes/review-prompts.ts"
+      ]
+    },
+    "question-model": {
+      "scope": "Ask me model choice added in 1.2.3 (firehose PR #744): the Write the questions with row in Ask me clarifying questions; This session's model is the default; Claude sessions offer Haiku, Sonnet and Opus, other startable providers their own model list, and the row is hidden when there is nothing to choose. A chosen model runs separately: it reads the code and the topic but not the conversation, answers still go to the session, and it is held to read-only for Claude, Codex, Antigravity and Grok; OpenCode and Pi keep the session's usual permissions and the window says so. The Ask me panel reads '<model> is reading the code and writing questions.' A cut-off or timed-out run (10 minutes) marks the questionnaire failed so it can be retried on the same model. Source inspection plus the PR's recorded Claude and Codex runs; not observed in a browser.",
+      "revision": "5664d1a063d08a768d42cf620e6a48890257852e",
+      "verified": "2026-10-13",
+      "paths": [
+        "apps/expo/src/components/AskQuestionsModal/QuestionModelPicker.tsx",
+        "apps/expo/src/components/AskQuestionsModal/askQuestionsModel.ts",
+        "apps/expo/src/components/UserQuestionsPanel/UserQuestionSetStatusRegion.tsx",
+        "server/lib/user-question-separate-run.ts",
+        "server/routes/user-questions.ts"
+      ]
+    },
+    "release-1-2-4": {
+      "scope": "Firehose 1.2.4 against 1.2.3 for the install and activation guides: git diff v1.2.3 v1.2.4 over the install and activation evidence paths (install.sh, server/cli, lib/types/server-status.ts, server/lib/license, apps/expo, functions, docs/EULA.md, scripts/release) changes only apps/expo/src/changelog.json, the 1.2.3 changelog entry (firehose PR #752). Installer, activation screens, hosted pages, the update notice and the license service are unchanged, so the 1.2.2 and 1.2.3 entries still describe 1.2.4. The release's one product change is out-of-memory isolation (entry oom-isolation). No install on a clean machine was performed.",
+      "revision": "af3d0dfd2c1c7c96d23f4649664d132641bb9235",
+      "verified": "2026-10-14",
+      "paths": [
+        "install.sh",
+        "server/cli/main.ts",
+        "lib/types/server-status.ts",
+        "apps/expo/src/changelog.json"
+      ]
+    },
+    "oom-isolation": {
+      "scope": "Out-of-memory isolation for Claude Code sessions added in 1.2.4 (firehose PR #754). On Linux, when tmux runs a pane in a systemd tmux-spawn-*.scope (tmux 3.4 built with systemd support), an out-of-memory kill of any process in the scope used to stop the whole scope, ending the Claude session and removing it from the sidebar. Firehose now starts its own scope with OOMPolicy=continue for each Claude process it finds in such a scope (through busctl --user StartTransientUnit) and moves the rest of the pane's processes into it, so an out-of-memory kill stops only the process the kernel chose. It runs during session discovery and on a server timer every 15 seconds, covers Claude Code only (getClaudeProcesses), does nothing on macOS, stops trying when busctl is missing, leaves Claude in place when a move fails, and is turned off by CM_CLAUDE_OOM_ISOLATION=0 (not documented for readers). Process discovery also keeps partial lsof output when one process exits mid-scan. Source inspection and the PR's recorded live test only; no out-of-memory kill was observed for this documentation.",
+      "revision": "af3d0dfd2c1c7c96d23f4649664d132641bb9235",
+      "verified": "2026-10-14",
+      "paths": [
+        "server/lib/claude-oom-isolation.ts",
+        "server/index.ts",
+        "server/lib/session-discovery.ts",
+        "lib/processes.ts",
+        "lib/proc-cwd.ts"
+      ]
+    },
+    "release-1-2-5": {
+      "scope": "Firehose 1.2.5 against 1.2.4 for the install and activation guides: git diff v1.2.4 v1.2.5 over the install and activation evidence paths (install.sh, server/cli, lib/types/server-status.ts, server/lib/license, apps/expo, functions, docs/EULA.md, scripts/release) changes only apps/expo/src/changelog.json (the 1.2.4 entry, firehose PR #758) and the chat history fix (entry chat-history-snapshots). Installer, activation screens, hosted pages, the update notice and the license service are unchanged, so the 1.2.2 to 1.2.4 entries still describe 1.2.5. No install on a clean machine was performed.",
+      "revision": "2bf179bfc7d7f7ad43b0d6141e10cad4dc8001cc",
+      "verified": "2026-10-18",
+      "paths": [
+        "install.sh",
+        "server/cli/main.ts",
+        "lib/types/server-status.ts",
+        "apps/expo/src/changelog.json"
+      ]
+    },
+    "chat-history-snapshots": {
+      "scope": "Chat fix in 1.2.5 (firehose PR #759) for Claude Code 2.1.300, published 2026-10-14, which began writing internal API request snapshots (api-request-blob records) into its transcript. Firehose 1.2.4 and earlier showed them as chat messages without a message id, duplicating tool activity; the next send then threw in optimistic-message cleanup before the request reached the server, while the message box still cleared, so the message looked sent but was never delivered. 1.2.5 drops those records from the conversation (lib/jsonl-parser.ts) and tolerates rows without an id already loaded in the dashboard (optimisticMessages.ts). Source inspection and the PR's tests only; not reproduced against a real Claude Code 2.1.300 session.",
+      "revision": "2bf179bfc7d7f7ad43b0d6141e10cad4dc8001cc",
+      "verified": "2026-10-18",
+      "paths": [
+        "lib/jsonl-parser.ts",
+        "apps/expo/src/store/chat/optimisticMessages.ts",
+        "apps/expo/src/store/sendMessage.test.ts"
+      ]
+    },
+    "update-command": {
+      "scope": "firehose version and firehose update at 1.2.5. firehose version prints 'firehose <version> (<distribution>, <channel>[, build <id>])' followed by the update notice (present since at least 1.2.2; the notice since 1.2.3). firehose update fetches the release index, downloads the newer archive, verifies its sha256, unpacks it under releases/<version>, and switches to it, logging '[update] Firehose <current> is up to date (latest <latest>)' or '[update] Firehose <latest> is available (running <current>)', then '[update] Now running <latest>'. The switch restarts a service-managed server (or a hand-started one through the restart transaction) and flips back to the previous release if the new one is not healthy. Conversation history is parsed on the server with an in-memory cache (lib/parse-cache.ts), so a restart after the 1.2.5 update re-reads Claude transcripts without the internal records. Source inspection only; no update was run for this documentation.",
+      "revision": "2bf179bfc7d7f7ad43b0d6141e10cad4dc8001cc",
+      "verified": "2026-10-19",
+      "paths": [
+        "server/cli/main.ts",
+        "server/cli/update.ts",
+        "server/cli/switch.ts",
+        "lib/parse-cache.ts"
+      ]
+    },
+    "settings-workspace": {
+      "scope": "Source inspection; not observed in a live release. Settings as a full-page workspace (firehose PR #831): seven sections (General, Account, Connection, Agents, Voice & sounds, Beta features, Debugging) beside an index on wide layouts; compact layouts open at the index with a Back to Settings sections button; leaving by the rail button, Escape outside a text field, or opening a session keeps the selected session and draft. Group placement read from settingsSections.tsx, including Sentence annotation (PR #713, off by default, web Markdown files only) and GPT-Live voice in Beta features. Workflows settings were left to the separate Workflows page.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "apps/expo/src/components/SettingsPanel/settingsSections.tsx",
+        "apps/expo/src/components/SettingsPanel/index.tsx",
+        "apps/expo/src/components/SettingsPanel/SettingsNavigation.tsx",
+        "apps/expo/src/components/SettingsPanel/useSettingsBack.ts",
+        "apps/expo/src/components/SettingsPanel/AnnotationModeSettingsSection.tsx",
+        "apps/expo/src/components/SettingsPanel/LiveVoiceSettingsSection.tsx",
+        "apps/expo/src/components/FileViewer/keyboardTextCommands.ts",
+        "apps/expo/src/components/FileViewer/AnnotationModeToggle.tsx",
+        "apps/expo/src/components/FileViewer/index.tsx"
+      ]
+    },
+    "firehose-agent-skill": {
+      "scope": "Source inspection; not observed in a live release. Opt-in Firehose Agent skill (firehose PR #785) under Settings → Agents: per-harness Install, Update and Remove for Claude Code and Codex into <config>/skills/firehose-agent, status text for modified and unmanaged copies, startup refresh only of unmodified copies this installation owns, and removal of owned unmodified copies by firehose uninstall.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "apps/expo/src/components/SettingsPanel/FirehoseAgentSkillSettingsSection.tsx",
+        "server/lib/firehose-agent-skill.ts"
+      ]
+    },
+    "team-chat-sign-in": {
+      "scope": "Source inspection; not observed in a live release. Team Chat email-code sign-in in Settings → Account (firehose PRs #835 and #856): Send code, Verify code, Resend code and Change email; codes expire after ten minutes; only existing, enabled, allow-listed accounts are signed in. Real email delivery was not exercised.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "apps/expo/src/components/SettingsPanel/AccountSettingsSection.tsx",
+        "apps/expo/src/features/team-auth/EmailCodeSignIn.tsx",
+        "apps/expo/src/components/SettingsPanel/LicenseSettingsSection.tsx"
+      ]
+    },
+    "changelog-workspace": {
+      "scope": "Source inspection; not observed in a live release. Changelog as a workspace (firehose PR #853): the Changelog rail button above Settings opens and closes it in place of the session area, with an entry index beside the notes on wide layouts and a horizontal strip on compact layouts; opening a session returns to Sessions.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "apps/expo/src/components/Sidebar/ActivityBar.tsx",
+        "apps/expo/src/components/ChangelogPanel/index.tsx",
+        "apps/expo/src/App.tsx"
+      ]
+    },
+    "update-check-visit": {
+      "scope": "Source inspection; not observed in a live release. Release check when a dashboard connects or comes back into view, at most once an hour, in addition to the daily background check (firehose PR #809).",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "server/lib/update-check.ts",
+        "server/ws/handler.ts",
+        "server/index.ts",
+        "apps/expo/src/hooks/useAppStartupEffects.ts"
+      ]
+    },
+    "commit-hook-fix": {
+      "scope": "Source inspection; not observed in a live release. Commit button behavior after a pre-commit hook failure (firehose PR #775): the commit skill fixes the reported problem, reruns verification, restages and retries, lists the files it edited, stops safely when no fix exists, and never uses --no-verify. Applies to Claude Code, Codex and Antigravity; Pi and Grok keep their own commit text.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        ".agents/skills/commit/SKILL.md",
+        "server/lib/provider-action-descriptors/claude.ts",
+        "server/lib/commit-helper.ts"
+      ]
+    },
+    "chat-formatting": {
+      "scope": "Source inspection; not observed in a live release. Chat rendering of GFM Markdown tables with horizontal scrolling (firehose PR #761), file links with angle-bracket destinations (PR #836), and message-box refocus after mouse-driven Send, Queue and Retry on web with a fine pointer (PR #782).",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "apps/expo/src/lib/formatTextTables.ts",
+        "apps/expo/src/components/formatText/MarkdownTable.tsx",
+        "apps/expo/src/lib/formatTextTokens.ts",
+        "apps/expo/src/components/ChatInput/ChatInputView.tsx"
+      ]
+    },
+    "terminal-tmux-viewer": {
+      "scope": "Source inspection; not observed in a live release. Web terminal viewers kept on their own tmux session (firehose PR #746): drift is undone before each write and by a one-second poll; input is refused with a terminal error when the placement cannot be confirmed. Exact on-screen error text was not checked.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "server/lib/terminal-tmux-viewer.ts",
+        "server/lib/terminal-manager.ts",
+        "server/ws/terminal-handler.ts"
+      ]
+    },
+    "review-start-screen": {
+      "scope": "Source inspection; not observed in a live release. Shared Smart Review start screen (firehose PR #722): Start a review before any review, Loading findings… with no button while a finished review's findings load, No findings with Review again for a clean review, and a failed review's saved error above the start button.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "apps/expo/src/components/ReviewPanel/ReviewStartScreen.tsx",
+        "apps/expo/src/components/ReviewPanel/index.tsx",
+        "apps/expo/src/components/ReviewPanel/reviewPanelState.ts"
+      ]
+    },
+    "mobile-web-display": {
+      "scope": "Source inspection; not observed in a live release. Notification toasts anchored top-right with swipe-to-dismiss on touch (firehose PR #811), and mobile web text following the Android system text size through Chrome's preferred text scale, re-read when the page becomes visible (PR #640). Not checked on a phone.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "apps/expo/src/components/ToastContainer/ToastItem.tsx",
+        "apps/expo/src/components/ToastContainer/useToastSwipe.ts",
+        "apps/expo/public/index.html",
+        "apps/expo/src/themes/text-scale.ts"
+      ]
+    },
+    "symlinked-project-dirs": {
+      "scope": "Source inspection; not observed in a live release. Project discovery through a symbolic-linked project directory and worktree grouping by physical path (firehose PR #780), and one sidebar group per checkout with reviews, question sets and pins stored by real path (PR #768). A repository that is itself a symlink inside a project directory is still skipped.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "server/lib/launch-targets.ts",
+        "server/lib/project-creation.ts",
+        "server/lib/canonical-cwd.ts",
+        "server/db/canonicalize-stored-paths.ts"
+      ]
+    },
+    "missing-workspace-error": {
+      "scope": "Source inspection; not observed in a live release. Daemon-launched runtimes (Codex, Antigravity, Grok, Kimi, OpenCode, Pi) check the workspace before launch and fail with 'Agent working directory no longer exists: <cwd>' or 'Agent working directory is not a directory: <cwd>' (firehose PR #817). How the dashboard frames the message was not checked.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "server/daemon/agent-daemon.ts"
+      ]
+    },
+    "cut-off-sessions": {
+      "scope": "Source inspection; not observed in a live release. Cut-off Claude Code sessions kept in the sidebar and reconnected on the next message (firehose PR #842, phase 1): Reconnecting… status, cost hint text for warm-cache resume and summary handoff, automatic continuation only with positive cut-off evidence while the cache is warm, failure messages that keep the message in the composer, and Close behaving as for a live session. Claude Code sessions in Firehose's tmux only.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "apps/expo/src/components/PausedSessions/pausedSessionCopy.ts",
+        "apps/expo/src/components/PausedSessions/PausedChatView.tsx",
+        "server/lib/session-ledger.ts",
+        "server/db/session-records.ts"
+      ]
+    },
+    "workflows": {
+      "scope": "Workflows (beta) switch in Settings → Beta features → Workflows → Show Workflows, the Workflows icon-rail panel and its sections, the built-in Quality workflow and its steps and agents, recommended workflows, the workflow editor (Add step, starter steps, building blocks, step agent field, cleared context, Run this step, Your agent fields, save conflicts), and the step catalog labels. Not in a release tag as of v1.2.5. Source inspection; not observed in a live release.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "apps/expo/src/components/SettingsPanel/WorkflowsSettingsSection.tsx",
+        "apps/expo/src/components/SettingsPanel/settingsSections.tsx",
+        "apps/expo/src/components/Sidebar/ActivityBar.tsx",
+        "apps/expo/src/store/uiSettings.ts",
+        "apps/expo/src/features/workflows/WorkflowsPanel.tsx",
+        "apps/expo/src/features/workflows/WorkflowEditor/index.tsx",
+        "apps/expo/src/features/workflows/WorkflowEditor/StepCard.tsx",
+        "apps/expo/src/features/workflows/WorkflowEditor/StepAgentField.tsx",
+        "apps/expo/src/features/workflows/WorkflowEditor/ExternalAgentFields.tsx",
+        "apps/expo/src/features/workflows/workflowLabels.ts",
+        "lib/workflows.ts",
+        "lib/workflow-library.ts",
+        "lib/types/workflows.ts"
+      ]
+    },
+    "workflow-runs": {
+      "scope": "Starting runs (Run workflow dialog from the Workflows panel, tools menu, Session options menu, and GitHub issues; Fix with <workflow>), where a run works (session, new worktree, no session), agent-availability refusals, one run per issue, GitHub issue claim comments, the run page with statuses, step states and controls (Pause, Resume, Continue, Retry, Skip step, Cancel run), run retention, and known gaps from PR #849. Source inspection; not observed in a live release.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "apps/expo/src/features/workflows/RunWorkflowModal.tsx",
+        "apps/expo/src/features/workflows/IssueWorkflowActions.tsx",
+        "apps/expo/src/features/workflows/WorkflowRunView/index.tsx",
+        "apps/expo/src/features/workflows/WorkflowRunView/runViewModel.ts",
+        "apps/expo/src/components/PromptBar/ToolsButton.tsx",
+        "apps/expo/src/components/SessionItem/sessionActions.tsx",
+        "apps/expo/src/components/IssuesPanel/IssueDetail.tsx",
+        "server/lib/workflows/service.ts",
+        "server/lib/workflows/launch.ts",
+        "server/lib/workflows/issue-claims.ts",
+        "server/lib/workflows/run-actions.ts",
+        "server/lib/workflows/run-store.ts",
+        "server/lib/workflows/compile.ts",
+        "docs/workflows-api.md"
+      ]
+    },
+    "workflow-triggers": {
+      "scope": "Trigger kinds (schedule, GitHub events, signed webhook), that they launch runs, that they are machine-local and managed only through the HTTP API with no UI, and that the beta switch does not stop them. Source inspection; not observed in a live release.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "docs/workflows-api.md",
+        "server/lib/workflows/triggers/dispatcher.ts"
+      ]
+    },
+    "release-1-3-0": {
+      "scope": "Firehose 1.3.0 against 1.2.5 for the install and activation guides: git diff v1.2.5 d23e1e95 (the commit the 1.3.0 changelog entry, firehose PR #860, names) over the install and activation evidence paths. install.sh, server/cli, lib/types/server-status.ts and server/lib/license are unchanged. The activation screens, hosted /activate and /account pages and License settings changed only in text styling (Text to AppText, firehose PR #640); their visible wording and steps are the same. functions/src changes move the email-code helpers into a shared module for Team Chat sign-in (firehose PR #835) without changing activation codes, expiry or attempts. The update check also runs when a dashboard is opened or refocused (entry update-check-visit). Screenshots were not recaptured. No install on a clean machine was performed.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "install.sh",
+        "server/cli/main.ts",
+        "lib/types/server-status.ts",
+        "apps/expo/src/components/Activate/AccountPage.tsx",
+        "apps/expo/src/components/Activate/ActivatePage.tsx",
+        "apps/expo/src/serverConnection/EmailActivation.tsx",
+        "apps/expo/src/serverConnection/LicenseGate.tsx",
+        "functions/src/email-activation.ts",
+        "functions/src/email-code-primitives.ts",
+        "apps/expo/src/changelog.json"
+      ]
+    },
+    "workflow-guide": {
+      "scope": "Use workflows walkthrough: the Review and fix recipe's steps (Smart Review, Review more, Resolve review findings, Validate with the fixed pnpm/npm checks), Add in Recommended saving a project copy and opening the editor, Custom step and Run this step in the editor, the Confirm step's Message, the Run workflow dialog (Workflow list with step lists, Where it runs defaulting to In this session when started from a session, the optional request, Start run), and the per-project issue default (Fix <project> issues with \"<workflow>\" and the Fix with <workflow> button). Source inspection; not observed in a live release.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "lib/workflow-library.ts",
+        "lib/workflows.ts",
+        "lib/types/workflows.ts",
+        "apps/expo/src/features/workflows/WorkflowsPanel.tsx",
+        "apps/expo/src/features/workflows/RunWorkflowModal.tsx",
+        "apps/expo/src/features/workflows/WorkflowEditor/StepCard.tsx",
+        "apps/expo/src/features/workflows/IssueWorkflowActions.tsx"
+      ]
     }
   },
   "runtimeObservations": [
@@ -430,7 +760,7 @@
       "date": "2026-09-13",
       "serverVersion": "fafd783ee5e0",
       "protocolVersion": 2,
-      "scope": "Read-only GET /api/status confirmed version fields. Walked New session \u2192 documentation project \u2192 Current checkout \u2192 Codex. Observed Full Auto checked and Start session available; captured only the provider panel at desktop and mobile widths. No session was started. This differs from the source revision; approval behavior and installation were not exercised.",
+      "scope": "Read-only GET /api/status confirmed version fields. Walked New session → documentation project → Current checkout → Codex. Observed Full Auto checked and Start session available; captured only the provider panel at desktop and mobile widths. No session was started. This differs from the source revision; approval behavior and installation were not exercised.",
       "method": "Local HTTPS request and isolated browser with mutating API requests blocked.",
       "captures": [
         {
@@ -897,6 +1227,32 @@
           "pixels": {
             "width": 2880,
             "height": 1800
+          },
+          "deviceScaleFactor": 2
+        }
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "serverVersion": "8401717d (source at v1.2.2 plus the capture specs, Expo web dev build)",
+      "scope": "Account page sign-in captures for Firehose 1.2.2. The hosted /account page was driven signed out by Playwright with invented data only: the address you@example.com and the code 275481. /account/email/start was answered with a placeholder sign-in id; every Firebase and license-service request was answered by the spec, and no email was sent. Captures are cropped to the page's content; nothing was retouched. In the same run the 2026-10-04 captures (activation-start, activation-code, activation-subscribe, activation-payment, activation-billing, activation-locked, license-agreement, activate-checkout-complete and account) were regenerated at v1.2.2 and were byte-identical to the committed files, so they were kept and their checksums in the 2026-10-04 record still apply.",
+      "method": "firehose branch docs-screenshots-1-1 rebased onto v1.2.2: e2e/hosted/docs-activation.spec.ts with playwright.hosted.config.ts, and e2e/tests/docs-screenshots.spec.ts -g 'license screens', both with DOCS_SHOT_DIR and placeholder EXPO_PUBLIC_FIREBASE_* settings. Bundled Playwright Chromium (build 1208).",
+      "captures": [
+        {
+          "path": "public/images/ui/account-signin.png",
+          "sha256": "5072a244e5045217fd562ccf4fcbaece57f39efe3598af8b4a89d395d9818c06",
+          "pixels": {
+            "width": 1080,
+            "height": 1088
+          },
+          "deviceScaleFactor": 2
+        },
+        {
+          "path": "public/images/ui/account-code.png",
+          "sha256": "f83c17b02b9b956d93777d8e5e10b60979c7f77ffe98931fb87133a7d74aeb29",
+          "pixels": {
+            "width": 1080,
+            "height": 1302
           },
           "deviceScaleFactor": 2
         }

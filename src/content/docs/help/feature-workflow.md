@@ -1,8 +1,8 @@
 ---
 title: "Take a feature from plan to merge"
 description: "Plan a feature in Firehose or start from a GitHub issue, clarify it, build it in a worktree, review it with Smart Review and X-Ray, test it, and open a pull request."
-verified: "2026-10-13"
-evidence: ["feature-workflow"]
+verified: "2026-10-21"
+evidence: ["feature-workflow", "workflows"]
 ---
 
 Take one feature all the way through Firehose: plan it, build it in its own worktree, review it two ways, test it, and hand it off as a pull request. You can start from an idea and shape the plan inside Firehose, or start from a GitHub issue.
@@ -147,6 +147,8 @@ Select the issue to open its details: labels, body, and **Open on GitHub**. Then
 </figure>
 
 In **Choose the agent for issue #42**, pick the provider, model, and permission settings, then select **Create session**. Firehose creates a new worktree on a branch that starts with the issue number, such as `42-greet-blank-names`, and starts the agent there.
+
+With Workflows (beta) turned on, the issue's details also offer **Run workflow…**, which runs a saved list of steps on the issue instead of a single kickoff. See [Use workflows (beta)](/guides/use-workflows/#9-fix-github-issues-with-one-click).
 
 <figure class="product-capture">
   <img src="/images/help/issue-session-modal.png" width="704" height="584" loading="lazy" alt="The Create issue session dialog titled Choose the agent for issue #42, explaining that Firehose will create a new worktree and start the agent there, with provider choices, a Model row, the permission checkbox, and Cancel and Create session buttons.">

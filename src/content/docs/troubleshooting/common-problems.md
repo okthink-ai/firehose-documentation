@@ -1,8 +1,8 @@
 ---
 title: "Get unstuck"
-description: "Follow concrete checks for activation, connection, project creation, startup, message delivery, and missing changes."
-verified: "2026-10-04"
-evidence: ["activation", "tailnet-access", "hosted-connection", "connection", "settings", "launch", "chat", "diff", "questions", "project-creation", "diff-comparisons", "session-signals", "diagnostics", "git-refresh", "question-details", "layout"]
+description: "Follow concrete checks for activation, connection, project creation, startup, message delivery, ended sessions, and missing changes."
+verified: "2026-10-21"
+evidence: ["activation", "tailnet-access", "hosted-connection", "connection", "settings", "launch", "chat", "diff", "questions", "project-creation", "diff-comparisons", "session-signals", "diagnostics", "git-refresh", "question-details", "oom-isolation", "chat-history-snapshots", "layout", "symlinked-project-dirs", "missing-workspace-error", "cut-off-sessions"]
 ---
 
 Find the symptom you recognize and work through its checks in order. Keep the exact error text so you can report what failed.
@@ -24,9 +24,8 @@ A new installation shows **Activate Firehose** until you activate it with a subs
 
 On the Firehose computer:
 
-1. Run `firehose status` to check that Firehose is running.
-2. Open `http://localhost:4801`, or the port you chose with `--port`.
-3. If it does not load, check the logs in `~/.firehose/logs`.
+1. Open `http://localhost:4801`, or the port you chose with `--port`. If the dashboard loads, Firehose is running.
+2. If it does not load, follow [If Firehose does not start](/getting-started/install/#if-firehose-does-not-start).
 
 From your phone or another computer:
 
@@ -55,6 +54,8 @@ Return to [Connect to Firehose](/getting-started/connect/) once the check passes
 3. Preserve other entries, add the missing parent if needed, and select **Save**. Look for **Saved**.
 4. Select **New session** (the **+** at the top of the **Sessions** sidebar) again and find the project at **Pick a project**.
 
+If the project directory is a symbolic link, such as `~/code` pointing to an external drive, and the picker lists none of its projects, update Firehose with `firehose update`. Firehose 1.3.0 and later list projects through a linked directory. A project that is itself a link inside the directory is still not listed.
+
 If refresh reports an error, record it and check the server connection. If you need a new repository, use [New git project](/getting-started/first-session/#1-prepare-a-practice-project).
 
 ## Creating a project fails
@@ -81,6 +82,8 @@ For a new worktree, select **New worktree** at **Choose a workspace** and enter 
 
 After **Start session**, read the launch error. If it concerns installation, authentication, or model access, give the provider, model, and error text to the server operator. Ask the operator to confirm a successful launch with that provider/model on the server, then retry **Start session**. Success means the session opens in the intended workspace. If it still fails, include the new error and the operator’s last successful check in your report.
 
+If starting a session, or restoring an earlier one, fails with an error that includes **Agent working directory no longer exists:** or **Agent working directory is not a directory:** followed by a path, the session's folder was deleted or replaced, for example when its worktree was cleaned up. Reinstalling the agent won't help. Start a new session in a workspace that still exists; see [Choose a workspace](/guides/workspaces/). Codex, Antigravity, and the other providers Firehose runs in the background report this; Claude Code does not.
+
 ## My message didn’t reach the agent
 
 1. Read the delivery notice and confirm the selected session.
@@ -91,6 +94,19 @@ After **Start session**, read the launch error. If it concerns installation, aut
 **Delivery could not be confirmed** means Firehose cannot establish whether the message arrived. Follow the notice’s terminal-opening control and check whether the message is still in the input box or already in the conversation. If you cannot check, ask the operator rather than repeatedly sending a potentially duplicated request.
 
 If the notice reports that the agent exited or restarted, check whether the selected session still accepts input. If not, open a new session in the intended workspace and explain the unfinished task there. If it reports rejected or partial input, use the terminal-opening control to inspect that input before retrying. A network reconnection does not prove an earlier message was delivered.
+
+### Your message cleared but never arrived (Claude Code 2.1.300)
+
+Claude Code 2.1.300, released on October 14, 2026, started saving internal records in its conversation history. Firehose 1.2.4 and earlier show those records as chat messages, which causes two problems in Claude Code sessions:
+
+- Tool activity appears twice in the conversation.
+- A message you send clears from the message box but never reaches the agent.
+
+Firehose 1.2.5 fixes both. To check your Claude Code version, run `claude --version`.
+
+1. Run `firehose update` on the Firehose computer to install 1.2.5 or later.
+2. Reload the dashboard.
+3. Send the message again. The copy that cleared never reached the agent, so this does not duplicate it.
 
 ### Example: delivery could not be confirmed
 
@@ -106,6 +122,19 @@ Suppose you sent “Run the greeting tests,” then saw **Delivery could not be 
 Read the latest response alongside the [session signals](/tools/chat/#read-the-session-signals). **Idle** is not proof the task succeeded. Answer an ordinary question in the message box, or use the **Ask me** tab for a questionnaire.
 
 For **Stopping...**, check whether it changes to **Idle** and whether the latest response acknowledges interruption. If it remains unchanged and you cannot read progress, report that state instead of sending repeated interrupts. For **Transcript unavailable**, check the server connection and share the status with the operator if it persists. Repeated interruption does not repair unavailable conversation data.
+
+## A Claude Code session ended on its own
+
+If a Claude Code session stopped and left the **Sessions** sidebar without you closing it, the Firehose computer may have run out of memory. When that happens, Linux stops a process to free memory, such as a large build or test run that the agent started.
+
+Before Firehose 1.2.4, on Linux computers where tmux runs each pane under systemd, stopping one of the agent's commands could end the whole session with it. Firehose 1.2.4 protects Claude Code sessions from this, usually within 15 seconds of their start: only the stopped command fails, and the agent keeps running and can read the failure. A session still ends if Linux stops the agent itself. Codex and Antigravity sessions are not covered, and Macs are not affected.
+
+1. Run `firehose update` on the Firehose computer so it has 1.2.4 or later.
+2. Free memory before the agent runs the heavy command again. Close programs you don't need, or run fewer sessions at once.
+3. Files the agent already changed stay in the workspace. [Check the saved workspace and latest result](/guides/return-to-work/), then start a new session to continue.
+4. If a session on 1.2.4 or later still ends on its own, [report the problem](#i-need-to-report-a-problem) with the time it happened.
+
+From Firehose 1.3.0 on, a Claude Code session that Firehose started is not lost when it is cut off, whether by the system stopping the agent, a restart of the computer, a crash, or a Firehose restart. It stays in the **Sessions** sidebar with its conversation, and sending it a message reconnects it. See [Reconnect a cut-off Claude Code session](/guides/return-to-work/#reconnect-a-cut-off-claude-code-session).
 
 ## Questions are still waiting or won’t submit
 

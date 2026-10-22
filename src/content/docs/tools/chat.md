@@ -1,8 +1,8 @@
 ---
 title: "Chat and follow-ups"
 description: "Send useful requests, follow an agent\u2019s work, and decide when to send another message."
-verified: "2026-09-29"
-evidence: ["chat", "session-signals", "layout"]
+verified: "2026-10-21"
+evidence: ["chat", "session-signals", "layout", "chat-formatting"]
 ---
 
 Give your agent a clear task, follow its response, and keep the conversation moving when more information is needed.
@@ -14,6 +14,8 @@ Give your agent a clear task, follow its response, and keep the conversation mov
 3. Type your request in the message box at the bottom of the session, which shows `Type / for commands...` when empty.
 4. Press Enter, or select the round arrow button at the right of the message box.
 5. Follow the response and activity in the conversation. On a phone, it is in the **Chat** tab.
+
+On a computer, the message box keeps the keyboard focus after you send, queue, or retry a message with the mouse, so you can type the next one, or dictate it with a dictation tool, without clicking back into the box. On a touch screen, it lets go of focus so the on-screen keyboard stays closed.
 
 A useful request names the result, relevant files, constraints, and how the agent should check its work. For example:
 
@@ -27,6 +29,8 @@ Run the checks and tell me what changed. Do not commit or push.
 ## Follow the work
 
 The conversation shows responses and tool activity as the agent works. Read the latest messages before intervening: it may be running a command, asking a question, or explaining why it could not continue.
+
+Replies are formatted as Markdown. A Markdown table appears as a table, and one wider than the conversation scrolls sideways. A link to a file in the project opens it in the file viewer, including a file whose name has spaces written as `[plan](<docs/branch split plan.md>)`.
 
 A session that stops showing activity may have finished its turn or need help. Read the response to tell which. A turn ending does not mean every part of your task succeeded.
 

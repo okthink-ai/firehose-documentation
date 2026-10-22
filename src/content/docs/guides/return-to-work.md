@@ -1,8 +1,8 @@
 ---
 title: "Leave and return to work"
 description: "Record a useful stopping point and distinguish reconnecting, restoring an agent, and finding retained files."
-verified: "2026-09-29"
-evidence: ["connection", "session-signals", "closing", "persistence", "terminal", "layout"]
+verified: "2026-10-21"
+evidence: ["connection", "session-signals", "closing", "persistence", "terminal", "layout", "cut-off-sessions"]
 ---
 
 Leave a clear stopping point and check the actual state when you return. Your browser connection, agent process, conversation, and repository files have separate lifetimes.
@@ -22,7 +22,26 @@ Keep the server awake and connected if you expect agents to work while you are a
 | Session closed with worktree retained | Use the recorded path and branch to [find retained work](/guides/finish-a-task/#find-retained-work-later) |
 | Terminal disconnected | Check whether that terminal and command still exist; detached terminals can be cleaned up |
 
+For a Claude Code session cut off by a restart, crash, or memory shortage, see [Reconnect a cut-off Claude Code session](#reconnect-a-cut-off-claude-code-session) below.
+
 Firehose has restoration paths for managed sessions using saved session information and history. That does not establish that every provider, in-flight command, or restart will resume identically. Full restart outcomes still need release walkthroughs; check the visible state rather than treating restored history as proof that the agent is running.
+
+## Reconnect a cut-off Claude Code session
+
+From Firehose 1.3.0 on, a Claude Code session that Firehose started is not lost when it is cut off by a restart of the computer, a crash, the system stopping it for memory, or a Firehose restart. It stays in the **Sessions** sidebar looking as it did, with its full conversation. Opening it starts nothing.
+
+1. Select the session and read the end of the conversation.
+2. Send your next message. While Firehose reconnects, the session's row and your message show **Reconnecting…**.
+3. The session continues in the same row, with the permissions it had before.
+
+A hint beside the message box says what reconnecting costs:
+
+- Within about an hour of the last turn, Claude Code rereads the conversation from its cache, which costs much less than reading it fresh. The hint reads like **Reconnect · rereads 80k tokens from cache (cache warm, 37 min left)**.
+- After that, Firehose has a small model write a summary of the conversation and starts a fresh conversation from it, so the agent doesn't reread everything. The hint reads like **Reconnect · starts from a summary instead of 329k tokens**. The earlier conversation stays visible above.
+
+If a session was in the middle of a task when a restart of the computer or a memory shortage cut it off, Firehose can continue it on its own while the cache is still warm, and a notification says how many sessions it continued. It never continues a session you stopped yourself.
+
+If reconnecting fails, your message stays in the message box and Firehose says why, for example **This conversation is already running elsewhere** or that the session's folder no longer exists. To set a cut-off session aside, close it from its **⋮** (**Session options**) menu as usual; a session you closed doesn't come back. Only Claude Code sessions are kept this way.
 
 ## Resume from evidence
 

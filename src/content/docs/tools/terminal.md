@@ -1,8 +1,8 @@
 ---
 title: "Run a check in the terminal"
 description: "Open a server shell in the intended workspace and distinguish it from an agent's live terminal."
-verified: "2026-09-29"
-evidence: ["terminal", "file-access", "example", "layout"]
+verified: "2026-10-21"
+evidence: ["terminal", "file-access", "example", "layout", "terminal-tmux-viewer"]
 ---
 
 Run a project command yourself and inspect its output in Firehose's **Terminal** tab or terminal drawer.
@@ -39,10 +39,12 @@ Expect four passing cases. A missing file usually means you need to check the wo
 
 **Command** opens a terminal for a specified command. **Tmux** attaches to an existing terminal session. **Open Claude Code**, a button on some approval cards and delivery notices, and the **Claude Code** tab let you interact with the agent's terminal. Input there can answer or interrupt the agent; use a separate **Shell** for independent checks.
 
+A terminal pane attached to a tmux session stays on that session. If you also attach to it from your own terminal and a session picker switches the Firehose pane to another tmux session, Firehose moves the pane back within about a second, and before it sends anything you type. If Firehose can't confirm which session the pane is on, it refuses your input and shows an error, rather than risk typing into another agent's session. Send the input again after a moment.
+
 ## Hide, close, and reconnect
 
 **Close terminal drawer** hides the drawer. The close button on an individual terminal tab requests termination of that terminal; it is a different action. Keep output you need before closing it.
 
 Disconnected terminals can be cleaned up by the server, so use the project's normal process management for work that must survive your departure. See [Leave and return](/guides/return-to-work/) before relying on a terminal command to keep running.
 
-If **Terminal needs authorization** appears, read the error and select **Retry** after checking your connection. If it still fails, check that Firehose is running with `firehose status`. Use the manual **Authorize** field only with a terminal key from a source you trust; keep that key out of Chat and public reports.
+If **Terminal needs authorization** appears, read the error and select **Retry** after checking your connection. If it still fails, check that Firehose is running by opening `http://localhost:4801`, or the port you chose with `--port`, on the Firehose computer. Use the manual **Authorize** field only with a terminal key from a source you trust; keep that key out of Chat and public reports.
