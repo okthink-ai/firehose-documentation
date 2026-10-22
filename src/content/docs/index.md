@@ -1,8 +1,8 @@
 ---
 title: "Put your agents to work."
 description: "Start an agent, follow its work, and review the result with practical Firehose guides."
-verified: "2026-10-04"
-evidence: ["launch", "chat", "diff", "questions", "connection", "install"]
+verified: "2026-10-21"
+evidence: ["launch", "chat", "diff", "questions", "connection", "install", "release-1-2-3", "release-1-2-4", "oom-isolation", "release-1-2-5", "chat-history-snapshots", "release-1-3-0", "workflows-beta", "session-reconnect", "settings-workspace"]
 tableOfContents: false
 ---
 
@@ -10,7 +10,7 @@ Give a coding agent a task. Follow the conversation, answer its questions, and r
 
 [Install Firehose →](/getting-started/install/)
 
-**What you need:** a Mac or Linux computer, a Firehose subscription, and an agent tool such as Claude Code or Codex. The install and activation guides describe Firehose 1.2.0; the other guides were checked against Firehose 1.0.1.
+**What you need:** a Mac or Linux computer, a Firehose subscription, and an agent tool such as Claude Code or Codex. The install and activation guides describe Firehose 1.3.0. The other guides were checked against Firehose 1.0.1, with later changes added: the 1.2.3 changes to Smart Review and clarifying questions, the 1.2.4 and 1.2.5 session and chat fixes, and the 1.3.0 full-page Settings, [Workflows (beta)](/tools/workflows/), and Claude Code sessions that [reconnect after a restart](/guides/return-to-work/).
 
 ## Find your next step
 

@@ -1,8 +1,8 @@
 ---
 title: "Run a check in the terminal"
 description: "Open a server shell in the intended workspace and distinguish it from an agent's live terminal."
-verified: "2026-09-29"
-evidence: ["terminal", "file-access", "example", "layout"]
+verified: "2026-10-21"
+evidence: ["terminal", "file-access", "example", "layout", "terminal-input-guard", "session-reconnect"]
 ---
 
 Run a project command yourself and inspect its output in Firehose's **Terminal** tab or terminal drawer.
@@ -39,10 +39,31 @@ Expect four passing cases. A missing file usually means you need to check the wo
 
 **Command** opens a terminal for a specified command. **Tmux** attaches to an existing terminal session. **Open Claude Code**, a button on some approval cards and delivery notices, and the **Claude Code** tab let you interact with the agent's terminal. Input there can answer or interrupt the agent; use a separate **Shell** for independent checks.
 
+### Terminals on a session that was cut off
+
+From Firehose 1.3.0, a Claude Code session that stopped without you closing it, for example after a computer restart, stays in the **Sessions** sidebar. On that session:
+
+- The **Terminal** tab opens a shell in the session's folder, as usual. It does not start the agent, so you can check the workspace first.
+- The **Claude Code** tab needs a running agent. Selecting it reconnects the session, then opens the agent's terminal. See [Pick up a Claude Code session that was cut off](/guides/return-to-work/#pick-up-a-claude-code-session-that-was-cut-off).
+
 ## Hide, close, and reconnect
 
 **Close terminal drawer** hides the drawer. The close button on an individual terminal tab requests termination of that terminal; it is a different action. Keep output you need before closing it.
 
 Disconnected terminals can be cleaned up by the server, so use the project's normal process management for work that must survive your departure. See [Leave and return](/guides/return-to-work/) before relying on a terminal command to keep running.
 
-If **Terminal needs authorization** appears, read the error and select **Retry** after checking your connection. If it still fails, check that Firehose is running with `firehose status`. Use the manual **Authorize** field only with a terminal key from a source you trust; keep that key out of Chat and public reports.
+### Input was not written
+
+The **Claude Code** tab and **Tmux** terminals show a tmux session, which is a named terminal workspace on the Firehose computer. If you also use tmux yourself on that computer, switching sessions from your own tmux client could move Firehose's view to another agent's session. From Firehose 1.3.0, Firehose moves its view back to the session named on the tab, usually within a second, before it sends anything you type.
+
+If Firehose cannot confirm that the terminal is on the right session, it does not send your keystrokes. An error appears above the terminal, such as:
+
+```text
+Input was not written: the terminal is not on tmux session <session name>; … Press Retry to reattach.
+```
+
+Select **Retry** above the terminal, then type your input again. Nothing you typed reached any session, so retyping does not duplicate it.
+
+### Terminal needs authorization
+
+If **Terminal needs authorization** appears, read the error and select **Retry** after checking your connection. If it still fails, check that Firehose is running by opening `http://localhost:4801`, or the port you chose with `--port`, on the Firehose computer. Use the manual **Authorize** field only with a terminal key from a source you trust; keep that key out of Chat and public reports.

@@ -1,8 +1,8 @@
 ---
 title: "Use Firehose on mobile web"
 description: "Connect from your phone, read an agent\u2019s progress, and answer in the correct session."
-verified: "2026-09-29"
-evidence: ["tailnet-access", "tailscale-setup", "connection", "mobile", "chat", "git-refresh", "file-access", "layout"]
+verified: "2026-10-21"
+evidence: ["settings-workspace", "annotation", "tailnet-access", "tailscale-setup", "connection", "mobile", "chat", "git-refresh", "file-access", "layout"]
 ---
 
 Check an agent’s progress and respond from your phone while its work stays on your Firehose server.
@@ -27,6 +27,19 @@ Read the latest response and visible activity. The workspace tabs can scroll on 
 - In **Diff**, select **Changes**, then the **⋮** button labeled **Diff filters** next to the search icon to reach **Compare**. A narrower layout may show one pane at a time; select **Back to file list** to return.
 - Tap the branch name in the prompt bar to refresh Git status. On desktop, hovering over it shows “Click to refresh Git status”; phones do not require hovering.
 - Use the session header’s three-dot menu for **Interrupt**. Do not confuse it with the documentation site’s navigation menu.
+- To open **Settings**, go back to the session list and select the gear on the icon rail. Settings opens at a list of its sections, such as **General** and **Connection**. Select one to open its page, and select the back arrow, **Back to Settings sections**, to return to the list. See [Open and close Settings](/reference/settings/#open-and-close-settings).
+
+## Clear a notification
+
+When an agent finishes its turn or asks clarifying questions, Firehose shows a notification card at the top right of the screen. Tap it to open that session. To dismiss it without opening the session, swipe it sideways. A card you swipe only a little springs back. Notifications also disappear on their own after a few seconds.
+
+## Make text larger or smaller
+
+In Chrome on Android, Firehose follows your phone's system text size. Change the size in your phone's display settings, then switch back to the Firehose tab; the text updates when the tab is shown again. Other phone browsers may keep their own default size.
+
+## Annotate a Markdown file by touch
+
+Sentence annotation has a touch mode, so you can select sentences in a Markdown file while you read it. It is a beta feature, which may change or go away, and it is off by default. To turn it on, open **Settings**, select **Beta features**, and turn on **Keyboard and touch annotation mode**. An **Annotate** button then appears in the file viewer's header when you open a Markdown file. See [Annotate text](/tools/chat/#annotate-text).
 
 For the practice file, use the [operator-assisted file route](/getting-started/files-and-terminal/#ask-your-operator-to-place-the-file) if you do not have a terminal connection to the server.
 

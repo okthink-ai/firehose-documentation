@@ -1,8 +1,8 @@
 ---
 title: "What you can do"
 description: "Choose a practical Firehose workflow for understanding code, making changes, or reviewing work."
-verified: "2026-09-29"
-evidence: ["launch", "chat", "diff", "questions", "review", "connection", "tailnet-access", "layout"]
+verified: "2026-10-21"
+evidence: ["launch", "chat", "diff", "questions", "review", "review-start-screen", "annotation", "connection", "tailnet-access", "layout"]
 ---
 
 Choose a workflow that matches the result you want, then use the linked guide to complete it.
@@ -25,7 +25,7 @@ Try: “Make blank names display Hello, guest! Keep the existing behavior for no
 
 ## Clarify a task before starting
 
-Select **tools** on the prompt bar above the message box, then **Ask me questions**, to have an agent inspect the project and prepare a questionnaire. Answer it in the **Ask me** tab at the top of the session, then send the answers to the session that should do the work. See [clarifying questions](/tools/questions/).
+Select **tools** on the prompt bar above the message box, then **Ask me questions**, or select **Ask clarifying questions** in the empty **Ask me** tab, to have an agent inspect the project and prepare a questionnaire. Answer it in the **Ask me** tab at the top of the session, then send the answers to the session that should do the work. See [clarifying questions](/tools/questions/).
 
 ## Follow several sessions
 
@@ -33,7 +33,7 @@ Use the sidebar to move between projects and sessions. Read each conversation’
 
 ## Review the result
 
-Use the **Diff** tab at the top of a session to inspect changed files and commits. Use the **Smart Review** tab for agent-generated findings, then investigate the findings and verify any fixes. A completed response alone does not establish that the code is correct.
+Use the **Diff** tab at the top of a session to inspect changed files and commits. Use the **Smart Review** tab for agent-generated findings; select **Start a review** there if the branch has none. Then investigate the findings and verify any fixes. To comment on exact wording in a reply or a plan file, [annotate the text](/tools/chat/#annotate-text) and send your notes with your next message. A completed response alone does not establish that the code is correct.
 
 ## Check in from another device
 

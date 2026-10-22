@@ -1,8 +1,8 @@
 ---
 title: "Get unstuck"
-description: "Follow concrete checks for activation, connection, project creation, startup, message delivery, and missing changes."
-verified: "2026-10-04"
-evidence: ["activation", "tailnet-access", "hosted-connection", "connection", "settings", "launch", "chat", "diff", "questions", "project-creation", "diff-comparisons", "session-signals", "diagnostics", "git-refresh", "question-details", "layout"]
+description: "Follow concrete checks for activation, connection, project creation, startup, message delivery, ended sessions, and missing changes."
+verified: "2026-10-21"
+evidence: ["activation", "tailnet-access", "hosted-connection", "connection", "settings", "launch", "chat", "diff", "questions", "project-creation", "diff-comparisons", "session-signals", "diagnostics", "git-refresh", "question-details", "oom-isolation", "chat-history-snapshots", "layout", "session-reconnect", "missing-workdir", "symlinked-projects", "settings-workspace"]
 ---
 
 Find the symptom you recognize and work through its checks in order. Keep the exact error text so you can report what failed.
@@ -24,9 +24,8 @@ A new installation shows **Activate Firehose** until you activate it with a subs
 
 On the Firehose computer:
 
-1. Run `firehose status` to check that Firehose is running.
-2. Open `http://localhost:4801`, or the port you chose with `--port`.
-3. If it does not load, check the logs in `~/.firehose/logs`.
+1. Open `http://localhost:4801`, or the port you chose with `--port`. If the dashboard loads, Firehose is running.
+2. If it does not load, follow [If Firehose does not start](/getting-started/install/#if-firehose-does-not-start).
 
 From your phone or another computer:
 
@@ -38,11 +37,11 @@ From your phone or another computer:
 | What you see | What to do |
 | --- | --- |
 | `This Firehose only answers its owner over the tailnet.` | You are signed in to Tailscale with a different account than the computer's owner. Sign in with the owner's account. Other people cannot connect to your Firehose. |
-| **Enter the server address without a port. Port 4801 is added automatically.** | Remove the port from the hosted app's form. If you installed on another port, open the address shown under **Open from your other devices** in **Settings** directly instead of using agents.okthink.ai. |
+| **Enter the server address without a port. Port 4801 is added automatically.** | Remove the port from the hosted app's form. If you installed on another port, open the address shown in **Settings → Connection → Open from your other devices** directly instead of using agents.okthink.ai. |
 | **Enter the full Tailscale MagicDNS hostname ending in .ts.net** | Use your computer's full Tailscale name, such as `your-computer.your-tailnet.ts.net`. Short names and IP addresses do not work in the hosted app. |
 | `Tailscale only lets its operator publish services on this machine.` when running `firehose tailnet on` | Run `sudo tailscale set --operator=$USER` once, as the message says, then run `firehose tailnet on` again. |
 | `HTTPS and Serve must be turned on for your tailnet first` | Follow the link in the message, or turn them on in the Tailscale admin console. Then run `firehose tailnet on` again. |
-| **Restart Firehose to apply this.** in Settings | Select **Restart now**. |
+| **Restart Firehose to apply this.** in **Settings → Connection** | Select **Restart now**. |
 
 If a version warning says the server is outdated, run `firehose update` on the Firehose computer. If it says the client is outdated, reload the app. These warnings are advisory; the warning alone does not refuse a connection.
 
@@ -51,17 +50,19 @@ Return to [Connect to Firehose](/getting-started/connect/) once the check passes
 ## My project isn’t listed
 
 1. Check that the repository exists on the server, not only on your browser device.
-2. Open **Settings** (the gear icon at the bottom of the icon rail on the far left) and find **Project directories**. The parent directory containing the repository should be in the comma-separated list.
+2. Open **Settings** (the gear icon at the bottom of the icon rail on the far left), select **General**, and find **Project directories**. The parent directory containing the repository should be in the comma-separated list.
 3. Preserve other entries, add the missing parent if needed, and select **Save**. Look for **Saved**.
 4. Select **New session** (the **+** at the top of the **Sessions** sidebar) again and find the project at **Pick a project**.
 
 If refresh reports an error, record it and check the server connection. If you need a new repository, use [New git project](/getting-started/first-session/#1-prepare-a-practice-project).
 
+A project directory can be a symbolic link (symlink), a shortcut to a folder somewhere else, such as `~/code` pointing to a folder on an external drive. Before Firehose 1.3.0, a symlinked project directory listed no projects. From 1.3.0, Firehose lists the repositories inside it and keeps a project you just created or cloned selected in the picker. A repository that is itself a symlink inside a project directory is still not listed; add the folder it points to instead.
+
 ## Creating a project fails
 
 If the error says the name already exists, select that existing project or choose a different name. Firehose does not overwrite an existing directory through Create.
 
-If no project directories are configured, add a parent in **Settings → Project directories**, save it, and retry. **Location** must be one of those configured roots.
+If no project directories are configured, add a parent in **Settings → General → Project directories**, save it, and retry. **Location** must be one of those configured roots.
 
 If the project was created without an initial commit, configure your normal Git identity in a terminal on the server, then commit the generated README. The repository still exists; you do not need to create it again.
 
@@ -81,6 +82,17 @@ For a new worktree, select **New worktree** at **Choose a workspace** and enter 
 
 After **Start session**, read the launch error. If it concerns installation, authentication, or model access, give the provider, model, and error text to the server operator. Ask the operator to confirm a successful launch with that provider/model on the server, then retry **Start session**. Success means the session opens in the intended workspace. If it still fails, include the new error and the operator’s last successful check in your report.
 
+### The working directory no longer exists
+
+Codex, Antigravity, Grok, OpenCode, and Pi sessions run in a folder on the Firehose computer, called the working directory. If that folder was deleted or moved, for example when its worktree was cleaned up, starting or restoring the session fails with one of these messages:
+
+- **Agent working directory no longer exists: …**, followed by the folder's path
+- **Agent working directory is not a directory: …**, when a file now sits at that path
+
+Before Firehose 1.3.0, the same problem showed a misleading error instead, such as a message that the agent's CLI is not installed, `Pi runtime did not provide a pid`, or `spawn … ENOENT`. Your provider is installed correctly; only the folder is missing.
+
+To continue, start a new session in a workspace that exists. If the work is on a branch you kept, use **Existing branch** at **Choose a workspace**; see [Continue an existing branch](/guides/workspaces/#continue-an-existing-branch). If the folder was on a drive that is not connected, reconnect the drive and try again.
+
 ## My message didn’t reach the agent
 
 1. Read the delivery notice and confirm the selected session.
@@ -90,7 +102,20 @@ After **Start session**, read the launch error. If it concerns installation, aut
 
 **Delivery could not be confirmed** means Firehose cannot establish whether the message arrived. Follow the notice’s terminal-opening control and check whether the message is still in the input box or already in the conversation. If you cannot check, ask the operator rather than repeatedly sending a potentially duplicated request.
 
-If the notice reports that the agent exited or restarted, check whether the selected session still accepts input. If not, open a new session in the intended workspace and explain the unfinished task there. If it reports rejected or partial input, use the terminal-opening control to inspect that input before retrying. A network reconnection does not prove an earlier message was delivered.
+If the notice reports that the agent exited or restarted, check whether the selected session still accepts input. A Claude Code session that was cut off reconnects when you send it a message; see [Pick up a Claude Code session that was cut off](/guides/return-to-work/#pick-up-a-claude-code-session-that-was-cut-off). For other providers, or if it can't reconnect, open a new session in the intended workspace and explain the unfinished task there. If it reports rejected or partial input, use the terminal-opening control to inspect that input before retrying. A network reconnection does not prove an earlier message was delivered.
+
+### Your message cleared but never arrived (Claude Code 2.1.300)
+
+Claude Code 2.1.300, released on October 14, 2026, started saving internal records in its conversation history. Firehose 1.2.4 and earlier show those records as chat messages, which causes two problems in Claude Code sessions:
+
+- Tool activity appears twice in the conversation.
+- A message you send clears from the message box but never reaches the agent.
+
+Firehose 1.2.5 fixes both. To check your Claude Code version, run `claude --version`.
+
+1. Run `firehose update` on the Firehose computer to install 1.2.5 or later.
+2. Reload the dashboard.
+3. Send the message again. The copy that cleared never reached the agent, so this does not duplicate it.
 
 ### Example: delivery could not be confirmed
 
@@ -106,6 +131,19 @@ Suppose you sent “Run the greeting tests,” then saw **Delivery could not be 
 Read the latest response alongside the [session signals](/tools/chat/#read-the-session-signals). **Idle** is not proof the task succeeded. Answer an ordinary question in the message box, or use the **Ask me** tab for a questionnaire.
 
 For **Stopping...**, check whether it changes to **Idle** and whether the latest response acknowledges interruption. If it remains unchanged and you cannot read progress, report that state instead of sending repeated interrupts. For **Transcript unavailable**, check the server connection and share the status with the operator if it persists. Repeated interruption does not repair unavailable conversation data.
+
+## A Claude Code session ended on its own
+
+If a Claude Code session stopped without you closing it, the Firehose computer may have restarted or run out of memory. Before Firehose 1.3.0, the session also left the **Sessions** sidebar. From 1.3.0 it stays there and looks idle.
+
+When the computer runs out of memory, Linux stops a process to free memory, such as a large build or test run that the agent started.
+
+Before Firehose 1.2.4, on Linux computers where tmux runs each pane under systemd, stopping one of the agent's commands could end the whole session with it. Firehose 1.2.4 protects Claude Code sessions from this: only the stopped command fails, and the agent keeps running and can read the failure. From 1.3.0 the protection usually applies within 5 seconds of a session's start. A session still ends if Linux stops the agent itself. Codex and Antigravity sessions are not covered, and Macs are not affected.
+
+1. Run `firehose update` on the Firehose computer so it has 1.3.0 or later.
+2. Free memory before the agent runs the heavy command again. Close programs you don't need, or run fewer sessions at once.
+3. Files the agent already changed stay in the workspace. On 1.3.0 or later, open the session in the sidebar, check its changes, and send it a message to reconnect it; see [Pick up a Claude Code session that was cut off](/guides/return-to-work/#pick-up-a-claude-code-session-that-was-cut-off). On earlier releases, or if you see a message starting with **Can't wake**, [check the saved workspace and latest result](/guides/return-to-work/#resume-from-evidence), then start a new session to continue.
+4. If a session on 1.2.4 or later still ends on its own, or disappears from the sidebar on 1.3.0 or later, [report the problem](#i-need-to-report-a-problem) with the time it happened.
 
 ## Questions are still waiting or won’t submit
 

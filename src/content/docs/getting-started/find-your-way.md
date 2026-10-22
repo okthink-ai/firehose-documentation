@@ -1,13 +1,13 @@
 ---
 title: "Find your way around Firehose"
 description: "Learn where the sidebar, New session, Settings, workspace tabs, prompt bar, and message box are, on desktop and on a phone."
-verified: "2026-09-29"
-evidence: ["layout"]
+verified: "2026-10-21"
+evidence: ["settings-workspace", "workflows-beta", "layout"]
 ---
 
 Learn where Firehose keeps its controls, so you can follow any guide on this site. Every guide names a control and where it is; this page shows how those places fit together.
 
-This page describes Firehose 1.0.1.
+This page describes Firehose 1.0.1, with the Firehose 1.3.0 changes to Settings, the icon rail, and the phone layout.
 
 ## The layout on a computer
 
@@ -15,15 +15,29 @@ The Firehose window has four areas, from left to right and top to bottom:
 
 | Area | Where it is | What you use it for |
 | --- | --- | --- |
-| **Icon rail** | The narrow strip of icons on the far left edge | Switch the sidebar between panels. The speech-bubble icon at the top shows **Sessions**. The gear icon at the bottom opens **Settings**. |
-| **Sessions sidebar** | Beside the icon rail | See every session, grouped by project. The **+** button in its header, labeled **New session**, starts a session. |
+| **Icon rail** | The narrow strip of icons on the far left edge | Switch between panels. The speech-bubble icon at the top shows **Sessions**. At the bottom, **Changelog** opens the release notes and the gear opens **Settings**. |
+| **Sessions sidebar** | Beside the icon rail | See every session, grouped by project. The **+** button in its header, labeled **New session**, starts a session. Each session row has a **⋮** button (**Session options**). |
 | **Workspace tabs** | A row across the top of the selected session | Open **Terminal**, **Diff**, **Smart Review**, **Ask me**, and other tools. The **Chat** toggle sits at the right end of this row. |
 | **Prompt bar and message box** | The bottom of the selected session | The prompt bar shows the session's folder and branch, with **commit** and **tools** on the right. Below it, the message box is where you type to the agent. |
 
 A status bar runs along the very bottom of the window.
 
+### Icons on the rail
+
+From top to bottom, the icon rail has:
+
+- **Sessions**, the speech-bubble icon, for the session list.
+- **GitHub Issues**, for the projects' issues.
+- **Workflows**, only when you turn on **Show Workflows** in [**Settings → Beta features**](/reference/settings/#beta-features). Workflows are a beta feature and may change or go away.
+- **Themes**, for the app's appearance.
+- An idle-sessions icon, only when some sessions are idle.
+- **Branch Cleanup**, for cleaning up branches and worktrees.
+- **Changelog** and **Settings**, at the bottom.
+
+Most icons switch the sidebar to their panel. **Settings** and **Changelog** are different: each opens a full page in place of the sidebar and the session area. Select the same icon again, or select **Sessions**, to go back to your session.
+
 <figure class="product-capture">
-  <a href="/images/ui/layout-desktop.png"><img src="/images/ui/layout-desktop.png" width="1440" height="900" loading="lazy" alt="Firehose on a computer. The icon rail on the far left has a gear icon at the bottom. The Sessions sidebar lists the hello-firehose project with a plus button in its header. The selected session shows workspace tabs across the top, the conversation in the middle, and the prompt bar with tools above the message box at the bottom."></a>
+  <a href="/images/ui/layout-desktop.png"><img src="/images/ui/layout-desktop.png" width="1440" height="900" loading="lazy" alt="Firehose on a computer. The icon rail on the far left has a gear icon at the bottom. The Sessions sidebar has a plus button in its header, Team Chat at the top, a search box, and the hello-firehose project below. The selected session shows workspace tabs across the top, the conversation in the middle, and the prompt bar with tools above the message box at the bottom."></a>
   <figcaption>The Firehose window: icon rail, <strong>Sessions</strong> sidebar with the <strong>+</strong> button, workspace tabs, and the prompt bar and message box. Select the image to open it full size. Sample project and messages.</figcaption>
 </figure>
 
@@ -39,11 +53,13 @@ The **New agent session** dialog walks through three steps:
 
 ## Open Settings
 
-Select the gear icon labeled **Settings** at the bottom of the icon rail. Settings opens in the sidebar. See [Projects, agents, and settings](/reference/settings/) for what each section does.
+Select the gear icon labeled **Settings** at the bottom of the icon rail. Settings opens as a full page in place of the session area, with its sections listed in a column on the left: **General**, **Account**, **Connection**, **Agents**, **Voice & sounds**, **Beta features**, and **Debugging**. Select a section to jump to it.
+
+To go back to your session, select the gear again, select **Sessions**, or press Escape. Your session and any unsent message are still there. See [Projects, agents, and settings](/reference/settings/) for what each section does.
 
 <figure class="product-capture">
-  <img src="/images/ui/settings-panel.png" width="720" height="900" loading="lazy" alt="Settings open in the sidebar, with the gear icon highlighted at the bottom of the icon rail. Sections include Workspace layout, Open from your other devices with Allow my other devices switched on, Tailscale HTTPS, Account, and Conversation names.">
-  <figcaption><strong>Settings</strong> in the sidebar, opened from the gear at the bottom of the icon rail. Sample values.</figcaption>
+  <img src="/images/ui/settings-panel.png" width="1440" height="680" loading="lazy" alt="Settings as a full page, with the gear icon highlighted at the bottom of the icon rail. A column titled Settings lists General, Account, Connection, Agents, Voice and sounds, Beta features, and Debugging, with Connection highlighted. The page beside it shows the Connection section, with Open from your other devices switched on and its tailnet address, Tailscale HTTPS with a Check again button, and the start of the Agents section.">
+  <figcaption><strong>Settings</strong> at the <strong>Connection</strong> section, with the list of sections on the left. Sample values.</figcaption>
 </figure>
 
 ## Work in a session
@@ -69,7 +85,8 @@ A session's status, such as **Idle** or **Stopping...**, appears on its row in t
 
 On a phone, Firehose shows one screen at a time:
 
-- **The session list** is the first screen. The icon rail, including **Settings**, appears only here.
+- **The session list** is the first screen. The icon rail, including **Settings**, appears here, and also on the Settings section list, **GitHub Issues**, and **Changelog**. It is hidden while a session or a Settings page is open.
+- **Settings** opens at a list of its sections. Select one to open its page, and select the back arrow, **Back to Settings sections**, to return to the list.
 - **A session** fills the screen when you select it. The workspace tabs start with **Chat** and scroll sideways. Select the back arrow in the session header to return to the list.
 - **The session header's ⋮ menu** has **Interrupt** and **Session details**.
 

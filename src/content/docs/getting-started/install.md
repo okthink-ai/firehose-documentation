@@ -1,13 +1,13 @@
 ---
 title: "Install Firehose"
 description: "Install Firehose on your Mac or Linux computer with the one-line installer and open the dashboard."
-verified: "2026-10-04"
-evidence: ["install", "tailscale-setup", "layout"]
+verified: "2026-10-21"
+evidence: ["install", "release-1-2-3", "release-1-2-4", "release-1-2-5", "release-1-3-0", "update-notice", "settings-workspace", "tailscale-setup", "layout"]
 ---
 
 Install Firehose on the computer where your repositories live. When you finish, Firehose is running on that computer and its dashboard is open in your browser, ready to [activate](/getting-started/activate/).
 
-This page describes Firehose 1.2.0.
+This page describes Firehose 1.3.0.
 
 ## Before you begin
 
@@ -58,23 +58,31 @@ Do you accept the end-user license agreement? [y/N]
 
 Read the agreement, then type `y` to continue. Any other answer stops the installation without changing anything.
 
-## 3. Choose whether to allow your other devices
+## 3. Wait for Firehose to start
 
-If the computer is connected to Tailscale, the installer asks:
+The installer registers Firehose to start when you log in, then starts it. While Firehose starts, the installer shows `==> Waiting for Firehose to start` and adds a dot every few seconds. The first start can take up to a minute.
+
+If the installer could not register a login service, it starts Firehose for this session only and says so. Run `firehose service install` later to start it at login.
+
+If Firehose does not answer in time, see [If Firehose does not start](#if-firehose-does-not-start).
+
+## 4. Choose whether to allow your other devices
+
+Once Firehose answers, if the computer is connected to Tailscale, the installer asks:
 
 ```text
 This machine is on Tailscale. Also open Firehose from your other devices
 on your tailnet (only you, over HTTPS)? [y/N]
 ```
 
-Type `y` to use Firehose from your phone or another computer, or press Enter to skip it. You can turn it on later; see [Connect to Firehose](/getting-started/connect/#open-firehose-from-your-other-devices). Without Tailscale, the installer does not ask.
+Type `y` to use Firehose from your phone or another computer, or press Enter to skip it. You can turn it on later; see [Connect to Firehose](/getting-started/connect/#open-firehose-from-your-other-devices). Without Tailscale, the installer does not ask. It also skips the question when you upgrade, or when Firehose did not start.
 
-## 4. Check the result
+## 5. Check the result
 
-The installer registers Firehose to start when you log in, starts it, and opens `http://localhost:4801` in your browser. It finishes with a message like this:
+The installer opens `http://localhost:4801` in your browser and finishes with a message like this:
 
 ```text
-==> Firehose 1.2.0 installed
+==> Firehose 1.3.0 installed
 
   Firehose is running at http://localhost:4801.
   It starts by itself when you log in.
@@ -84,8 +92,6 @@ The installer registers Firehose to start when you log in, starts it, and opens 
 On a computer without a desktop, such as one you reach over SSH, no browser opens. The message tells you to open `http://localhost:4801` in a browser instead.
 
 The dashboard shows **Activate Firehose**, with a field for your email address, until you activate it. Continue to [Activate Firehose](/getting-started/activate/).
-
-If the installer could not register a login service, it starts Firehose for this session only and says so. Run `firehose service install` later to start it at login.
 
 ## Use installer options
 
@@ -101,11 +107,11 @@ curl -fsSL https://okthink.ai/install.sh | bash -s -- --port 4900
 | `--tailnet` | Allow your other devices on Tailscale without being asked |
 | `--accept-eula` | Accept the license agreement without a prompt, after reading it |
 | `--no-browser` | Skip opening the dashboard when the installer finishes |
-| `--no-start` | Install without starting Firehose or registering it to start at login |
+| `--no-start` | Install without starting Firehose or registering it to start at login. Run `firehose service install` when you want to start it. |
 | `--release <version>` | Install a specific version instead of the latest |
 | `--dir <path>` | Install somewhere other than `~/.firehose` |
 
-Changing the port has a cost: the hosted app at agents.okthink.ai always connects on port 4801. On another port, open **Settings** (the gear icon at the bottom of the icon rail on the far left) and copy the address under **Open from your other devices** to use on your other devices instead.
+Changing the port has a cost: the hosted app at agents.okthink.ai always connects on port 4801. On another port, open **Settings** (the gear icon at the bottom of the icon rail on the far left), select **Connection**, and copy the address under **Open from your other devices** to use on your other devices instead.
 
 ## Manage Firehose from the terminal
 
@@ -113,13 +119,21 @@ The installer adds a `firehose` command. Open a new terminal window if the comma
 
 | Command | What it does |
 | --- | --- |
-| `firehose status` | Show a quick status in the terminal |
+| `firehose status` | List the Claude Code sessions running on this computer |
+| `firehose version` | Show which version is installed |
 | `firehose update` | Upgrade to the latest release |
 | `firehose tailnet on` | Open Firehose from your other devices on Tailscale |
-| `firehose service uninstall` | Stop starting Firehose at login |
+| `firehose service install` | Start Firehose in the background now, and whenever you log in |
+| `firehose service uninstall` | Stop Firehose and stop starting it at login |
 | `firehose uninstall` | Remove Firehose from this computer |
 
 Running the installer again also upgrades Firehose. It keeps the port you chose before.
+
+### Know when an update is available
+
+Firehose checks for a new release once a day. From Firehose 1.3.0, it also checks when you open the dashboard or return to its tab, at most once an hour, so a new release shows up the day it ships. When it finds one, the dashboard shows a banner such as **Firehose 1.3.1 is available (you have 1.3.0)**, and `firehose status` and `firehose version` end with a line that says the same. Run `firehose update` to install it.
+
+Select **What's new** in the banner to read the release notes. **Dismiss** hides the banner in that browser until the next release. These notices started in Firehose 1.2.3.
 
 ## If the installation stops
 
@@ -132,4 +146,19 @@ The installer prints `ERROR:` followed by the reason. Common ones:
 | `the license agreement must be accepted to install` | Run the command again and type `y`, or add `--accept-eula` after reading the agreement. |
 | `no terminal to confirm the license agreement` | The installer could not ask you. Read the agreement at the path shown, then run it with `--accept-eula`. |
 | `conflicting command(s) already on PATH` | Another program named `firehose` exists. Check what it is before re-running with `--force`. |
-| `Firehose did not answer on port 4801` | Check the logs in `~/.firehose/logs`, then run `firehose status`. |
+
+## If Firehose does not start
+
+If Firehose does not answer within about a minute, the installer prints a warning with your port, 4801 unless you chose another with `--port`:
+
+```text
+WARNING: Firehose did not answer on port 4801
+```
+
+It then shows the last lines of Firehose's log in `~/.firehose/logs`, usually `service.log`. On Linux, it may tell you to read the log with `journalctl --user -u firehose` instead. It does not open your browser or ask about Tailscale.
+
+A first start can take longer than the installer waits, so check before you change anything:
+
+1. Wait a minute, then open `http://localhost:4801`, or the port you chose with `--port`.
+2. If the dashboard loads, Firehose was still starting. Continue to [Activate Firehose](/getting-started/activate/). To use it from your other devices, run `firehose tailnet on`.
+3. If it still does not load, read the log for the cause and fix it. Then run `firehose service install` to start Firehose again, and open the dashboard address once more.

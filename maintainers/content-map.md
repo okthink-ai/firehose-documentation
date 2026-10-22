@@ -12,8 +12,9 @@ Website URLs follow the source path without `.md`; `index.md` is the home page.
 | [Find your way around Firehose](../src/content/docs/getting-started/find-your-way.md) | Learn where the sidebar, New session, Settings, workspace tabs, prompt bar, and message box are, on desktop and on a phone. |
 | [Put files in the right workspace](../src/content/docs/getting-started/files-and-terminal.md) | Save the practice file on your Firehose server and verify your terminal is in the intended project. |
 | [Start your first session](../src/content/docs/getting-started/first-session.md) | Choose an existing project or a tiny practice project, start an agent, and check its answer. |
-| [Help articles](../src/content/docs/help/index.md) | End-to-end walkthroughs that combine several Firehose tools to finish a real piece of work. |
+| [Help articles](../src/content/docs/help/index.md) | End-to-end walkthroughs that combine several Firehose tools to finish a real piece of work or recover from a problem. |
 | [Take a feature from plan to merge](../src/content/docs/help/feature-workflow.md) | Plan a feature in Firehose or start from a GitHub issue, clarify it, build it in a worktree, review it with Smart Review and X-Ray, test it, and open a pull request. |
+| [Recover from lost messages and ended sessions](../src/content/docs/help/recover-session-problems.md) | Fix messages that clear without reaching a Claude Code agent and Claude Code sessions that end on their own, update Firehose, and pick up the lost work. |
 | [Ask for a code walkthrough](../src/content/docs/guides/explain-code.md) | Get a focused explanation of unfamiliar code with file references and verifiable examples. |
 | [Finish and close a task](../src/content/docs/guides/finish-a-task.md) | Verify the result, hand off changes, and choose whether to retain or delete a session’s worktree. |
 | [Make and review a change](../src/content/docs/guides/make-a-change.md) | Give an agent a small task, verify its checks, and inspect the resulting code changes. |
@@ -36,6 +37,7 @@ Website URLs follow the source path without `.md`; `index.md` is the home page.
 | [Find the right tool](../src/content/docs/tools/overview.md) | Choose a Firehose control by the result you want, from starting a session to reviewing changes. |
 | [Ask clarifying questions](../src/content/docs/tools/questions.md) | Choose an interview depth, answer decisions, and send the answers to the session that should continue. |
 | [Use Smart Review](../src/content/docs/tools/smart-review.md) | Choose review actions, dispatch work to your session, and verify the resulting changes. |
+| [Workflows (beta)](../src/content/docs/tools/workflows.md) | Turn on Workflows, build a chain of agent steps, start a run from a session or GitHub issue, follow it, and understand issue claims. |
 | [Run a check in the terminal](../src/content/docs/tools/terminal.md) | Open a server shell in the intended workspace and distinguish it from an agent's live terminal. |
-| [Get unstuck](../src/content/docs/troubleshooting/common-problems.md) | Follow concrete checks for connection, project creation, startup, message delivery, and missing changes. |
+| [Get unstuck](../src/content/docs/troubleshooting/common-problems.md) | Follow concrete checks for activation, connection, project creation, startup, message delivery, ended sessions, and missing changes. |
 | [What you can do](../src/content/docs/what-you-can-do.md) | Choose a practical Firehose workflow for understanding code, making changes, or reviewing work. |

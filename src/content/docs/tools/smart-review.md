@@ -1,8 +1,8 @@
 ---
 title: "Use Smart Review"
 description: "Choose review actions, dispatch work to your session, and verify the resulting changes."
-verified: "2026-09-29"
-evidence: ["review", "review-actions", "diff", "context-actions", "review-scope", "layout"]
+verified: "2026-10-21"
+evidence: ["review", "review-start-screen", "settings-workspace", "review-prompts", "review-actions", "diff", "context-actions", "review-scope", "layout"]
 ---
 
 Get an agent’s assessment of branch changes, choose how to handle each finding, and send those decisions back for action.
@@ -19,12 +19,25 @@ For a configured project, follow its commit policy to record the changes before 
 
 ## 1. Start a review
 
-On the prompt bar above the message box, select **tools**, then **Smart review**, then **run review**. **Smart review** appears only on a branch other than `main` or `master`. In **Areas of Focus**, describe the concerns that matter, then select **Start Review**. Follow progress in the **Smart Review** tab at the top of the session, which says **No active review** until one exists. For the greeting example:
+Start a review in either of two places:
+
+- On the prompt bar above the message box, select **tools**, then **Smart review**, then **run review**. **Smart review** appears only on a branch other than `main` or `master`.
+- Select the **Smart Review** tab at the top of the session. Until the branch has a review, the tab shows a start screen titled **Smart Review** that explains the feature. Select **Start a review**.
+
+Both open **Areas of Focus**. Describe the concerns that matter, then select **Start Review**. Follow progress in the **Smart Review** tab. For the greeting example:
 
 ```text
 Check blank-name handling and whether the tests cover spaces-only input.
 Look for unintended changes to greetings for nonblank names.
 ```
+
+### Reuse a saved prompt
+
+The buttons above the focus box are saved prompts, such as **Redux** and **Clean up architecture**. Select one to include its text in the review, and select it again to leave it out. You can select several and still type your own concerns; the review gets the selected prompts followed by what you typed. Selected prompts are highlighted.
+
+To keep what you typed for later reviews, select **Save as prompt**. It appears once the box holds text that isn't already a saved prompt. The new prompt is named after its first line and selected for this review. Rename, edit, or remove prompts in [**Settings → Agents → Smart Review prompts**](/reference/settings/#smart-review-prompts).
+
+Saved prompts were added in Firehose 1.2.3.
 
 **Expected result:** the review begins analyzing changes; findings may appear as it works. An empty panel alone does not establish a successful review. See [empty and unsuccessful reviews](#if-the-review-is-empty-or-unsuccessful) below.
 
@@ -93,8 +106,10 @@ For a finding about a missing spaces-only test, choose **Fix**, add the strings-
 ## If the review is empty or unsuccessful
 
 - **Analyzing branch changes…** means analysis is still in progress. Check the selected session’s Chat for activity or a reported problem.
+- **Loading findings…** means the review has finished but its findings haven't loaded yet, for example after you reload the page or switch sessions. Wait for them; the panel offers no button here, so you can't replace a review that may have findings.
 - **No … findings** can be a severity filter result. Select **Show all findings** before deciding the review is empty.
-- A failed review can show its error in the empty panel. Keep that error and check the session before starting another review.
-- A completed review with no findings means none were reported. It does not establish that tests passed or every defect was ruled out. Verify the diff and checks anyway.
+- **No findings**, with the text “The last review of *your branch* against *its base* found nothing to fix,” means a completed review reported nothing. It does not establish that tests passed or every defect was ruled out. Verify the diff and checks anyway. **Review again** starts a fresh review that replaces this one.
+- A review that failed before posting any findings returns to the start screen and shows its error above **Start a review**. Keep that error and check the session before starting another review. A review that failed after posting some findings keeps them in the list.
+- **Stale reviews**, “Reviews for branches that no longer exist,” can appear below the start screen. They are leftover reviews for deleted branches. **Clean up all** deletes them all at once, without asking to confirm, and a notice reports how many it cleaned up. Note any findings you still need first.
 
 Finish with the [task handoff and cleanup checklist](/guides/finish-a-task/).

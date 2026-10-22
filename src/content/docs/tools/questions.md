@@ -1,8 +1,8 @@
 ---
 title: "Ask clarifying questions"
 description: "Choose an interview depth, answer decisions, and send the answers to the session that should continue."
-verified: "2026-09-29"
-evidence: ["questions", "question-details", "example", "layout"]
+verified: "2026-10-21"
+evidence: ["questions", "review-start-screen", "question-model", "question-details", "example", "layout"]
 ---
 
 Use a questionnaire when a task needs decisions before implementation. Your answers become a message that tells the selected agent to continue the requested work.
@@ -17,7 +17,9 @@ Open the intended session and confirm its project and branch. Use a session wher
 
 1. On the prompt bar above the message box, select **tools**, then **Ask me questions**.
 2. In **Ask me clarifying questions**, enter the topic below.
-3. Choose an **Interview depth**, then select **Ask questions**.
+3. Choose an **Interview depth**.
+4. Under **Write the questions with**, keep **This session's model** or choose another model. See [choose the model that writes the questions](#choose-the-model-that-writes-the-questions).
+5. Select **Ask questions**.
 
 <figure class="product-capture">
   <img src="/images/ui/tools-menu.png" width="760" height="210" loading="lazy" alt="The tools menu open above the prompt bar, listing Smart review with an arrow for more options and Ask me questions. The prompt bar shows the branch greeting-blank-names and the tools button, with the message box below.">
@@ -31,6 +33,8 @@ Ask about fallback text and checks before editing.
 After I submit answers, implement the agreed change and tests.
 Do not commit or push.
 ```
+
+You can also start from the **Ask me** tab at the top of the session. When the worktree has no questionnaire, the tab shows a start screen titled **Clarifying questions** that explains how questionnaires work. Select **Ask clarifying questions** to open the same **Ask me clarifying questions** window, then enter your topic and finish the steps above.
 
 If **ask me questions** shows a count, it opens the unfinished questionnaire instead of starting another. Only one questionnaire can be unfinished per worktree.
 
@@ -46,9 +50,17 @@ The agent is instructed to ask fewer if additional questions would be filler. De
 
 For the greeting task, a short interview might cover fallback text, whitespace, and tests. A longer interview for an entire greeting screen might also cover localization, validation messages, and accessibility. These are illustrative scopes, not captured questionnaires or promises about the generated wording. Do not expand the small function task merely to fill ten questions.
 
+### Choose the model that writes the questions
+
+By default, the session writes the questions on its own model, which is often its most capable and most expensive one. To spend less, choose a cheaper model under **Write the questions with**. Claude Code sessions offer **Haiku**, **Sonnet**, and **Opus**. Other agents list their own models, and the row doesn’t appear when there is nothing to choose.
+
+A model you choose writes the questions in a separate run. It reads the project’s code and your topic, but not the session’s conversation, so put any context it needs in the topic. Your answers still go to the session. For Claude Code, Codex, and Antigravity, that run can only read. Some agents, such as OpenCode, don’t let Firehose block edits; the window says so, and the run keeps the session’s usual permissions.
+
+A cheaper model may write less precise questions. If they miss the point, delete the questionnaire and ask again with a different model. Model choice was added in Firehose 1.2.3.
+
 ## 3. Answer when it is your turn
 
-Select the **Ask me** tab at the top of the session; it reads **Ask me (N)** when questions are waiting. **Queued** means the request is waiting behind the current turn. During generation, the panel says the agent is reading code and writing questions. **Your turn** indicates that answers are ready to complete. The panel also shows how many questions were requested and written.
+Select the **Ask me** tab at the top of the session; it reads **Ask me (N)** when questions are waiting. **Queued** means the request is waiting behind the current turn. During generation, the panel says the agent, or the model you chose, such as **Haiku**, is reading the code and writing questions. **Your turn** indicates that answers are ready to complete. The panel also shows how many questions were requested and written.
 
 Read each question and its option descriptions. Answer required questions; add text where the question offers a field. **Show captured context**, when present, displays the background saved with the request.
 
@@ -69,6 +81,8 @@ In the example, check that the delivered answer includes `guest`, trimming, and 
 ## If delivery or generation fails
 
 A failed answer delivery leaves the questionnaire available. Read the error, confirm that the receiving session accepts input, and use [delivery troubleshooting](/troubleshooting/common-problems/#my-message-didnt-reach-the-agent) before retrying **Submit to** the provider.
+
+If the **Ask me** tab shows **Clarifying questions couldn’t be loaded**, Firehose couldn't fetch this worktree's questionnaires. Read the error below the title, check your connection to the server, and select **Retry**.
 
 **Failed** or **Cancelled** sets stay visible until you choose **Remove**. Removing a set deletes its questions and saved answers. Preserve information you still need first. If the set says **Expired**, its original session has changed; read the explanation rather than expecting the old request to continue.
 

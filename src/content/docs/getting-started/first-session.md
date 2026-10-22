@@ -1,8 +1,8 @@
 ---
 title: "Start your first session"
 description: "Choose an existing project or a tiny practice project, start an agent, and check its answer."
-verified: "2026-09-29"
-evidence: ["launch", "settings", "chat", "diff", "example", "permissions", "project-creation", "layout"]
+verified: "2026-10-21"
+evidence: ["settings-workspace", "launch", "settings", "chat", "diff", "example", "permissions", "project-creation", "layout"]
 ---
 
 Start an agent and ask it to explain a small piece of code. You’ll finish with an answer you can check against the file.
@@ -31,7 +31,7 @@ In Firehose:
 
 **Expected result:** Firehose creates a Git repository with a README and attempts an initial commit. You add the example file in step 3, once a session is open.
 
-If Firehose says **No project directories configured — add one in Settings first.**, open **Settings** (the gear icon at the bottom of the icon rail on the far left). Under **Project directories**, add your projects directory to the comma-separated list and select **Save**. These are paths on the server. Preserve existing entries.
+If Firehose says **No project directories configured — add one in Settings first.**, open **Settings** (the gear icon at the bottom of the icon rail on the far left) and select **General**. Under **Project directories**, add your projects directory to the comma-separated list and select **Save**. These are paths on the server. Preserve existing entries.
 
 If the name already exists, choose that project or use another name. If creation reports no initial commit, configure your usual Git name and email on the server, then commit the README before using branch or worktree workflows.
 
