@@ -1,8 +1,8 @@
 ---
 title: "Glossary"
 description: "Understand agents, models, sessions, context, and Git terms through a concrete task."
-verified: "2026-09-29"
-evidence: ["launch", "chat", "diff", "questions", "connection", "context-actions", "layout"]
+verified: "2026-10-21"
+evidence: ["launch", "chat", "diff", "questions", "connection", "context-actions", "layout", "workflows-beta"]
 ---
 
 Look up an unfamiliar term, then return to the step where you encountered it.
@@ -28,6 +28,9 @@ The agent explains the change in one **turn**. You ask it to add a missing test;
 | Context | Information available for the next response, including the conversation so far and relevant material the agent has read |
 | Approval | A decision about whether the agent may perform a requested action |
 | Questionnaire | A set of task questions answered in the **Ask me** tab; submitting them tells the agent to continue the requested work |
+| Workflow | A saved, ordered list of steps, such as implement, Smart Review, and confirm, that Firehose runs for you; a beta feature. See [Workflows (beta)](/tools/workflows/) |
+| Run | One pass through a workflow, which you follow and control in the **Workflows** panel |
+| Claim | A comment Firehose posts on a GitHub issue while a workflow runs on it, so a teammate's Firehose doesn't start the same workflow there |
 
 ## Files, Git, and connections
 

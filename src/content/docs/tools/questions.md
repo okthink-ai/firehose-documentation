@@ -1,8 +1,8 @@
 ---
 title: "Ask clarifying questions"
 description: "Choose an interview depth, answer decisions, and send the answers to the session that should continue."
-verified: "2026-10-13"
-evidence: ["questions", "question-model", "question-details", "example", "layout"]
+verified: "2026-10-21"
+evidence: ["questions", "review-start-screen", "question-model", "question-details", "example", "layout"]
 ---
 
 Use a questionnaire when a task needs decisions before implementation. Your answers become a message that tells the selected agent to continue the requested work.
@@ -33,6 +33,8 @@ Ask about fallback text and checks before editing.
 After I submit answers, implement the agreed change and tests.
 Do not commit or push.
 ```
+
+You can also start from the **Ask me** tab at the top of the session. When the worktree has no questionnaire, the tab shows a start screen titled **Clarifying questions** that explains how questionnaires work. Select **Ask clarifying questions** to open the same **Ask me clarifying questions** window, then enter your topic and finish the steps above.
 
 If **ask me questions** shows a count, it opens the unfinished questionnaire instead of starting another. Only one questionnaire can be unfinished per worktree.
 
@@ -79,6 +81,8 @@ In the example, check that the delivered answer includes `guest`, trimming, and 
 ## If delivery or generation fails
 
 A failed answer delivery leaves the questionnaire available. Read the error, confirm that the receiving session accepts input, and use [delivery troubleshooting](/troubleshooting/common-problems/#my-message-didnt-reach-the-agent) before retrying **Submit to** the provider.
+
+If the **Ask me** tab shows **Clarifying questions couldn’t be loaded**, Firehose couldn't fetch this worktree's questionnaires. Read the error below the title, check your connection to the server, and select **Retry**.
 
 **Failed** or **Cancelled** sets stay visible until you choose **Remove**. Removing a set deletes its questions and saved answers. Preserve information you still need first. If the set says **Expired**, its original session has changed; read the explanation rather than expecting the old request to continue.
 

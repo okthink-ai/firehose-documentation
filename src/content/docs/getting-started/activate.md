@@ -1,13 +1,13 @@
 ---
 title: "Activate Firehose"
 description: "Activate a new Firehose installation with a code emailed to you, and subscribe if you need to, so you can start sessions."
-verified: "2026-10-18"
-evidence: ["activation", "release-1-2-3", "release-1-2-4", "release-1-2-5", "layout"]
+verified: "2026-10-21"
+evidence: ["activation", "release-1-2-3", "release-1-2-4", "release-1-2-5", "release-1-3-0", "settings-workspace", "layout"]
 ---
 
 Activate Firehose on your computer so it can start agent sessions. Until you do, the dashboard shows an activation screen and nothing else works.
 
-This page describes Firehose 1.2.5. Activation by emailed code started in Firehose 1.1.0; if your dashboard shows **Activate this server** instead of an email field, [update Firehose](/getting-started/install/#manage-firehose-from-the-terminal) with `firehose update`.
+This page describes Firehose 1.3.0. Activation by emailed code started in Firehose 1.1.0; if your dashboard shows **Activate this server** instead of an email field, [update Firehose](/getting-started/install/#manage-firehose-from-the-terminal) with `firehose update`.
 
 ## Before you begin
 
@@ -98,7 +98,7 @@ Next, [connect to Firehose](/getting-started/connect/) and check that your agent
 
 ## Manage your subscription
 
-To change your card, see invoices, switch plans, or cancel, open `agents.okthink.ai/account`. From the dashboard, you can also open **Settings** and select **Manage subscription** under **License**.
+To change your card, see invoices, switch plans, or cancel, open `agents.okthink.ai/account`. From the dashboard, you can also open **Settings**, select **Account**, and select **Manage subscription** under **License**.
 
 Sign in with the email address you used to activate Firehose. You can sign in with Google or with a code emailed to you.
 

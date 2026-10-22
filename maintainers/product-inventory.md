@@ -26,7 +26,8 @@ walkthrough or a declaration of general availability in every release.
 | Attachments | Picker, staging, upload/removal, ignore action and delivery retention | Attachment and data guides; live upload/delivery pending |
 | Usage and context | Provider footer window indicators and context menu | Provider guide; actual billing and spending controls unverified |
 | Session persistence | Managed restore and browser-state storage paths | Return-to-work guide; live provider restart matrix pending |
-| Voice and issue workflows | Internal documents or components exist | Full workflows pending verification |
+| Voice | Internal documents or components exist | Full workflows pending verification |
+| Workflows (beta, 1.3.0) | Beta switch, panel, editor, Run workflow dialog, run view, issue claims; triggers API-only | Workflows page from source; live run, claim comments and triggers unverified |
 | Installation and upgrades | Source README still includes private package prerequisites | Public installation route pending verification |
 
 Do not carry historical limitations from `docs/worktrees.md` in the source repo

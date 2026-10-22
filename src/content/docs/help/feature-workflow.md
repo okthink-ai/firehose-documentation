@@ -1,13 +1,15 @@
 ---
 title: "Take a feature from plan to merge"
 description: "Plan a feature in Firehose or start from a GitHub issue, clarify it, build it in a worktree, review it with Smart Review and X-Ray, test it, and open a pull request."
-verified: "2026-10-13"
-evidence: ["feature-workflow"]
+verified: "2026-10-21"
+evidence: ["feature-workflow", "workflows-beta", "settings-workspace", "review-start-screen"]
 ---
 
 Take one feature all the way through Firehose: plan it, build it in its own worktree, review it two ways, test it, and hand it off as a pull request. You can start from an idea and shape the plan inside Firehose, or start from a GitHub issue.
 
 This article describes Firehose 1.2.3. It links to the tool guides for detail; read [Find your way around Firehose](/getting-started/find-your-way/) first if the layout is new to you.
+
+Once you know the steps you want, **[Workflows (beta)](/tools/workflows/)** in Firehose 1.3.0 can run much of this chain for you: implement, Smart Review, resolve the findings, then pause for your check before anything is published. This article walks through the steps by hand.
 
 ## The flow at a glance
 
@@ -170,8 +172,8 @@ Smart Review asks a reviewing agent to read the whole change and report findings
 
 ### 1. Start a review
 
-1. On the prompt bar, select **tools**, then **Smart review**, then **run review**.
-2. In **Areas of Focus**, describe what to look at hardest, such as `tests, blank and whitespace-only names, error handling`, or leave it blank for a general review. **Save as prompt** keeps a focus you reuse; manage saved ones in **Settings → Smart Review prompts**.
+1. On the prompt bar, select **tools**, then **Smart review**, then **run review**. Before the branch's first review, you can instead select **Start a review** in the **Smart Review** tab.
+2. In **Areas of Focus**, describe what to look at hardest, such as `tests, blank and whitespace-only names, error handling`, or leave it blank for a general review. **Save as prompt** keeps a focus you reuse; manage saved ones in **Settings → Agents → Smart Review prompts**.
 3. Select **Start Review**.
 
 <figure class="product-capture">
@@ -239,7 +241,7 @@ Firehose has no single "test" button. Before you hand off, combine its tools int
 1. **Close the test gaps.** Check X-Ray for **untested** files, and ask the agent to add tests for any that matter.
 2. **Run a test-focused review.** Start another Smart Review with an area of focus such as `tests and edge cases; do the tests prove the feature works?`, then **Act** on the findings. The agent runs the tests before it marks each fix done.
 3. **Run the suite yourself.** Open the **Terminal** tab; it starts in the session's folder. Run the project's tests, for example `node --test`, and read the result. See [Run a check in the terminal](/tools/terminal/).
-4. **Try it by hand.** For a web app, start it, then select **Add URL** in the tab row, enter the address such as `http://localhost:3000`, and use the app in the **Preview** tab. When Firehose runs on a Mac with Xcode set up, an iOS app can run in the **Simulator** tab.
+4. **Try it by hand.** For a web app, start it, then select **Add URL** in the tab row, enter the address such as `http://localhost:3000`, and use the app in the **Preview** tab. When Firehose runs on a Mac with Xcode set up, an iOS app can run in the **Simulator** tab. The tab is a beta feature: turn it on in **Settings → Beta features → iOS Simulator → Show Simulator tab**.
 5. **Check what changed.** In the **Diff** tab, use **Diff filters** to compare **All changes** and **Working changes**, so nothing is left uncommitted or unexplained. See [Review changes with Diff](/tools/diff/).
 
 <figure class="product-capture">

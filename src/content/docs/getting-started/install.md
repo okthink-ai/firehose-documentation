@@ -1,13 +1,13 @@
 ---
 title: "Install Firehose"
 description: "Install Firehose on your Mac or Linux computer with the one-line installer and open the dashboard."
-verified: "2026-10-18"
-evidence: ["install", "release-1-2-3", "release-1-2-4", "release-1-2-5", "update-notice", "tailscale-setup", "layout"]
+verified: "2026-10-21"
+evidence: ["install", "release-1-2-3", "release-1-2-4", "release-1-2-5", "release-1-3-0", "update-notice", "settings-workspace", "tailscale-setup", "layout"]
 ---
 
 Install Firehose on the computer where your repositories live. When you finish, Firehose is running on that computer and its dashboard is open in your browser, ready to [activate](/getting-started/activate/).
 
-This page describes Firehose 1.2.5.
+This page describes Firehose 1.3.0.
 
 ## Before you begin
 
@@ -82,7 +82,7 @@ Type `y` to use Firehose from your phone or another computer, or press Enter to 
 The installer opens `http://localhost:4801` in your browser and finishes with a message like this:
 
 ```text
-==> Firehose 1.2.5 installed
+==> Firehose 1.3.0 installed
 
   Firehose is running at http://localhost:4801.
   It starts by itself when you log in.
@@ -111,7 +111,7 @@ curl -fsSL https://okthink.ai/install.sh | bash -s -- --port 4900
 | `--release <version>` | Install a specific version instead of the latest |
 | `--dir <path>` | Install somewhere other than `~/.firehose` |
 
-Changing the port has a cost: the hosted app at agents.okthink.ai always connects on port 4801. On another port, open **Settings** (the gear icon at the bottom of the icon rail on the far left) and copy the address under **Open from your other devices** to use on your other devices instead.
+Changing the port has a cost: the hosted app at agents.okthink.ai always connects on port 4801. On another port, open **Settings** (the gear icon at the bottom of the icon rail on the far left), select **Connection**, and copy the address under **Open from your other devices** to use on your other devices instead.
 
 ## Manage Firehose from the terminal
 
@@ -131,7 +131,7 @@ Running the installer again also upgrades Firehose. It keeps the port you chose 
 
 ### Know when an update is available
 
-Firehose checks for a new release about once a day. When it finds one, the dashboard shows a banner such as **Firehose 1.2.6 is available (you have 1.2.5)**, and `firehose status` and `firehose version` end with a line that says the same. Run `firehose update` to install it.
+Firehose checks for a new release once a day. From Firehose 1.3.0, it also checks when you open the dashboard or return to its tab, at most once an hour, so a new release shows up the day it ships. When it finds one, the dashboard shows a banner such as **Firehose 1.3.1 is available (you have 1.3.0)**, and `firehose status` and `firehose version` end with a line that says the same. Run `firehose update` to install it.
 
 Select **What's new** in the banner to read the release notes. **Dismiss** hides the banner in that browser until the next release. These notices started in Firehose 1.2.3.
 
