@@ -106,6 +106,6 @@ For a finding about a missing spaces-only test, choose **Fix**, add the strings-
 - A failed review that posted no findings shows its error above **Start a review**. Keep that error and check the session before starting another review.
 - **No findings**, saying the last review found nothing to fix, with a **Review again** button, means the review finished and reported none. That does not establish that tests passed or every defect was ruled out. Verify the diff and checks anyway.
 
-To run a review as one step in a longer sequence, such as review, fix, commit, and push, see [Workflows (beta)](/tools/workflows/).
+To run a review as one step in a longer sequence, such as review, fix, commit, and push, see [Use workflows (beta)](/guides/use-workflows/).
 
 Finish with the [task handoff and cleanup checklist](/guides/finish-a-task/).

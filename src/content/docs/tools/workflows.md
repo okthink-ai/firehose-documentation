@@ -1,11 +1,13 @@
 ---
-title: "Run a workflow (beta)"
-description: "Turn on Workflows, run a list of agent steps such as implement, review, commit, and push, and follow or stop the run."
+title: "Workflow reference (beta)"
+description: "Every Workflows control: the built-in and recommended workflows, step types, runs, issue claims, triggers, and known gaps."
 verified: "2026-10-21"
 evidence: ["workflows", "workflow-runs", "workflow-triggers"]
 ---
 
 Hand Firehose a list of steps, such as "implement the fix, check it with Smart Review, commit, and push," and let it send each step to an agent in order while you watch. Use a workflow when you repeat the same sequence on many branches or issues and want Firehose to move from one step to the next for you.
+
+New to workflows? Start with [Use workflows (beta)](/guides/use-workflows/), which walks through a first run step by step. This page describes every control.
 
 **Workflows are a beta feature.** They are off by default, they may change or go away, and some parts have known gaps (see [Limits and known gaps](#limits-and-known-gaps)). Workflows were added in Firehose 1.3.0. If you don't see **Workflows** under **Beta features** in Settings, your Firehose doesn't include them yet.
 
@@ -251,4 +253,4 @@ In this beta, Firehose has no screen for triggers. They are set up through Fireh
 
 ## Continue
 
-Read [Use Smart Review](/tools/smart-review/) to understand the review steps, and [finish the task](/guides/finish-a-task/) once a run has published your branch.
+Follow [Use workflows (beta)](/guides/use-workflows/) for a first run. Read [Use Smart Review](/tools/smart-review/) to understand the review steps, and [finish the task](/guides/finish-a-task/) once a run has published your branch.

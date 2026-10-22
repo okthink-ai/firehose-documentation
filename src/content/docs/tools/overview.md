@@ -39,7 +39,7 @@ Start one from **tools → Smart review** on the prompt bar, and read it in the 
 
 ## Workflows (beta): run a sequence of steps
 
-**You provide:** a workflow, such as the built-in **Quality**, and optionally an issue or a request. **You get:** a run that sends each step, such as implement, review, commit, and push, to an agent in order while you watch. Turn it on in **Settings → Beta features → Show Workflows**. [Run a workflow](/tools/workflows/).
+**You provide:** a workflow, such as the built-in **Quality**, and optionally an issue or a request. **You get:** a run that sends each step, such as implement, review, commit, and push, to an agent in order while you watch. Turn it on in **Settings → Beta features → Show Workflows**. [Use workflows](/guides/use-workflows/).
 
 ## Terminal: run an independent check
 

@@ -739,6 +739,20 @@
         "functions/src/email-code-primitives.ts",
         "apps/expo/src/changelog.json"
       ]
+    },
+    "workflow-guide": {
+      "scope": "Use workflows walkthrough: the Review and fix recipe's steps (Smart Review, Review more, Resolve review findings, Validate with the fixed pnpm/npm checks), Add in Recommended saving a project copy and opening the editor, Custom step and Run this step in the editor, the Confirm step's Message, the Run workflow dialog (Workflow list with step lists, Where it runs defaulting to In this session when started from a session, the optional request, Start run), and the per-project issue default (Fix <project> issues with \"<workflow>\" and the Fix with <workflow> button). Source inspection; not observed in a live release.",
+      "revision": "d23e1e9529edd379e404dcc79c057c6d66301769",
+      "verified": "2026-10-21",
+      "paths": [
+        "lib/workflow-library.ts",
+        "lib/workflows.ts",
+        "lib/types/workflows.ts",
+        "apps/expo/src/features/workflows/WorkflowsPanel.tsx",
+        "apps/expo/src/features/workflows/RunWorkflowModal.tsx",
+        "apps/expo/src/features/workflows/WorkflowEditor/StepCard.tsx",
+        "apps/expo/src/features/workflows/IssueWorkflowActions.tsx"
+      ]
     }
   },
   "runtimeObservations": [

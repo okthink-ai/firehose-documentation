@@ -84,7 +84,7 @@ See [Connect to Firehose](/getting-started/connect/) for address requirements an
 **Settings → Beta features** holds features that are still being built. They may change or go away.
 
 - **Sentence annotation:** **Keyboard and touch annotation mode** adds an **Annotate** control to the header of Markdown files in the file viewer, on web. With a keyboard, press Alt+Shift+X to start, J or K (or the arrow keys) to move one sentence, Shift to extend the selection, and X to comment on it. Escape leaves the mode. On a touch screen, tap a sentence to select it and scroll to extend the selection. It is off by default.
-- **Workflows:** **Show Workflows** adds a **Workflows** panel to the icon rail and **Run workflow…** to the prompt bar, session menus, and GitHub issues. It is off by default and applies to the device where you switch it on. See [Run a workflow (beta)](/tools/workflows/).
+- **Workflows:** **Show Workflows** adds a **Workflows** panel to the icon rail and **Run workflow…** to the prompt bar, session menus, and GitHub issues. It is off by default and applies to the device where you switch it on. See [Use workflows (beta)](/guides/use-workflows/).
 - **GPT-Live voice:** an experimental voice companion that adds a **Talk** button to the selected session. It uses the OpenAI API key under **Voice & sounds → API keys**.
 
 You don’t need to change these settings to complete the everyday session guides on the Firehose computer itself.

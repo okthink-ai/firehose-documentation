@@ -148,7 +148,7 @@ Select the issue to open its details: labels, body, and **Open on GitHub**. Then
 
 In **Choose the agent for issue #42**, pick the provider, model, and permission settings, then select **Create session**. Firehose creates a new worktree on a branch that starts with the issue number, such as `42-greet-blank-names`, and starts the agent there.
 
-With Workflows (beta) turned on, the issue's details also offer **Run workflow…**, which runs a saved list of steps on the issue instead of a single kickoff. See [Run a workflow (beta)](/tools/workflows/#start-a-run).
+With Workflows (beta) turned on, the issue's details also offer **Run workflow…**, which runs a saved list of steps on the issue instead of a single kickoff. See [Use workflows (beta)](/guides/use-workflows/#9-fix-github-issues-with-one-click).
 
 <figure class="product-capture">
   <img src="/images/help/issue-session-modal.png" width="704" height="584" loading="lazy" alt="The Create issue session dialog titled Choose the agent for issue #42, explaining that Firehose will create a new worktree and start the agent there, with provider choices, a Model row, the permission checkbox, and Cancel and Create session buttons.">
